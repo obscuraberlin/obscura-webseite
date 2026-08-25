@@ -152,6 +152,15 @@ header.scrolled{padding:.5rem 0;background:rgba(251,251,248,.75);backdrop-filter
 .float.f1{width:150px;aspect-ratio:9/16;left:-4%;top:6%;z-index:3;transform:rotate(-6deg)}
 .float.f2{width:130px;aspect-ratio:9/16;right:-2%;bottom:8%;z-index:3;transform:rotate(6deg)}
 .hero-phone{position:relative;z-index:2}
+.showreel{position:relative;width:100%;max-width:430px;aspect-ratio:4/5;border-radius:26px;overflow:hidden;
+  box-shadow:0 44px 90px -34px rgba(0,0,0,.5);border:1px solid rgba(0,0,0,.06);cursor:pointer}
+.showreel .sr-badge{position:absolute;top:1rem;right:1rem;z-index:4;font-family:var(--mono);font-size:.62rem;
+  letter-spacing:.08em;text-transform:uppercase;color:var(--ink);background:var(--lime);padding:.35rem .65rem;border-radius:100px}
+.play-lg{width:78px;height:78px}
+.showreel .sr-cap{position:absolute;left:0;right:0;bottom:0;z-index:4;padding:1.4rem 1.5rem;
+  background:linear-gradient(0deg,rgba(0,0,0,.78),transparent 62%)}
+.showreel .sr-cap b{display:block;color:#fff;font-family:var(--display);font-weight:800;font-size:1.2rem;letter-spacing:-.02em}
+.showreel .sr-cap small{color:rgba(255,255,255,.72);font-size:.82rem;font-family:var(--mono);letter-spacing:.02em}
 
 /* ticker */
 .ticker{background:var(--ink);color:#fff;padding:.9rem 0;overflow:hidden}
@@ -848,47 +857,13 @@ html{scroll-snap-type:y proximity}
     </div>
 
     <div class="hero-visual rv in">
-      <!-- floating reels -->
-      <div class="float f1 scene g-auto" data-sp="-70"><span class="bg"></span><span class="grain"></span><span class="play"><svg width="13" height="15" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span></div>
-      <div class="float f2 scene g-nature" data-sp="70"><span class="bg"></span><span class="grain"></span><span class="play"><svg width="13" height="15" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span></div>
-      <!-- phone with IG profile -->
-      <div class="phone hero-phone">
-        <span class="notch"></span>
-        <div class="screen">
-          <div class="ig-head">
-            <div class="ig-prof">
-              <div class="pav"><div class="scene g-city" style="width:100%;height:100%;border-radius:100px"><span class="bg"></span></div></div>
-              <div class="ig-stats">
-                <div><b>248</b><small>Beiträge</small></div>
-                <div><b>18,4k</b><small>Follower</small></div>
-                <div><b>312</b><small>Folgt</small></div>
-              </div>
-            </div>
-            <div class="ig-bio">
-              <div class="h">obscura.berlin</div>
-              <div class="d">Social Media · Content · Performance</div>
-              <div class="tag">↗ obscura-berlin.de</div>
-            </div>
-          </div>
-          <div class="ig-grid">
-            <div class="cell scene g-auto"><span class="bg"></span><span class="play"><svg viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span></div>
-            <div class="cell scene g-interior"><span class="bg"></span></div>
-            <div class="cell scene g-realestate"><span class="bg"></span><span class="play"><svg viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span></div>
-            <div class="cell scene g-nature"><span class="bg"></span></div>
-            <div class="cell scene g-product"><span class="bg"></span><span class="play"><svg viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span></div>
-            <div class="cell scene g-auto2"><span class="bg"></span></div>
-            <div class="cell scene g-city"><span class="bg"></span></div>
-            <div class="cell scene g-team"><span class="bg"></span><span class="play"><svg viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span></div>
-            <div class="cell scene g-interior"><span class="bg"></span></div>
-          </div>
-          <div class="ig-nav">
-            <svg viewBox="0 0 24 24"><path d="M3 10l9-7 9 7v10a1 1 0 01-1 1h-5v-7h-6v7H4a1 1 0 01-1-1z"/></svg>
-            <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M10 8l6 4-6 4z" fill="var(--ink)" stroke="none"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 12a4 4 0 100-8 4 4 0 000 8zM4 21a8 8 0 0116 0"/></svg>
-            <span class="pf"></span>
-          </div>
-        </div>
+      <div class="float f1 scene g-interior" data-sp="-70"><span class="bg"></span><span class="grain"></span><span class="play"><svg width="12" height="14" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span></div>
+      <div class="float f2 scene g-nature" data-sp="70"><span class="bg"></span><span class="grain"></span><span class="play"><svg width="12" height="14" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span></div>
+      <div class="showreel scene g-auto hero-phone">
+        <span class="bg"></span><span class="grain"></span>
+        <span class="sr-badge">Showreel 2025</span>
+        <span class="play play-lg"><svg width="22" height="26" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span>
+        <div class="sr-cap"><b>Unsere Arbeit in Bewegung.</b><small>Video · Foto · Social Media · Ads</small></div>
       </div>
     </div>
   </div>
