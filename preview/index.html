@@ -2,412 +2,403 @@
 <meta name="description" content="Social Media Agentur Berlin – Content, monatliche Betreuung & Ads. Dein Auftritt, unser System." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" />
 
 <style>
 :root{
-  --canvas:#F8F8F5; --surface:#FFFFFF; --soft:#F0F0EC; --line:#E4E4DC;
-  --ink:#0E0E0C; --muted:#6B6B60; --lime:#C7FF18; --lime-deep:#A9DD00;
-  --dark:#0E0E0C; --dark-2:#171713;
+  --canvas:#FBFBF8; --surface:#FFFFFF; --soft:#F3F3EE; --line:#E8E8E1;
+  --ink:#0B0B0A; --muted:#78786C; --faint:#A9A99E;
+  --lime:#C7FF18; --lime-ink:#5E7A00; --dark:#0C0C0A;
   --display:'Archivo',sans-serif; --body:'Instrument Sans',sans-serif; --mono:'JetBrains Mono',monospace;
-  --r:20px; --maxw:1240px;
+  --r:18px; --maxw:1200px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:88px;-webkit-text-size-adjust:100%}
+html{scroll-behavior:smooth;scroll-padding-top:84px;-webkit-text-size-adjust:100%}
 body{background:var(--canvas);color:var(--ink);font-family:var(--body);line-height:1.55;
-  -webkit-font-smoothing:antialiased;overflow-x:hidden}
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;letter-spacing:-.005em}
 img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
-:focus-visible{outline:3px solid var(--ink);outline-offset:3px;border-radius:6px}
-.wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:clamp(1.15rem,4vw,2.75rem)}
-.eyebrow{font-family:var(--mono);font-size:.72rem;font-weight:600;letter-spacing:.22em;
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:6px}
+.wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:clamp(1.2rem,4vw,2rem)}
+.eyebrow{font-family:var(--mono);font-size:.7rem;font-weight:600;letter-spacing:.2em;
   text-transform:uppercase;color:var(--muted)}
-h1,h2,h3{font-family:var(--display);font-weight:800;letter-spacing:-.03em;line-height:.98;text-wrap:balance}
-.lime{color:var(--lime-deep)}
+h1,h2,h3{font-family:var(--display);font-weight:800;letter-spacing:-.035em;line-height:1;text-wrap:balance}
+.lime{color:var(--lime-ink)}
 section{position:relative}
 
-/* ---- buttons ---- */
-.btn{display:inline-flex;align-items:center;gap:.6rem;border-radius:100px;padding:.85rem 1.4rem;
-  font-family:var(--body);font-weight:600;font-size:.95rem;cursor:pointer;border:1px solid transparent;
-  transition:transform .25s cubic-bezier(.16,1,.3,1),background .25s,color .25s,border-color .25s}
-.btn .ar{transition:transform .3s}
-.btn:hover .ar{transform:translateX(4px)}
-.btn-dark{background:var(--ink);color:#fff}
-.btn-dark:hover{background:#000}
-.btn-lime{background:var(--lime);color:var(--ink)}
-.btn-lime:hover{filter:brightness(1.05)}
-.btn-ghost{border-color:var(--line);color:var(--ink)}
-.btn-ghost:hover{border-color:var(--ink)}
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:.55rem;border-radius:100px;padding:.8rem 1.35rem;
+  font-family:var(--body);font-weight:600;font-size:.94rem;cursor:pointer;border:1px solid transparent;
+  transition:transform .3s cubic-bezier(.16,1,.3,1),background .25s,color .25s,border-color .25s,box-shadow .25s}
+.btn .ar{transition:transform .3s}.btn:hover .ar{transform:translateX(4px)}
+.btn-dark{background:var(--ink);color:#fff}.btn-dark:hover{box-shadow:0 10px 24px -8px rgba(0,0,0,.4)}
+.btn-lime{background:var(--lime);color:var(--ink)}.btn-lime:hover{filter:brightness(1.04)}
+.btn-ghost{border-color:var(--line);color:var(--ink);background:var(--surface)}.btn-ghost:hover{border-color:var(--ink)}
 
-/* ---- header ---- */
+/* header */
 header{position:fixed;inset:0 0 auto;z-index:60;transition:padding .3s,background .3s,box-shadow .3s}
-header.top{padding:1.1rem 0;background:transparent}
-header.scrolled{padding:.55rem 0;background:rgba(248,248,245,.82);
-  backdrop-filter:blur(14px);box-shadow:0 1px 0 rgba(0,0,0,.06)}
+header.top{padding:1.05rem 0;background:transparent}
+header.scrolled{padding:.5rem 0;background:rgba(251,251,248,.75);backdrop-filter:blur(16px) saturate(1.4);
+  box-shadow:0 1px 0 rgba(0,0,0,.05)}
 .nav{display:flex;align-items:center;justify-content:space-between}
-.logo{font-family:var(--display);font-weight:900;font-size:1.3rem;letter-spacing:-.04em}
-.logo sup{color:var(--lime-deep);font-size:.6em}
-.nav-links{display:flex;gap:1.7rem}
+.logo{font-family:var(--display);font-weight:900;font-size:1.28rem;letter-spacing:-.05em}
+.logo sup{color:var(--lime-ink);font-size:.55em}
+.nav-links{display:flex;gap:1.6rem}
 .nav-links a{font-size:.9rem;font-weight:500;color:var(--muted);transition:color .2s}
 .nav-links a:hover{color:var(--ink)}
-.nav-r{display:flex;align-items:center;gap:.7rem}
-.burger{display:none;width:44px;height:44px;border:1px solid var(--line);border-radius:100px;
+.nav-r{display:flex;align-items:center;gap:.65rem}
+.burger{display:none;width:42px;height:42px;border:1px solid var(--line);border-radius:100px;
   background:var(--surface);cursor:pointer;place-items:center}
-.burger span,.burger span::before,.burger span::after{content:'';display:block;width:19px;height:2px;
+.burger span,.burger span::before,.burger span::after{content:'';display:block;width:18px;height:2px;
   background:var(--ink);position:relative;transition:.3s}
 .burger span::before{position:absolute;top:-6px}.burger span::after{position:absolute;top:6px}
-.mobile-menu{position:fixed;inset:0;z-index:55;background:var(--canvas);padding:6rem 1.5rem 2rem;
+.mobile-menu{position:fixed;inset:0;z-index:55;background:var(--canvas);padding:5.5rem 1.5rem 2rem;
   transform:translateX(100%);transition:transform .35s cubic-bezier(.16,1,.3,1);display:flex;flex-direction:column}
 .mobile-menu.open{transform:none}
-.mobile-menu a{font-family:var(--display);font-weight:700;font-size:2rem;padding:.7rem 0;
-  border-bottom:1px solid var(--line)}
-.mobile-menu .btn{margin-top:1.5rem;justify-content:center;font-size:1.1rem;padding:1.1rem}
+.mobile-menu a{font-family:var(--display);font-weight:800;font-size:1.9rem;padding:.65rem 0;border-bottom:1px solid var(--line)}
+.mobile-menu .btn{margin-top:1.4rem;justify-content:center;font-size:1.05rem;padding:1rem}
 
-/* ---- media / shots ---- */
-.shot{position:relative;overflow:hidden;border-radius:16px;background:#111;isolation:isolate}
-.shot::after{content:'';position:absolute;inset:0;z-index:3;pointer-events:none;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
-  opacity:.06;mix-blend-mode:overlay}
-.scene{position:absolute;inset:0;z-index:1}
-.scene::before{content:'';position:absolute;inset:0;
-  background:radial-gradient(120% 80% at 25% 15%,rgba(255,255,255,.16),transparent 55%)}
-.s-auto{background:linear-gradient(150deg,#1a2026,#2c3540 45%,#0b0d10);}
-.s-auto2{background:linear-gradient(150deg,#20242a,#3a3f47 50%,#0d0f12);}
-.s-nature{background:linear-gradient(150deg,#1c2a12,#4a5f1e 45%,#89923a 78%,#0e1207);}
-.s-interior{background:linear-gradient(150deg,#241a12,#4a3520 50%,#120c07);}
-.s-realestate{background:linear-gradient(150deg,#12181c,#28414d 55%,#0a0e10);}
-.s-city{background:linear-gradient(150deg,#151318,#33202f 55%,#0d0810);}
-.s-product{background:linear-gradient(150deg,#0f1614,#1f423a 55%,#080d0b);}
-.s-team{background:linear-gradient(150deg,#1a1712,#3a3226 55%,#0c0a07);}
-.scene .glow{position:absolute;inset:0;background:radial-gradient(50% 45% at 50% 62%,rgba(199,255,24,.15),transparent 70%)}
-.play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:4;
-  width:56px;height:56px;border-radius:100px;background:rgba(255,255,255,.92);display:grid;place-items:center;
-  box-shadow:0 10px 30px rgba(0,0,0,.35);transition:transform .3s}
-.shot:hover .play{transform:translate(-50%,-50%) scale(1.08)}
+/* ===== visual building blocks (rendered social content) ===== */
+.scene{position:relative;overflow:hidden;background:#111;isolation:isolate}
+.scene .bg{position:absolute;inset:0;z-index:1}
+.scene .bg::after{content:'';position:absolute;inset:0;
+  background:radial-gradient(80% 55% at 30% 12%,rgba(255,255,255,.22),transparent 55%),
+             radial-gradient(90% 70% at 70% 100%,rgba(0,0,0,.55),transparent 60%)}
+.grain{position:absolute;inset:0;z-index:3;pointer-events:none;opacity:.05;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+/* color grades that read like cinematic footage */
+.g-auto .bg{background:linear-gradient(155deg,#2b3440,#455262 40%,#161b22 85%)}
+.g-auto2 .bg{background:linear-gradient(155deg,#3a4150,#5a6472 45%,#1a1e26)}
+.g-interior .bg{background:linear-gradient(155deg,#4a3a26,#8a6a40 45%,#241a10)}
+.g-realestate .bg{background:linear-gradient(155deg,#26404e,#4f7f95 50%,#0f1c22)}
+.g-nature .bg{background:linear-gradient(155deg,#3a4a1c,#7f9a34 45%,#c3c76a 78%,#1a2210)}
+.g-city .bg{background:linear-gradient(155deg,#2a2230,#54365a 55%,#140d18)}
+.g-product .bg{background:linear-gradient(155deg,#1a2e2a,#3a6f62 55%,#0c1613)}
+.g-team .bg{background:linear-gradient(155deg,#3a3226,#726144 55%,#171208)}
+.play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:5;
+  width:52px;height:52px;border-radius:100px;background:rgba(255,255,255,.9);display:grid;place-items:center;
+  box-shadow:0 8px 24px rgba(0,0,0,.3);transition:transform .3s;backdrop-filter:blur(2px)}
+.scene:hover .play{transform:translate(-50%,-50%) scale(1.1)}
 .play svg{fill:var(--ink);margin-left:3px}
-.chip{position:absolute;z-index:4;font-family:var(--mono);font-size:.62rem;font-weight:600;
-  letter-spacing:.05em;text-transform:uppercase;padding:.3rem .55rem;border-radius:100px;
-  background:rgba(0,0,0,.42);color:#fff;backdrop-filter:blur(6px)}
-.chip.tl{top:10px;left:10px}.chip.tr{top:10px;right:10px;color:var(--lime)}
-.shot .meta{position:absolute;left:0;right:0;bottom:0;z-index:4;padding:1rem;
-  background:linear-gradient(0deg,rgba(0,0,0,.72),transparent)}
-.shot .meta .cat{font-family:var(--mono);font-size:.6rem;letter-spacing:.06em;color:var(--lime);text-transform:uppercase}
-.shot .meta .ttl{font-weight:600;color:#fff;font-size:.95rem}
+/* IG-style overlay so tiles read as posts */
+.ig-top{position:absolute;top:0;left:0;right:0;z-index:4;display:flex;align-items:center;gap:.5rem;padding:.7rem}
+.ig-top .av{width:26px;height:26px;border-radius:100px;background:linear-gradient(135deg,#fff,#d8d8cf);
+  border:1.5px solid rgba(255,255,255,.85)}
+.ig-top .nm{font-size:.72rem;font-weight:600;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.4)}
+.ig-top .nm small{display:block;font-weight:400;font-size:.62rem;opacity:.8}
+.ig-bot{position:absolute;left:0;right:0;bottom:0;z-index:4;padding:.7rem;
+  background:linear-gradient(0deg,rgba(0,0,0,.6),transparent)}
+.ig-acts{display:flex;gap:.7rem;margin-bottom:.35rem;color:#fff}
+.ig-acts svg{filter:drop-shadow(0 1px 2px rgba(0,0,0,.4))}
+.ig-cap{font-size:.72rem;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.5)}
+.ig-cap b{font-family:var(--mono);font-size:.62rem;color:var(--lime);display:block;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.15rem}
 
-/* ---- HERO ---- */
-.hero{padding-top:8.5rem}
-.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:3rem;align-items:center;padding-bottom:4rem}
-.hero h1{font-size:clamp(2.7rem,6.6vw,5.6rem)}
-.hero .sub{margin-top:1.4rem;max-width:34ch;font-size:1.15rem;color:var(--muted)}
-.hero .plan{margin-top:1rem;font-weight:600}
+/* phone mockup */
+.phone{position:relative;width:272px;border-radius:38px;background:#0b0b0a;
+  padding:9px;box-shadow:0 40px 80px -30px rgba(0,0,0,.45),0 0 0 1px rgba(0,0,0,.06);flex:none}
+.phone .screen{position:relative;width:100%;border-radius:30px;overflow:hidden;background:#fff}
+.phone .notch{position:absolute;top:8px;left:50%;transform:translateX(-50%);width:88px;height:22px;
+  background:#0b0b0a;border-radius:100px;z-index:6}
+.ig-head{padding:34px 14px 10px;border-bottom:1px solid var(--line)}
+.ig-prof{display:flex;align-items:center;gap:14px}
+.ig-prof .pav{width:52px;height:52px;border-radius:100px;flex:none;position:relative;
+  background:linear-gradient(135deg,#2b3440,#54365a);padding:2px}
+.ig-prof .pav::before{content:'';position:absolute;inset:-3px;border-radius:100px;
+  background:conic-gradient(from 90deg,var(--lime),#54365a,#2b3440,var(--lime));z-index:-1}
+.ig-stats{display:flex;gap:14px;flex:1;justify-content:space-around;text-align:center}
+.ig-stats b{font-family:var(--display);font-weight:800;font-size:.9rem;display:block}
+.ig-stats small{font-size:.6rem;color:var(--muted)}
+.ig-bio{padding:8px 14px 12px}
+.ig-bio .h{font-weight:600;font-size:.8rem}
+.ig-bio .d{font-size:.7rem;color:var(--muted)}
+.ig-bio .tag{color:var(--lime-ink);font-size:.7rem}
+.ig-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.ig-grid .cell{aspect-ratio:1;position:relative}
+.ig-grid .cell .play{width:22px;height:22px}.ig-grid .cell .play svg{width:8px;height:9px}
+.ig-nav{height:46px;background:var(--surface);border-top:1px solid var(--line);
+  display:flex;align-items:center;justify-content:space-around;padding:0 12px}
+.ig-nav svg{width:20px;height:20px;stroke:var(--ink);fill:none;stroke-width:1.7}
+.ig-nav .pf{width:20px;height:20px;border-radius:100px;background:linear-gradient(135deg,#2b3440,#54365a);border:1.5px solid var(--ink)}
+
+/* HERO */
+.hero{padding-top:8rem;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:2rem;align-items:center;padding-bottom:3rem}
+.hero h1{font-size:clamp(2.9rem,7vw,5.8rem);letter-spacing:-.045em}
+.hero .sub{margin-top:1.5rem;max-width:38ch;font-size:1.16rem;color:var(--muted)}
+.hero .plan{margin-top:.9rem;font-weight:600;font-size:1.02rem}
 .hero .ctas{margin-top:2rem;display:flex;gap:.7rem;flex-wrap:wrap}
-.trust{margin-top:2rem;display:flex;align-items:center;gap:1rem}
+.trust{margin-top:2.2rem;display:flex;align-items:center;gap:.9rem}
 .avatars{display:flex}
-.avatars .a{width:38px;height:38px;border-radius:100px;margin-left:-11px;border:2px solid var(--canvas);
-  background-size:cover}
+.avatars .a{width:36px;height:36px;border-radius:100px;margin-left:-10px;border:2px solid var(--canvas);background-size:cover}
 .avatars .a:first-child{margin-left:0}
-.trust p{font-size:.85rem;color:var(--muted)}
-.stars{color:var(--lime-deep);letter-spacing:1px}
-.stack{position:relative;aspect-ratio:1/1.05;max-width:470px;margin-inline:auto;width:100%}
-.stack .card{position:absolute;width:53%;height:63%;border-radius:18px;box-shadow:0 30px 60px -18px rgba(0,0,0,.4);
-  border:1px solid rgba(255,255,255,.08)}
-.stack .c1{left:0;top:2%;transform:rotate(-5deg)}
-.stack .c2{right:4%;top:12%;transform:rotate(4deg)}
-.stack .c3{left:9%;bottom:4%;transform:rotate(3deg)}
-.stack .c4{right:0;bottom:0;transform:rotate(-3deg)}
-.hero-rail{display:none}
+.trust p{font-size:.84rem;color:var(--muted)}
+.stars{color:var(--lime-ink);letter-spacing:1px}
+.hero-visual{position:relative;display:flex;justify-content:center;align-items:center;min-height:520px}
+.float{position:absolute;border-radius:16px;overflow:hidden;box-shadow:0 26px 50px -18px rgba(0,0,0,.35);
+  border:1px solid rgba(0,0,0,.05)}
+.float.f1{width:150px;aspect-ratio:9/16;left:-4%;top:6%;z-index:3;transform:rotate(-6deg)}
+.float.f2{width:130px;aspect-ratio:9/16;right:-2%;bottom:8%;z-index:3;transform:rotate(6deg)}
+.hero-phone{position:relative;z-index:2}
 
-/* ---- ticker ---- */
-.ticker{transform:rotate(-2deg) scale(1.04);background:var(--lime);border-block:1px solid rgba(0,0,0,.12);
-  padding:.85rem 0;overflow:hidden;margin-block:1rem}
-.ticker .track{display:flex;width:max-content;animation:tick 26s linear infinite}
-.ticker span{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:1.05rem;
-  color:var(--ink);margin-inline:1.3rem;letter-spacing:-.01em}
-.ticker .dot{opacity:.4;margin-inline:.8rem}
+/* ticker */
+.ticker{background:var(--ink);color:#fff;padding:.9rem 0;overflow:hidden}
+.ticker .track{display:flex;width:max-content;animation:tick 30s linear infinite}
+.ticker span{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:1rem;margin-inline:1.2rem;letter-spacing:-.01em}
+.ticker .dot{color:var(--lime);margin-inline:.7rem}
 @keyframes tick{to{transform:translateX(-50%)}}
 
-/* ---- clients ---- */
-.clients{border-block:1px solid var(--line);padding:3rem 0}
+/* clients */
+.clients{border-bottom:1px solid var(--line);padding:2.6rem 0}
 .clients .wrap{display:grid;grid-template-columns:auto 1fr;gap:2rem;align-items:center}
-.logos{display:flex;flex-wrap:wrap;gap:1.4rem 2.6rem;justify-content:flex-end;align-items:center}
-.logos b{font-family:var(--display);font-weight:800;font-size:1.15rem;color:#a7a79c;
-  letter-spacing:-.01em;transition:color .25s}
+.logos{display:flex;flex-wrap:wrap;gap:1.2rem 2.4rem;justify-content:flex-end;align-items:center}
+.logos b{font-family:var(--display);font-weight:800;font-size:1.1rem;color:#b0b0a4;transition:color .25s}
 .logos b:hover{color:var(--ink)}
 
-/* ---- generic section spacing ---- */
-.sec{padding:6rem 0}
-.sec-head{max-width:44ch}
-.sec h2{font-size:clamp(2rem,4.4vw,3.4rem)}
-.lead{margin-top:1.2rem;font-size:1.12rem;color:var(--muted);max-width:52ch}
+/* section */
+.sec{padding:6.5rem 0}
+.sec h2{font-size:clamp(2.1rem,4.6vw,3.5rem)}
+.lead{margin-top:1.2rem;font-size:1.14rem;color:var(--muted);max-width:52ch}
 
-/* ---- dark sections ---- */
-.dark{background:var(--dark);color:#f4f4ef;overflow:hidden}
+/* dark accent */
+.dark{background:var(--dark);color:#f5f5f0;overflow:hidden}
 .dark::before{content:'';position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(60% 50% at 82% 8%,rgba(199,255,24,.10),transparent 60%),
-             radial-gradient(50% 50% at 10% 100%,rgba(120,140,255,.06),transparent 60%)}
+  background:radial-gradient(55% 45% at 85% 5%,rgba(199,255,24,.09),transparent 60%)}
 .dark .wrap{position:relative;z-index:2}
-.dark h2{color:#fff}.dark .lead{color:rgba(255,255,255,.62)}
-.dark .eyebrow{color:var(--lime)}
+.dark h2{color:#fff}.dark .lead{color:rgba(255,255,255,.6)}.dark .eyebrow{color:var(--lime)}
 
-/* ---- system ---- */
-.sys-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:2rem;align-items:center;margin-top:3.5rem}
-.node{border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);border-radius:16px;padding:1.2rem 1.3rem}
-.node .nt{display:flex;align-items:center;gap:.5rem;font-family:var(--display);font-weight:700;font-size:1.02rem}
+/* system (light, minimal) */
+.sys{display:grid;grid-template-columns:1fr auto 1fr;gap:1.5rem;align-items:center;margin-top:3.5rem}
+.node{border:1px solid var(--line);background:var(--surface);border-radius:16px;padding:1.15rem 1.25rem;
+  transition:transform .25s,box-shadow .25s}
+.node:hover{transform:translateY(-2px);box-shadow:0 14px 30px -18px rgba(0,0,0,.2)}
+.node .nt{display:flex;align-items:center;gap:.5rem;font-family:var(--display);font-weight:700;font-size:1rem}
 .node.r .nt{justify-content:flex-end}
-.node .pt{width:8px;height:8px;border-radius:100px;background:var(--lime)}
-.node p{margin-top:.35rem;font-size:.85rem;color:rgba(255,255,255,.55)}
-.node.r p{text-align:right}
-.col{display:flex;flex-direction:column;gap:1.1rem}
-.ring{position:relative;width:250px;height:250px;display:grid;place-items:center;margin-inline:auto}
+.node .pt{width:8px;height:8px;border-radius:100px;background:var(--lime-ink)}
+.node p{margin-top:.3rem;font-size:.83rem;color:var(--muted)}.node.r p{text-align:right}
+.col{display:flex;flex-direction:column;gap:1rem}
+.ring{position:relative;width:230px;height:230px;display:grid;place-items:center;margin-inline:auto}
 .ring svg{width:100%;height:100%;transform:rotate(-90deg)}
-.ring .rc{fill:none;stroke:rgba(255,255,255,.1);stroke-width:11}
-.ring .rp{fill:none;stroke:var(--lime);stroke-width:11;stroke-linecap:round;
-  stroke-dasharray:565;stroke-dashoffset:565;transition:stroke-dashoffset 1.7s cubic-bezier(.16,1,.3,1)}
-.ring.in .rp{stroke-dashoffset:70}
+.ring .rc{fill:none;stroke:var(--soft);stroke-width:12}
+.ring .rp{fill:none;stroke:var(--lime);stroke-width:12;stroke-linecap:round;
+  stroke-dasharray:508;stroke-dashoffset:508;transition:stroke-dashoffset 1.7s cubic-bezier(.16,1,.3,1)}
+.ring.in .rp{stroke-dashoffset:64}
 .ring .lbl{position:absolute;text-align:center}
-.ring .lbl small{font-family:var(--mono);font-size:.7rem;letter-spacing:.15em;color:rgba(255,255,255,.5);text-transform:uppercase}
-.ring .lbl b{display:block;font-family:var(--display);font-weight:900;font-size:1.7rem;color:var(--lime)}
+.ring .lbl small{font-family:var(--mono);font-size:.66rem;letter-spacing:.15em;color:var(--muted);text-transform:uppercase}
+.ring .lbl b{display:block;font-family:var(--display);font-weight:900;font-size:1.6rem}
 
-/* ---- bento ---- */
-.bento{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:3rem;grid-auto-rows:minmax(150px,auto)}
-.bento .b{border:1px solid var(--line);background:var(--surface);border-radius:var(--r);padding:1.5rem;
-  display:flex;flex-direction:column;justify-content:space-between;transition:border-color .25s,transform .25s}
-.bento .b:hover{border-color:rgba(0,0,0,.28);transform:translateY(-2px)}
-.bento .b .no{font-family:var(--mono);font-size:.72rem;color:#b7b7ac;font-weight:600}
-.bento .b h3{font-family:var(--display);font-size:1.15rem;font-weight:700;margin-top:1.2rem}
-.bento .b p{font-size:.88rem;color:var(--muted);margin-top:.4rem}
+/* bento */
+.bento{display:grid;grid-template-columns:repeat(4,1fr);gap:.9rem;margin-top:3rem;grid-auto-rows:minmax(146px,auto)}
+.bento .b{border:1px solid var(--line);background:var(--surface);border-radius:var(--r);padding:1.4rem;
+  display:flex;flex-direction:column;justify-content:space-between;transition:transform .25s,box-shadow .25s}
+.bento .b:hover{transform:translateY(-3px);box-shadow:0 18px 36px -22px rgba(0,0,0,.25)}
+.bento .b .no{font-family:var(--mono);font-size:.7rem;color:var(--faint);font-weight:600}
+.bento .b h3{font-family:var(--display);font-size:1.1rem;font-weight:700;margin-top:1rem}
+.bento .b p{font-size:.86rem;color:var(--muted);margin-top:.35rem}
 .bento .big{grid-column:span 2;grid-row:span 2;background:var(--ink);color:#fff}
-.bento .big .no{color:var(--lime)}.bento .big h3{font-size:1.7rem}.bento .big p{color:rgba(255,255,255,.65)}
+.bento .big .no{color:var(--lime)}.bento .big h3{font-size:1.6rem}.bento .big p{color:rgba(255,255,255,.65);font-size:.95rem}
 .bento .wide{grid-column:span 2}
 
-/* ---- problem/solution ---- */
-.ps{display:grid;grid-template-columns:1fr auto 1fr;gap:1.4rem;align-items:center;margin-top:3rem}
-.ps .box{border-radius:var(--r);padding:1.6rem}
+/* problem/solution */
+.ps{display:grid;grid-template-columns:1fr auto 1fr;gap:1.3rem;align-items:center;margin-top:3rem}
+.ps .box{border-radius:var(--r);padding:1.5rem}
 .ps .b-l{border:1px solid var(--line);background:var(--surface)}
 .ps .b-r{background:var(--ink);color:#fff}
-.ps h3{font-family:var(--mono);font-weight:600;font-size:.78rem;letter-spacing:.15em;text-transform:uppercase;margin-bottom:1rem}
-.tags{display:flex;flex-wrap:wrap;gap:.5rem}
-.tags span{border-radius:100px;padding:.4rem .8rem;font-size:.85rem}
-.b-l .tags span{background:var(--soft);color:#4a4a42}
-.b-r .tags span{background:rgba(255,255,255,.07);color:rgba(255,255,255,.82)}
-.connector{width:132px;height:132px;border-radius:100px;border:2px solid var(--lime);background:var(--ink);
+.ps h3{font-family:var(--mono);font-weight:600;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:1rem;opacity:.7}
+.tags{display:flex;flex-wrap:wrap;gap:.45rem}
+.tags span{border-radius:100px;padding:.38rem .78rem;font-size:.84rem}
+.b-l .tags span{background:var(--soft);color:#57574d}
+.b-r .tags span{background:rgba(255,255,255,.08);color:rgba(255,255,255,.85)}
+.connector{width:126px;height:126px;border-radius:100px;border:2px solid var(--lime);background:var(--ink);
   color:#fff;display:grid;place-items:center;text-align:center;font-family:var(--display);font-weight:700;
-  font-size:.92rem;line-height:1.1;padding:1rem}
+  font-size:.9rem;line-height:1.1;padding:1rem}
 
-/* ---- reporting ---- */
+/* reporting (light dashboard) */
 .report{display:grid;grid-template-columns:1fr 1.1fr;gap:3rem;align-items:center}
-.dash{border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);border-radius:24px;padding:1.4rem}
+.dash{border:1px solid var(--line);background:var(--surface);border-radius:24px;padding:1.4rem;
+  box-shadow:0 30px 60px -34px rgba(0,0,0,.28)}
 .dash .dh{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem}
 .dash .dh b{font-weight:600;font-size:.92rem}
-.demo-tag{font-family:var(--mono);font-size:.6rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
-  background:rgba(199,255,24,.14);color:var(--lime);padding:.25rem .55rem;border-radius:100px}
-.dash-grid{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
-.tile{border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.02);border-radius:14px;padding:1rem}
-.tile small{font-family:var(--mono);font-size:.66rem;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.05em}
-.tile .big-n{font-family:var(--display);font-weight:900;font-size:2rem;color:var(--lime);line-height:1.1;margin-top:.3rem}
-.donut{width:96px;height:96px;margin-inline:auto;position:relative}
+.demo-tag{font-family:var(--mono);font-size:.58rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+  background:var(--lime);color:var(--ink);padding:.25rem .55rem;border-radius:100px}
+.dash-grid{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
+.tile{border:1px solid var(--line);background:var(--canvas);border-radius:14px;padding:1rem}
+.tile small{font-family:var(--mono);font-size:.64rem;color:var(--faint);text-transform:uppercase;letter-spacing:.05em}
+.tile .big-n{font-family:var(--display);font-weight:900;font-size:2rem;color:var(--ink);line-height:1.1;margin-top:.3rem}
+.donut{width:92px;height:92px;margin-inline:auto;position:relative}
 .donut svg{transform:rotate(-90deg)}
-.donut .dc{fill:none;stroke:rgba(255,255,255,.1);stroke-width:9}
-.donut .dp{fill:none;stroke:var(--lime);stroke-width:9;stroke-linecap:round;
-  stroke-dasharray:213;stroke-dashoffset:213;transition:stroke-dashoffset 1.4s ease}
-.donut.in .dp{stroke-dashoffset:53}
-.donut .dn{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:1.05rem}
-.bars{display:flex;align-items:flex-end;gap:.5rem;height:120px;margin-top:.8rem}
-.bars i{flex:1;background:linear-gradient(180deg,var(--lime),var(--lime-deep));border-radius:5px 5px 0 0;height:0;
+.donut .dc{fill:none;stroke:var(--soft);stroke-width:9}
+.donut .dp{fill:none;stroke:var(--lime-ink);stroke-width:9;stroke-linecap:round;
+  stroke-dasharray:207;stroke-dashoffset:207;transition:stroke-dashoffset 1.4s ease}
+.donut.in .dp{stroke-dashoffset:52}
+.donut .dn{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:1rem}
+.bars{display:flex;align-items:flex-end;gap:.5rem;height:110px;margin-top:.7rem}
+.bars i{flex:1;background:linear-gradient(180deg,var(--lime),var(--lime-ink));border-radius:5px 5px 0 0;height:0;
   transition:height .8s cubic-bezier(.16,1,.3,1)}
-.metricrow{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.6rem}
-.metricrow span{border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);border-radius:100px;
-  padding:.4rem .8rem;font-size:.78rem;color:rgba(255,255,255,.7)}
+.metricrow{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:1.6rem}
+.metricrow span{border:1px solid var(--line);background:var(--surface);border-radius:100px;padding:.38rem .78rem;font-size:.78rem;color:var(--muted)}
 
-/* ---- content rails ---- */
+/* content rails */
 .filters{display:flex;gap:.5rem;overflow-x:auto;margin-top:1.6rem;padding-bottom:.3rem;scrollbar-width:none}
 .filters::-webkit-scrollbar{display:none}
 .filters button{flex:none;border-radius:100px;padding:.5rem 1rem;font-size:.85rem;font-weight:500;cursor:pointer;
-  border:1px solid var(--line);background:var(--surface);color:var(--muted);transition:.2s}
+  border:1px solid var(--line);background:var(--surface);color:var(--muted);transition:.2s;font-family:var(--body)}
 .filters button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
 .rail-h{display:flex;justify-content:space-between;align-items:center;margin:2rem 0 .9rem}
-.rail-h h3{font-family:var(--mono);font-weight:600;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.rail-h h3{font-family:var(--mono);font-weight:600;font-size:.76rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 .rail-btns{display:flex;gap:.5rem}
-.rb{width:38px;height:38px;border-radius:100px;border:1px solid var(--line);background:var(--surface);
-  cursor:pointer;font-size:1.2rem;color:var(--muted);display:grid;place-items:center;transition:.2s}
+.rb{width:38px;height:38px;border-radius:100px;border:1px solid var(--line);background:var(--surface);cursor:pointer;
+  font-size:1.2rem;color:var(--muted);display:grid;place-items:center;transition:.2s}
 .rb:hover{border-color:var(--ink);color:var(--ink)}
-.rail{display:flex;gap:1rem;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;
-  padding-bottom:.5rem;cursor:grab}
-.rail::-webkit-scrollbar{display:none}
-.rail.drag{cursor:grabbing}
-.rail .shot{flex:none;scroll-snap-align:start}
-.rail .r-reel{width:196px;aspect-ratio:9/16}
-.rail .r-film{width:360px;aspect-ratio:16/9}
+.rail{display:flex;gap:1rem;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:.5rem;cursor:grab}
+.rail::-webkit-scrollbar{display:none}.rail.drag{cursor:grabbing}
+.rail .scene{flex:none;scroll-snap-align:start;border-radius:16px}
+.rail .r-reel{width:200px;aspect-ratio:9/16}
+.rail .r-film{width:370px;aspect-ratio:16/9}
 
-/* ---- imagefilm ---- */
-.film-sec{display:grid;grid-template-columns:1.1fr 1fr;gap:3rem;align-items:center}
+/* imagefilm */
+.film-sec{display:grid;grid-template-columns:1.05fr 1fr;gap:3rem;align-items:center}
 .benefit{display:flex;gap:.8rem;margin-top:1rem}
-.benefit .pt{width:8px;height:8px;border-radius:100px;background:var(--lime);margin-top:.5rem;flex:none}
-.benefit h4{font-family:var(--display);font-weight:700;font-size:1.02rem}
-.benefit p{font-size:.88rem;color:var(--muted)}
+.benefit .pt{width:8px;height:8px;border-radius:100px;background:var(--lime-ink);margin-top:.5rem;flex:none}
+.benefit h4{font-family:var(--display);font-weight:700;font-size:1rem}
+.benefit p{font-size:.86rem;color:var(--muted)}
 
-/* ---- process ---- */
-.steps{position:relative;margin-top:3.5rem;display:grid;grid-template-columns:repeat(5,1fr);gap:1.5rem}
-.steps .line{position:absolute;left:0;right:0;top:23px;height:2px;background:var(--line)}
-.steps .line .fill{height:100%;width:0;background:var(--lime);transition:width 1.4s ease}
+/* process */
+.steps{position:relative;margin-top:3.5rem;display:grid;grid-template-columns:repeat(5,1fr);gap:1.4rem}
+.steps .line{position:absolute;left:0;right:0;top:22px;height:2px;background:var(--line)}
+.steps .line .fill{height:100%;width:0;background:var(--lime-ink);transition:width 1.4s ease}
 .step{position:relative}
-.step .n{width:46px;height:46px;border-radius:100px;border:2px solid var(--lime);background:var(--canvas);
-  display:grid;place-items:center;font-family:var(--display);font-weight:800;margin-bottom:1.1rem;position:relative;z-index:2}
-.step h3{font-family:var(--display);font-weight:700;font-size:1.05rem}
-.step p{font-size:.83rem;color:var(--muted);margin-top:.4rem}
+.step .n{width:44px;height:44px;border-radius:100px;border:2px solid var(--lime);background:var(--canvas);
+  display:grid;place-items:center;font-family:var(--display);font-weight:800;margin-bottom:1rem;position:relative;z-index:2}
+.step h3{font-family:var(--display);font-weight:700;font-size:1.02rem}
+.step p{font-size:.82rem;color:var(--muted);margin-top:.35rem}
 
-/* ---- projects ---- */
+/* projects */
 .proj{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2.5rem}
-.proj .card{border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.02);border-radius:var(--r);overflow:hidden}
-.proj .card .shot{border-radius:0;aspect-ratio:4/3}
-.proj .card .cc{padding:1.1rem}
-.proj .card .cc .cat{font-family:var(--mono);font-size:.62rem;color:var(--lime);text-transform:uppercase;letter-spacing:.05em}
-.proj .card .cc h3{font-family:var(--display);font-weight:700;font-size:1.05rem;margin-top:.25rem;color:#fff}
-.proj .card .cc p{font-size:.82rem;color:rgba(255,255,255,.5);margin-top:.2rem}
-.stories{display:grid;grid-template-columns:repeat(5,1fr);gap:.7rem;margin-top:2.5rem}
-.stories div{border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.02);border-radius:14px;
-  padding:1rem;font-size:.84rem;color:rgba(255,255,255,.72);display:flex;gap:.5rem}
-.stories .a{color:var(--lime)}
+.proj .card{border:1px solid var(--line);background:var(--surface);border-radius:var(--r);overflow:hidden;
+  transition:transform .25s,box-shadow .25s}
+.proj .card:hover{transform:translateY(-3px);box-shadow:0 20px 40px -24px rgba(0,0,0,.28)}
+.proj .card .scene{aspect-ratio:4/3}
+.proj .card .cc{padding:1.05rem}
+.proj .card .cc .cat{font-family:var(--mono);font-size:.6rem;color:var(--lime-ink);text-transform:uppercase;letter-spacing:.05em}
+.proj .card .cc h3{font-family:var(--display);font-weight:700;font-size:1.02rem;margin-top:.25rem}
+.proj .card .cc p{font-size:.8rem;color:var(--faint);margin-top:.2rem}
+.stories{display:grid;grid-template-columns:repeat(5,1fr);gap:.7rem;margin-top:2.4rem}
+.stories div{border:1px solid var(--line);background:var(--surface);border-radius:14px;padding:1rem;
+  font-size:.83rem;color:#55554b;display:flex;gap:.5rem}
+.stories .a{color:var(--lime-ink);font-weight:700}
 
-/* ---- team ---- */
+/* team */
 .team{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2.5rem}
 .team .m{border:1px solid var(--line);background:var(--surface);border-radius:var(--r);overflow:hidden}
-.team .m .shot{border-radius:0;aspect-ratio:4/5}
+.team .m .scene{aspect-ratio:4/5}
 .team .m .mm{padding:1rem}
-.team .m h3{font-family:var(--display);font-weight:700;font-size:1.02rem}
-.team .m p{font-size:.83rem;color:var(--muted)}
+.team .m h3{font-family:var(--display);font-weight:700;font-size:1rem}
+.team .m p{font-size:.82rem;color:var(--muted)}
 
-/* ---- testimonials ---- */
+/* testimonials */
 .vids{display:grid;grid-template-columns:1.4fr 1fr;gap:1rem;margin-top:2.5rem}
-.vids .side{display:grid;gap:1rem}
+.vids .scene{border-radius:20px}.vids .side{display:grid;gap:1rem}
 .reviews{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2.5rem}
-.review{border:1px solid var(--line);background:var(--surface);border-radius:var(--r);padding:1.5rem;
-  display:flex;flex-direction:column}
-.review .rs{color:var(--lime-deep);letter-spacing:1px;margin-bottom:.8rem}
-.review blockquote{font-size:.9rem;color:#3f3f38;flex:1}
+.review{border:1px solid var(--line);background:var(--surface);border-radius:var(--r);padding:1.5rem;display:flex;flex-direction:column}
+.review .rs{color:var(--lime-ink);letter-spacing:1px;margin-bottom:.8rem}
+.review blockquote{font-size:.89rem;color:#44443c;flex:1}
 .review .who{display:flex;align-items:center;gap:.7rem;margin-top:1.2rem}
-.review .who .a{width:38px;height:38px;border-radius:100px;background-size:cover}
-.review .who b{font-size:.86rem}.review .who small{display:block;color:var(--muted);font-size:.76rem}
+.review .who .a{width:36px;height:36px;border-radius:100px;background-size:cover}
+.review .who b{font-size:.85rem}.review .who small{display:block;color:var(--faint);font-size:.75rem}
 
-/* ---- long term ---- */
+/* long term */
 .lt{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:center}
 
-/* ---- form ---- */
-.form-sec{background:var(--surface)}
+/* form */
+.form-sec{background:var(--soft)}
 .form-head{text-align:center;max-width:40ch;margin:0 auto}
-.form-card{max-width:760px;margin:2.5rem auto 0;border:1px solid var(--line);border-radius:26px;
-  background:var(--canvas);padding:clamp(1.4rem,4vw,2.6rem);box-shadow:0 30px 60px -30px rgba(0,0,0,.15)}
-.prog{display:flex;justify-content:space-between;font-family:var(--mono);font-size:.72rem;
-  text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:.6rem}
+.form-card{max-width:740px;margin:2.5rem auto 0;border:1px solid var(--line);border-radius:24px;background:var(--surface);
+  padding:clamp(1.4rem,4vw,2.6rem);box-shadow:0 40px 80px -40px rgba(0,0,0,.2)}
+.prog{display:flex;justify-content:space-between;font-family:var(--mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:.55rem}
 .prog-bar{height:6px;background:var(--soft);border-radius:100px;overflow:hidden;margin-bottom:2rem}
 .prog-bar i{display:block;height:100%;background:var(--lime);width:20%;transition:width .4s ease}
-.q{font-family:var(--display);font-weight:800;font-size:clamp(1.5rem,3.5vw,2rem);margin-bottom:1.5rem}
-.opts{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
-.opts button{text-align:left;border:1px solid var(--line);background:var(--surface);border-radius:14px;
-  padding:1rem 1.2rem;font-size:1rem;font-weight:500;cursor:pointer;transition:.2s;font-family:var(--body)}
+.q{font-family:var(--display);font-weight:800;font-size:clamp(1.5rem,3.4vw,2rem);margin-bottom:1.5rem}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:.65rem}
+.opts button{text-align:left;border:1px solid var(--line);background:var(--canvas);border-radius:14px;padding:1rem 1.2rem;
+  font-size:1rem;font-weight:500;cursor:pointer;transition:.2s;font-family:var(--body)}
 .opts button:hover{border-color:var(--ink)}
 .opts button.sel{background:var(--ink);color:#fff;border-color:var(--ink)}
 .fields{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-.field label{display:block;font-size:.85rem;font-weight:500;color:var(--muted);margin-bottom:.4rem}
-.field input,.form-card textarea{width:100%;border:1px solid var(--line);background:var(--surface);
-  border-radius:12px;padding:.8rem 1rem;font-family:var(--body);font-size:1rem;transition:.2s}
-.field input:focus,.form-card textarea:focus{outline:none;border-color:var(--ink)}
+.field label{display:block;font-size:.84rem;font-weight:500;color:var(--muted);margin-bottom:.4rem}
+.field input,.form-card textarea{width:100%;border:1px solid var(--line);background:var(--canvas);border-radius:12px;
+  padding:.8rem 1rem;font-family:var(--body);font-size:1rem;transition:.2s}
+.field input:focus,.form-card textarea:focus{outline:none;border-color:var(--ink);background:var(--surface)}
 .form-card textarea{margin-top:1rem}
-.back{margin-top:1.4rem;background:none;border:none;color:var(--muted);cursor:pointer;font-size:.9rem;font-family:var(--body)}
+.back{margin-top:1.3rem;background:none;border:none;color:var(--muted);cursor:pointer;font-size:.9rem;font-family:var(--body)}
 .back:hover{color:var(--ink)}
 .success{text-align:center;padding:2rem 1rem}
-.success .ok{width:66px;height:66px;border-radius:100px;background:var(--lime);color:var(--ink);
-  display:grid;place-items:center;font-size:1.8rem;margin:0 auto 1.4rem}
-.success h3{font-size:2rem}.success .hl{color:var(--lime-deep);font-weight:800;font-size:1.2rem;margin-top:.3rem;font-family:var(--display)}
+.success .ok{width:64px;height:64px;border-radius:100px;background:var(--lime);color:var(--ink);display:grid;place-items:center;font-size:1.7rem;margin:0 auto 1.4rem}
+.success h3{font-size:2rem}.success .hl{color:var(--lime-ink);font-weight:800;font-size:1.15rem;margin-top:.3rem;font-family:var(--display)}
 .success p{color:var(--muted);max-width:40ch;margin:1rem auto 0}
 .hidden{display:none}
 
-/* ---- footer ---- */
-footer{background:var(--dark);color:#f4f4ef;padding:5rem 0 2rem}
+/* footer */
+footer{background:var(--dark);color:#f5f5f0;padding:4.5rem 0 2rem}
 .foot-grid{display:grid;grid-template-columns:1.5fr repeat(4,1fr);gap:2.5rem;padding-bottom:3rem}
 .foot-grid .logo{color:#fff}
-.foot-grid p{color:rgba(255,255,255,.55);font-size:.88rem;margin-top:.8rem;max-width:30ch}
-.foot-grid h4{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;
-  color:rgba(255,255,255,.4);margin-bottom:1rem}
-.foot-grid ul{list-style:none;display:flex;flex-direction:column;gap:.65rem}
-.foot-grid ul a{font-size:.88rem;color:rgba(255,255,255,.7)}
-.foot-grid ul a:hover{color:var(--lime)}
-.foot-bot{border-top:1px solid rgba(255,255,255,.1);padding-top:1.5rem;display:flex;justify-content:space-between;
-  flex-wrap:wrap;gap:1rem;font-size:.82rem;color:rgba(255,255,255,.5)}
+.foot-grid p{color:rgba(255,255,255,.55);font-size:.87rem;margin-top:.8rem;max-width:30ch}
+.foot-grid h4{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:1rem}
+.foot-grid ul{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+.foot-grid ul a{font-size:.87rem;color:rgba(255,255,255,.7)}.foot-grid ul a:hover{color:var(--lime)}
+.foot-bot{border-top:1px solid rgba(255,255,255,.1);padding-top:1.5rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;font-size:.81rem;color:rgba(255,255,255,.5)}
 .foot-bot .soc{display:flex;gap:1.2rem}.foot-bot .soc a:hover{color:var(--lime)}
+.phnote{font-family:var(--mono);font-size:.58rem;color:var(--faint);letter-spacing:.02em}
 
 /* sticky mobile cta */
-.smcta{position:fixed;left:1rem;right:1rem;bottom:1rem;z-index:50;display:none;
-  transform:translateY(120%);transition:transform .35s}
+.smcta{position:fixed;left:1rem;right:1rem;bottom:1rem;z-index:50;display:none;transform:translateY(120%);transition:transform .35s}
 .smcta.show{transform:none}
-.smcta a{display:flex;justify-content:center;background:var(--ink);color:#fff;border-radius:100px;
-  padding:1rem;font-weight:600;box-shadow:0 14px 30px rgba(0,0,0,.25)}
+.smcta a{display:flex;justify-content:center;background:var(--ink);color:#fff;border-radius:100px;padding:1rem;font-weight:600;box-shadow:0 14px 30px rgba(0,0,0,.25)}
 
 /* reveal */
-.rv{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+.rv{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
 .rv.in{opacity:1;transform:none}
 
-/* placeholder note */
-.phnote{font-family:var(--mono);font-size:.6rem;color:#b7b7ac;letter-spacing:.03em}
-
 @media(max-width:1000px){
-  .nav-links,header .btn-dark{display:none}
-  .burger{display:grid}
-  .hero-grid{grid-template-columns:1fr;gap:1.5rem}
-  .stack{display:none}
-  .hero-rail{display:flex;gap:.8rem;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -1.15rem;padding:0 1.15rem .5rem;scrollbar-width:none}
-  .hero-rail::-webkit-scrollbar{display:none}
-  .hero-rail .shot{flex:none;width:150px;aspect-ratio:9/16;scroll-snap-align:center}
-  .sys-grid{grid-template-columns:1fr;gap:1.4rem}.ring{order:-1}
+  .nav-links,header .btn-dark{display:none}.burger{display:grid}
+  .hero-grid{grid-template-columns:1fr;gap:2.5rem}.hero-visual{min-height:auto;margin-top:1rem}
+  .sys{grid-template-columns:1fr;gap:1.2rem}.ring{order:-1}
   .bento,.proj,.team,.reviews,.stories{grid-template-columns:1fr 1fr}
-  .bento .big{grid-column:span 2}.bento .wide{grid-column:span 2}
+  .bento .big,.bento .wide{grid-column:span 2}
   .ps{grid-template-columns:1fr}.connector{margin:0 auto;transform:rotate(90deg)}
   .report,.film-sec,.lt,.vids{grid-template-columns:1fr}
   .steps{grid-template-columns:1fr;gap:0}
-  .steps .line{left:22px;right:auto;top:0;bottom:0;width:2px;height:auto}
+  .steps .line{left:21px;right:auto;top:0;bottom:0;width:2px;height:auto}
   .steps .line .fill{width:100%!important;height:0}.steps .line .fill.v{transition:height 1.4s ease}
-  .step{padding-left:70px;padding-bottom:2rem}
-  .step .n{position:absolute;left:0;top:0;margin:0}
+  .step{padding-left:66px;padding-bottom:2rem}.step .n{position:absolute;left:0;top:0;margin:0}
   .clients .wrap{grid-template-columns:1fr}.logos{justify-content:flex-start}
-  .foot-grid{grid-template-columns:1fr 1fr}
-  .opts,.fields{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr 1fr}.opts,.fields{grid-template-columns:1fr}
   .smcta{display:block}
 }
 @media(max-width:560px){
   .bento,.proj,.team,.reviews,.stories{grid-template-columns:1fr}
-  .bento .big,.bento .wide{grid-column:span 1}
-  .foot-grid{grid-template-columns:1fr}
+  .bento .big,.bento .wide{grid-column:span 1}.foot-grid{grid-template-columns:1fr}
+  .float{display:none}
 }
-@media(prefers-reduced-motion:reduce){
-  *{animation-duration:.001ms!important;transition-duration:.001ms!important}
-  html{scroll-behavior:auto}
-  .rv{opacity:1;transform:none}
-}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.001ms!important;transition-duration:.001ms!important}html{scroll-behavior:auto}.rv{opacity:1;transform:none}}
 </style>
 
 <header class="top" id="hdr">
   <div class="wrap nav">
     <a href="#top" class="logo">OBSCURA<sup>®</sup></a>
     <nav class="nav-links">
-      <a href="#leistungen">Leistungen</a>
-      <a href="#projekte">Projekte</a>
-      <a href="#ablauf">Ablauf</a>
-      <a href="#team">Über uns</a>
-      <a href="#kontakt">Kontakt</a>
+      <a href="#leistungen">Leistungen</a><a href="#projekte">Projekte</a><a href="#ablauf">Ablauf</a>
+      <a href="#team">Über uns</a><a href="#kontakt">Kontakt</a>
     </nav>
     <div class="nav-r">
-      <a href="#kontakt" class="btn btn-dark">Erstgespräch anfragen <span class="ar">→</span></a>
+      <a href="#kontakt" class="btn btn-dark">Erstgespräch <span class="ar">→</span></a>
       <button class="burger" id="burger" aria-label="Menü öffnen"><span></span></button>
     </div>
   </div>
 </header>
 
 <div class="mobile-menu" id="mm">
-  <a href="#leistungen">Leistungen</a>
-  <a href="#projekte">Projekte</a>
-  <a href="#ablauf">Ablauf</a>
-  <a href="#team">Über uns</a>
-  <a href="#kontakt">Kontakt</a>
+  <a href="#leistungen">Leistungen</a><a href="#projekte">Projekte</a><a href="#ablauf">Ablauf</a>
+  <a href="#team">Über uns</a><a href="#kontakt">Kontakt</a>
   <a href="#kontakt" class="btn btn-dark">Erstgespräch anfragen →</a>
 </div>
 
@@ -418,8 +409,8 @@ footer{background:var(--dark);color:#f4f4ef;padding:5rem 0 2rem}
   <div class="wrap hero-grid">
     <div class="rv in">
       <p class="eyebrow">Social Media · Content · Performance</p>
-      <h1 style="margin-top:1.1rem">Mehr als Content.<br>Ein System für dein<br><span class="lime">monatliches Wachstum.</span></h1>
-      <p class="sub">Wir übernehmen deine Social-Media-Betreuung, produzieren regelmäßig hochwertigen Content, veröffentlichen deine Inhalte und entwickeln deinen Auftritt jeden Monat weiter.</p>
+      <h1 style="margin-top:1.2rem">Dein Auftritt.<br><span class="lime">Unser System.</span></h1>
+      <p class="sub">Wir übernehmen deine Social-Media-Betreuung, produzieren jeden Monat hochwertigen Content und entwickeln deinen Auftritt kontinuierlich weiter.</p>
       <p class="plan">Ein Ansprechpartner. Ein Team. Ein klarer Plan.</p>
       <div class="ctas">
         <a href="#kontakt" class="btn btn-dark">Erstgespräch anfragen <span class="ar">→</span></a>
@@ -427,28 +418,58 @@ footer{background:var(--dark);color:#f4f4ef;padding:5rem 0 2rem}
       </div>
       <div class="trust">
         <div class="avatars">
-          <span class="a" style="background:linear-gradient(135deg,#2c3540,#6b7684)"></span>
-          <span class="a" style="background:linear-gradient(135deg,#4a3520,#8a6a3a)"></span>
-          <span class="a" style="background:linear-gradient(135deg,#28414d,#4a7a8a)"></span>
-          <span class="a" style="background:linear-gradient(135deg,#3a3226,#7a6a4a)"></span>
+          <span class="a" style="background:linear-gradient(135deg,#2b3440,#6b7684)"></span>
+          <span class="a" style="background:linear-gradient(135deg,#4a3a26,#8a6a40)"></span>
+          <span class="a" style="background:linear-gradient(135deg,#26404e,#4f7f95)"></span>
+          <span class="a" style="background:linear-gradient(135deg,#3a3226,#726144)"></span>
         </div>
-        <p><b style="color:var(--ink)">100+</b> Unternehmen vertrauen uns · <span class="stars">★★★★★</span> 5,0
-          <br><span class="phnote">Platzhalter – mit echten Obscura-Daten ersetzen</span></p>
+        <p><b style="color:var(--ink)">100+</b> Unternehmen vertrauen uns · <span class="stars">★★★★★</span> 5,0<br><span class="phnote">Platzhalter – mit echten Obscura-Daten ersetzen</span></p>
       </div>
     </div>
 
-    <div class="stack" id="stack">
-      <div class="card shot c1" data-sp="-90"><div class="scene s-auto"><span class="glow"></span></div><span class="chip tl">Reel</span><span class="chip tr">12,3 Tsd</span><span class="play"><svg width="15" height="17" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span></div>
-      <div class="card shot c2" data-sp="60"><div class="scene s-interior"><span class="glow"></span></div><span class="chip tl">Behind the Scenes</span><span class="play"><svg width="15" height="17" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span></div>
-      <div class="card shot c3" data-sp="-50"><div class="scene s-realestate"><span class="glow"></span></div><span class="chip tl">Immobilien</span><span class="play"><svg width="15" height="17" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span></div>
-      <div class="card shot c4" data-sp="80"><div class="scene s-nature"><span class="glow"></span></div><span class="chip tl">Drohne</span><span class="chip tr">9,4 Tsd</span><span class="play"><svg width="15" height="17" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span></div>
-    </div>
-
-    <div class="hero-rail">
-      <div class="shot"><div class="scene s-auto"><span class="glow"></span></div><span class="chip tl">Reel</span><span class="play"><svg width="14" height="16" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span></div>
-      <div class="shot"><div class="scene s-interior"><span class="glow"></span></div><span class="chip tl">BTS</span><span class="play"><svg width="14" height="16" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span></div>
-      <div class="shot"><div class="scene s-realestate"><span class="glow"></span></div><span class="chip tl">Immobilien</span><span class="play"><svg width="14" height="16" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span></div>
-      <div class="shot"><div class="scene s-nature"><span class="glow"></span></div><span class="chip tl">Drohne</span><span class="play"><svg width="14" height="16" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span></div>
+    <div class="hero-visual rv in">
+      <!-- floating reels -->
+      <div class="float f1 scene g-auto" data-sp="-70"><span class="bg"></span><span class="grain"></span><span class="play"><svg width="13" height="15" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span></div>
+      <div class="float f2 scene g-nature" data-sp="70"><span class="bg"></span><span class="grain"></span><span class="play"><svg width="13" height="15" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span></div>
+      <!-- phone with IG profile -->
+      <div class="phone hero-phone">
+        <span class="notch"></span>
+        <div class="screen">
+          <div class="ig-head">
+            <div class="ig-prof">
+              <div class="pav"><div class="scene g-city" style="width:100%;height:100%;border-radius:100px"><span class="bg"></span></div></div>
+              <div class="ig-stats">
+                <div><b>248</b><small>Beiträge</small></div>
+                <div><b>18,4k</b><small>Follower</small></div>
+                <div><b>312</b><small>Folgt</small></div>
+              </div>
+            </div>
+            <div class="ig-bio">
+              <div class="h">obscura.berlin</div>
+              <div class="d">Social Media · Content · Performance</div>
+              <div class="tag">↗ obscura-berlin.de</div>
+            </div>
+          </div>
+          <div class="ig-grid">
+            <div class="cell scene g-auto"><span class="bg"></span><span class="play"><svg viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span></div>
+            <div class="cell scene g-interior"><span class="bg"></span></div>
+            <div class="cell scene g-realestate"><span class="bg"></span><span class="play"><svg viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span></div>
+            <div class="cell scene g-nature"><span class="bg"></span></div>
+            <div class="cell scene g-product"><span class="bg"></span><span class="play"><svg viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span></div>
+            <div class="cell scene g-auto2"><span class="bg"></span></div>
+            <div class="cell scene g-city"><span class="bg"></span></div>
+            <div class="cell scene g-team"><span class="bg"></span><span class="play"><svg viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span></div>
+            <div class="cell scene g-interior"><span class="bg"></span></div>
+          </div>
+          <div class="ig-nav">
+            <svg viewBox="0 0 24 24"><path d="M3 10l9-7 9 7v10a1 1 0 01-1 1h-5v-7h-6v7H4a1 1 0 01-1-1z"/></svg>
+            <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M10 8l6 4-6 4z" fill="var(--ink)" stroke="none"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 12a4 4 0 100-8 4 4 0 000 8zM4 21a8 8 0 0116 0"/></svg>
+            <span class="pf"></span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -460,28 +481,26 @@ footer{background:var(--dark);color:#f4f4ef;padding:5rem 0 2rem}
 <section class="clients">
   <div class="wrap">
     <p class="eyebrow">Vertraut von Marken und Unternehmen</p>
-    <div class="logos">
-      <b>BMW</b><b>ROLLS-ROYCE</b><b>KENSINGTON</b><b>RILLER&nbsp;&amp;&nbsp;SCHNAUCK</b><b>SIROKO</b>
-    </div>
+    <div class="logos"><b>BMW</b><b>ROLLS-ROYCE</b><b>KENSINGTON</b><b>RILLER&nbsp;&amp;&nbsp;SCHNAUCK</b><b>SIROKO</b></div>
   </div>
 </section>
 
-<!-- SYSTEM (dark) -->
-<section class="dark sec" id="leistungen">
+<!-- SYSTEM (light) -->
+<section class="sec" id="leistungen">
   <div class="wrap">
-    <div class="sec-head rv">
+    <div style="max-width:46ch" class="rv">
       <p class="eyebrow">Wir kümmern uns.</p>
-      <h2 style="margin-top:1rem">Dein kompletter Social-Media-Auftritt.<br><span class="lime">Monatlich betreut.</span></h2>
+      <h2 style="margin-top:1rem">Dein kompletter Social-Media-Auftritt. <span class="lime">Monatlich betreut.</span></h2>
       <p class="lead">Wir übernehmen Strategie, Content, Veröffentlichung und Optimierung – damit du dich auf dein Unternehmen konzentrieren kannst. Obscura wird zu deinem externen Social-Media-Team.</p>
     </div>
-    <div class="sys-grid">
+    <div class="sys">
       <div class="col">
         <div class="node rv"><div class="nt"><span class="pt"></span>Strategie &amp; Planung</div><p>Content Strategie · Themen · Kampagnen · Redaktionsplan</p></div>
         <div class="node rv"><div class="nt"><span class="pt"></span>Content Produktion</div><p>Reels · Videos · Fotos · Stories</p></div>
         <div class="node rv"><div class="nt"><span class="pt"></span>Social Media Betreuung</div><p>Posting · Community · Plattformen · Management</p></div>
       </div>
       <div class="ring" id="ring">
-        <svg viewBox="0 0 250 250"><circle class="rc" cx="125" cy="125" r="90"/><circle class="rp" cx="125" cy="125" r="90"/></svg>
+        <svg viewBox="0 0 230 230"><circle class="rc" cx="115" cy="115" r="81"/><circle class="rp" cx="115" cy="115" r="81"/></svg>
         <div class="lbl"><small>Dein</small><b>Wachstum</b></div>
       </div>
       <div class="col">
@@ -490,14 +509,12 @@ footer{background:var(--dark);color:#f4f4ef;padding:5rem 0 2rem}
         <div class="node r rv"><div class="nt">Weiterentwicklung<span class="pt"></span></div><p>Testing · Neue Ideen · Optimierung · Skalierung</p></div>
       </div>
     </div>
-    <div style="text-align:center;margin-top:3rem" class="rv">
-      <a href="#content" class="btn btn-lime">Alle Leistungen entdecken <span class="ar">→</span></a>
-    </div>
+    <div style="text-align:center;margin-top:3rem" class="rv"><a href="#content" class="btn btn-dark">Alle Leistungen entdecken <span class="ar">→</span></a></div>
   </div>
 </section>
 
 <!-- BENTO -->
-<section class="sec">
+<section class="sec" style="background:var(--soft)">
   <div class="wrap">
     <h2 class="rv">Was du jeden Monat<br>von uns bekommst.</h2>
     <div class="bento">
@@ -505,7 +522,7 @@ footer{background:var(--dark);color:#f4f4ef;padding:5rem 0 2rem}
       <div class="b rv"><span class="no">02</span><h3>Content Plan</h3><p>Du weißt vorab, was produziert und veröffentlicht wird.</p></div>
       <div class="b rv"><span class="no">03</span><h3>Betreuung</h3><p>Wir kümmern uns um deine Kanäle.</p></div>
       <div class="b rv"><span class="no">04</span><h3>Veröffentlichung</h3><p>Wir posten regelmäßig – zur richtigen Zeit.</p></div>
-      <div class="b rv"><span class="no">05</span><h3>Community</h3><p>Kommentare &amp; Interaktionen werden betreut.</p></div>
+      <div class="b rv"><span class="no">05</span><h3>Community</h3><p>Kommentare &amp; Interaktionen betreut.</p></div>
       <div class="b wide rv"><span class="no">06</span><h3>Werbeanzeigen</h3><p>Geeignete Inhalte können zusätzlich beworben werden – Content und Ads greifen ineinander.</p></div>
       <div class="b rv"><span class="no">07</span><h3>Reporting</h3><p>Transparente Zahlen, jeden Monat.</p></div>
       <div class="b wide rv"><span class="no">08</span><h3>Fester Ansprechpartner</h3><p>Eine Person kennt dein Unternehmen und koordiniert alles.</p></div>
@@ -515,12 +532,9 @@ footer{background:var(--dark);color:#f4f4ef;padding:5rem 0 2rem}
 </section>
 
 <!-- PROBLEM / SOLUTION -->
-<section class="sec" style="background:var(--soft)">
+<section class="sec">
   <div class="wrap">
-    <div class="rv">
-      <h2>Du konzentrierst dich<br>auf dein Business.</h2>
-      <h2 style="color:#b3b3a8;margin-top:.3rem">Wir kümmern uns<br>um den Rest.</h2>
-    </div>
+    <div class="rv"><h2>Du konzentrierst dich auf dein Business.</h2><h2 style="color:var(--faint);margin-top:.4rem">Wir kümmern uns um den Rest.</h2></div>
     <div class="ps">
       <div class="box b-l rv"><h3>Dein Business</h3><div class="tags"><span>Kunden</span><span>Team</span><span>Vertrieb</span><span>Produkt</span><span>Service</span><span>Führung</span></div></div>
       <div class="connector rv">1 Ansprech&shy;partner</div>
@@ -529,29 +543,25 @@ footer{background:var(--dark);color:#f4f4ef;padding:5rem 0 2rem}
   </div>
 </section>
 
-<!-- REPORTING (dark) -->
-<section class="dark sec">
+<!-- REPORTING (light) -->
+<section class="sec" style="background:var(--soft)">
   <div class="wrap report">
     <div class="rv">
       <p class="eyebrow">Reporting &amp; Performance</p>
-      <h2 style="margin-top:1rem">Du siehst,<br><span class="lime">was wirkt.</span></h2>
+      <h2 style="margin-top:1rem">Du siehst, was wirkt.</h2>
       <p class="lead">Jeden Monat bekommst du einen klaren Überblick über Reichweite, Interaktionen, Wachstum und Kampagnenperformance.</p>
-      <div class="metricrow">
-        <span>Reichweite</span><span>Profilbesuche</span><span>Engagement</span><span>Follower</span>
-        <span>Website Klicks</span><span>Anfragen</span><span>Ad Performance</span><span>Traffic Quellen</span>
-      </div>
+      <div class="metricrow"><span>Reichweite</span><span>Profilbesuche</span><span>Engagement</span><span>Follower</span><span>Website Klicks</span><span>Anfragen</span><span>Ad Performance</span></div>
     </div>
     <div class="dash rv">
       <div class="dh"><b>Performance Überblick</b><span class="demo-tag">Demo Data</span></div>
       <div class="dash-grid">
         <div class="tile" style="display:flex;flex-direction:column;align-items:center;justify-content:center">
-          <div class="donut" id="donut"><svg width="96" height="96"><circle class="dc" cx="48" cy="48" r="34"/><circle class="dp" cx="48" cy="48" r="34"/></svg><div class="dn" data-count="75" data-suffix="%">0%</div></div>
-          <small style="margin-top:.5rem;color:rgba(255,255,255,.45)">Engagement · Demo</small>
+          <div class="donut" id="donut"><svg width="92" height="92"><circle class="dc" cx="46" cy="46" r="33"/><circle class="dp" cx="46" cy="46" r="33"/></svg><div class="dn" data-count="75" data-suffix="%">0%</div></div>
+          <small style="margin-top:.5rem;color:var(--faint)">Engagement · Demo</small>
         </div>
-        <div class="tile"><small>Reichweite</small><div class="big-n" data-count="230" data-prefix="+" data-suffix="%">+0%</div><small>Platzhalter · Demo</small></div>
+        <div class="tile"><small>Reichweite</small><div class="big-n" data-count="230" data-prefix="+" data-suffix="%">+0%</div><small style="color:var(--faint)">Platzhalter · Demo</small></div>
       </div>
-      <div class="tile" style="margin-top:.8rem">
-        <small>Wachstum · letzte 7 Perioden</small>
+      <div class="tile" style="margin-top:.7rem"><small>Wachstum · letzte 7 Perioden</small>
         <div class="bars" id="bars"><i data-h="38"></i><i data-h="52"></i><i data-h="44"></i><i data-h="66"></i><i data-h="58"></i><i data-h="78"></i><i data-h="94"></i></div>
       </div>
     </div>
@@ -562,48 +572,41 @@ footer{background:var(--dark);color:#f4f4ef;padding:5rem 0 2rem}
 <section class="sec" id="content">
   <div class="wrap">
     <p class="eyebrow rv">Content, der verbindet.</p>
-    <h2 class="rv" style="margin-top:1rem">Content, der deine Marke<br>in Bewegung bringt.</h2>
-    <div class="filters rv" id="filters">
-      <button class="on">Alle</button><button>Reels</button><button>Videos</button><button>Fotos</button>
-      <button>Imagefilme</button><button>Behind the Scenes</button><button>Automotive</button><button>Immobilien</button>
-    </div>
+    <h2 class="rv" style="margin-top:1rem">Content, der deine Marke in Bewegung bringt.</h2>
+    <div class="filters rv" id="filters"><button class="on">Alle</button><button>Reels</button><button>Videos</button><button>Fotos</button><button>Imagefilme</button><button>Behind the Scenes</button><button>Automotive</button><button>Immobilien</button></div>
   </div>
-  <div class="wrap">
-    <div class="rail-h"><h3>Reels · 9:16</h3><div class="rail-btns"><button class="rb" data-dir="-1" aria-label="Zurück">‹</button><button class="rb" data-dir="1" aria-label="Weiter">›</button></div></div>
-  </div>
+  <div class="wrap"><div class="rail-h"><h3>Reels · 9:16</h3><div class="rail-btns"><button class="rb" data-dir="-1" aria-label="Zurück">‹</button><button class="rb" data-dir="1" aria-label="Weiter">›</button></div></div></div>
   <div class="wrap"><div class="rail" data-rail>
-    <div class="shot r-reel"><div class="scene s-auto"><span class="glow"></span></div><span class="play"><svg width="15" height="17" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span><div class="meta"><div class="cat">Automotive</div><div class="ttl">Automotive Reel</div></div></div>
-    <div class="shot r-reel"><div class="scene s-interior"><span class="glow"></span></div><span class="play"><svg width="15" height="17" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span><div class="meta"><div class="cat">BTS</div><div class="ttl">Behind the Scenes</div></div></div>
-    <div class="shot r-reel"><div class="scene s-realestate"><span class="glow"></span></div><span class="play"><svg width="15" height="17" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span><div class="meta"><div class="cat">Immobilien</div><div class="ttl">Immobilien</div></div></div>
-    <div class="shot r-reel"><div class="scene s-nature"><span class="glow"></span></div><span class="play"><svg width="15" height="17" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span><div class="meta"><div class="cat">Drohne</div><div class="ttl">Drohnenaufnahme</div></div></div>
-    <div class="shot r-reel"><div class="scene s-city"><span class="glow"></span></div><span class="play"><svg width="15" height="17" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span><div class="meta"><div class="cat">Social</div><div class="ttl">Social Media</div></div></div>
-    <div class="shot r-reel"><div class="scene s-product"><span class="glow"></span></div><span class="play"><svg width="15" height="17" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span><div class="meta"><div class="cat">Produkt</div><div class="ttl">Produktvideo</div></div></div>
+    <div class="scene r-reel g-auto"><span class="bg"></span><span class="grain"></span><div class="ig-top"><span class="av"></span><span class="nm">obscura.berlin<small>Automotive</small></span></div><span class="play"><svg width="14" height="16" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span><div class="ig-bot"><div class="ig-acts"><svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M12 21s-7-4.5-9.5-8.5C.5 9 2 6 5 6c2 0 3 1.5 3 1.5S9 6 11 6c3 0 4.5 3 2.5 6.5C11 16.5 12 21 12 21z" opacity=".9"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M21 11.5a8.4 8.4 0 01-9 8 8.4 8.4 0 01-4-1L3 20l1.5-4.5a8.4 8.4 0 01-.5-4 8.4 8.4 0 019-8 8.4 8.4 0 018 8z"/></svg></div><div class="ig-cap"><b>Reel · 12,3 Tsd. Aufrufe</b>Automotive Reel</div></div></div>
+    <div class="scene r-reel g-interior"><span class="bg"></span><span class="grain"></span><div class="ig-top"><span class="av"></span><span class="nm">obscura.berlin<small>Behind the Scenes</small></span></div><span class="play"><svg width="14" height="16" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span><div class="ig-bot"><div class="ig-cap"><b>Reel · Behind the Scenes</b>Echte Einblicke</div></div></div>
+    <div class="scene r-reel g-realestate"><span class="bg"></span><span class="grain"></span><div class="ig-top"><span class="av"></span><span class="nm">obscura.berlin<small>Immobilien</small></span></div><span class="play"><svg width="14" height="16" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span><div class="ig-bot"><div class="ig-cap"><b>Reel · Immobilien</b>Deine Marke in Szene</div></div></div>
+    <div class="scene r-reel g-nature"><span class="bg"></span><span class="grain"></span><div class="ig-top"><span class="av"></span><span class="nm">obscura.berlin<small>Drohne</small></span></div><span class="play"><svg width="14" height="16" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span><div class="ig-bot"><div class="ig-cap"><b>Reel · 9,4 Tsd. Aufrufe</b>Drohnenaufnahme</div></div></div>
+    <div class="scene r-reel g-city"><span class="bg"></span><span class="grain"></span><div class="ig-top"><span class="av"></span><span class="nm">obscura.berlin<small>Social</small></span></div><span class="play"><svg width="14" height="16" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span><div class="ig-bot"><div class="ig-cap"><b>Reel · Social Media</b>Content der performt</div></div></div>
+    <div class="scene r-reel g-product"><span class="bg"></span><span class="grain"></span><div class="ig-top"><span class="av"></span><span class="nm">obscura.berlin<small>Produkt</small></span></div><span class="play"><svg width="14" height="16" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span><div class="ig-bot"><div class="ig-cap"><b>Reel · Produkt</b>Produktvideo</div></div></div>
   </div></div>
-  <div class="wrap">
-    <div class="rail-h"><h3>Filme · 16:9</h3><div class="rail-btns"><button class="rb" data-dir="-1" aria-label="Zurück">‹</button><button class="rb" data-dir="1" aria-label="Weiter">›</button></div></div>
-  </div>
+  <div class="wrap"><div class="rail-h"><h3>Filme · 16:9</h3><div class="rail-btns"><button class="rb" data-dir="-1" aria-label="Zurück">‹</button><button class="rb" data-dir="1" aria-label="Weiter">›</button></div></div></div>
   <div class="wrap"><div class="rail" data-rail>
-    <div class="shot r-film"><div class="scene s-interior"><span class="glow"></span></div><span class="play"><svg width="15" height="17" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span><div class="meta"><div class="cat">Imagefilm</div><div class="ttl">Imagefilm</div></div></div>
-    <div class="shot r-film"><div class="scene s-auto2"><span class="glow"></span></div><span class="play"><svg width="15" height="17" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span><div class="meta"><div class="cat">Corporate</div><div class="ttl">Unternehmensfilm</div></div></div>
-    <div class="shot r-film"><div class="scene s-nature"><span class="glow"></span></div><span class="play"><svg width="15" height="17" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span><div class="meta"><div class="cat">Kampagne</div><div class="ttl">Kampagnenfilm</div></div></div>
-    <div class="shot r-film"><div class="scene s-team"><span class="glow"></span></div><span class="play"><svg width="15" height="17" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span><div class="meta"><div class="cat">Recruiting</div><div class="ttl">Recruiting Film</div></div></div>
+    <div class="scene r-film g-interior"><span class="bg"></span><span class="grain"></span><span class="play"><svg width="15" height="17" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span><div class="ig-bot"><div class="ig-cap"><b>Imagefilm</b>Unternehmensfilm</div></div></div>
+    <div class="scene r-film g-auto2"><span class="bg"></span><span class="grain"></span><span class="play"><svg width="15" height="17" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span><div class="ig-bot"><div class="ig-cap"><b>Corporate</b>Kampagnenfilm</div></div></div>
+    <div class="scene r-film g-nature"><span class="bg"></span><span class="grain"></span><span class="play"><svg width="15" height="17" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span><div class="ig-bot"><div class="ig-cap"><b>Kampagne</b>Brand Film</div></div></div>
+    <div class="scene r-film g-team"><span class="bg"></span><span class="grain"></span><span class="play"><svg width="15" height="17" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span><div class="ig-bot"><div class="ig-cap"><b>Recruiting</b>Recruiting Film</div></div></div>
   </div></div>
 </section>
 
 <!-- IMAGEFILM -->
-<section class="sec" style="background:var(--surface)">
+<section class="sec" style="background:var(--soft)">
   <div class="wrap film-sec">
-    <div class="rv"><div class="shot" style="aspect-ratio:16/9;border-radius:24px"><div class="scene s-interior"><span class="glow"></span></div><span class="chip tl">Imagefilm</span><span class="play"><svg width="17" height="19" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span></div></div>
+    <div class="rv"><div class="scene g-interior" style="aspect-ratio:16/10;border-radius:22px"><span class="bg"></span><span class="grain"></span><span class="play"><svg width="17" height="19" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span><div class="ig-bot"><div class="ig-cap"><b>Imagefilm / Unternehmensfilm</b>Zeig, wer du bist</div></div></div></div>
     <div class="rv">
       <p class="eyebrow">Imagefilm / Unternehmensfilm</p>
-      <h2 style="margin-top:1rem">Zeig, wer du bist.<br><span style="color:#b3b3a8">Überzeuge,</span><br>bevor du sprichst.</h2>
+      <h2 style="margin-top:1rem">Zeig, wer du bist. <span style="color:var(--faint)">Überzeuge, bevor du sprichst.</span></h2>
       <p class="lead">Ein professioneller Unternehmensfilm zeigt deine Marke, deine Menschen und deine Leistungen – authentisch, hochwertig und verständlich.</p>
-      <div style="margin-top:1.5rem">
+      <div style="margin-top:1.4rem">
         <div class="benefit"><span class="pt"></span><div><h4>Vertrauen</h4><p>Menschen kaufen von Unternehmen, denen sie vertrauen.</p></div></div>
         <div class="benefit"><span class="pt"></span><div><h4>Erklärung</h4><p>Ein Video erklärt komplexe Leistungen schneller.</p></div></div>
-        <div class="benefit"><span class="pt"></span><div><h4>Vielseitig</h4><p>Website, Instagram, LinkedIn, YouTube, Ads, Sales, Recruiting, Events.</p></div></div>
+        <div class="benefit"><span class="pt"></span><div><h4>Vielseitig</h4><p>Website, Instagram, LinkedIn, YouTube, Ads, Sales, Recruiting.</p></div></div>
       </div>
-      <div style="margin-top:1.8rem"><a href="#kontakt" class="btn btn-dark">Imagefilm anfragen <span class="ar">→</span></a></div>
+      <div style="margin-top:1.7rem"><a href="#kontakt" class="btn btn-dark">Imagefilm anfragen <span class="ar">→</span></a></div>
     </div>
   </div>
 </section>
@@ -612,7 +615,7 @@ footer{background:var(--dark);color:#f4f4ef;padding:5rem 0 2rem}
 <section class="sec" id="ablauf">
   <div class="wrap">
     <p class="eyebrow rv">So arbeiten wir zusammen.</p>
-    <h2 class="rv" style="margin-top:1rem">Ein klarer Ablauf.<br>Volle Transparenz.</h2>
+    <h2 class="rv" style="margin-top:1rem">Ein klarer Ablauf. Volle Transparenz.</h2>
     <div class="steps" id="steps">
       <div class="line"><span class="fill" id="stepFill"></span></div>
       <div class="step rv"><div class="n">01</div><h3>Kennenlernen</h3><p>Unternehmen · Zielgruppe · Ziele · Status Quo</p></div>
@@ -624,25 +627,25 @@ footer{background:var(--dark);color:#f4f4ef;padding:5rem 0 2rem}
   </div>
 </section>
 
-<!-- PROJECTS (dark) -->
+<!-- PROJECTS (dark accent) -->
 <section class="dark sec" id="projekte">
   <div class="wrap">
     <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1rem" class="rv">
-      <div><p class="eyebrow">Aktuelle Projekte</p><h2 style="margin-top:1rem">Projekte,<br>auf die wir stolz sind.</h2></div>
+      <div><p class="eyebrow">Aktuelle Projekte</p><h2 style="margin-top:1rem">Projekte, auf die wir stolz sind.</h2></div>
       <a href="#kontakt" class="btn btn-lime">Alle Projekte ansehen <span class="ar">→</span></a>
     </div>
     <div class="proj">
-      <div class="card rv"><div class="shot"><div class="scene s-auto"><span class="glow"></span></div><span class="play"><svg width="15" height="17" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span></div><div class="cc"><div class="cat">Automotive</div><h3>Reels Kampagne</h3><p class="phnote">Platzhalter Kunde</p></div></div>
-      <div class="card rv"><div class="shot"><div class="scene s-realestate"><span class="glow"></span></div><span class="play"><svg width="15" height="17" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span></div><div class="cc"><div class="cat">Immobilien</div><h3>Social Media Betreuung</h3><p class="phnote">Platzhalter Kunde</p></div></div>
-      <div class="card rv"><div class="shot"><div class="scene s-interior"><span class="glow"></span></div><span class="play"><svg width="15" height="17" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span></div><div class="cc"><div class="cat">B2B</div><h3>Imagefilm Produktion</h3><p class="phnote">Platzhalter Kunde</p></div></div>
-      <div class="card rv"><div class="shot"><div class="scene s-nature"><span class="glow"></span></div><span class="play"><svg width="15" height="17" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span></div><div class="cc"><div class="cat">Dienstleister</div><h3>Content Creation</h3><p class="phnote">Platzhalter Kunde</p></div></div>
+      <div class="card rv" style="background:rgba(255,255,255,.02);border-color:rgba(255,255,255,.1)"><div class="scene g-auto"><span class="bg"></span><span class="grain"></span><span class="play"><svg width="15" height="17" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span></div><div class="cc"><div class="cat">Automotive</div><h3 style="color:#fff">Reels Kampagne</h3><p>Platzhalter Kunde</p></div></div>
+      <div class="card rv" style="background:rgba(255,255,255,.02);border-color:rgba(255,255,255,.1)"><div class="scene g-realestate"><span class="bg"></span><span class="grain"></span><span class="play"><svg width="15" height="17" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span></div><div class="cc"><div class="cat">Immobilien</div><h3 style="color:#fff">Social Media Betreuung</h3><p>Platzhalter Kunde</p></div></div>
+      <div class="card rv" style="background:rgba(255,255,255,.02);border-color:rgba(255,255,255,.1)"><div class="scene g-interior"><span class="bg"></span><span class="grain"></span><span class="play"><svg width="15" height="17" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span></div><div class="cc"><div class="cat">B2B</div><h3 style="color:#fff">Imagefilm Produktion</h3><p>Platzhalter Kunde</p></div></div>
+      <div class="card rv" style="background:rgba(255,255,255,.02);border-color:rgba(255,255,255,.1)"><div class="scene g-nature"><span class="bg"></span><span class="grain"></span><span class="play"><svg width="15" height="17" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span></div><div class="cc"><div class="cat">Dienstleister</div><h3 style="color:#fff">Content Creation</h3><p>Platzhalter Kunde</p></div></div>
     </div>
     <div class="stories">
-      <div class="rv"><span class="a">→</span>Von einem Shooting zur monatlichen Betreuung.</div>
-      <div class="rv"><span class="a">→</span>Regelmäßige Reels für konstanten Markenauftritt.</div>
-      <div class="rv"><span class="a">→</span>Neuer Unternehmensfilm für Website &amp; Vertrieb.</div>
-      <div class="rv"><span class="a">→</span>Content + Ads für bessere Sichtbarkeit.</div>
-      <div class="rv"><span class="a">→</span>Monatlicher Content für einen einheitlichen Auftritt.</div>
+      <div class="rv" style="background:rgba(255,255,255,.02);border-color:rgba(255,255,255,.1);color:rgba(255,255,255,.75)"><span class="a">→</span>Vom Shooting zur monatlichen Betreuung.</div>
+      <div class="rv" style="background:rgba(255,255,255,.02);border-color:rgba(255,255,255,.1);color:rgba(255,255,255,.75)"><span class="a">→</span>Regelmäßige Reels für konstanten Auftritt.</div>
+      <div class="rv" style="background:rgba(255,255,255,.02);border-color:rgba(255,255,255,.1);color:rgba(255,255,255,.75)"><span class="a">→</span>Unternehmensfilm für Website &amp; Vertrieb.</div>
+      <div class="rv" style="background:rgba(255,255,255,.02);border-color:rgba(255,255,255,.1);color:rgba(255,255,255,.75)"><span class="a">→</span>Content + Ads für mehr Sichtbarkeit.</div>
+      <div class="rv" style="background:rgba(255,255,255,.02);border-color:rgba(255,255,255,.1);color:rgba(255,255,255,.75)"><span class="a">→</span>Monatlicher Content, einheitlicher Auftritt.</div>
     </div>
   </div>
 </section>
@@ -651,12 +654,12 @@ footer{background:var(--dark);color:#f4f4ef;padding:5rem 0 2rem}
 <section class="sec" id="team">
   <div class="wrap">
     <p class="eyebrow rv">Über uns</p>
-    <h2 class="rv" style="margin-top:1rem">Die Menschen,<br>die deine Marke kennen.</h2>
+    <h2 class="rv" style="margin-top:1rem">Die Menschen, die deine Marke kennen.</h2>
     <div class="team">
-      <div class="m rv"><div class="shot"><div class="scene s-auto"><span class="glow"></span></div></div><div class="mm"><h3 class="phnote" style="font-size:1rem">Platzhalter Name</h3><p>Strategie &amp; Beratung</p></div></div>
-      <div class="m rv"><div class="shot"><div class="scene s-interior"><span class="glow"></span></div></div><div class="mm"><h3 class="phnote" style="font-size:1rem">Platzhalter Name</h3><p>Videoproduktion</p></div></div>
-      <div class="m rv"><div class="shot"><div class="scene s-realestate"><span class="glow"></span></div></div><div class="mm"><h3 class="phnote" style="font-size:1rem">Platzhalter Name</h3><p>Social Media Management</p></div></div>
-      <div class="m rv"><div class="shot"><div class="scene s-team"><span class="glow"></span></div></div><div class="mm"><h3 class="phnote" style="font-size:1rem">Platzhalter Name</h3><p>Performance &amp; Ads</p></div></div>
+      <div class="m rv"><div class="scene g-auto"><span class="bg"></span><span class="grain"></span></div><div class="mm"><h3 class="phnote" style="font-size:.95rem">Platzhalter Name</h3><p>Strategie &amp; Beratung</p></div></div>
+      <div class="m rv"><div class="scene g-interior"><span class="bg"></span><span class="grain"></span></div><div class="mm"><h3 class="phnote" style="font-size:.95rem">Platzhalter Name</h3><p>Videoproduktion</p></div></div>
+      <div class="m rv"><div class="scene g-realestate"><span class="bg"></span><span class="grain"></span></div><div class="mm"><h3 class="phnote" style="font-size:.95rem">Platzhalter Name</h3><p>Social Media Management</p></div></div>
+      <div class="m rv"><div class="scene g-team"><span class="bg"></span><span class="grain"></span></div><div class="mm"><h3 class="phnote" style="font-size:.95rem">Platzhalter Name</h3><p>Performance &amp; Ads</p></div></div>
     </div>
   </div>
 </section>
@@ -665,20 +668,20 @@ footer{background:var(--dark);color:#f4f4ef;padding:5rem 0 2rem}
 <section class="sec" style="background:var(--soft)">
   <div class="wrap">
     <p class="eyebrow rv">Kundenstimmen</p>
-    <h2 class="rv" style="margin-top:1rem">Echte Stimmen.<br>Echte Partnerschaften.</h2>
+    <h2 class="rv" style="margin-top:1rem">Echte Stimmen. Echte Partnerschaften.</h2>
     <div class="vids">
-      <div class="shot rv" style="aspect-ratio:16/9;border-radius:24px"><div class="scene s-auto"><span class="glow"></span></div><span class="chip tl">Video-Testimonial · Platzhalter</span><span class="play"><svg width="17" height="19" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span></div>
+      <div class="scene g-auto rv" style="aspect-ratio:16/9"><span class="bg"></span><span class="grain"></span><span class="play"><svg width="17" height="19" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span><div class="ig-bot"><div class="ig-cap"><b>Video-Testimonial · Platzhalter</b>Kundenstimme</div></div></div>
       <div class="side">
-        <div class="shot rv" style="aspect-ratio:16/9;border-radius:20px"><div class="scene s-realestate"><span class="glow"></span></div><span class="play"><svg width="15" height="17" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span></div>
-        <div class="shot rv" style="aspect-ratio:16/9;border-radius:20px"><div class="scene s-nature"><span class="glow"></span></div><span class="play"><svg width="15" height="17" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span></div>
+        <div class="scene g-realestate rv" style="aspect-ratio:16/9"><span class="bg"></span><span class="grain"></span><span class="play"><svg width="15" height="17" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span></div>
+        <div class="scene g-nature rv" style="aspect-ratio:16/9"><span class="bg"></span><span class="grain"></span><span class="play"><svg width="15" height="17" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span></div>
       </div>
     </div>
-    <h2 class="rv" style="margin-top:4rem;font-size:clamp(1.8rem,4vw,2.8rem)">Das sagen unsere Kunden.</h2>
+    <h2 class="rv" style="margin-top:4rem;font-size:clamp(1.8rem,4vw,2.7rem)">Das sagen unsere Kunden.</h2>
     <div class="reviews">
-      <div class="review rv"><div class="rs">★★★★★</div><blockquote>„Obscura hat unseren Social-Media-Auftritt auf ein neues Level gebracht. Mehr Reichweite, mehr Anfragen, mehr Kunden."</blockquote><div class="who"><span class="a" style="background:linear-gradient(135deg,#2c3540,#6b7684)"></span><span><b class="phnote">Platzhalter</b><small>Platzhalter Unternehmen</small></span></div></div>
-      <div class="review rv"><div class="rs">★★★★★</div><blockquote>„Professionell, kreativ und zuverlässig. Unser Content war noch nie so stark und unsere Kanäle performen besser denn je."</blockquote><div class="who"><span class="a" style="background:linear-gradient(135deg,#4a3520,#8a6a3a)"></span><span><b class="phnote">Platzhalter</b><small>Platzhalter Unternehmen</small></span></div></div>
-      <div class="review rv"><div class="rs">★★★★★</div><blockquote>„Seit wir mit Obscura arbeiten, haben wir eine deutlich höhere Sichtbarkeit und mehr qualifizierte Anfragen."</blockquote><div class="who"><span class="a" style="background:linear-gradient(135deg,#28414d,#4a7a8a)"></span><span><b class="phnote">Platzhalter</b><small>Platzhalter Unternehmen</small></span></div></div>
-      <div class="review rv"><div class="rs">★★★★★</div><blockquote>„Ein tolles Team, das wirklich mitdenkt und unsere Marke perfekt in Szene setzt."</blockquote><div class="who"><span class="a" style="background:linear-gradient(135deg,#3a3226,#7a6a4a)"></span><span><b class="phnote">Platzhalter</b><small>Platzhalter Unternehmen</small></span></div></div>
+      <div class="review rv"><div class="rs">★★★★★</div><blockquote>„Obscura hat unseren Social-Media-Auftritt auf ein neues Level gebracht. Mehr Reichweite, mehr Anfragen, mehr Kunden."</blockquote><div class="who"><span class="a" style="background:linear-gradient(135deg,#2b3440,#6b7684)"></span><span><b class="phnote">Platzhalter</b><small>Platzhalter Unternehmen</small></span></div></div>
+      <div class="review rv"><div class="rs">★★★★★</div><blockquote>„Professionell, kreativ und zuverlässig. Unser Content war noch nie so stark und unsere Kanäle performen besser denn je."</blockquote><div class="who"><span class="a" style="background:linear-gradient(135deg,#4a3a26,#8a6a40)"></span><span><b class="phnote">Platzhalter</b><small>Platzhalter Unternehmen</small></span></div></div>
+      <div class="review rv"><div class="rs">★★★★★</div><blockquote>„Seit wir mit Obscura arbeiten, haben wir eine deutlich höhere Sichtbarkeit und mehr qualifizierte Anfragen."</blockquote><div class="who"><span class="a" style="background:linear-gradient(135deg,#26404e,#4f7f95)"></span><span><b class="phnote">Platzhalter</b><small>Platzhalter Unternehmen</small></span></div></div>
+      <div class="review rv"><div class="rs">★★★★★</div><blockquote>„Ein tolles Team, das wirklich mitdenkt und unsere Marke perfekt in Szene setzt."</blockquote><div class="who"><span class="a" style="background:linear-gradient(135deg,#3a3226,#726144)"></span><span><b class="phnote">Platzhalter</b><small>Platzhalter Unternehmen</small></span></div></div>
     </div>
   </div>
 </section>
@@ -686,9 +689,9 @@ footer{background:var(--dark);color:#f4f4ef;padding:5rem 0 2rem}
 <!-- LONG TERM -->
 <section class="sec">
   <div class="wrap lt">
-    <div class="rv"><h2>Guter Content<br>entsteht nicht einmal.</h2><h2 class="lime" style="margin-top:.3rem">Starke Marken<br>entstehen kontinuierlich.</h2></div>
+    <div class="rv"><h2>Guter Content entsteht nicht einmal.</h2><h2 class="lime" style="margin-top:.4rem">Starke Marken entstehen kontinuierlich.</h2></div>
     <div class="rv">
-      <p class="lead" style="color:var(--muted);max-width:none">Deine Zielgruppe muss deine Marke regelmäßig sehen, verstehen und wiedererkennen. Deshalb arbeiten wir nicht nur projektbezogen, sondern bauen gemeinsam einen langfristigen Social-Media-Auftritt auf.</p>
+      <p class="lead" style="max-width:none">Deine Zielgruppe muss deine Marke regelmäßig sehen, verstehen und wiedererkennen. Deshalb arbeiten wir nicht nur projektbezogen, sondern bauen gemeinsam einen langfristigen Social-Media-Auftritt auf.</p>
       <div class="tags" style="margin-top:1.4rem">
         <span style="border:1px solid var(--line);background:var(--surface);padding:.5rem 1rem;border-radius:100px">Kontinuität</span>
         <span style="border:1px solid var(--line);background:var(--surface);padding:.5rem 1rem;border-radius:100px">Wiedererkennung</span>
@@ -706,10 +709,9 @@ footer{background:var(--dark);color:#f4f4ef;padding:5rem 0 2rem}
   <div class="wrap">
     <div class="form-head rv">
       <h2>Du brauchst keine weitere Agentur.</h2>
-      <h2 style="color:#b3b3a8;margin-top:.3rem">Du brauchst ein Team, das sich kümmert.</h2>
+      <h2 style="color:var(--faint);margin-top:.4rem">Du brauchst ein Team, das sich kümmert.</h2>
       <p class="lead" style="margin-inline:auto">Von der nächsten Content-Idee bis zum monatlichen Reporting übernehmen wir die Arbeit, die sonst bei dir liegen bleibt.</p>
     </div>
-
     <div class="form-card rv" id="formCard">
       <div id="formInner">
         <div class="prog"><span id="pLabel">Schritt 1 von 5</span><span id="pPct">20%</span></div>
@@ -728,7 +730,7 @@ footer{background:var(--dark);color:#f4f4ef;padding:5rem 0 2rem}
     <div class="foot-grid">
       <div>
         <a class="logo">OBSCURA<sup>®</sup></a>
-        <p>Social Media. Content. Performance. Deine Social-Media-Agentur aus Berlin für monatliche Betreuung, Content und Performance.</p>
+        <p>Social Media. Content. Performance. Deine Social-Media-Agentur aus Berlin.</p>
         <p class="phnote" style="margin-top:1rem">Platzhalter · +49 30 123 456 78<br>hallo@obscura-berlin.de</p>
       </div>
       <div><h4>Unternehmen</h4><ul><li><a href="#team">Über uns</a></li><li><a href="#projekte">Projekte</a></li><li><a href="#kontakt">Karriere</a></li><li><a href="#kontakt">Kontakt</a></li></ul></div>
@@ -746,108 +748,49 @@ footer{background:var(--dark);color:#f4f4ef;padding:5rem 0 2rem}
 <div class="smcta" id="smcta"><a href="#kontakt">Erstgespräch anfragen →</a></div>
 
 <script>
-// ticker
-(function(){
-  var items=["Reels","Content","Social Media","Ads","Performance","Video","Foto","Strategie","Wachstum"];
-  var html=items.map(function(t){return '<span>'+t+' <span class="dot">✦</span></span>'}).join('');
-  document.getElementById('tickTrack').innerHTML=html+html;
-})();
+(function(){var items=["Reels","Content","Social Media","Ads","Performance","Video","Foto","Strategie","Wachstum"];
+document.getElementById('tickTrack').innerHTML=(items.map(function(t){return '<span>'+t+' <span class="dot">✦</span></span>'}).join('')).repeat(2);})();
 document.getElementById('yr').textContent=new Date().getFullYear();
 
-// header shrink
 var hdr=document.getElementById('hdr');
-addEventListener('scroll',function(){
-  if(scrollY>16){hdr.classList.add('scrolled');hdr.classList.remove('top');}
-  else{hdr.classList.add('top');hdr.classList.remove('scrolled');}
-},{passive:true});
+addEventListener('scroll',function(){if(scrollY>16){hdr.classList.add('scrolled');hdr.classList.remove('top');}else{hdr.classList.add('top');hdr.classList.remove('scrolled');}},{passive:true});
 
-// mobile menu
 var mm=document.getElementById('mm'),burger=document.getElementById('burger');
-burger.addEventListener('click',function(){mm.classList.toggle('open');
-  document.body.style.overflow=mm.classList.contains('open')?'hidden':'';});
-mm.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){
-  mm.classList.remove('open');document.body.style.overflow='';});});
+burger.addEventListener('click',function(){mm.classList.toggle('open');document.body.style.overflow=mm.classList.contains('open')?'hidden':'';});
+mm.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){mm.classList.remove('open');document.body.style.overflow='';});});
 
-// reveal + trigger animations
-var io=new IntersectionObserver(function(es){
-  es.forEach(function(e){
-    if(!e.isIntersecting)return;
-    e.target.classList.add('in');
-    if(e.target.id==='ring')e.target.classList.add('in');
-    io.unobserve(e.target);
-  });
-},{threshold:.16,rootMargin:'-40px'});
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.14,rootMargin:'-30px'});
 document.querySelectorAll('.rv').forEach(function(el){io.observe(el);});
 
-// ring
 var ring=document.getElementById('ring');
 new IntersectionObserver(function(es,o){es.forEach(function(e){if(e.isIntersecting){ring.classList.add('in');o.disconnect();}})},{threshold:.4}).observe(ring);
 
-// donut + bars + counters
 function animateDash(){
   document.getElementById('donut').classList.add('in');
   document.querySelectorAll('#bars i').forEach(function(b){b.style.height=b.dataset.h+'%';});
-  document.querySelectorAll('[data-count]').forEach(function(el){
-    var to=+el.dataset.count,pre=el.dataset.prefix||'',suf=el.dataset.suffix||'',t0=null;
-    function step(ts){if(!t0)t0=ts;var p=Math.min((ts-t0)/1400,1);var v=Math.round((1-Math.pow(1-p,3))*to);
-      el.textContent=pre+v+suf;if(p<1)requestAnimationFrame(step);}
-    requestAnimationFrame(step);
-  });
+  document.querySelectorAll('[data-count]').forEach(function(el){var to=+el.dataset.count,pre=el.dataset.prefix||'',suf=el.dataset.suffix||'',t0=null;
+    function step(ts){if(!t0)t0=ts;var p=Math.min((ts-t0)/1400,1);el.textContent=pre+Math.round((1-Math.pow(1-p,3))*to)+suf;if(p<1)requestAnimationFrame(step);}requestAnimationFrame(step);});
 }
-var dash=document.querySelector('.dash');
-new IntersectionObserver(function(es,o){es.forEach(function(e){if(e.isIntersecting){animateDash();o.disconnect();}})},{threshold:.3}).observe(dash);
+new IntersectionObserver(function(es,o){es.forEach(function(e){if(e.isIntersecting){animateDash();o.disconnect();}})},{threshold:.3}).observe(document.querySelector('.dash'));
 
-// process line
 var steps=document.getElementById('steps'),fill=document.getElementById('stepFill');
-new IntersectionObserver(function(es,o){es.forEach(function(e){if(e.isIntersecting){
-  if(innerWidth>1000){fill.style.width='100%';}else{fill.classList.add('v');fill.style.height='100%';}
-  o.disconnect();}})},{threshold:.3}).observe(steps);
+new IntersectionObserver(function(es,o){es.forEach(function(e){if(e.isIntersecting){if(innerWidth>1000){fill.style.width='100%';}else{fill.classList.add('v');fill.style.height='100%';}o.disconnect();}})},{threshold:.3}).observe(steps);
 
-// hero parallax
-var stack=document.getElementById('stack');
-if(stack&&!matchMedia('(prefers-reduced-motion:reduce)').matches){
-  addEventListener('scroll',function(){
-    var y=scrollY;
-    stack.querySelectorAll('[data-sp]').forEach(function(c){
-      c.style.translate='0 '+(y*(+c.dataset.sp)/600)+'px';
-    });
-  },{passive:true});
+if(!matchMedia('(prefers-reduced-motion:reduce)').matches){
+  addEventListener('scroll',function(){var y=scrollY;document.querySelectorAll('.float[data-sp]').forEach(function(c){c.style.translate='0 '+(y*(+c.dataset.sp)/700)+'px';});},{passive:true});
 }
 
-// filters (visual toggle)
-document.querySelectorAll('#filters button').forEach(function(b){
-  b.addEventListener('click',function(){
-    document.querySelectorAll('#filters button').forEach(function(x){x.classList.remove('on');});
-    b.classList.add('on');
-  });
-});
+document.querySelectorAll('#filters button').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('#filters button').forEach(function(x){x.classList.remove('on');});b.classList.add('on');});});
 
-// rails: buttons + drag
-document.querySelectorAll('[data-rail]').forEach(function(rail){
-  var down=false,sx,sl;
+document.querySelectorAll('[data-rail]').forEach(function(rail){var down=false,sx,sl;
   rail.addEventListener('pointerdown',function(e){down=true;rail.classList.add('drag');sx=e.pageX;sl=rail.scrollLeft;});
   addEventListener('pointerup',function(){down=false;rail.classList.remove('drag');});
-  rail.addEventListener('pointermove',function(e){if(!down)return;rail.scrollLeft=sl-(e.pageX-sx);});
-});
-document.querySelectorAll('.rail-btns').forEach(function(g){
-  var rail=g.closest('.wrap').nextElementSibling.querySelector('[data-rail]')||g.closest('.wrap').parentElement;
-});
-document.querySelectorAll('.rb').forEach(function(btn){
-  btn.addEventListener('click',function(){
-    var sec=btn.closest('section');
-    var rail=btn.closest('.wrap').nextElementSibling.querySelector('[data-rail]');
-    if(rail)rail.scrollBy({left:(+btn.dataset.dir)*380,behavior:'smooth'});
-  });
-});
+  rail.addEventListener('pointermove',function(e){if(!down)return;rail.scrollLeft=sl-(e.pageX-sx);});});
+document.querySelectorAll('.rb').forEach(function(btn){btn.addEventListener('click',function(){var rail=btn.closest('.wrap').nextElementSibling.querySelector('[data-rail]');if(rail)rail.scrollBy({left:(+btn.dataset.dir)*390,behavior:'smooth'});});});
 
-// sticky mobile cta
 var smcta=document.getElementById('smcta'),kontakt=document.getElementById('kontakt');
-addEventListener('scroll',function(){
-  var r=kontakt.getBoundingClientRect();
-  smcta.classList.toggle('show',scrollY>600 && r.top>innerHeight);
-},{passive:true});
+addEventListener('scroll',function(){var r=kontakt.getBoundingClientRect();smcta.classList.toggle('show',scrollY>600&&r.top>innerHeight);},{passive:true});
 
-// ---- multi-step form ----
 var stepsData=[
   {q:"Was möchtest du aktuell verbessern?",o:["Mehr Sichtbarkeit","Regelmäßig Content","Professioneller Auftritt","Mehr Anfragen","Werbeanzeigen","Social Media abgeben","Noch nicht sicher"]},
   {q:"Wobei brauchst du Unterstützung?",o:["Social Media Betreuung","Content Produktion","Video & Foto","Reels","Ads","Komplettbetreuung","Noch nicht sicher"]},
@@ -858,34 +801,21 @@ var cur=0,answers=[null,null,null,null];
 var box=document.getElementById('stepBox'),back=document.getElementById('backBtn');
 var pLabel=document.getElementById('pLabel'),pPct=document.getElementById('pPct'),pFill=document.getElementById('pFill');
 function render(){
-  pLabel.textContent='Schritt '+(cur+1)+' von 5';
-  var pct=Math.round((cur+1)/5*100);pPct.textContent=pct+'%';pFill.style.width=pct+'%';
+  pLabel.textContent='Schritt '+(cur+1)+' von 5';var pct=Math.round((cur+1)/5*100);pPct.textContent=pct+'%';pFill.style.width=pct+'%';
   back.classList.toggle('hidden',cur===0);
-  if(cur<4){
-    var s=stepsData[cur];
-    box.innerHTML='<fieldset style="border:0"><legend class="q">'+s.q+'</legend><div class="opts">'+
-      s.o.map(function(o,i){return '<button data-i="'+i+'"'+(answers[cur]===o?' class="sel"':'')+'>'+o+'</button>'}).join('')+'</div></fieldset>';
-    box.querySelectorAll('.opts button').forEach(function(b){
-      b.addEventListener('click',function(){answers[cur]=b.textContent;setTimeout(function(){cur++;render();},160);});
-    });
+  if(cur<4){var s=stepsData[cur];
+    box.innerHTML='<fieldset style="border:0"><legend class="q">'+s.q+'</legend><div class="opts">'+s.o.map(function(o){return '<button'+(answers[cur]===o?' class="sel"':'')+'>'+o+'</button>'}).join('')+'</div></fieldset>';
+    box.querySelectorAll('.opts button').forEach(function(b){b.addEventListener('click',function(){answers[cur]=b.textContent;setTimeout(function(){cur++;render();},160);});});
   }else{
-    box.innerHTML='<h3 class="q">Fast geschafft – deine Kontaktdaten.</h3>'+
-      '<form id="cform"><div class="fields">'+
-      field('Name *','name','text',true)+field('Unternehmen *','company','text',true)+
-      field('E-Mail *','email','email',true)+field('Telefon','phone','tel',false)+
-      field('Website','website','text',false)+field('Instagram (optional)','ig','text',false)+
+    box.innerHTML='<h3 class="q">Fast geschafft – deine Kontaktdaten.</h3><form id="cform"><div class="fields">'+
+      f('Name *','text',true)+f('Unternehmen *','text',true)+f('E-Mail *','email',true)+f('Telefon','tel',false)+f('Website','text',false)+f('Instagram (optional)','text',false)+
       '</div><div class="field" style="margin-top:1rem"><label>Projektbeschreibung (optional)</label><textarea rows="3"></textarea></div>'+
       '<button type="submit" class="btn btn-dark" style="margin-top:1.4rem;width:100%;justify-content:center">Erstgespräch anfragen <span class="ar">→</span></button></form>';
-    document.getElementById('cform').addEventListener('submit',function(e){e.preventDefault();success();});
+    document.getElementById('cform').addEventListener('submit',function(e){e.preventDefault();
+      document.getElementById('formInner').innerHTML='<div class="success"><div class="ok">✓</div><h3>Danke.</h3><p class="hl">Wir schauen uns deinen aktuellen Auftritt an.</p><p>Wir melden uns persönlich bei dir und besprechen gemeinsam, welche nächsten Schritte für dein Unternehmen sinnvoll sind.</p></div>';});
   }
 }
-function field(l,n,t,req){return '<div class="field"><label>'+l+'</label><input type="'+t+'" name="'+n+'"'+(req?' required':'')+'></div>';}
-function success(){
-  document.getElementById('formInner').innerHTML=
-    '<div class="success"><div class="ok">✓</div><h3>Danke.</h3>'+
-    '<p class="hl">Wir schauen uns deinen aktuellen Auftritt an.</p>'+
-    '<p>Wir melden uns persönlich bei dir und besprechen gemeinsam, welche nächsten Schritte für dein Unternehmen sinnvoll sind.</p></div>';
-}
+function f(l,t,req){return '<div class="field"><label>'+l+'</label><input type="'+t+'"'+(req?' required':'')+'></div>';}
 back.addEventListener('click',function(){if(cur>0){cur--;render();}});
 render();
 </script>
