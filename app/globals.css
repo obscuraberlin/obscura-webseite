@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --canvas: #f8f8f5;
+  --ink: #101010;
+  --lime: #c7ff18;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
+body {
+  background: var(--canvas);
+  color: var(--ink);
+  overflow-x: hidden;
+}
+
+/* Sichtbare Focus-States für Tastaturnavigation */
+:focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Placeholder-Medien: markengerechte, performante Gradient-Flächen
+   statt schwerer Bilddateien. Später durch echte Videos/Bilder ersetzen. */
+.ph-media {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(120% 90% at 20% 10%, rgba(255, 255, 255, 0.14), transparent 55%),
+    linear-gradient(135deg, #141414, #232323 55%, #0c0c0c);
+}
+.ph-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(60% 60% at 50% 50%, rgba(199, 255, 24, 0.12), transparent 70%);
+  opacity: 0.9;
+}
+.ph-tone-1 { filter: hue-rotate(0deg); }
+.ph-tone-2 { background: linear-gradient(135deg, #1b1b1b, #2c2a24 60%, #0d0d0d); }
+.ph-tone-3 { background: linear-gradient(135deg, #10161a, #1f2d33 60%, #0a0e10); }
+.ph-tone-4 { background: linear-gradient(135deg, #14140f, #2a2c1c 55%, #0b0b08); }
+.ph-tone-5 { background: linear-gradient(135deg, #191016, #2d1f2a 60%, #0d080b); }
+.ph-tone-6 { background: linear-gradient(135deg, #0f1614, #1c2d28 60%, #080d0b); }
+
+/* horizontale Rails ohne sichtbare Scrollbar */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.container-x {
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 3rem);
+}
+
+/* Reduced Motion respektieren */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
