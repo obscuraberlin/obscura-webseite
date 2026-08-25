@@ -354,6 +354,30 @@ footer{background:var(--dark);color:#f5f5f0;padding:4.5rem 0 2rem}
 .smcta.show{transform:none}
 .smcta a{display:flex;justify-content:center;background:var(--ink);color:#fff;border-radius:100px;padding:1rem;font-weight:600;box-shadow:0 14px 30px rgba(0,0,0,.25)}
 
+/* comparison */
+.cmp{margin-top:3rem;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--surface)}
+.cmp-scroll{overflow-x:auto}
+.cmp table{width:100%;border-collapse:collapse;min-width:640px}
+.cmp th,.cmp td{padding:.95rem 1.1rem;text-align:center;font-size:.9rem;border-bottom:1px solid var(--line)}
+.cmp thead th{font-family:var(--mono);font-size:.68rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.cmp tbody th{text-align:left;font-weight:600;color:var(--ink);font-family:var(--body);font-size:.92rem}
+.cmp tbody tr:last-child td,.cmp tbody tr:last-child th{border-bottom:0}
+.cmp .own{background:rgba(199,255,24,.08)}
+.cmp thead .own{color:var(--ink);font-weight:800;font-family:var(--display);font-size:1rem;background:var(--ink);color:#fff;border-radius:10px 10px 0 0}
+.cmp .yes{color:var(--lime-ink);font-weight:800;font-size:1rem}.cmp .no{color:#cbb;font-weight:700}.cmp .part{color:var(--faint);font-weight:700}
+/* faq */
+.faq{max-width:760px;margin:2.5rem auto 0}
+.faq details{border-bottom:1px solid var(--line);padding:1.25rem 0}
+.faq summary{cursor:pointer;list-style:none;font-family:var(--display);font-weight:700;font-size:1.1rem;
+  display:flex;justify-content:space-between;gap:1rem;align-items:center}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary .pl{color:var(--lime-ink);transition:transform .3s;font-weight:400;font-size:1.4rem}
+.faq details[open] summary .pl{transform:rotate(45deg)}
+.faq p{margin-top:.8rem;color:var(--muted);font-size:.96rem;max-width:64ch}
+/* risk bullets */
+.risk{display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;justify-content:center;margin-top:1.5rem}
+.risk span{display:flex;align-items:center;gap:.45rem;font-size:.9rem;color:#55554b}
+.risk .c{color:var(--lime-ink);font-weight:800}
 /* reveal */
 .rv{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
 .rv.in{opacity:1;transform:none}
@@ -543,6 +567,30 @@ footer{background:var(--dark);color:#f5f5f0;padding:4.5rem 0 2rem}
   </div>
 </section>
 
+<!-- COMPARISON -->
+<section class="sec">
+  <div class="wrap">
+    <p class="eyebrow rv">Der Unterschied</p>
+    <h2 class="rv" style="margin-top:1rem">Ein Team schlägt viele Einzellösungen.</h2>
+    <p class="lead rv">Content, Betreuung und Ads greifen bei uns ineinander – statt verteilt auf Tools, Freelancer und dein ohnehin volles Team.</p>
+    <div class="cmp cmp-scroll rv">
+      <table>
+        <thead><tr><th></th><th>Selbst / Inhouse</th><th>Einzelne Freelancer</th><th>Klassische Agentur</th><th class="own">Obscura</th></tr></thead>
+        <tbody>
+          <tr><th>Strategie &amp; Redaktionsplan</th><td class="part">teils</td><td class="no">✕</td><td class="yes">✓</td><td class="own yes">✓</td></tr>
+          <tr><th>Regelmäßiger Content</th><td class="part">teils</td><td class="yes">✓</td><td class="yes">✓</td><td class="own yes">✓</td></tr>
+          <tr><th>Video, Foto &amp; Reels</th><td class="no">✕</td><td class="yes">✓</td><td class="part">teils</td><td class="own yes">✓</td></tr>
+          <tr><th>Veröffentlichung &amp; Community</th><td class="part">selbst</td><td class="no">✕</td><td class="yes">✓</td><td class="own yes">✓</td></tr>
+          <tr><th>Werbeanzeigen (Ads)</th><td class="no">✕</td><td class="part">teils</td><td class="yes">✓</td><td class="own yes">✓</td></tr>
+          <tr><th>Transparentes Reporting</th><td class="no">✕</td><td class="no">✕</td><td class="yes">✓</td><td class="own yes">✓</td></tr>
+          <tr><th>Ein fester Ansprechpartner</th><td class="part">du selbst</td><td class="no">mehrere</td><td class="part">wechselnd</td><td class="own yes">✓</td></tr>
+          <tr><th>Geringer Aufwand für dich</th><td class="no">✕</td><td class="part">Koordination</td><td class="part">teils</td><td class="own yes">✓</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
 <!-- REPORTING (light) -->
 <section class="sec" style="background:var(--soft)">
   <div class="wrap report">
@@ -704,6 +752,22 @@ footer{background:var(--dark);color:#f5f5f0;padding:4.5rem 0 2rem}
   </div>
 </section>
 
+<!-- FAQ -->
+<section class="sec" id="wissen">
+  <div class="wrap">
+    <p class="eyebrow rv" style="text-align:center;display:block">Häufige Fragen</p>
+    <h2 class="rv" style="text-align:center;margin-top:1rem">Alles, was du wissen musst.</h2>
+    <div class="faq rv">
+      <details open><summary>Was macht Obscura genau?<span class="pl">+</span></summary><p>Wir übernehmen deinen gesamten Social-Media-Auftritt: Strategie, Content-Produktion (Video, Foto, Reels), Veröffentlichung, Community-Management, Werbeanzeigen und monatliches Reporting – kontinuierlich und aus einer Hand.</p></details>
+      <details><summary>Arbeitet ihr deutschlandweit?<span class="pl">+</span></summary><p>Ja. Unser Sitz ist Berlin, wir betreuen Unternehmen deutschlandweit – remote und bei Bedarf vor Ort für Shootings.</p></details>
+      <details><summary>Was kostet die Zusammenarbeit?<span class="pl">+</span></summary><p>Wir arbeiten in monatlicher Betreuung. Den passenden Umfang legen wir individuell nach deinen Zielen fest – transparent und ohne Überraschungen. Die konkrete Einschätzung bekommst du im kostenlosen Erstgespräch.</p></details>
+      <details><summary>Können wir Social Media komplett abgeben?<span class="pl">+</span></summary><p>Genau dafür sind wir da. Wir werden zu deinem externen Social-Media-Team und übernehmen die laufende Arbeit – du behältst über einen festen Ansprechpartner jederzeit den Überblick.</p></details>
+      <details><summary>Wie schnell können wir starten?<span class="pl">+</span></summary><p>Nach dem Erstgespräch und einem kurzen Onboarding geht es in der Regel zeitnah los. Den genauen Fahrplan stimmen wir individuell mit dir ab.</p></details>
+      <details><summary>Nutzt ihr unsere bestehenden Kanäle &amp; Inhalte?<span class="pl">+</span></summary><p>Ja. Wir bauen auf dem auf, was schon da ist, entwickeln deinen Auftritt weiter und ergänzen ihn mit neuem, hochwertigem Content.</p></details>
+    </div>
+  </div>
+</section>
+
 <!-- FORM -->
 <section class="sec form-sec" id="kontakt">
   <div class="wrap">
@@ -711,6 +775,12 @@ footer{background:var(--dark);color:#f5f5f0;padding:4.5rem 0 2rem}
       <h2>Du brauchst keine weitere Agentur.</h2>
       <h2 style="color:var(--faint);margin-top:.4rem">Du brauchst ein Team, das sich kümmert.</h2>
       <p class="lead" style="margin-inline:auto">Von der nächsten Content-Idee bis zum monatlichen Reporting übernehmen wir die Arbeit, die sonst bei dir liegen bleibt.</p>
+      <div class="risk">
+        <span><span class="c">✓</span> Unverbindlich &amp; kostenlos</span>
+        <span><span class="c">✓</span> Individuelle Einschätzung</span>
+        <span><span class="c">✓</span> Fester Ansprechpartner</span>
+        <span><span class="c">✓</span> Persönliche Rückmeldung</span>
+      </div>
     </div>
     <div class="form-card rv" id="formCard">
       <div id="formInner">
