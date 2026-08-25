@@ -600,6 +600,45 @@ footer{background:var(--dark);color:#f5f5f0;padding:4.5rem 0 2rem}
 .wa-head{display:none;width:40px;height:40px;border-radius:100px;background:#25D366;place-items:center}
 .wa-head svg{width:22px;height:22px;fill:#fff}
 @media(min-width:1001px){.wa-head{display:grid}}
+/* trust badges */
+.trust-badges{display:flex;flex-wrap:wrap;gap:.4rem 1.3rem;margin-top:2rem}
+.trust-badges span{display:inline-flex;align-items:center;gap:.45rem;font-size:.82rem;font-weight:600;color:var(--muted)}
+.trust-badges svg{color:var(--lime-ink)}
+/* service grid + modal */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2.5rem}
+.svc{position:relative;overflow:hidden;border-radius:20px;min-height:270px;cursor:pointer;isolation:isolate;
+  display:flex;flex-direction:column;justify-content:flex-end;padding:1.5rem;color:#fff;border:0;text-align:left;font-family:var(--body)}
+.svc .scene{position:absolute;inset:0;z-index:-2;transition:transform .6s cubic-bezier(.16,1,.3,1)}
+.svc:hover .scene{transform:scale(1.07)}
+.svc .ov{position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,rgba(0,0,0,.82),rgba(0,0,0,.15) 58%,rgba(0,0,0,.4))}
+.svc .ico{width:52px;height:52px;border-radius:13px;background:var(--lime);display:grid;place-items:center;margin-bottom:auto}
+.svc .ico svg{width:26px;height:26px;stroke:var(--ink);fill:none;stroke-width:1.9}
+.svc h3{font-family:var(--display);font-weight:800;font-size:1.35rem;margin-top:1rem;color:#fff}
+.svc p{font-size:.88rem;color:rgba(255,255,255,.75);margin-top:.4rem}
+.svc .more{margin-top:.8rem;color:var(--lime);font-weight:600;font-size:.85rem}
+.svc:hover .more{text-decoration:underline}
+.modal{position:fixed;inset:0;z-index:70;display:none;align-items:center;justify-content:center;padding:1.2rem}
+.modal.open{display:flex}
+.modal-bg{position:absolute;inset:0;background:rgba(10,10,8,.62);backdrop-filter:blur(4px)}
+.modal-card{position:relative;background:var(--surface);border-radius:24px;max-width:520px;width:100%;max-height:90vh;overflow-y:auto;
+  padding:clamp(1.5rem,4vw,2.4rem);box-shadow:0 40px 90px -30px rgba(0,0,0,.5);animation:pop .35s cubic-bezier(.16,1,.3,1)}
+@keyframes pop{from{opacity:0;transform:translateY(20px) scale(.97)}}
+.modal-card .mx{position:absolute;top:1.1rem;right:1.1rem;width:38px;height:38px;border-radius:100px;border:1px solid var(--line);
+  background:var(--surface);cursor:pointer;font-size:1.2rem;color:var(--ink);display:grid;place-items:center}
+.modal-card .mico{width:56px;height:56px;border-radius:14px;background:var(--lime);display:grid;place-items:center;margin-bottom:1.1rem}
+.modal-card .mico svg{width:28px;height:28px;stroke:var(--ink);fill:none;stroke-width:1.8}
+.modal-card h3{font-family:var(--display);font-weight:800;font-size:1.8rem}
+.modal-card .md{color:var(--muted);margin-top:.8rem;font-size:.98rem;line-height:1.6}
+.modal-card .mv{font-family:var(--display);font-weight:700;margin-top:1.4rem;margin-bottom:.7rem}
+.modal-card ul{list-style:none;display:flex;flex-direction:column;gap:.7rem}
+.modal-card li{display:flex;gap:.6rem;font-size:.95rem;align-items:flex-start}.modal-card li .c{color:var(--lime-ink);font-weight:800}
+.modal-card .mcta{margin-top:1.6rem;width:100%;justify-content:center}
+.modal-card input{width:100%;border:1px solid var(--line);background:var(--canvas);border-radius:12px;padding:.85rem 1rem;font-size:1rem;font-family:var(--body);margin-top:.7rem;outline:none}
+.modal-card input:focus{border-color:var(--ink)}
+/* rückruf */
+.callback-btn{position:fixed;left:1.1rem;bottom:1.1rem;z-index:58;height:52px;padding:0 1.15rem;border-radius:100px;background:var(--lime);
+  color:var(--ink);border:0;cursor:pointer;display:flex;align-items:center;gap:.5rem;font-weight:700;box-shadow:0 12px 30px rgba(0,0,0,.22);font-family:var(--body);font-size:.9rem}
+.callback-btn svg{width:17px;height:17px;fill:var(--ink)}
 /* scroll haptic */
 html{scroll-snap-type:y proximity}
 .snap{scroll-snap-align:start;scroll-snap-stop:normal}
@@ -618,8 +657,10 @@ html{scroll-snap-type:y proximity}
   .ps{grid-template-columns:1fr}.connector{margin:0 auto;transform:rotate(90deg)}
   .report,.film-sec,.lt,.vids,.check-grid{grid-template-columns:1fr}
   .benefits{grid-template-columns:1fr 1fr}.team-grid{grid-template-columns:1fr 1fr}
+  .svc-grid{grid-template-columns:1fr 1fr}
   .cover{height:400px}.cover-card{width:190px;height:332px;margin:-166px 0 0 -95px}
-  .wa-float{bottom:5rem;width:50px;height:50px}.chat-btn{bottom:.8rem;left:.8rem;right:auto}
+  .wa-float,.callback-btn{display:none}
+  .chat-btn{bottom:4.6rem;right:1rem;left:auto;height:48px;padding:0 1rem;font-size:.86rem}
   .chat-panel{bottom:.8rem}
   .steps{grid-template-columns:1fr;gap:0}
   .steps .line{left:21px;right:auto;top:0;bottom:0;width:2px;height:auto}
@@ -633,6 +674,7 @@ html{scroll-snap-type:y proximity}
   .bento,.proj,.team,.reviews,.stories,.benefits,.team-grid{grid-template-columns:1fr}
   .bento .big,.bento .wide{grid-column:span 1}.foot-grid{grid-template-columns:1fr}
   .cases{grid-template-columns:1fr;grid-auto-rows:190px}.case.feat{grid-column:span 1;grid-row:span 1}
+  .svc-grid{grid-template-columns:1fr}
   .stat-grid{grid-template-columns:1fr 1fr}
   .float{display:none}
 }
@@ -664,13 +706,18 @@ html{scroll-snap-type:y proximity}
 <section class="hero snap">
   <div class="wrap hero-grid">
     <div class="rv in">
-      <p class="eyebrow">Social Media · Content · Performance · Berlin</p>
+      <p class="eyebrow">Full-Service Marketing-Agentur · Berlin</p>
       <h1 style="margin-top:1.2rem">Dein Auftritt.<br><span class="lime">Unser System.</span></h1>
-      <p class="sub">Wir übernehmen dein komplettes Marketing – Social Media, Content, Video &amp; Ads. Für mehr Sichtbarkeit, mehr Anfragen und einen Auftritt, der verkauft.</p>
+      <p class="sub">Video, Social Media, Webdesign, Grafik &amp; Ads – dein komplettes Marketing aus einer Hand. Für mehr Sichtbarkeit, mehr Anfragen und einen Auftritt, der verkauft.</p>
       <p class="plan">Du führst dein Business. Wir machen dich sichtbar.</p>
       <div class="ctas">
-        <a href="#kontakt" class="btn btn-dark">Erstgespräch anfragen <span class="ar">→</span></a>
+        <a href="#kontakt" class="btn btn-dark">Jetzt Projekt anfragen <span class="ar">→</span></a>
         <a href="#content" class="btn btn-ghost">Unsere Arbeit ansehen <span class="ar">→</span></a>
+      </div>
+      <div class="trust-badges rv">
+        <span><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg> DSGVO-konform</span>
+        <span><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg> SSL-verschlüsselt</span>
+        <span><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg> Deutsche Server</span>
       </div>
       <div class="trust">
         <div class="avatars">
@@ -783,34 +830,25 @@ html{scroll-snap-type:y proximity}
 </section>
 
 <!-- SYSTEM (light) -->
-<section class="sec" id="leistungen">
+<section class="sec snap" id="leistungen">
   <div class="wrap">
     <div style="max-width:52ch" class="rv">
-      <p class="eyebrow">Alles aus einer Hand</p>
-      <h2 style="margin-top:1rem">Von Social Media bis Imagefilm. <span class="lime">Monatlich betreut.</span></h2>
-      <p class="lead">Rund 70 % Social-Media-Betreuung – plus Imagefilme, Werbevideos, Produktfotos &amp; -videos. Strategie, Produktion, Veröffentlichung und Ads: alles bei einem Partner.</p>
+      <p class="eyebrow">Unsere Qualität · Leistungen</p>
+      <h2 style="margin-top:1rem">Full-Service Marketing. <span class="lime">Alles aus einer Hand.</span></h2>
+      <p class="lead">Von Video über Social Media bis Webdesign – klick dich durch unsere Leistungen und finde heraus, was zu dir passt.</p>
     </div>
-    <div class="sys">
-      <div class="col">
-        <div class="node rv"><div class="nt"><span class="pt"></span>Strategie &amp; Planung</div><p>Content Strategie · Themen · Kampagnen · Redaktionsplan</p></div>
-        <div class="node rv"><div class="nt"><span class="pt"></span>Content Produktion</div><p>Reels · Videos · Fotos · Stories</p></div>
-        <div class="node rv"><div class="nt"><span class="pt"></span>Social Media Betreuung</div><p>Posting · Community · Plattformen · Management</p></div>
-      </div>
-      <div class="ring" id="ring">
-        <svg viewBox="0 0 230 230"><circle class="rc" cx="115" cy="115" r="81"/><circle class="rp" cx="115" cy="115" r="81"/></svg>
-        <div class="lbl"><small>Dein</small><b>Wachstum</b></div>
-      </div>
-      <div class="col">
-        <div class="node r rv"><div class="nt">Ads &amp; Kampagnen<span class="pt"></span></div><p>Meta · Google · LinkedIn · TikTok Ads</p></div>
-        <div class="node r rv"><div class="nt">Film &amp; Foto<span class="pt"></span></div><p>Imagefilm · Werbevideo · Produktfoto · Produktvideo</p></div>
-        <div class="node r rv"><div class="nt">Marke &amp; Reporting<span class="pt"></span></div><p>Markenaufbau · Recruiting · Analyse · Optimierung</p></div>
-      </div>
+    <div class="svc-grid">
+      <button class="svc rv" data-svc="video"><div class="scene g-interior"><span class="bg"></span><span class="grain"></span></div><span class="ov"></span><span class="ico"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="M16 10l6-4v12l-6-4z"/></svg></span><h3>Video-Produktion</h3><p>Imagefilme, Werbevideos &amp; Reels für beeindruckende visuelle Inhalte.</p><span class="more">Mehr erfahren →</span></button>
+      <button class="svc rv" data-svc="social"><div class="scene g-city"><span class="bg"></span><span class="grain"></span></div><span class="ov"></span><span class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg></span><h3>Social Media</h3><p>Professionelle Erstellung von Social-Media-Inhalten für mehr Reichweite.</p><span class="more">Mehr erfahren →</span></button>
+      <button class="svc rv" data-svc="web"><div class="scene g-product"><span class="bg"></span><span class="grain"></span></div><span class="ov"></span><span class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M7 6.5h.01M10 6.5h.01"/></svg></span><h3>Webdesign</h3><p>Professionelles Webdesign für effiziente Websites &amp; Funnel.</p><span class="more">Mehr erfahren →</span></button>
+      <button class="svc rv" data-svc="grafik"><div class="scene g-auto2"><span class="bg"></span><span class="grain"></span></div><span class="ov"></span><span class="ico"><svg viewBox="0 0 24 24"><path d="M4 20V12M9 20V6M14 20v-9M19 20V9"/></svg></span><h3>Grafikdesign</h3><p>Kreative Gestaltung visueller Inhalte für Print- und Online-Medien.</p><span class="more">Mehr erfahren →</span></button>
+      <button class="svc rv" data-svc="beratung"><div class="scene g-team"><span class="bg"></span><span class="grain"></span></div><span class="ov"></span><span class="ico"><svg viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 00-2 2v14a2 2 0 002 2h12a2 2 0 002-2V9z"/><path d="M14 3v6h6M8 14l2 2 3-4"/></svg></span><h3>Beratung &amp; Ads</h3><p>Strategie &amp; Werbeanzeigen auf Meta, Google, LinkedIn &amp; TikTok.</p><span class="more">Mehr erfahren →</span></button>
+      <button class="svc rv" data-svc="weiter"><div class="scene g-realestate"><span class="bg"></span><span class="grain"></span></div><span class="ov"></span><span class="ico"><svg viewBox="0 0 24 24"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1 2.7 2.5 6 2.5s6-1.5 6-2.5v-5"/></svg></span><h3>Weiterbildung</h3><p>Berufliche Weiterbildung für Angestellte und Jobsuchende.</p><span class="more">Mehr erfahren →</span></button>
     </div>
     <div style="margin-top:2.5rem" class="rv badges" data-badges>
       <span class="lbl" style="color:var(--muted)">Plattformen</span>
       <b style="color:var(--muted)">Instagram</b><b style="color:var(--muted)">TikTok</b><b style="color:var(--muted)">YouTube</b><b style="color:var(--muted)">LinkedIn</b><b style="color:var(--muted)">Google</b><b style="color:var(--muted)">Meta</b>
     </div>
-    <div style="text-align:center;margin-top:2rem" class="rv"><a href="#kontakt" class="btn btn-dark">Kostenloses Erstgespräch <span class="ar">→</span></a></div>
   </div>
 </section>
 
@@ -1016,7 +1054,20 @@ html{scroll-snap-type:y proximity}
   </div>
 </footer>
 
-<div class="smcta" id="smcta"><a href="#kontakt">Erstgespräch anfragen →</a></div>
+<div class="smcta" id="smcta"><a href="#kontakt">Jetzt Projekt anfragen →</a></div>
+
+<!-- Service Detail Modal -->
+<div class="modal" id="svcModal" role="dialog" aria-modal="true">
+  <div class="modal-bg" data-close></div>
+  <div class="modal-card" id="svcModalCard"></div>
+</div>
+
+<!-- Rückruf-Service -->
+<button class="callback-btn" id="cbBtn"><svg viewBox="0 0 24 24"><path d="M20 15.5a12.6 12.6 0 01-3.9-.6 1.1 1.1 0 00-1.1.3l-1.7 1.7a13.3 13.3 0 01-5.8-5.8l1.7-1.7a1.1 1.1 0 00.3-1.1A12.6 12.6 0 018.5 4a1.1 1.1 0 00-1.1-1H4.5A1.1 1.1 0 003.4 4 17 17 0 0020 20.6a1.1 1.1 0 001-1.1v-2.9a1.1 1.1 0 00-1-1.1z"/></svg> Rückruf-Service</button>
+<div class="modal" id="cbModal" role="dialog" aria-modal="true">
+  <div class="modal-bg" data-close></div>
+  <div class="modal-card" id="cbModalCard"></div>
+</div>
 
 <!-- WhatsApp float -->
 <a class="wa-float" id="waFloat" href="https://wa.me/49000000000" target="_blank" rel="noopener" aria-label="Per WhatsApp schreiben">
@@ -1052,7 +1103,7 @@ var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isInter
 document.querySelectorAll('.rv').forEach(function(el){io.observe(el);});
 
 var ring=document.getElementById('ring');
-new IntersectionObserver(function(es,o){es.forEach(function(e){if(e.isIntersecting){ring.classList.add('in');o.disconnect();}})},{threshold:.4}).observe(ring);
+if(ring){new IntersectionObserver(function(es,o){es.forEach(function(e){if(e.isIntersecting){ring.classList.add('in');o.disconnect();}})},{threshold:.4}).observe(ring);}
 
 function animateDash(){
   document.getElementById('donut').classList.add('in');
@@ -1268,5 +1319,58 @@ render();
   btn.onclick=open;close.onclick=shut;
   send.onclick=function(){var v=input.value.trim();if(!v)return;input.value='';ask(v);};
   input.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();send.onclick();}});
+})();
+
+// ---- Service Detail Modals ----
+(function(){
+  var svcs={
+    video:{ic:'<svg viewBox="0 0 24 24" fill="none" stroke="#0B0B0A" stroke-width="1.8"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="M16 10l6-4v12l-6-4z"/></svg>',t:'Video-Produktion',
+      d:'Bewegtbild verkauft. Wir produzieren Imagefilme, Werbevideos, Reels und Produktvideos – von der Idee über den Dreh bis zum finalen Schnitt. Hochwertig, markengerecht und plattformgerecht.',
+      v:['Mehr Vertrauen &amp; Reichweite','Professionelle Umsetzung','Vielseitig für Web, Social &amp; Ads']},
+    social:{ic:'<svg viewBox="0 0 24 24" fill="none" stroke="#0B0B0A" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/></svg>',t:'Social Media',
+      d:'Wir übernehmen deine Social-Media-Betreuung komplett: Strategie, Content-Produktion, Veröffentlichung und Community – Monat für Monat. Für einen konsistenten Auftritt und mehr Reichweite.',
+      v:['Regelmäßiger, hochwertiger Content','Mehr Sichtbarkeit &amp; Anfragen','Fester Ansprechpartner']},
+    web:{ic:'<svg viewBox="0 0 24 24" fill="none" stroke="#0B0B0A" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg>',t:'Webdesign',
+      d:'In Zeiten der Digitalisierung ist ein modernes, zielgruppenorientiertes Webdesign essentiell. Gerne erstellen wir dir deine neue Webseite, deinen Funnel oder deine Schulungsplattform.',
+      v:['Effizientere Kundengewinnung','100 % mobiloptimiertes Design','Passendes Corporate Design']},
+    grafik:{ic:'<svg viewBox="0 0 24 24" fill="none" stroke="#0B0B0A" stroke-width="1.8"><path d="M4 20V12M9 20V6M14 20v-9M19 20V9"/></svg>',t:'Grafikdesign',
+      d:'Von Logo über Social-Media-Templates bis zu Print: Wir gestalten visuelle Inhalte für Print- und Online-Medien – einheitlich, hochwertig und wiedererkennbar.',
+      v:['Einheitlicher Markenauftritt','Print &amp; Online aus einer Hand','Hochwertige Gestaltung']},
+    beratung:{ic:'<svg viewBox="0 0 24 24" fill="none" stroke="#0B0B0A" stroke-width="1.8"><path d="M14 3H6a2 2 0 00-2 2v14a2 2 0 002 2h12a2 2 0 002-2V9z"/><path d="M14 3v6h6"/></svg>',t:'Beratung &amp; Ads',
+      d:'Wir optimieren deine Marketingstrategie und schalten performante Werbeanzeigen auf Meta, Google, LinkedIn &amp; TikTok – mit Creatives, die wir selbst für dich produzieren.',
+      v:['Klare, datenbasierte Strategie','Ads, die Anfragen bringen','Transparentes Reporting']},
+    weiter:{ic:'<svg viewBox="0 0 24 24" fill="none" stroke="#0B0B0A" stroke-width="1.8"><path d="M22 10L12 5 2 10l10 5 10-5z"/></svg>',t:'Weiterbildung',
+      d:'Wir bieten berufliche Weiterbildung für Angestellte und Jobsuchende – praxisnah und auf die Anforderungen des modernen Marketings zugeschnitten.',
+      v:['Praxisnahe Inhalte','Flexibel &amp; verständlich','Zukunftssichere Skills']}
+  };
+  var modal=document.getElementById('svcModal'),card=document.getElementById('svcModalCard');
+  function open(key){var s=svcs[key];if(!s)return;
+    card.innerHTML='<button class="mx" aria-label="Schließen" data-close>×</button>'+
+      '<div class="mico">'+s.ic+'</div><h3>'+s.t+'</h3><p class="md">'+s.d+'</p>'+
+      '<p class="mv">Deine Vorteile mit Obscura:</p><ul>'+s.v.map(function(x){return '<li><span class="c">✓</span>'+x+'</li>';}).join('')+'</ul>'+
+      '<a href="#kontakt" class="btn btn-dark mcta" data-close>Genau das benötige ich <span class="ar">→</span></a>';
+    modal.classList.add('open');document.body.style.overflow='hidden';}
+  function close(){modal.classList.remove('open');document.body.style.overflow='';}
+  document.querySelectorAll('.svc[data-svc]').forEach(function(b){b.addEventListener('click',function(){open(b.dataset.svc);});});
+  modal.addEventListener('click',function(e){if(e.target.hasAttribute('data-close'))close();});
+  addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+})();
+
+// ---- Rückruf-Service ----
+(function(){
+  var btn=document.getElementById('cbBtn'),modal=document.getElementById('cbModal'),card=document.getElementById('cbModalCard');
+  function form(){card.innerHTML='<button class="mx" aria-label="Schließen" data-close>×</button>'+
+    '<div class="mico"><svg viewBox="0 0 24 24" fill="#0B0B0A"><path d="M20 15.5a12.6 12.6 0 01-3.9-.6 1.1 1.1 0 00-1.1.3l-1.7 1.7a13.3 13.3 0 01-5.8-5.8l1.7-1.7a1.1 1.1 0 00.3-1.1A12.6 12.6 0 018.5 4a1.1 1.1 0 00-1.1-1H4.5A1.1 1.1 0 003.4 4 17 17 0 0020 20.6a1.1 1.1 0 001-1.1v-2.9a1.1 1.1 0 00-1-1.1z"/></svg></div>'+
+    '<h3>Rückruf-Service</h3><p class="md">Lass uns deine Nummer da – wir rufen dich kostenlos und unverbindlich zurück.</p>'+
+    '<form id="cbForm"><input name="n" placeholder="Dein Name" required><input name="t" type="tel" placeholder="Deine Telefonnummer" required>'+
+    '<button type="submit" class="btn btn-dark mcta">Rückruf anfordern <span class="ar">→</span></button></form>';
+    document.getElementById('cbForm').addEventListener('submit',function(e){e.preventDefault();done();});}
+  function done(){card.innerHTML='<button class="mx" aria-label="Schließen" data-close>×</button><div class="mico">✓</div>'+
+    '<h3>Danke!</h3><p class="md">Wir melden uns schnellstmöglich telefonisch bei dir. Bis gleich!</p>'+
+    '<a href="#" class="btn btn-dark mcta" data-close>Schließen</a>';}
+  btn.onclick=function(){form();modal.classList.add('open');document.body.style.overflow='hidden';setTimeout(function(){var i=card.querySelector('input');if(i)i.focus();},100);};
+  function close(){modal.classList.remove('open');document.body.style.overflow='';}
+  modal.addEventListener('click',function(e){if(e.target.hasAttribute('data-close')){e.preventDefault();close();}});
+  addEventListener('keydown',function(e){if(e.key==='Escape')close();});
 })();
 </script>
