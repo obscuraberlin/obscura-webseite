@@ -8,7 +8,7 @@
 :root{
   --canvas:#FBFBF8; --surface:#FFFFFF; --soft:#F3F3EE; --line:#E8E8E1;
   --ink:#0B0B0A; --muted:#78786C; --faint:#A9A99E;
-  --lime:#C7FF18; --lime-ink:#5E7A00; --dark:#0C0C0A;
+  --lime:#A6D93B; --lime-soft:#B9E45F; --lime-ink:#4E6B14; --dark:#0C0C0A;
   --display:'Archivo',sans-serif; --body:'Instrument Sans',sans-serif; --mono:'JetBrains Mono',monospace;
   --r:18px; --maxw:1200px;
 }
@@ -657,6 +657,29 @@ footer{background:var(--dark);color:#f5f5f0;padding:4.5rem 0 2rem}
 .contact-info .ci-links{display:flex;flex-direction:column;gap:.5rem}
 .contact-info .ci-links a{display:inline-flex;align-items:center;gap:.5rem;font-size:.9rem;font-weight:600;color:var(--ink)}
 .contact-info .ci-links a:hover{color:var(--lime-ink)}
+/* scroll progress */
+.scroll-prog{position:fixed;top:0;left:0;right:0;height:3px;z-index:65;pointer-events:none}
+.scroll-prog i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--lime-ink),var(--lime));box-shadow:0 0 12px rgba(166,217,59,.55)}
+/* hero aurora */
+.aurora{position:absolute;inset:-25% -10% auto -10%;height:130%;z-index:0;pointer-events:none;filter:blur(72px);opacity:.55;
+  background:radial-gradient(38% 48% at 18% 28%,rgba(166,217,59,.38),transparent 60%),
+            radial-gradient(34% 44% at 82% 18%,rgba(120,160,255,.16),transparent 60%),
+            radial-gradient(40% 50% at 62% 82%,rgba(166,217,59,.16),transparent 60%);
+  animation:aur 18s ease-in-out infinite alternate}
+@keyframes aur{to{transform:translate3d(3%,-3%,0) scale(1.08)}}
+.hero .wrap{position:relative;z-index:2}
+/* marquee logos */
+.logos.marquee{flex-wrap:nowrap;overflow:hidden;justify-content:flex-start;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
+.logos.marquee .track{display:flex;gap:2.6rem;align-items:center;width:max-content;animation:logoscroll 36s linear infinite}
+.logos.marquee:hover .track{animation-play-state:paused}
+.logos.marquee .track b{white-space:nowrap}
+@keyframes logoscroll{to{transform:translateX(-50%)}}
+/* page grain */
+.pagegrain{position:fixed;inset:0;z-index:9998;pointer-events:none;opacity:.028;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.btn{will-change:transform}
 /* scroll haptic */
 html{scroll-snap-type:y proximity}
 .snap{scroll-snap-align:start;scroll-snap-stop:normal}
@@ -718,10 +741,14 @@ html{scroll-snap-type:y proximity}
   <a href="#kontakt" class="btn btn-dark">Erstgespräch anfragen →</a>
 </div>
 
+<div class="scroll-prog" aria-hidden="true"><i id="scrollBar"></i></div>
+<div class="pagegrain" aria-hidden="true"></div>
+
 <main id="top">
 
 <!-- HERO -->
 <section class="hero snap">
+  <div class="aurora"></div>
   <div class="wrap hero-grid">
     <div class="rv in">
       <p class="eyebrow">Full-Service Marketing-Agentur · Berlin</p>
@@ -802,11 +829,11 @@ html{scroll-snap-type:y proximity}
 <section class="clients">
   <div class="wrap">
     <p class="eyebrow">Marken, die mit uns arbeiten</p>
-    <div class="logos">
+    <div class="logos marquee"><div class="track" id="logoTrack">
       <b>ROLLS-ROYCE</b><b>MADAME&nbsp;TUSSAUDS</b><b>AMAZON&nbsp;PRIME</b><b>ALLIANZ</b><b>MINI</b>
       <b>RTL</b><b>SEA&nbsp;LIFE</b><b>KENSINGTON</b><b>RILLER&nbsp;&amp;&nbsp;SCHNAUCK</b>
       <b>HOTEL&nbsp;ADLON</b><b>FRAMEN</b><b>WELLER&nbsp;ENERGIE</b><b>BRANDIDENT</b>
-    </div>
+    </div></div>
     <p class="phnote" style="margin-top:.9rem">Echte Referenzen · als reine Text-Logos dargestellt, mit Original-SVGs ersetzen</p>
   </div>
 </section>
@@ -1136,6 +1163,24 @@ html{scroll-snap-type:y proximity}
 (function(){var items=["Reels","Content","Social Media","Ads","Performance","Video","Foto","Strategie","Wachstum"];
 document.getElementById('tickTrack').innerHTML=(items.map(function(t){return '<span>'+t+' <span class="dot">✦</span></span>'}).join('')).repeat(2);})();
 document.getElementById('yr').textContent=new Date().getFullYear();
+
+// scroll progress bar
+var scrollBar=document.getElementById('scrollBar');
+if(scrollBar){addEventListener('scroll',function(){var h=document.documentElement.scrollHeight-innerHeight;
+  scrollBar.style.width=(h>0?(scrollY/h*100):0)+'%';},{passive:true});}
+
+// seamless logo marquee (duplicate content)
+var lt=document.getElementById('logoTrack');
+if(lt){lt.innerHTML=lt.innerHTML+lt.innerHTML;}
+
+// magnetic buttons (desktop, motion allowed)
+if(matchMedia('(hover:hover)').matches&&!matchMedia('(prefers-reduced-motion:reduce)').matches){
+  document.querySelectorAll('.btn').forEach(function(b){
+    b.addEventListener('pointermove',function(e){var r=b.getBoundingClientRect();
+      b.style.transform='translate('+((e.clientX-r.left-r.width/2)*0.18)+'px,'+((e.clientY-r.top-r.height/2)*0.28)+'px)';});
+    b.addEventListener('pointerleave',function(){b.style.transform='';});
+  });
+}
 
 var hdr=document.getElementById('hdr');
 addEventListener('scroll',function(){if(scrollY>16){hdr.classList.add('scrolled');hdr.classList.remove('top');}else{hdr.classList.add('top');hdr.classList.remove('scrolled');}},{passive:true});
