@@ -535,6 +535,74 @@ footer{background:var(--dark);color:#f5f5f0;padding:4.5rem 0 2rem}
 .risk{display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;justify-content:center;margin-top:1.5rem}
 .risk span{display:flex;align-items:center;gap:.45rem;font-size:.9rem;color:#55554b}
 .risk .c{color:var(--lime-ink);font-weight:800}
+/* benefits */
+.benefits{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2.5rem}
+.bc{border:1px solid var(--line);background:var(--surface);border-radius:var(--r);padding:1.6rem;transition:transform .3s,box-shadow .3s}
+.bc:hover{transform:translateY(-4px);box-shadow:0 22px 44px -26px rgba(0,0,0,.28)}
+.bc .ic{width:48px;height:48px;border-radius:13px;background:var(--soft);display:grid;place-items:center;margin-bottom:1.1rem}
+.bc .ic svg{width:24px;height:24px;stroke:var(--ink);fill:none;stroke-width:1.6}
+.bc h3{font-family:var(--display);font-weight:700;font-size:1.12rem}
+.bc p{font-size:.88rem;color:var(--muted);margin-top:.4rem}
+/* 3D coverflow */
+.cover{position:relative;height:430px;margin-top:2.5rem;perspective:1500px;overflow:hidden;touch-action:pan-y}
+.cover-stage{position:absolute;inset:0;transform-style:preserve-3d;cursor:grab}
+.cover-stage.drag{cursor:grabbing}
+.cover-card{position:absolute;left:50%;top:50%;width:224px;height:392px;margin:-196px 0 0 -112px;border-radius:22px;overflow:hidden;
+  box-shadow:0 30px 60px -22px rgba(0,0,0,.5);transition:transform .55s cubic-bezier(.16,1,.3,1),opacity .55s,filter .55s;
+  will-change:transform;border:1px solid rgba(0,0,0,.06)}
+.cover-card .scene{position:absolute;inset:0}
+.cover-card .co{position:absolute;inset:0;z-index:4;display:flex;flex-direction:column;justify-content:flex-end;padding:1.1rem;
+  background:linear-gradient(0deg,rgba(0,0,0,.74),transparent 56%)}
+.cover-card .cat{font-family:var(--mono);font-size:.6rem;letter-spacing:.06em;text-transform:uppercase;color:var(--lime)}
+.cover-card h4{font-family:var(--display);font-weight:700;color:#fff;font-size:1.05rem;margin-top:.2rem}
+.cover-card .views{color:rgba(255,255,255,.72);font-size:.74rem;margin-top:.1rem;font-family:var(--mono)}
+.cover-card .play{opacity:0;transition:opacity .4s}
+.cover-card.active .play{opacity:1}
+.cover-nav{display:flex;justify-content:center;align-items:center;gap:.8rem;margin-top:1.5rem}
+.cover-nav button{width:46px;height:46px;border-radius:100px;border:1px solid var(--line);background:var(--surface);
+  cursor:pointer;font-size:1.35rem;color:var(--ink);display:grid;place-items:center;transition:.2s}
+.cover-nav button:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+.cover-nav .dots{display:flex;gap:.4rem}
+.cover-nav .dots i{width:7px;height:7px;border-radius:100px;background:var(--line);transition:.3s;cursor:pointer}
+.cover-nav .dots i.on{background:var(--lime-ink);width:20px;border-radius:100px}
+/* team */
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2.5rem}
+.tm{border:1px solid var(--line);background:var(--surface);border-radius:var(--r);overflow:hidden}
+.tm .scene{aspect-ratio:4/5}
+.tm .mm{padding:1rem}.tm h3{font-family:var(--display);font-weight:700;font-size:1rem}.tm p{font-size:.82rem;color:var(--muted)}
+/* whatsapp + chat floats */
+.wa-float{position:fixed;right:1.1rem;bottom:5.4rem;z-index:58;width:54px;height:54px;border-radius:100px;background:#25D366;
+  display:grid;place-items:center;box-shadow:0 12px 28px rgba(0,0,0,.25);transition:transform .25s}
+.wa-float:hover{transform:scale(1.09)}.wa-float svg{width:30px;height:30px;fill:#fff}
+.chat-btn{position:fixed;right:1.1rem;bottom:1.1rem;z-index:58;height:54px;padding:0 1.15rem;border-radius:100px;background:var(--ink);
+  color:#fff;border:0;cursor:pointer;display:flex;align-items:center;gap:.55rem;font-weight:600;box-shadow:0 12px 30px rgba(0,0,0,.3);font-family:var(--body);font-size:.92rem}
+.chat-btn .dot{width:8px;height:8px;border-radius:100px;background:var(--lime);box-shadow:0 0 0 0 rgba(199,255,24,.6);animation:pulse 2s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 8px rgba(199,255,24,0)}100%{box-shadow:0 0 0 0 rgba(199,255,24,0)}}
+.chat-panel{position:fixed;right:1.1rem;bottom:1.1rem;z-index:61;width:min(380px,calc(100vw - 2rem));height:min(560px,calc(100vh - 2rem));
+  background:var(--surface);border:1px solid var(--line);border-radius:22px;box-shadow:0 30px 70px -20px rgba(0,0,0,.45);
+  display:none;flex-direction:column;overflow:hidden}
+.chat-panel.open{display:flex}
+.chat-top{background:var(--ink);color:#fff;padding:1rem 1.2rem;display:flex;align-items:center;gap:.7rem}
+.chat-top .av{width:38px;height:38px;border-radius:100px;background:var(--lime);color:var(--ink);display:grid;place-items:center;font-weight:800;font-family:var(--display)}
+.chat-top b{font-size:.95rem}.chat-top small{display:block;color:rgba(255,255,255,.62);font-size:.72rem}
+.chat-top .x{margin-left:auto;background:none;border:0;color:#fff;font-size:1.4rem;cursor:pointer;line-height:1}
+.chat-body{flex:1;overflow-y:auto;padding:1.1rem;display:flex;flex-direction:column;gap:.7rem;background:var(--canvas)}
+.msg{max-width:84%;padding:.7rem .9rem;border-radius:14px;font-size:.9rem;line-height:1.42}
+.msg.bot{background:var(--surface);border:1px solid var(--line);align-self:flex-start;border-bottom-left-radius:4px}
+.msg.user{background:var(--ink);color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
+.chat-chips{display:flex;flex-wrap:wrap;gap:.4rem;padding:0 1.1rem .8rem;background:var(--canvas)}
+.chat-chips button{border:1px solid var(--line);background:var(--surface);border-radius:100px;padding:.4rem .8rem;font-size:.8rem;cursor:pointer;font-family:var(--body);transition:.2s}
+.chat-chips button:hover{border-color:var(--ink);background:var(--soft)}
+.chat-in{display:flex;gap:.5rem;padding:.8rem;border-top:1px solid var(--line);background:var(--surface)}
+.chat-in input{flex:1;border:1px solid var(--line);border-radius:100px;padding:.65rem .95rem;font-size:.9rem;outline:none;font-family:var(--body)}
+.chat-in input:focus{border-color:var(--ink)}
+.chat-in button{border:0;background:var(--lime);color:var(--ink);border-radius:100px;width:42px;cursor:pointer;font-size:1.1rem}
+.wa-head{display:none;width:40px;height:40px;border-radius:100px;background:#25D366;place-items:center}
+.wa-head svg{width:22px;height:22px;fill:#fff}
+@media(min-width:1001px){.wa-head{display:grid}}
+/* scroll haptic */
+html{scroll-snap-type:y proximity}
+.snap{scroll-snap-align:start;scroll-snap-stop:normal}
 /* reveal */
 .rv{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
 .rv.in{opacity:1;transform:none}
@@ -549,6 +617,10 @@ footer{background:var(--dark);color:#f5f5f0;padding:4.5rem 0 2rem}
   .stat-grid{grid-template-columns:1fr 1fr;gap:2rem 1rem}.stat:nth-child(3){border-left:0}
   .ps{grid-template-columns:1fr}.connector{margin:0 auto;transform:rotate(90deg)}
   .report,.film-sec,.lt,.vids,.check-grid{grid-template-columns:1fr}
+  .benefits{grid-template-columns:1fr 1fr}.team-grid{grid-template-columns:1fr 1fr}
+  .cover{height:400px}.cover-card{width:190px;height:332px;margin:-166px 0 0 -95px}
+  .wa-float{bottom:5rem;width:50px;height:50px}.chat-btn{bottom:.8rem;left:.8rem;right:auto}
+  .chat-panel{bottom:.8rem}
   .steps{grid-template-columns:1fr;gap:0}
   .steps .line{left:21px;right:auto;top:0;bottom:0;width:2px;height:auto}
   .steps .line .fill{width:100%!important;height:0}.steps .line .fill.v{transition:height 1.4s ease}
@@ -558,9 +630,9 @@ footer{background:var(--dark);color:#f5f5f0;padding:4.5rem 0 2rem}
   .smcta{display:block}
 }
 @media(max-width:560px){
-  .bento,.proj,.team,.reviews,.stories{grid-template-columns:1fr}
+  .bento,.proj,.team,.reviews,.stories,.benefits,.team-grid{grid-template-columns:1fr}
   .bento .big,.bento .wide{grid-column:span 1}.foot-grid{grid-template-columns:1fr}
-  .cases{grid-template-columns:1fr;grid-auto-rows:200px}.case.feat{grid-column:span 1;grid-row:span 1}
+  .cases{grid-template-columns:1fr;grid-auto-rows:190px}.case.feat{grid-column:span 1;grid-row:span 1}
   .stat-grid{grid-template-columns:1fr 1fr}
   .float{display:none}
 }
@@ -571,9 +643,10 @@ footer{background:var(--dark);color:#f5f5f0;padding:4.5rem 0 2rem}
   <div class="wrap nav">
     <a href="#top" class="logo">OBSCURA<sup>®</sup></a>
     <nav class="nav-links">
-      <a href="#leistungen">Leistungen</a><a href="#check">Gratis-Check</a><a href="#projekte">Projekte</a><a href="#vergleich">Vergleich</a><a href="#kontakt">Kontakt</a>
+      <a href="#leistungen">Leistungen</a><a href="#check">Gratis-Check</a><a href="#projekte">Projekte</a><a href="#team">Über uns</a><a href="#kontakt">Kontakt</a>
     </nav>
     <div class="nav-r">
+      <a class="wa-head" href="https://wa.me/49000000000" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M.06 24l1.68-6.15A11.9 11.9 0 010 11.9C0 5.33 5.35 0 11.92 0a11.82 11.82 0 018.42 3.49 11.82 11.82 0 013.49 8.42c0 6.57-5.35 11.9-11.92 11.9a11.9 11.9 0 01-5.7-1.45L.06 24zM6.6 20.13l.36.22a9.9 9.9 0 005.05 1.38 9.9 9.9 0 009.9-9.9 9.9 9.9 0 00-16.9-7 9.9 9.9 0 00-2.9 7 9.9 9.9 0 001.5 5.26l.24.38-1 3.65 3.75-.99zM17.4 14.3c-.09-.15-.33-.24-.69-.42-.36-.18-2.13-1.05-2.46-1.17-.33-.12-.57-.18-.81.18-.24.36-.93 1.17-1.14 1.41-.21.24-.42.27-.78.09-.36-.18-1.52-.56-2.9-1.79-1.07-.95-1.79-2.13-2-2.49-.21-.36-.02-.55.16-.73.16-.16.36-.42.54-.63.18-.21.24-.36.36-.6.12-.24.06-.45-.03-.63-.09-.18-.81-1.95-1.11-2.67-.29-.7-.59-.6-.81-.61l-.69-.01c-.24 0-.63.09-.96.45-.33.36-1.26 1.23-1.26 3s1.29 3.48 1.47 3.72c.18.24 2.54 3.88 6.15 5.44.86.37 1.53.59 2.05.76.86.27 1.64.23 2.26.14.69-.1 2.13-.87 2.43-1.71.3-.84.3-1.56.21-1.71z"/></svg></a>
       <a href="#kontakt" class="btn btn-dark">Erstgespräch <span class="ar">→</span></a>
       <button class="burger" id="burger" aria-label="Menü öffnen"><span></span></button>
     </div>
@@ -588,7 +661,7 @@ footer{background:var(--dark);color:#f5f5f0;padding:4.5rem 0 2rem}
 <main id="top">
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero snap">
   <div class="wrap hero-grid">
     <div class="rv in">
       <p class="eyebrow">Social Media · Content · Performance</p>
@@ -663,25 +736,25 @@ footer{background:var(--dark);color:#f5f5f0;padding:4.5rem 0 2rem}
 <!-- CLIENTS -->
 <section class="clients">
   <div class="wrap">
-    <p class="eyebrow">Vertraut von Marken und Unternehmen</p>
-    <div class="logos"><b>BMW</b><b>ROLLS-ROYCE</b><b>KENSINGTON</b><b>RILLER&nbsp;&amp;&nbsp;SCHNAUCK</b><b>SIROKO</b></div>
+    <p class="eyebrow">Marken, die mit uns arbeiten</p>
+    <div class="logos">
+      <b>BMW</b><b>ROLLS-ROYCE</b><b>RILLER&nbsp;&amp;&nbsp;SCHNAUCK</b><b>KENSINGTON</b>
+      <b>HOTEL&nbsp;ADLON</b><b>AMAZON&nbsp;PRIME</b><b>MADAME&nbsp;TUSSAUDS</b><b>SIROKO</b>
+    </div>
+    <p class="phnote" style="margin-top:.9rem">Platzhalter-Auswahl · mit echten, freigegebenen Kundenlogos ersetzen</p>
   </div>
 </section>
 
-<!-- STATS -->
-<section class="stats">
+<!-- BENEFITS -->
+<section class="sec snap" style="padding-top:5rem">
   <div class="wrap">
-    <p class="eyebrow rv" style="text-align:center;display:block;color:var(--lime)">Ergebnisse, die zählen</p>
-    <div class="stat-grid">
-      <div class="stat rv"><b data-count="230" data-prefix="+" data-suffix="%">+0%</b><span>durchschnittlich mehr Reichweite</span></div>
-      <div class="stat rv"><b data-count="100" data-suffix="+">0+</b><span>betreute Kanäle &amp; Projekte</span></div>
-      <div class="stat rv"><b data-static="3,4 Mio.">3,4 Mio.</b><span>monatliche Aufrufe</span></div>
-      <div class="stat rv"><b data-static="4,9 ★">4,9 ★</b><span>durchschnittliche Bewertung</span></div>
-    </div>
-    <p class="stat-note">Beispielwerte · Demo – mit echten Obscura-Zahlen ersetzen</p>
-    <div class="badges rv">
-      <span class="lbl">Wir arbeiten mit</span>
-      <b>Meta Ads</b><b>Google</b><b>Instagram</b><b>TikTok</b><b>YouTube</b>
+    <p class="eyebrow rv">Was du davon hast</p>
+    <h2 class="rv" style="margin-top:1rem">Wir bauen deine Marke –<br>und bringen dir Ergebnisse.</h2>
+    <div class="benefits">
+      <div class="bc rv"><div class="ic"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div><h3>Neue Kunden</h3><p>Mehr Sichtbarkeit und qualifizierte Anfragen über deine Kanäle.</p></div>
+      <div class="bc rv"><div class="ic"><svg viewBox="0 0 24 24"><polygon points="12 2 15 8.5 22 9.3 17 14 18.5 21 12 17.5 5.5 21 7 14 2 9.3 9 8.5"/></svg></div><h3>Starke Marke</h3><p>Ein hochwertiger, wiedererkennbarer Auftritt – konsistent über alle Plattformen.</p></div>
+      <div class="bc rv"><div class="ic"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg></div><h3>Neue Mitarbeiter</h3><p>Employer Branding &amp; Recruiting-Content, der die richtigen Leute anzieht.</p></div>
+      <div class="bc rv"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><h3>Mehr Zeit</h3><p>Du führst dein Business – wir übernehmen den kompletten Marketing-Aufwand.</p></div>
     </div>
   </div>
 </section>
@@ -712,10 +785,10 @@ footer{background:var(--dark);color:#f5f5f0;padding:4.5rem 0 2rem}
 <!-- SYSTEM (light) -->
 <section class="sec" id="leistungen">
   <div class="wrap">
-    <div style="max-width:46ch" class="rv">
-      <p class="eyebrow">Wir kümmern uns.</p>
-      <h2 style="margin-top:1rem">Dein kompletter Social-Media-Auftritt. <span class="lime">Monatlich betreut.</span></h2>
-      <p class="lead">Wir übernehmen Strategie, Content, Veröffentlichung und Optimierung – damit du dich auf dein Unternehmen konzentrieren kannst. Obscura wird zu deinem externen Social-Media-Team.</p>
+    <div style="max-width:52ch" class="rv">
+      <p class="eyebrow">Alles aus einer Hand</p>
+      <h2 style="margin-top:1rem">Von Social Media bis Imagefilm. <span class="lime">Monatlich betreut.</span></h2>
+      <p class="lead">Rund 70 % Social-Media-Betreuung – plus Imagefilme, Werbevideos, Produktfotos &amp; -videos. Strategie, Produktion, Veröffentlichung und Ads: alles bei einem Partner.</p>
     </div>
     <div class="sys">
       <div class="col">
@@ -728,30 +801,16 @@ footer{background:var(--dark);color:#f5f5f0;padding:4.5rem 0 2rem}
         <div class="lbl"><small>Dein</small><b>Wachstum</b></div>
       </div>
       <div class="col">
-        <div class="node r rv"><div class="nt">Ads &amp; Kampagnen<span class="pt"></span></div><p>Meta Ads · Instagram Ads · Targeting · Optimierung</p></div>
-        <div class="node r rv"><div class="nt">Analyse &amp; Reporting<span class="pt"></span></div><p>Reichweite · Engagement · Leads · Performance</p></div>
-        <div class="node r rv"><div class="nt">Weiterentwicklung<span class="pt"></span></div><p>Testing · Neue Ideen · Optimierung · Skalierung</p></div>
+        <div class="node r rv"><div class="nt">Ads &amp; Kampagnen<span class="pt"></span></div><p>Meta · Google · LinkedIn · TikTok Ads</p></div>
+        <div class="node r rv"><div class="nt">Film &amp; Foto<span class="pt"></span></div><p>Imagefilm · Werbevideo · Produktfoto · Produktvideo</p></div>
+        <div class="node r rv"><div class="nt">Marke &amp; Reporting<span class="pt"></span></div><p>Markenaufbau · Recruiting · Analyse · Optimierung</p></div>
       </div>
     </div>
-    <div style="text-align:center;margin-top:3rem" class="rv"><a href="#content" class="btn btn-dark">Alle Leistungen entdecken <span class="ar">→</span></a></div>
-  </div>
-</section>
-
-<!-- BENTO -->
-<section class="sec" style="background:var(--soft)">
-  <div class="wrap">
-    <h2 class="rv">Was du jeden Monat<br>von uns bekommst.</h2>
-    <div class="bento">
-      <div class="b big rv"><span class="no">01</span><div><h3>Monatlich neuer Content</h3><p>Regelmäßige Reels, Videos, Fotos, Posts und Stories – hochwertig und markengerecht.</p></div></div>
-      <div class="b rv"><span class="no">02</span><h3>Content Plan</h3><p>Du weißt vorab, was produziert und veröffentlicht wird.</p></div>
-      <div class="b rv"><span class="no">03</span><h3>Betreuung</h3><p>Wir kümmern uns um deine Kanäle.</p></div>
-      <div class="b rv"><span class="no">04</span><h3>Veröffentlichung</h3><p>Wir posten regelmäßig – zur richtigen Zeit.</p></div>
-      <div class="b rv"><span class="no">05</span><h3>Community</h3><p>Kommentare &amp; Interaktionen betreut.</p></div>
-      <div class="b wide rv"><span class="no">06</span><h3>Werbeanzeigen</h3><p>Geeignete Inhalte können zusätzlich beworben werden – Content und Ads greifen ineinander.</p></div>
-      <div class="b rv"><span class="no">07</span><h3>Reporting</h3><p>Transparente Zahlen, jeden Monat.</p></div>
-      <div class="b wide rv"><span class="no">08</span><h3>Fester Ansprechpartner</h3><p>Eine Person kennt dein Unternehmen und koordiniert alles.</p></div>
-      <div class="b rv"><span class="no">09</span><h3>Optimierung</h3><p>Wir verbessern Inhalte &amp; Strategie laufend.</p></div>
+    <div style="margin-top:2.5rem" class="rv badges" data-badges>
+      <span class="lbl" style="color:var(--muted)">Plattformen</span>
+      <b style="color:var(--muted)">Instagram</b><b style="color:var(--muted)">TikTok</b><b style="color:var(--muted)">YouTube</b><b style="color:var(--muted)">LinkedIn</b><b style="color:var(--muted)">Google</b><b style="color:var(--muted)">Meta</b>
     </div>
+    <div style="text-align:center;margin-top:2rem" class="rv"><a href="#kontakt" class="btn btn-dark">Kostenloses Erstgespräch <span class="ar">→</span></a></div>
   </div>
 </section>
 
@@ -779,54 +838,29 @@ footer{background:var(--dark);color:#f5f5f0;padding:4.5rem 0 2rem}
   </div>
 </section>
 
-<!-- REPORTING (light) -->
-<section class="sec" style="background:var(--soft)">
-  <div class="wrap report">
-    <div class="rv">
-      <p class="eyebrow">Reporting &amp; Performance</p>
-      <h2 style="margin-top:1rem">Du siehst, was wirkt.</h2>
-      <p class="lead">Jeden Monat bekommst du einen klaren Überblick über Reichweite, Interaktionen, Wachstum und Kampagnenperformance.</p>
-      <div class="metricrow"><span>Reichweite</span><span>Profilbesuche</span><span>Engagement</span><span>Follower</span><span>Website Klicks</span><span>Anfragen</span><span>Ad Performance</span></div>
-    </div>
-    <div class="dash rv">
-      <div class="dh"><b>Performance Überblick</b><span class="demo-tag">Demo Data</span></div>
-      <div class="dash-grid">
-        <div class="tile" style="display:flex;flex-direction:column;align-items:center;justify-content:center">
-          <div class="donut" id="donut"><svg width="92" height="92"><circle class="dc" cx="46" cy="46" r="33"/><circle class="dp" cx="46" cy="46" r="33"/></svg><div class="dn" data-count="75" data-suffix="%">0%</div></div>
-          <small style="margin-top:.5rem;color:var(--faint)">Engagement · Demo</small>
-        </div>
-        <div class="tile"><small>Reichweite</small><div class="big-n" data-count="230" data-prefix="+" data-suffix="%">+0%</div><small style="color:var(--faint)">Platzhalter · Demo</small></div>
-      </div>
-      <div class="tile" style="margin-top:.7rem"><small>Wachstum · letzte 7 Perioden</small>
-        <div class="bars" id="bars"><i data-h="38"></i><i data-h="52"></i><i data-h="44"></i><i data-h="66"></i><i data-h="58"></i><i data-h="78"></i><i data-h="94"></i></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTENT RAILS -->
-<section class="sec" id="content">
+<!-- CONTENT RAILS (3D coverflow) -->
+<section class="sec snap" id="content">
   <div class="wrap">
-    <p class="eyebrow rv">Content, der verbindet.</p>
-    <h2 class="rv" style="margin-top:1rem">Content, der deine Marke in Bewegung bringt.</h2>
-    <div class="filters rv" id="filters"><button class="on">Alle</button><button>Reels</button><button>Videos</button><button>Fotos</button><button>Imagefilme</button><button>Behind the Scenes</button><button>Automotive</button><button>Immobilien</button></div>
+    <p class="eyebrow rv">Content, der performt</p>
+    <h2 class="rv" style="margin-top:1rem">Reels, die deine Marke<br>in Bewegung bringen.</h2>
+    <p class="lead rv">Zieh dich durch – wisch oder klick dich durch echte Content-Beispiele aus unseren Produktionen.</p>
   </div>
-  <div class="wrap"><div class="rail-h"><h3>Reels · 9:16</h3><div class="rail-btns"><button class="rb" data-dir="-1" aria-label="Zurück">‹</button><button class="rb" data-dir="1" aria-label="Weiter">›</button></div></div></div>
-  <div class="wrap"><div class="rail" data-rail>
-    <div class="scene r-reel g-auto"><span class="bg"></span><span class="grain"></span><div class="ig-top"><span class="av"></span><span class="nm">obscura.berlin<small>Automotive</small></span></div><span class="play"><svg width="14" height="16" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span><div class="ig-bot"><div class="ig-acts"><svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M12 21s-7-4.5-9.5-8.5C.5 9 2 6 5 6c2 0 3 1.5 3 1.5S9 6 11 6c3 0 4.5 3 2.5 6.5C11 16.5 12 21 12 21z" opacity=".9"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M21 11.5a8.4 8.4 0 01-9 8 8.4 8.4 0 01-4-1L3 20l1.5-4.5a8.4 8.4 0 01-.5-4 8.4 8.4 0 019-8 8.4 8.4 0 018 8z"/></svg></div><div class="ig-cap"><b>Reel · 12,3 Tsd. Aufrufe</b>Automotive Reel</div></div></div>
-    <div class="scene r-reel g-interior"><span class="bg"></span><span class="grain"></span><div class="ig-top"><span class="av"></span><span class="nm">obscura.berlin<small>Behind the Scenes</small></span></div><span class="play"><svg width="14" height="16" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span><div class="ig-bot"><div class="ig-cap"><b>Reel · Behind the Scenes</b>Echte Einblicke</div></div></div>
-    <div class="scene r-reel g-realestate"><span class="bg"></span><span class="grain"></span><div class="ig-top"><span class="av"></span><span class="nm">obscura.berlin<small>Immobilien</small></span></div><span class="play"><svg width="14" height="16" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span><div class="ig-bot"><div class="ig-cap"><b>Reel · Immobilien</b>Deine Marke in Szene</div></div></div>
-    <div class="scene r-reel g-nature"><span class="bg"></span><span class="grain"></span><div class="ig-top"><span class="av"></span><span class="nm">obscura.berlin<small>Drohne</small></span></div><span class="play"><svg width="14" height="16" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span><div class="ig-bot"><div class="ig-cap"><b>Reel · 9,4 Tsd. Aufrufe</b>Drohnenaufnahme</div></div></div>
-    <div class="scene r-reel g-city"><span class="bg"></span><span class="grain"></span><div class="ig-top"><span class="av"></span><span class="nm">obscura.berlin<small>Social</small></span></div><span class="play"><svg width="14" height="16" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span><div class="ig-bot"><div class="ig-cap"><b>Reel · Social Media</b>Content der performt</div></div></div>
-    <div class="scene r-reel g-product"><span class="bg"></span><span class="grain"></span><div class="ig-top"><span class="av"></span><span class="nm">obscura.berlin<small>Produkt</small></span></div><span class="play"><svg width="14" height="16" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span><div class="ig-bot"><div class="ig-cap"><b>Reel · Produkt</b>Produktvideo</div></div></div>
-  </div></div>
-  <div class="wrap"><div class="rail-h"><h3>Filme · 16:9</h3><div class="rail-btns"><button class="rb" data-dir="-1" aria-label="Zurück">‹</button><button class="rb" data-dir="1" aria-label="Weiter">›</button></div></div></div>
-  <div class="wrap"><div class="rail" data-rail>
-    <div class="scene r-film g-interior"><span class="bg"></span><span class="grain"></span><span class="play"><svg width="15" height="17" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span><div class="ig-bot"><div class="ig-cap"><b>Imagefilm</b>Unternehmensfilm</div></div></div>
-    <div class="scene r-film g-auto2"><span class="bg"></span><span class="grain"></span><span class="play"><svg width="15" height="17" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span><div class="ig-bot"><div class="ig-cap"><b>Corporate</b>Kampagnenfilm</div></div></div>
-    <div class="scene r-film g-nature"><span class="bg"></span><span class="grain"></span><span class="play"><svg width="15" height="17" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span><div class="ig-bot"><div class="ig-cap"><b>Kampagne</b>Brand Film</div></div></div>
-    <div class="scene r-film g-team"><span class="bg"></span><span class="grain"></span><span class="play"><svg width="15" height="17" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span><div class="ig-bot"><div class="ig-cap"><b>Recruiting</b>Recruiting Film</div></div></div>
-  </div></div>
+  <div class="cover rv" id="cover">
+    <div class="cover-stage" id="coverStage">
+      <div class="cover-card" data-i="0"><div class="scene g-auto"><span class="bg"></span><span class="grain"></span></div><span class="play"><svg width="16" height="18" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span><div class="co"><span class="cat">Automotive</span><h4>Automotive Reel</h4><span class="views">▶ 12,3 Tsd. Aufrufe</span></div></div>
+      <div class="cover-card" data-i="1"><div class="scene g-interior"><span class="bg"></span><span class="grain"></span></div><span class="play"><svg width="16" height="18" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span><div class="co"><span class="cat">Behind the Scenes</span><h4>Echte Einblicke</h4><span class="views">▶ 8,7 Tsd. Aufrufe</span></div></div>
+      <div class="cover-card" data-i="2"><div class="scene g-realestate"><span class="bg"></span><span class="grain"></span></div><span class="play"><svg width="16" height="18" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span><div class="co"><span class="cat">Immobilien</span><h4>Deine Marke in Szene</h4><span class="views">▶ 11,1 Tsd. Aufrufe</span></div></div>
+      <div class="cover-card" data-i="3"><div class="scene g-nature"><span class="bg"></span><span class="grain"></span></div><span class="play"><svg width="16" height="18" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span><div class="co"><span class="cat">Drohne</span><h4>Drohnenaufnahme</h4><span class="views">▶ 9,4 Tsd. Aufrufe</span></div></div>
+      <div class="cover-card" data-i="4"><div class="scene g-city"><span class="bg"></span><span class="grain"></span></div><span class="play"><svg width="16" height="18" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span><div class="co"><span class="cat">Social Media</span><h4>Content der performt</h4><span class="views">▶ 14,2 Tsd. Aufrufe</span></div></div>
+      <div class="cover-card" data-i="5"><div class="scene g-product"><span class="bg"></span><span class="grain"></span></div><span class="play"><svg width="16" height="18" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span><div class="co"><span class="cat">Produkt</span><h4>Produktvideo</h4><span class="views">▶ 7,8 Tsd. Aufrufe</span></div></div>
+    </div>
+  </div>
+  <div class="cover-nav">
+    <button id="coverPrev" aria-label="Zurück">‹</button>
+    <div class="dots" id="coverDots"></div>
+    <button id="coverNext" aria-label="Weiter">›</button>
+  </div>
+  <p class="wrap phnote" style="text-align:center;margin-top:1rem">Beispiel-Content · Aufrufe als Demo · mit echten Reels ersetzen</p>
 </section>
 
 <!-- CASES -->
@@ -859,9 +893,24 @@ footer{background:var(--dark);color:#f5f5f0;padding:4.5rem 0 2rem}
         <div class="co"><span class="brand">BMW</span><h3>Content &amp; Reels</h3><span class="go">Case ansehen →</span></div>
       </div>
       <div class="case rv">
+        <div class="scene g-city"><span class="bg"></span><span class="grain"></span></div>
+        <div class="co"><span class="brand">Hotel Adlon</span><h3>Social Media &amp; Foto</h3><span class="go">Case ansehen →</span></div>
+      </div>
+      <div class="case rv">
+        <div class="scene g-team"><span class="bg"></span><span class="grain"></span></div>
+        <div class="co"><span class="brand">Amazon Prime</span><h3>Content Produktion</h3><span class="go">Case ansehen →</span></div>
+      </div>
+      <div class="case rv">
+        <div class="scene g-product"><span class="bg"></span><span class="grain"></span></div>
+        <div class="co"><span class="brand">Madame Tussauds</span><h3>Reels &amp; Kampagne</h3><span class="go">Case ansehen →</span></div>
+      </div>
+      <div class="case rv">
         <div class="scene g-nature"><span class="bg"></span><span class="grain"></span></div>
         <div class="co"><span class="brand">Siroko</span><h3>Content Creation</h3><span class="go">Case ansehen →</span></div>
       </div>
+      <a href="#kontakt" class="case rv" style="display:grid;place-items:center;background:rgba(255,255,255,.03);border:1px dashed rgba(255,255,255,.18)">
+        <div style="text-align:center"><div style="font-family:var(--display);font-weight:800;font-size:1.4rem;color:#fff">+ 20 Marken</div><div style="color:rgba(255,255,255,.55);font-size:.8rem;margin-top:.2rem">Erstgespräch anfragen →</div></div>
+      </a>
     </div>
     <p class="cases-note">Beispiel-Cases · mit echten Obscura-Projekten &amp; freigegebenen Ergebnissen ersetzen</p>
   </div>
@@ -896,13 +945,33 @@ footer{background:var(--dark);color:#f5f5f0;padding:4.5rem 0 2rem}
   </div>
 </section>
 
+<!-- TEAM -->
+<section class="sec snap" id="team" style="background:var(--soft)">
+  <div class="wrap">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1rem" class="rv">
+      <div style="max-width:44ch">
+        <p class="eyebrow">Über uns · Berlin</p>
+        <h2 style="margin-top:1rem">Das Team hinter Obscura.</h2>
+        <p class="lead">Ein eingespieltes Team aus Strategen, Filmern und Performance-Marketern – aus Berlin, deutschlandweit für dich im Einsatz.</p>
+      </div>
+      <a href="#kontakt" class="btn btn-ghost">Lern uns kennen <span class="ar">→</span></a>
+    </div>
+    <div class="team-grid">
+      <div class="tm rv"><div class="scene g-team"><span class="bg"></span><span class="grain"></span></div><div class="mm"><h3 class="phnote">Platzhalter Name</h3><p>Strategie &amp; Beratung</p></div></div>
+      <div class="tm rv"><div class="scene g-interior"><span class="bg"></span><span class="grain"></span></div><div class="mm"><h3 class="phnote">Platzhalter Name</h3><p>Film &amp; Videoproduktion</p></div></div>
+      <div class="tm rv"><div class="scene g-city"><span class="bg"></span><span class="grain"></span></div><div class="mm"><h3 class="phnote">Platzhalter Name</h3><p>Social Media &amp; Content</p></div></div>
+      <div class="tm rv"><div class="scene g-product"><span class="bg"></span><span class="grain"></span></div><div class="mm"><h3 class="phnote">Platzhalter Name</h3><p>Performance &amp; Ads</p></div></div>
+    </div>
+  </div>
+</section>
+
 <!-- FORM -->
-<section class="sec form-sec" id="kontakt">
+<section class="sec form-sec snap" id="kontakt">
   <div class="wrap">
     <div class="form-head rv">
-      <h2>Du brauchst keine weitere Agentur.</h2>
-      <h2 style="color:var(--faint);margin-top:.4rem">Du brauchst ein Team, das sich kümmert.</h2>
-      <p class="lead" style="margin-inline:auto">Von der nächsten Content-Idee bis zum monatlichen Reporting übernehmen wir die Arbeit, die sonst bei dir liegen bleibt.</p>
+      <h2>Deine langfristige Marketing-Partnerschaft.</h2>
+      <h2 style="color:var(--faint);margin-top:.4rem">Für jede Branche.</h2>
+      <p class="lead" style="margin-inline:auto">Ob Gastronomie, Autobranche, Zahnärzte, Immobilien oder Handel – wir werden dein festes, externes Marketing-Team und entwickeln deinen Auftritt Monat für Monat weiter.</p>
       <div class="risk">
         <span><span class="c">✓</span> Unverbindlich &amp; kostenlos</span>
         <span><span class="c">✓</span> Individuelle Einschätzung</span>
@@ -949,6 +1018,24 @@ footer{background:var(--dark);color:#f5f5f0;padding:4.5rem 0 2rem}
 
 <div class="smcta" id="smcta"><a href="#kontakt">Erstgespräch anfragen →</a></div>
 
+<!-- WhatsApp float -->
+<a class="wa-float" id="waFloat" href="https://wa.me/49000000000" target="_blank" rel="noopener" aria-label="Per WhatsApp schreiben">
+  <svg viewBox="0 0 24 24"><path d="M.06 24l1.68-6.15A11.9 11.9 0 010 11.9C0 5.33 5.35 0 11.92 0a11.82 11.82 0 018.42 3.49 11.82 11.82 0 013.49 8.42c0 6.57-5.35 11.9-11.92 11.9a11.9 11.9 0 01-5.7-1.45L.06 24zM6.6 20.13l.36.22a9.9 9.9 0 005.05 1.38 9.9 9.9 0 009.9-9.9 9.9 9.9 0 00-16.9-7 9.9 9.9 0 00-2.9 7 9.9 9.9 0 001.5 5.26l.24.38-1 3.65 3.75-.99zM17.4 14.3c-.09-.15-.33-.24-.69-.42-.36-.18-2.13-1.05-2.46-1.17-.33-.12-.57-.18-.81.18-.24.36-.93 1.17-1.14 1.41-.21.24-.42.27-.78.09-.36-.18-1.52-.56-2.9-1.79-1.07-.95-1.79-2.13-2-2.49-.21-.36-.02-.55.16-.73.16-.16.36-.42.54-.63.18-.21.24-.36.36-.6.12-.24.06-.45-.03-.63-.09-.18-.81-1.95-1.11-2.67-.29-.7-.59-.6-.81-.61l-.69-.01c-.24 0-.63.09-.96.45-.33.36-1.26 1.23-1.26 3s1.29 3.48 1.47 3.72c.18.24 2.54 3.88 6.15 5.44.86.37 1.53.59 2.05.76.86.27 1.64.23 2.26.14.69-.1 2.13-.87 2.43-1.71.3-.84.3-1.56.21-1.71z"/></svg>
+</a>
+
+<!-- Chatbot -->
+<button class="chat-btn" id="chatBtn"><span class="dot"></span> Marketing-Berater</button>
+<div class="chat-panel" id="chatPanel" role="dialog" aria-label="Marketing-Berater Chat">
+  <div class="chat-top">
+    <span class="av">O</span>
+    <span><b>Obscura Berater</b><small>Antwortet in Sekunden</small></span>
+    <button class="x" id="chatClose" aria-label="Chat schließen">×</button>
+  </div>
+  <div class="chat-body" id="chatBody"></div>
+  <div class="chat-chips" id="chatChips"></div>
+  <div class="chat-in"><input id="chatInput" placeholder="Frag mich zu Social Media, Ads, Content…" autocomplete="off"><button id="chatSend" aria-label="Senden">→</button></div>
+</div>
+
 <script>
 (function(){var items=["Reels","Content","Social Media","Ads","Performance","Video","Foto","Strategie","Wachstum"];
 document.getElementById('tickTrack').innerHTML=(items.map(function(t){return '<span>'+t+' <span class="dot">✦</span></span>'}).join('')).repeat(2);})();
@@ -973,7 +1060,8 @@ function animateDash(){
   document.querySelectorAll('[data-count]').forEach(function(el){var to=+el.dataset.count,pre=el.dataset.prefix||'',suf=el.dataset.suffix||'',t0=null;
     function step(ts){if(!t0)t0=ts;var p=Math.min((ts-t0)/1400,1);el.textContent=pre+Math.round((1-Math.pow(1-p,3))*to)+suf;if(p<1)requestAnimationFrame(step);}requestAnimationFrame(step);});
 }
-new IntersectionObserver(function(es,o){es.forEach(function(e){if(e.isIntersecting){animateDash();o.disconnect();}})},{threshold:.3}).observe(document.querySelector('.dash'));
+var dashEl=document.querySelector('.dash');
+if(dashEl){new IntersectionObserver(function(es,o){es.forEach(function(e){if(e.isIntersecting){animateDash();o.disconnect();}})},{threshold:.3}).observe(dashEl);}
 
 // stats band count-up
 var statBand=document.querySelector('.stats');
@@ -1115,4 +1203,70 @@ function render(){
 function f(l,t,req){return '<div class="field"><label>'+l+'</label><input type="'+t+'"'+(req?' required':'')+'></div>';}
 back.addEventListener('click',function(){if(cur>0){cur--;render();}});
 render();
+
+// ---- 3D Coverflow ----
+(function(){
+  var stage=document.getElementById('coverStage');if(!stage)return;
+  var cards=[].slice.call(stage.querySelectorAll('.cover-card'));
+  var dotsWrap=document.getElementById('coverDots');var n=cards.length;var active=0;
+  cards.forEach(function(_,i){var d=document.createElement('i');d.onclick=function(){active=i;layout();};dotsWrap.appendChild(d);});
+  var dots=[].slice.call(dotsWrap.children);
+  function layout(){
+    active=(active%n+n)%n;
+    cards.forEach(function(c,i){
+      var o=i-active;
+      if(o>n/2)o-=n;if(o<-n/2)o+=n;
+      var abs=Math.abs(o);
+      var tx=o*150, tz=-abs*230, ry=o*-32, sc=Math.max(1-abs*0.12,0.6), op=abs>2.3?0:1;
+      c.style.transform='translate3d('+tx+'px,0,'+tz+'px) rotateY('+ry+'deg) scale('+sc+')';
+      c.style.opacity=op;c.style.zIndex=100-abs;
+      c.classList.toggle('active',o===0);
+    });
+    dots.forEach(function(d,i){d.classList.toggle('on',i===active);});
+  }
+  layout();
+  document.getElementById('coverPrev').onclick=function(){active--;layout();};
+  document.getElementById('coverNext').onclick=function(){active++;layout();};
+  cards.forEach(function(c,i){c.addEventListener('click',function(){if(!c.classList.contains('active')){active=i;layout();}});});
+  // drag / swipe
+  var sx=null,moved=false;
+  stage.addEventListener('pointerdown',function(e){sx=e.clientX;moved=false;stage.classList.add('drag');});
+  addEventListener('pointerup',function(e){if(sx===null)return;var dx=e.clientX-sx;if(Math.abs(dx)>50){active+=dx<0?1:-1;layout();}sx=null;stage.classList.remove('drag');});
+  addEventListener('pointermove',function(e){if(sx===null)return;if(Math.abs(e.clientX-sx)>10)moved=true;});
+  var cover=document.getElementById('cover');
+  cover.addEventListener('wheel',function(e){if(Math.abs(e.deltaX)>Math.abs(e.deltaY)){e.preventDefault();if(Math.abs(e.deltaX)>18){active+=e.deltaX>0?1:-1;layout();}}},{passive:false});
+})();
+
+// ---- Marketing Chatbot (scripted) ----
+(function(){
+  var btn=document.getElementById('chatBtn'),panel=document.getElementById('chatPanel'),body=document.getElementById('chatBody'),
+      chips=document.getElementById('chatChips'),input=document.getElementById('chatInput'),send=document.getElementById('chatSend'),close=document.getElementById('chatClose');
+  var started=false;
+  var kb=[
+    {k:['leistung','angebot','was macht','was bietet','service'],a:"Wir übernehmen deinen kompletten Auftritt: Social-Media-Betreuung (Strategie, Content, Posting, Community), Imagefilme & Werbevideos, Produktfotos & -videos sowie Ads auf Meta, Google, LinkedIn & TikTok. Alles aus einer Hand, monatlich betreut."},
+    {k:['social','instagram','tiktok','reels','posten'],a:"Social Media ist unser Kern (~70 %): Wir planen, produzieren und veröffentlichen regelmäßig Reels, Videos, Fotos & Stories und betreuen deine Community – auf Instagram, TikTok, YouTube & LinkedIn."},
+    {k:['imagefilm','video','werbevideo','film','dreh'],a:"Ja! Wir produzieren Imagefilme, Werbevideos, Produktvideos und Drohnenaufnahmen – von Konzept über Dreh bis Schnitt. Perfekt für Website, Ads, Social & Recruiting."},
+    {k:['foto','produktfoto','shooting'],a:"Wir machen hochwertige Produkt-, Team- und Imagefotos – einsetzbar für Website, Shop, Social Media und Ads."},
+    {k:['ads','werbung','google','meta','linkedin','performance','kampagne'],a:"Wir schalten und optimieren Ads auf Meta, Google, LinkedIn & TikTok – am besten mit Creatives, die wir selbst für dich produzieren. Ziel: mehr Anfragen, nicht nur Klicks."},
+    {k:['preis','kosten','was kostet','budget','tarif'],a:"Wir arbeiten in monatlicher Betreuung. Den Umfang legen wir individuell nach deinen Zielen fest – transparent. Die konkrete Einschätzung bekommst du im kostenlosen Erstgespräch."},
+    {k:['branche','gastro','zahnarzt','immobilien','auto','für wen'],a:"Wir arbeiten branchenübergreifend – Gastronomie, Autobranche, Zahnärzte, Immobilien, Handel u. v. m. Hochwertige Umsetzung für jede Marke."},
+    {k:['neukunden','kunden','anfragen','sichtbar','reichweite'],a:"Genau darum geht es: mehr Sichtbarkeit, ein starker Markenauftritt und dadurch mehr qualifizierte Anfragen und Neukunden – planbar über die Zeit."},
+    {k:['mitarbeiter','recruiting','personal','employer'],a:"Ja, wir machen auch Employer Branding & Recruiting-Content, der die richtigen Mitarbeiter anzieht."},
+    {k:['kontakt','termin','erstgespräch','beratung','anrufen','melden'],a:"Am schnellsten: Buch dir ein kostenloses Erstgespräch über den Button oben – oder schreib uns direkt per WhatsApp. Wir melden uns persönlich."},
+    {k:['check','analyse','score','profil'],a:"Probier unseren kostenlosen Social-Media-Check weiter oben aus: Account eingeben und du bekommst sofort einen Score plus Empfehlungen."},
+    {k:['wo','berlin','standort','sitz'],a:"Wir sitzen in Berlin und arbeiten deutschlandweit – remote und für Shootings vor Ort."}
+  ];
+  var quick=['Was bietet ihr an?','Was kostet das?','Social Media','Imagefilm','Ads','Erstgespräch'];
+  function add(t,who){var m=document.createElement('div');m.className='msg '+who;m.textContent=t;body.appendChild(m);body.scrollTop=body.scrollHeight;}
+  function answer(q){var s=q.toLowerCase();for(var i=0;i<kb.length;i++){for(var j=0;j<kb[i].k.length;j++){if(s.indexOf(kb[i].k[j])>=0)return kb[i].a;}}
+    return "Gute Frage! Das schauen wir uns am besten persönlich an. Buch dir ein kostenloses Erstgespräch oder schreib uns per WhatsApp – dann beraten wir dich konkret zu deinem Fall.";}
+  function renderChips(){chips.innerHTML='';quick.forEach(function(q){var b=document.createElement('button');b.textContent=q;b.onclick=function(){ask(q);};chips.appendChild(b);});}
+  function ask(q){add(q,'user');setTimeout(function(){add(answer(q),'bot');},380);}
+  function start(){if(started)return;started=true;add("Hi 👋 Ich bin dein Marketing-Berater von Obscura. Wobei kann ich dir helfen?",'bot');renderChips();}
+  function open(){panel.classList.add('open');btn.style.display='none';start();setTimeout(function(){input.focus();},100);}
+  function shut(){panel.classList.remove('open');btn.style.display='';}
+  btn.onclick=open;close.onclick=shut;
+  send.onclick=function(){var v=input.value.trim();if(!v)return;input.value='';ask(v);};
+  input.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();send.onclick();}});
+})();
 </script>
