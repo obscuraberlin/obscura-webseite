@@ -22,27 +22,34 @@ export default function Impressum() {
       </p>
 
       <h2>Vertreten durch</h2>
-      <p>PLACEHOLDER – Geschäftsführung</p>
+      <p>
+        Marcel Mancic
+        <br />
+        Maher Samir Moussa
+      </p>
 
       <h2>Kontakt</h2>
       <p>
         Telefon: {site.phone}
         <br />
         E-Mail: {site.email}
+        <br />
+        Internet: www.obscura-berlin.de
       </p>
 
       <h2>Registereintrag</h2>
       <p>
-        Registergericht: PLACEHOLDER Amtsgericht Berlin
+        Registergericht: Amtsgericht Charlottenburg
         <br />
-        Registernummer: HRB PLACEHOLDER
+        Registernummer: HRB 254391 B
       </p>
 
+      {/* PLACEHOLDER: USt-IdNr. ergänzen, falls vorhanden */}
       <h2>Umsatzsteuer-ID</h2>
       <p>USt-IdNr. gemäß § 27 a UStG: PLACEHOLDER</p>
 
       <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
-      <p>PLACEHOLDER Name, Anschrift wie oben</p>
+      <p>Marcel Mancic, Maher Samir Moussa – Anschrift wie oben</p>
     </LegalLayout>
   );
 }

@@ -15,9 +15,10 @@ export const site = {
   city: "Berlin",
   tagline: "Social Media. Content. Performance.",
   email: "info@obscura-berlin.de",
-  // PLACEHOLDER – echte Telefonnummer ergänzen
-  phone: "+49 30 000000",
-  phoneHref: "+4930000000",
+  phone: "030 28678956",
+  phoneHref: "+493028678956",
+  whatsapp: "+49 157 58117356",
+  whatsappHref: "4915758117356",
   address: {
     street: "Flemingstr. 12",
     zip: "10557",
