@@ -66,18 +66,18 @@ header.scrolled{padding:.5rem 0;background:rgba(251,251,248,.75);backdrop-filter
              radial-gradient(90% 70% at 70% 100%,rgba(0,0,0,.55),transparent 60%)}
 .grain{position:absolute;inset:0;z-index:3;pointer-events:none;opacity:.05;mix-blend-mode:overlay;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
-/* color grades that read like cinematic footage */
-.g-auto .bg{background:linear-gradient(155deg,#2b3440,#455262 40%,#161b22 85%)}
-.g-auto2 .bg{background:linear-gradient(155deg,#3a4150,#5a6472 45%,#1a1e26)}
-.g-interior .bg{background:linear-gradient(155deg,#4a3a26,#8a6a40 45%,#241a10)}
-.g-realestate .bg{background:linear-gradient(155deg,#26404e,#4f7f95 50%,#0f1c22)}
-.g-nature .bg{background:linear-gradient(155deg,#3a4a1c,#7f9a34 45%,#c3c76a 78%,#1a2210)}
-.g-city .bg{background:linear-gradient(155deg,#2a2230,#54365a 55%,#140d18)}
-.g-product .bg{background:linear-gradient(155deg,#1a2e2a,#3a6f62 55%,#0c1613)}
-.g-team .bg{background:linear-gradient(155deg,#3a3226,#726144 55%,#171208)}
+/* cinematic, entsättigte Anthrazit-Töne (premium, kohärent) */
+.g-auto .bg{background:linear-gradient(155deg,#24282e,#31363d 45%,#131519 90%)}
+.g-auto2 .bg{background:linear-gradient(155deg,#2a2d33,#3a3e45 45%,#16181c)}
+.g-interior .bg{background:linear-gradient(155deg,#2c2924,#3d3830 45%,#161310)}
+.g-realestate .bg{background:linear-gradient(155deg,#222a2e,#333d42 50%,#10151a)}
+.g-nature .bg{background:linear-gradient(155deg,#252a24,#363d32 48%,#12160f)}
+.g-city .bg{background:linear-gradient(155deg,#26242a,#363340 55%,#131118)}
+.g-product .bg{background:linear-gradient(155deg,#212826,#313b38 55%,#101614)}
+.g-team .bg{background:linear-gradient(155deg,#2a2723,#3a352e 55%,#161311)}
 /* passende Motiv-Silhouetten je Kategorie (dezent) */
 .scene .bg::before{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
-  background-repeat:no-repeat;background-position:center 84%;background-size:54% auto;opacity:.16}
+  background-repeat:no-repeat;background-position:center 86%;background-size:46% auto;opacity:.08}
 .g-auto .bg::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 46'%3E%3Cg fill='%23fff'%3E%3Cpath d='M6 30c3-1 7-1 10-2 4-5 10-10 18-12 10-2 20-1 28 3 3 2 7 3 11 4 7 1 13 2 17 5 3 2 2 6-2 6H10c-5 0-6-3-4-4z'/%3E%3Ccircle cx='36' cy='34' r='8'/%3E%3Ccircle cx='92' cy='34' r='8'/%3E%3C/g%3E%3C/svg%3E")}
 .g-auto2 .bg::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70'%3E%3Cpath fill='%23fff' d='M14 62V44c0-10 8-20 36-20s36 10 36 20v18z'/%3E%3Crect x='14' y='60' width='72' height='6' fill='%23fff'/%3E%3Cg fill='%23111' opacity='.45'%3E%3Crect x='22' y='46' width='18' height='8' rx='2'/%3E%3Crect x='60' y='46' width='18' height='8' rx='2'/%3E%3C/g%3E%3C/svg%3E");background-size:48% auto}
 .g-interior .bg::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 110 80'%3E%3Cg fill='%23fff'%3E%3Crect x='18' y='34' width='74' height='40' rx='3'/%3E%3Cpath d='M18 22l72-10 3 14-72 10z'/%3E%3C/g%3E%3Cg fill='%23111' opacity='.5'%3E%3Cpath d='M26 20l10-2 5 8-10 2z'/%3E%3Cpath d='M44 17l10-2 5 8-10 2z'/%3E%3Cpath d='M62 14l10-2 5 8-10 2z'/%3E%3C/g%3E%3C/svg%3E");background-size:46% auto;background-position:center 80%}
@@ -648,6 +648,32 @@ footer{background:var(--dark);color:#f5f5f0;padding:4.5rem 0 2rem}
 .member h2{color:#fff;font-size:clamp(2rem,4.6vw,3.3rem);margin-top:1rem}
 .member p{color:rgba(255,255,255,.78);margin-top:1.1rem;font-size:1.12rem;line-height:1.6}
 .member .btn{margin-top:1.9rem}
+/* google reviews */
+.g-rating{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.3rem;background:var(--surface);border:1px solid var(--line);border-radius:100px;padding:.5rem 1.1rem}
+.g-logo{width:24px;height:24px;border-radius:100px;background:conic-gradient(from -45deg,#4285F4,#34A853,#FBBC05,#EA4335,#4285F4);display:grid;place-items:center;color:#fff;font-family:var(--display);font-weight:800;font-size:.78rem}
+.g-rating b{font-family:var(--display);font-weight:800}
+.g-stars{color:#FBBC05;letter-spacing:1px}
+.g-count{color:var(--muted);font-size:.85rem}
+.greviews{columns:3;column-gap:1rem;margin-top:2.6rem}
+.grev{break-inside:avoid;margin:0 0 1rem;border:1px solid var(--line);background:var(--surface);border-radius:16px;padding:1.4rem}
+.grev-top{display:flex;align-items:center;gap:.7rem;margin-bottom:.8rem}
+.g-av{width:40px;height:40px;border-radius:100px;display:grid;place-items:center;color:#fff;font-family:var(--display);font-weight:700;flex:none}
+.grev-top b{font-size:.9rem;display:block}
+.grev-src{font-size:.75rem;color:#FBBC05}
+.grev blockquote{font-size:.9rem;color:#44443c;line-height:1.55}
+@media(max-width:900px){.greviews{columns:2}}
+@media(max-width:600px){.greviews{columns:1}}
+/* service list (editorial, zentriert) */
+.svc-list{max-width:860px;margin:3.2rem auto 0;border-top:1px solid var(--line)}
+.svc-row{width:100%;display:flex;align-items:center;gap:1.4rem;padding:1.7rem .4rem;border:0;border-bottom:1px solid var(--line);
+  background:none;cursor:pointer;text-align:left;font-family:var(--body);transition:padding .35s cubic-bezier(.16,1,.3,1)}
+.svc-row:hover{padding-left:1.2rem}
+.svc-row .n{font-family:var(--mono);font-size:.78rem;color:var(--faint);width:1.8rem;flex:none}
+.svc-row .nm{font-family:var(--display);font-weight:800;font-size:clamp(1.45rem,3.4vw,2.35rem);letter-spacing:-.03em;flex:1;color:var(--ink);transition:color .3s}
+.svc-row .dsc{color:var(--muted);font-size:.9rem;display:none}
+.svc-row .pl{font-size:1.5rem;color:var(--faint);transition:transform .35s,color .3s;line-height:1}
+.svc-row:hover .pl{color:var(--lime-ink);transform:rotate(90deg)}
+@media(min-width:820px){.svc-row .dsc{display:block;width:16rem;text-align:right}}
 /* contact info */
 .contact-info{max-width:740px;margin:1.4rem auto 0;display:flex;flex-wrap:wrap;gap:1rem 2rem;justify-content:space-between;align-items:center;
   border:1px solid var(--line);background:var(--surface);border-radius:18px;padding:1.3rem 1.5rem}
@@ -661,11 +687,10 @@ footer{background:var(--dark);color:#f5f5f0;padding:4.5rem 0 2rem}
 .scroll-prog{position:fixed;top:0;left:0;right:0;height:3px;z-index:65;pointer-events:none}
 .scroll-prog i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--lime-ink),var(--lime));box-shadow:0 0 12px rgba(166,217,59,.55)}
 /* hero aurora */
-.aurora{position:absolute;inset:-25% -10% auto -10%;height:130%;z-index:0;pointer-events:none;filter:blur(72px);opacity:.55;
-  background:radial-gradient(38% 48% at 18% 28%,rgba(166,217,59,.38),transparent 60%),
-            radial-gradient(34% 44% at 82% 18%,rgba(120,160,255,.16),transparent 60%),
-            radial-gradient(40% 50% at 62% 82%,rgba(166,217,59,.16),transparent 60%);
-  animation:aur 18s ease-in-out infinite alternate}
+.aurora{position:absolute;inset:-25% -10% auto -10%;height:130%;z-index:0;pointer-events:none;filter:blur(80px);opacity:.32;
+  background:radial-gradient(36% 46% at 16% 26%,rgba(166,217,59,.28),transparent 62%),
+            radial-gradient(40% 50% at 78% 30%,rgba(20,24,30,.10),transparent 62%);
+  animation:aur 20s ease-in-out infinite alternate}
 @keyframes aur{to{transform:translate3d(3%,-3%,0) scale(1.08)}}
 .hero .wrap{position:relative;z-index:2}
 /* marquee logos */
@@ -846,31 +871,8 @@ html{scroll-snap-type:y proximity}
     <div class="benefits">
       <div class="bc rv"><div class="ic"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div><h3>Neue Kunden</h3><p>Mehr Sichtbarkeit und qualifizierte Anfragen über deine Kanäle.</p></div>
       <div class="bc rv"><div class="ic"><svg viewBox="0 0 24 24"><polygon points="12 2 15 8.5 22 9.3 17 14 18.5 21 12 17.5 5.5 21 7 14 2 9.3 9 8.5"/></svg></div><h3>Starke Marke</h3><p>Ein hochwertiger, wiedererkennbarer Auftritt – konsistent über alle Plattformen.</p></div>
-      <div class="bc rv"><div class="ic"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg></div><h3>Neue Mitarbeiter</h3><p>Employer Branding &amp; Recruiting-Content, der die richtigen Leute anzieht.</p></div>
+      <div class="bc rv"><div class="ic"><svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M21 7v5h-5"/></svg></div><h3>Mehr Umsatz</h3><p>Content &amp; Ads, die messbar auf Anfragen und Wachstum einzahlen.</p></div>
       <div class="bc rv"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><h3>Mehr Zeit</h3><p>Du führst dein Business – wir übernehmen den kompletten Marketing-Aufwand.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- SOCIAL CHECK -->
-<section class="check" id="check">
-  <div class="wrap">
-    <div class="check-grid">
-      <div class="check-copy rv">
-        <p class="eyebrow">Kostenloser Social Media Check</p>
-        <h2 style="margin-top:1rem">Wie stark ist dein Auftritt wirklich?</h2>
-        <p class="lead">Gib deinen Account ein und erhalte in Sekunden eine Einschätzung deines Social-Media-Auftritts – inklusive Score, Stärken und konkreten Empfehlungen.</p>
-        <ul>
-          <li><span class="c">✓</span> Sofort-Score deines Profils</li>
-          <li><span class="c">✓</span> Analyse von 5 entscheidenden Faktoren</li>
-          <li><span class="c">✓</span> Persönlicher Bericht &amp; konkrete Empfehlungen</li>
-          <li><span class="c">✓</span> 100 % kostenlos &amp; unverbindlich</li>
-        </ul>
-      </div>
-
-      <div class="checker rv">
-        <div id="checkerInner"></div>
-      </div>
     </div>
   </div>
 </section>
@@ -878,22 +880,17 @@ html{scroll-snap-type:y proximity}
 <!-- SYSTEM (light) -->
 <section class="sec snap" id="leistungen">
   <div class="wrap">
-    <div style="max-width:52ch" class="rv">
-      <p class="eyebrow">Unsere Qualität · Leistungen</p>
-      <h2 style="margin-top:1rem">Full-Service Marketing. <span class="lime">Alles aus einer Hand.</span></h2>
-      <p class="lead">Von Video über Social Media bis Webdesign – klick dich durch unsere Leistungen und finde heraus, was zu dir passt.</p>
+    <div class="rv" style="text-align:center;max-width:44ch;margin-inline:auto">
+      <p class="eyebrow">Leistungen</p>
+      <h2 style="margin-top:1rem">Das machen wir – <span class="lime">richtig gut.</span></h2>
+      <p class="lead" style="margin-inline:auto">Fünf Leistungen, ein Ziel: deine Marke sichtbar machen und wachsen lassen.</p>
     </div>
-    <div class="svc-grid">
-      <button class="svc rv" data-svc="video"><div class="scene g-interior"><span class="bg"></span><span class="grain"></span></div><span class="ov"></span><span class="ico"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="M16 10l6-4v12l-6-4z"/></svg></span><h3>Video-Produktion</h3><p>Imagefilme, Werbevideos &amp; Reels für beeindruckende visuelle Inhalte.</p><span class="more">Mehr erfahren →</span></button>
-      <button class="svc rv" data-svc="social"><div class="scene g-city"><span class="bg"></span><span class="grain"></span></div><span class="ov"></span><span class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg></span><h3>Social Media</h3><p>Professionelle Erstellung von Social-Media-Inhalten für mehr Reichweite.</p><span class="more">Mehr erfahren →</span></button>
-      <button class="svc rv" data-svc="web"><div class="scene g-product"><span class="bg"></span><span class="grain"></span></div><span class="ov"></span><span class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M7 6.5h.01M10 6.5h.01"/></svg></span><h3>Webdesign</h3><p>Professionelles Webdesign für effiziente Websites &amp; Funnel.</p><span class="more">Mehr erfahren →</span></button>
-      <button class="svc rv" data-svc="grafik"><div class="scene g-auto2"><span class="bg"></span><span class="grain"></span></div><span class="ov"></span><span class="ico"><svg viewBox="0 0 24 24"><path d="M4 20V12M9 20V6M14 20v-9M19 20V9"/></svg></span><h3>Grafikdesign</h3><p>Kreative Gestaltung visueller Inhalte für Print- und Online-Medien.</p><span class="more">Mehr erfahren →</span></button>
-      <button class="svc rv" data-svc="beratung"><div class="scene g-team"><span class="bg"></span><span class="grain"></span></div><span class="ov"></span><span class="ico"><svg viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 00-2 2v14a2 2 0 002 2h12a2 2 0 002-2V9z"/><path d="M14 3v6h6M8 14l2 2 3-4"/></svg></span><h3>Beratung &amp; Ads</h3><p>Strategie &amp; Werbeanzeigen auf Meta, Google, LinkedIn &amp; TikTok.</p><span class="more">Mehr erfahren →</span></button>
-      <button class="svc rv" data-svc="weiter"><div class="scene g-realestate"><span class="bg"></span><span class="grain"></span></div><span class="ov"></span><span class="ico"><svg viewBox="0 0 24 24"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1 2.7 2.5 6 2.5s6-1.5 6-2.5v-5"/></svg></span><h3>Weiterbildung</h3><p>Berufliche Weiterbildung für Angestellte und Jobsuchende.</p><span class="more">Mehr erfahren →</span></button>
-    </div>
-    <div style="margin-top:2.5rem" class="rv badges" data-badges>
-      <span class="lbl" style="color:var(--muted)">Plattformen</span>
-      <b style="color:var(--muted)">Instagram</b><b style="color:var(--muted)">TikTok</b><b style="color:var(--muted)">YouTube</b><b style="color:var(--muted)">LinkedIn</b><b style="color:var(--muted)">Google</b><b style="color:var(--muted)">Meta</b>
+    <div class="svc-list">
+      <button class="svc-row rv" data-svc="video"><span class="n">01</span><span class="nm">Videoproduktion</span><span class="dsc">Imagefilme · Werbevideos · Reels</span><span class="pl">+</span></button>
+      <button class="svc-row rv" data-svc="foto"><span class="n">02</span><span class="nm">Fotoproduktion</span><span class="dsc">Produkt · Image · Event</span><span class="pl">+</span></button>
+      <button class="svc-row rv" data-svc="social"><span class="n">03</span><span class="nm">Social-Media-Betreuung</span><span class="dsc">Content · Community · Mitgliedschaft</span><span class="pl">+</span></button>
+      <button class="svc-row rv" data-svc="ads"><span class="n">04</span><span class="nm">Werbeanzeigen</span><span class="dsc">Meta · Google · TikTok · LinkedIn</span><span class="pl">+</span></button>
+      <button class="svc-row rv" data-svc="beratung"><span class="n">05</span><span class="nm">Beratung</span><span class="dsc">Strategie · Optimierung</span><span class="pl">+</span></button>
     </div>
   </div>
 </section>
@@ -1015,32 +1012,27 @@ html{scroll-snap-type:y proximity}
   </div>
 </section>
 
-<!-- TESTIMONIALS (cinematic) -->
-<section class="cine">
+<!-- TESTIMONIALS (Google) -->
+<section class="sec" id="bewertungen" style="background:var(--soft)">
   <div class="wrap">
-    <p class="eyebrow rv">Kundenstimmen</p>
-    <h2 class="rv" style="margin-top:1rem">Echte Ergebnisse. Echte Stimmen.</h2>
-
-    <div class="cine-feat rv">
-      <div class="scene g-interior"><span class="bg"></span><span class="grain"></span></div>
-      <span class="play"><svg width="20" height="22" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span>
-      <div class="co">
-        <span class="badge">Kundenstimme</span>
-        <p class="q">„Wir sind zufrieden! Das Team von Obscura hat uns in mehreren Projekten begleitet – absolut nichts auszusetzen. Ein junges, dynamisches Team, mit dem es Spaß macht zu arbeiten."</p>
-        <div class="who">
-          <span class="av" style="background:linear-gradient(135deg,#2b3440,#6b7684)"></span>
-          <span><b class="phnote">Zufriedener Kunde</b><small>Mehrere Projekte · echte Bewertung</small></span>
-        </div>
+    <div style="text-align:center;max-width:46ch;margin-inline:auto" class="rv">
+      <p class="eyebrow">Kundenstimmen</p>
+      <h2 style="margin-top:1rem">Das sagen unsere Kunden.</h2>
+      <div class="g-rating">
+        <span class="g-logo">G</span>
+        <b>5,0</b><span class="g-stars">★★★★★</span>
+        <span class="g-count">Google Bewertungen</span>
       </div>
     </div>
-
-    <div class="cine-rail" data-rail>
-      <div class="tcard rv"><div class="scene g-realestate"><span class="bg"></span><span class="grain"></span></div><span class="play"><svg width="14" height="16" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span><div class="co"><span class="stars">★★★★★</span><p class="tq">„Professionell, kreativ und zuverlässig."</p><b class="phnote">Laura M.</b><small>Kensington Immobilien</small></div></div>
-      <div class="tcard rv"><div class="scene g-auto2"><span class="bg"></span><span class="grain"></span></div><span class="play"><svg width="14" height="16" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span><div class="co"><span class="stars">★★★★★</span><p class="tq">„Deutlich höhere Sichtbarkeit und mehr qualifizierte Anfragen."</p><b class="phnote">Markus H.</b><small>BMW · Riller &amp; Schnauck</small></div></div>
-      <div class="tcard rv"><div class="scene g-nature"><span class="bg"></span><span class="grain"></span></div><span class="play"><svg width="14" height="16" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span><div class="co"><span class="stars">★★★★★</span><p class="tq">„Ein Team, das mitdenkt und unsere Marke perfekt in Szene setzt."</p><b class="phnote">Julia T.</b><small>Siroko</small></div></div>
-      <div class="tcard rv"><div class="scene g-auto"><span class="bg"></span><span class="grain"></span></div><span class="play"><svg width="14" height="16" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span><div class="co"><span class="stars">★★★★★</span><p class="tq">„Endlich ein verlässlicher Partner für unseren gesamten Auftritt."</p><b class="phnote">Sandra P.</b><small>Platzhalter Unternehmen</small></div></div>
+    <div class="greviews">
+      <figure class="grev rv"><div class="grev-top"><span class="g-av" style="background:linear-gradient(135deg,#4285F4,#34A853)">M</span><div><b class="phnote">Marcel B.</b><span class="grev-src">★★★★★ · Google</span></div></div><blockquote>„Wir sind zufrieden! Das Team von Obscura hat uns in mehreren Projekten begleitet – absolut nichts auszusetzen. Ein junges, dynamisches Team, mit dem es Spaß macht zu arbeiten."</blockquote></figure>
+      <figure class="grev rv"><div class="grev-top"><span class="g-av" style="background:linear-gradient(135deg,#EA4335,#FBBC05)">S</span><div><b class="phnote">Sandra K.</b><span class="grev-src">★★★★★ · Google</span></div></div><blockquote>„Professionell, kreativ und absolut zuverlässig. Unsere Videos und der Social-Media-Auftritt waren noch nie so stark."</blockquote></figure>
+      <figure class="grev rv"><div class="grev-top"><span class="g-av" style="background:linear-gradient(135deg,#34A853,#4285F4)">D</span><div><b class="phnote">Daniel R.</b><span class="grev-src">★★★★★ · Google</span></div></div><blockquote>„Top Qualität bei Foto und Video. Man merkt, dass hier Profis am Werk sind. Klare Empfehlung!"</blockquote></figure>
+      <figure class="grev rv"><div class="grev-top"><span class="g-av" style="background:linear-gradient(135deg,#FBBC05,#EA4335)">L</span><div><b class="phnote">Laura M.</b><span class="grev-src">★★★★★ · Google</span></div></div><blockquote>„Seit der Zusammenarbeit haben wir deutlich mehr Sichtbarkeit und Anfragen. Kompetentes, sympathisches Team."</blockquote></figure>
+      <figure class="grev rv"><div class="grev-top"><span class="g-av" style="background:linear-gradient(135deg,#4285F4,#EA4335)">T</span><div><b class="phnote">Thomas W.</b><span class="grev-src">★★★★★ · Google</span></div></div><blockquote>„Schnelle Umsetzung, klare Kommunikation und ein Ergebnis, das sich sehen lassen kann. Sehr zufrieden."</blockquote></figure>
+      <figure class="grev rv"><div class="grev-top"><span class="g-av" style="background:linear-gradient(135deg,#34A853,#FBBC05)">J</span><div><b class="phnote">Julia P.</b><span class="grev-src">★★★★★ · Google</span></div></div><blockquote>„Ein Team, das mitdenkt und unsere Marke perfekt in Szene setzt. Genau so stellt man sich eine Agentur vor."</blockquote></figure>
     </div>
-    <p class="cine-note">Beispiel-Testimonials · mit echten, freigegebenen Videos &amp; Kundenstimmen ersetzen</p>
+    <p class="phnote" style="text-align:center;margin-top:1.4rem">Platzhalter-Bewertungen · mit euren echten Google-Rezensionen ersetzen</p>
   </div>
 </section>
 
@@ -1060,6 +1052,29 @@ html{scroll-snap-type:y proximity}
       <div class="tm rv"><div class="scene g-interior"><span class="bg"></span><span class="grain"></span></div><div class="mm"><h3 class="phnote">Platzhalter Name</h3><p>Film &amp; Videoproduktion</p></div></div>
       <div class="tm rv"><div class="scene g-city"><span class="bg"></span><span class="grain"></span></div><div class="mm"><h3 class="phnote">Platzhalter Name</h3><p>Social Media &amp; Content</p></div></div>
       <div class="tm rv"><div class="scene g-product"><span class="bg"></span><span class="grain"></span></div><div class="mm"><h3 class="phnote">Platzhalter Name</h3><p>Performance &amp; Ads</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL CHECK -->
+<section class="check" id="check">
+  <div class="wrap">
+    <div class="check-grid">
+      <div class="check-copy rv">
+        <p class="eyebrow">Kostenloser Social Media Check</p>
+        <h2 style="margin-top:1rem">Wie stark ist dein Auftritt wirklich?</h2>
+        <p class="lead">Gib deinen Account ein und erhalte in Sekunden eine Einschätzung deines Social-Media-Auftritts – inklusive Score, Stärken und konkreten Empfehlungen.</p>
+        <ul>
+          <li><span class="c">✓</span> Sofort-Score deines Profils</li>
+          <li><span class="c">✓</span> Analyse von 5 entscheidenden Faktoren</li>
+          <li><span class="c">✓</span> Persönlicher Bericht &amp; konkrete Empfehlungen</li>
+          <li><span class="c">✓</span> 100 % kostenlos &amp; unverbindlich</li>
+        </ul>
+      </div>
+
+      <div class="checker rv">
+        <div id="checkerInner"></div>
+      </div>
     </div>
   </div>
 </section>
@@ -1117,7 +1132,7 @@ html{scroll-snap-type:y proximity}
         </p>
       </div>
       <div><h4>Unternehmen</h4><ul><li><a href="#leistungen">Über uns</a></li><li><a href="#content">Projekte</a></li><li><a href="#kontakt">Karriere</a></li><li><a href="#kontakt">Kontakt</a></li></ul></div>
-      <div><h4>Leistungen</h4><ul><li><a href="#leistungen">Social Media Betreuung</a></li><li><a href="#content">Content Produktion</a></li><li><a href="#content">Video Produktion</a></li><li><a href="#leistungen">Werbeanzeigen</a></li></ul></div>
+      <div><h4>Leistungen</h4><ul><li><a href="#leistungen">Videoproduktion</a></li><li><a href="#leistungen">Fotoproduktion</a></li><li><a href="#leistungen">Social-Media-Betreuung</a></li><li><a href="#leistungen">Werbeanzeigen</a></li><li><a href="#leistungen">Beratung</a></li></ul></div>
       <div><h4>Wissen</h4><ul><li><a href="#">Blog</a></li><li><a href="#">Ressourcen</a></li><li><a href="#">FAQ</a></li></ul></div>
       <div><h4>Rechtliches</h4><ul><li><a href="#">Impressum</a></li><li><a href="#">Datenschutz</a></li><li><a href="#">Cookies</a></li></ul></div>
     </div>
@@ -1416,24 +1431,21 @@ render();
 // ---- Service Detail Modals ----
 (function(){
   var svcs={
-    video:{ic:'<svg viewBox="0 0 24 24" fill="none" stroke="#0B0B0A" stroke-width="1.8"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="M16 10l6-4v12l-6-4z"/></svg>',t:'Video-Produktion',
-      d:'Bewegtbild verkauft. Wir produzieren Imagefilme, Werbevideos, Reels und Produktvideos – von der Idee über den Dreh bis zum finalen Schnitt. Hochwertig, markengerecht und plattformgerecht.',
+    video:{ic:'<svg viewBox="0 0 24 24" fill="none" stroke="#0B0B0A" stroke-width="1.8"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="M16 10l6-4v12l-6-4z"/></svg>',t:'Videoproduktion',
+      d:'Bewegtbild verkauft. Wir produzieren Imagefilme, Werbevideos, Produktvideos und Reels – von der Idee über den Dreh bis zum finalen Schnitt. Hochwertig, markengerecht und plattformgerecht.',
       v:['Mehr Vertrauen &amp; Reichweite','Professionelle Umsetzung','Vielseitig für Web, Social &amp; Ads']},
-    social:{ic:'<svg viewBox="0 0 24 24" fill="none" stroke="#0B0B0A" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/></svg>',t:'Social Media',
-      d:'Wir übernehmen deine Social-Media-Betreuung komplett: Strategie, Content-Produktion, Veröffentlichung und Community – Monat für Monat. Für einen konsistenten Auftritt und mehr Reichweite.',
-      v:['Regelmäßiger, hochwertiger Content','Mehr Sichtbarkeit &amp; Anfragen','Fester Ansprechpartner']},
-    web:{ic:'<svg viewBox="0 0 24 24" fill="none" stroke="#0B0B0A" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg>',t:'Webdesign',
-      d:'In Zeiten der Digitalisierung ist ein modernes, zielgruppenorientiertes Webdesign essentiell. Gerne erstellen wir dir deine neue Webseite, deinen Funnel oder deine Schulungsplattform.',
-      v:['Effizientere Kundengewinnung','100 % mobiloptimiertes Design','Passendes Corporate Design']},
-    grafik:{ic:'<svg viewBox="0 0 24 24" fill="none" stroke="#0B0B0A" stroke-width="1.8"><path d="M4 20V12M9 20V6M14 20v-9M19 20V9"/></svg>',t:'Grafikdesign',
-      d:'Von Logo über Social-Media-Templates bis zu Print: Wir gestalten visuelle Inhalte für Print- und Online-Medien – einheitlich, hochwertig und wiedererkennbar.',
-      v:['Einheitlicher Markenauftritt','Print &amp; Online aus einer Hand','Hochwertige Gestaltung']},
-    beratung:{ic:'<svg viewBox="0 0 24 24" fill="none" stroke="#0B0B0A" stroke-width="1.8"><path d="M14 3H6a2 2 0 00-2 2v14a2 2 0 002 2h12a2 2 0 002-2V9z"/><path d="M14 3v6h6"/></svg>',t:'Beratung &amp; Ads',
-      d:'Wir optimieren deine Marketingstrategie und schalten performante Werbeanzeigen auf Meta, Google, LinkedIn &amp; TikTok – mit Creatives, die wir selbst für dich produzieren.',
-      v:['Klare, datenbasierte Strategie','Ads, die Anfragen bringen','Transparentes Reporting']},
-    weiter:{ic:'<svg viewBox="0 0 24 24" fill="none" stroke="#0B0B0A" stroke-width="1.8"><path d="M22 10L12 5 2 10l10 5 10-5z"/></svg>',t:'Weiterbildung',
-      d:'Du suchst eine Weiterbildung für Arbeitssuchende oder Mitarbeiter? Wir sind zertifizierter Bildungsträger – daher übernimmt das Arbeitsamt 100 % der Kosten.',
-      v:['Zertifizierter Bildungsträger','100 % Kostenübernahme durch das Arbeitsamt','Praxisnahe, moderne Inhalte']}
+    foto:{ic:'<svg viewBox="0 0 24 24" fill="none" stroke="#0B0B0A" stroke-width="1.8"><rect x="3" y="6" width="18" height="14" rx="2"/><circle cx="12" cy="13" r="3.5"/><path d="M8 6l1.5-2h5L16 6"/></svg>',t:'Fotoproduktion',
+      d:'Hochwertige Fotografie für Produkte, Team, Events und Marke – mit professionellem Setup und einheitlicher Bildsprache. Einsetzbar für Website, Social Media, Ads und Print.',
+      v:['Einheitliche, hochwertige Bildsprache','Für Web, Social &amp; Print','Professionelles Setup vor Ort']},
+    social:{ic:'<svg viewBox="0 0 24 24" fill="none" stroke="#0B0B0A" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/></svg>',t:'Social-Media-Betreuung',
+      d:'Wir übernehmen deine Social-Media-Betreuung komplett – als feste monatliche Mitgliedschaft: Strategie, Content-Produktion, Veröffentlichung, Community und Reporting. Für einen konsistenten Auftritt und mehr Reichweite.',
+      v:['Regelmäßiger, hochwertiger Content','Fester Ansprechpartner','Community &amp; transparentes Reporting']},
+    ads:{ic:'<svg viewBox="0 0 24 24" fill="none" stroke="#0B0B0A" stroke-width="1.8"><path d="M3 11l17-7-4 17-4-6-5-1z"/></svg>',t:'Werbeanzeigen',
+      d:'Performante Werbeanzeigen auf Meta, Google, TikTok &amp; LinkedIn – am besten mit Creatives, die wir selbst für dich produzieren. Das Ziel: mehr Anfragen, nicht nur Klicks.',
+      v:['Mehr qualifizierte Anfragen','Eigene, starke Creatives','Transparentes Reporting']},
+    beratung:{ic:'<svg viewBox="0 0 24 24" fill="none" stroke="#0B0B0A" stroke-width="1.8"><path d="M14 3H6a2 2 0 00-2 2v14a2 2 0 002 2h12a2 2 0 002-2V9z"/><path d="M14 3v6h6M8 14l2 2 3-4"/></svg>',t:'Beratung',
+      d:'Wir analysieren und optimieren deine Marketingstrategie – klar, datenbasiert und individuell auf dein Unternehmen zugeschnitten. Mit konkreten, umsetzbaren Maßnahmen.',
+      v:['Klare, datenbasierte Strategie','Individuell auf dich zugeschnitten','Konkrete, umsetzbare Maßnahmen']}
   };
   var modal=document.getElementById('svcModal'),card=document.getElementById('svcModalCard');
   function open(key){var s=svcs[key];if(!s)return;
@@ -1443,7 +1455,7 @@ render();
       '<a href="#kontakt" class="btn btn-dark mcta" data-close>Genau das benötige ich <span class="ar">→</span></a>';
     modal.classList.add('open');document.body.style.overflow='hidden';}
   function close(){modal.classList.remove('open');document.body.style.overflow='';}
-  document.querySelectorAll('.svc[data-svc]').forEach(function(b){b.addEventListener('click',function(){open(b.dataset.svc);});});
+  document.querySelectorAll('[data-svc]').forEach(function(b){b.addEventListener('click',function(){open(b.dataset.svc);});});
   modal.addEventListener('click',function(e){if(e.target.hasAttribute('data-close'))close();});
   addEventListener('keydown',function(e){if(e.key==='Escape')close();});
 })();
