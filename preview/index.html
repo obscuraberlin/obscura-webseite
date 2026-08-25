@@ -354,6 +354,37 @@ footer{background:var(--dark);color:#f5f5f0;padding:4.5rem 0 2rem}
 .smcta.show{transform:none}
 .smcta a{display:flex;justify-content:center;background:var(--ink);color:#fff;border-radius:100px;padding:1rem;font-weight:600;box-shadow:0 14px 30px rgba(0,0,0,.25)}
 
+/* cinematic testimonials */
+.cine{background:var(--dark);color:#fff;padding:6rem 0;overflow:hidden}
+.cine::before{content:'';position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(55% 45% at 80% 0,rgba(199,255,24,.10),transparent 60%)}
+.cine .wrap{position:relative;z-index:2}
+.cine h2{color:#fff}.cine .eyebrow{color:var(--lime)}
+.cine-feat{position:relative;margin-top:2.5rem;border-radius:24px;overflow:hidden;aspect-ratio:2/1;cursor:pointer;
+  box-shadow:0 40px 90px -40px rgba(0,0,0,.6)}
+.cine-feat .scene{position:absolute;inset:0;transition:transform .8s cubic-bezier(.16,1,.3,1)}
+.cine-feat:hover .scene{transform:scale(1.05)}
+.cine-feat .co{position:absolute;inset:0;z-index:4;display:flex;flex-direction:column;justify-content:flex-end;
+  padding:clamp(1.4rem,3.5vw,2.6rem);background:linear-gradient(0deg,rgba(0,0,0,.82),rgba(0,0,0,.15) 55%,transparent)}
+.cine-feat .badge{align-self:flex-start;font-family:var(--mono);font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--ink);background:var(--lime);padding:.3rem .6rem;border-radius:100px;margin-bottom:.9rem}
+.cine-feat .q{font-family:var(--display);font-weight:800;font-size:clamp(1.3rem,2.7vw,2.1rem);max-width:22ch;letter-spacing:-.02em;line-height:1.08}
+.cine-feat .who{margin-top:1.1rem;display:flex;align-items:center;gap:.75rem}
+.cine-feat .who .av{width:46px;height:46px;border-radius:100px;background-size:cover;border:2px solid rgba(255,255,255,.35)}
+.cine-feat .who b{font-size:.95rem}.cine-feat .who small{display:block;color:rgba(255,255,255,.62);font-size:.8rem}
+.cine-feat .play{width:66px;height:66px;top:44%}
+.cine-rail{display:flex;gap:1rem;overflow-x:auto;margin-top:1rem;scrollbar-width:none;padding-bottom:.5rem;scroll-snap-type:x mandatory;cursor:grab}
+.cine-rail::-webkit-scrollbar{display:none}
+.tcard{flex:none;width:208px;aspect-ratio:9/15;position:relative;border-radius:18px;overflow:hidden;scroll-snap-align:start}
+.tcard .scene{position:absolute;inset:0;transition:transform .6s cubic-bezier(.16,1,.3,1)}
+.tcard:hover .scene{transform:scale(1.06)}
+.tcard .co{position:absolute;inset:0;z-index:4;display:flex;flex-direction:column;justify-content:flex-end;padding:1rem;
+  background:linear-gradient(0deg,rgba(0,0,0,.8),transparent 58%)}
+.tcard .stars{color:var(--lime);font-size:.72rem;letter-spacing:1px}
+.tcard .tq{font-size:.82rem;color:#fff;margin-top:.35rem;line-height:1.35}
+.tcard b{display:block;margin-top:.6rem;font-size:.82rem}
+.tcard small{color:rgba(255,255,255,.6);font-size:.72rem}
+.cine-note{font-family:var(--mono);font-size:.6rem;letter-spacing:.03em;color:rgba(255,255,255,.35);margin-top:1.4rem;text-transform:uppercase}
 /* social check */
 .check{padding:6rem 0;background:var(--canvas)}
 .check-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:3rem;align-items:center;margin-top:1.5rem}
@@ -823,17 +854,32 @@ footer{background:var(--dark);color:#f5f5f0;padding:4.5rem 0 2rem}
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
-<section class="sec" style="background:var(--soft)">
+<!-- TESTIMONIALS (cinematic) -->
+<section class="cine">
   <div class="wrap">
     <p class="eyebrow rv">Kundenstimmen</p>
-    <h2 class="rv" style="margin-top:1rem">Das sagen unsere Kunden.</h2>
-    <div class="reviews">
-      <div class="review rv"><div class="rs">★★★★★</div><blockquote>„Obscura hat unseren Social-Media-Auftritt auf ein neues Level gebracht. Mehr Reichweite, mehr Anfragen, mehr Kunden."</blockquote><div class="who"><span class="a" style="background:linear-gradient(135deg,#2b3440,#6b7684)"></span><span><b class="phnote">Platzhalter</b><small>Platzhalter Unternehmen</small></span></div></div>
-      <div class="review rv"><div class="rs">★★★★★</div><blockquote>„Professionell, kreativ und zuverlässig. Unser Content war noch nie so stark und unsere Kanäle performen besser denn je."</blockquote><div class="who"><span class="a" style="background:linear-gradient(135deg,#4a3a26,#8a6a40)"></span><span><b class="phnote">Platzhalter</b><small>Platzhalter Unternehmen</small></span></div></div>
-      <div class="review rv"><div class="rs">★★★★★</div><blockquote>„Seit wir mit Obscura arbeiten, haben wir eine deutlich höhere Sichtbarkeit und mehr qualifizierte Anfragen."</blockquote><div class="who"><span class="a" style="background:linear-gradient(135deg,#26404e,#4f7f95)"></span><span><b class="phnote">Platzhalter</b><small>Platzhalter Unternehmen</small></span></div></div>
-      <div class="review rv"><div class="rs">★★★★★</div><blockquote>„Ein tolles Team, das wirklich mitdenkt und unsere Marke perfekt in Szene setzt."</blockquote><div class="who"><span class="a" style="background:linear-gradient(135deg,#3a3226,#726144)"></span><span><b class="phnote">Platzhalter</b><small>Platzhalter Unternehmen</small></span></div></div>
+    <h2 class="rv" style="margin-top:1rem">Echte Ergebnisse. Echte Stimmen.</h2>
+
+    <div class="cine-feat rv">
+      <div class="scene g-interior"><span class="bg"></span><span class="grain"></span></div>
+      <span class="play"><svg width="20" height="22" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span>
+      <div class="co">
+        <span class="badge">Video-Testimonial · Platzhalter</span>
+        <p class="q">„Obscura hat unseren Social-Media-Auftritt komplett übernommen – mehr Reichweite, mehr Anfragen, weniger Aufwand."</p>
+        <div class="who">
+          <span class="av" style="background:linear-gradient(135deg,#2b3440,#6b7684)"></span>
+          <span><b class="phnote">Daniel K.</b><small>Rolls-Royce Berlin</small></span>
+        </div>
+      </div>
     </div>
+
+    <div class="cine-rail" data-rail>
+      <div class="tcard rv"><div class="scene g-realestate"><span class="bg"></span><span class="grain"></span></div><span class="play"><svg width="14" height="16" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span><div class="co"><span class="stars">★★★★★</span><p class="tq">„Professionell, kreativ und zuverlässig."</p><b class="phnote">Laura M.</b><small>Kensington Immobilien</small></div></div>
+      <div class="tcard rv"><div class="scene g-auto2"><span class="bg"></span><span class="grain"></span></div><span class="play"><svg width="14" height="16" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span><div class="co"><span class="stars">★★★★★</span><p class="tq">„Deutlich höhere Sichtbarkeit und mehr qualifizierte Anfragen."</p><b class="phnote">Markus H.</b><small>BMW · Riller &amp; Schnauck</small></div></div>
+      <div class="tcard rv"><div class="scene g-nature"><span class="bg"></span><span class="grain"></span></div><span class="play"><svg width="14" height="16" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span><div class="co"><span class="stars">★★★★★</span><p class="tq">„Ein Team, das mitdenkt und unsere Marke perfekt in Szene setzt."</p><b class="phnote">Julia T.</b><small>Siroko</small></div></div>
+      <div class="tcard rv"><div class="scene g-auto"><span class="bg"></span><span class="grain"></span></div><span class="play"><svg width="14" height="16" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span><div class="co"><span class="stars">★★★★★</span><p class="tq">„Endlich ein verlässlicher Partner für unseren gesamten Auftritt."</p><b class="phnote">Sandra P.</b><small>Platzhalter Unternehmen</small></div></div>
+    </div>
+    <p class="cine-note">Beispiel-Testimonials · mit echten, freigegebenen Videos &amp; Kundenstimmen ersetzen</p>
   </div>
 </section>
 
@@ -956,7 +1002,7 @@ addEventListener('scroll',function(){var r=kontakt.getBoundingClientRect();smcta
   function analyze(handle){
     var s=seed((state.platform+handle).toLowerCase())||1;
     function r(){s=Math.imul(s^(s>>>15),1|s);s^=s+Math.imul(s^(s>>>7),61|s);return((s^(s>>>14))>>>0)/4294967296;}
-    var scored=cats.map(function(c){return{name:c.name,tip:c.tip,score:55+Math.floor(r()*38)};});
+    var scored=cats.map(function(c){return{name:c.name,tip:c.tip,score:63+Math.floor(r()*30)};});
     var overall=Math.round(scored.reduce(function(a,c){return a+c.score;},0)/scored.length);
     return{overall:overall,cats:scored};
   }
