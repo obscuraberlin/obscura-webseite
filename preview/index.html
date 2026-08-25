@@ -639,6 +639,15 @@ footer{background:var(--dark);color:#f5f5f0;padding:4.5rem 0 2rem}
 .callback-btn{position:fixed;left:1.1rem;bottom:1.1rem;z-index:58;height:52px;padding:0 1.15rem;border-radius:100px;background:var(--lime);
   color:var(--ink);border:0;cursor:pointer;display:flex;align-items:center;gap:.5rem;font-weight:700;box-shadow:0 12px 30px rgba(0,0,0,.22);font-family:var(--body);font-size:.9rem}
 .callback-btn svg{width:17px;height:17px;fill:var(--ink)}
+/* membership / retainer pitch */
+.member{position:relative;overflow:hidden;border-radius:26px;padding:clamp(2.2rem,6vw,4.5rem);color:#fff;isolation:isolate}
+.member .scene{position:absolute;inset:0;z-index:-2;transition:transform 1s cubic-bezier(.16,1,.3,1)}
+.member:hover .scene{transform:scale(1.05)}
+.member::after{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(115deg,rgba(10,10,8,.92),rgba(10,10,8,.5) 70%,rgba(10,10,8,.3))}
+.member-in{max-width:46ch;position:relative}
+.member h2{color:#fff;font-size:clamp(2rem,4.6vw,3.3rem);margin-top:1rem}
+.member p{color:rgba(255,255,255,.78);margin-top:1.1rem;font-size:1.12rem;line-height:1.6}
+.member .btn{margin-top:1.9rem}
 /* scroll haptic */
 html{scroll-snap-type:y proximity}
 .snap{scroll-snap-align:start;scroll-snap-stop:normal}
@@ -785,10 +794,11 @@ html{scroll-snap-type:y proximity}
   <div class="wrap">
     <p class="eyebrow">Marken, die mit uns arbeiten</p>
     <div class="logos">
-      <b>BMW</b><b>ROLLS-ROYCE</b><b>RILLER&nbsp;&amp;&nbsp;SCHNAUCK</b><b>KENSINGTON</b>
-      <b>HOTEL&nbsp;ADLON</b><b>AMAZON&nbsp;PRIME</b><b>MADAME&nbsp;TUSSAUDS</b><b>SIROKO</b>
+      <b>ROLLS-ROYCE</b><b>MADAME&nbsp;TUSSAUDS</b><b>AMAZON&nbsp;PRIME</b><b>ALLIANZ</b><b>MINI</b>
+      <b>RTL</b><b>SEA&nbsp;LIFE</b><b>KENSINGTON</b><b>RILLER&nbsp;&amp;&nbsp;SCHNAUCK</b>
+      <b>HOTEL&nbsp;ADLON</b><b>FRAMEN</b><b>WELLER&nbsp;ENERGIE</b><b>BRANDIDENT</b>
     </div>
-    <p class="phnote" style="margin-top:.9rem">Platzhalter-Auswahl · mit echten, freigegebenen Kundenlogos ersetzen</p>
+    <p class="phnote" style="margin-top:.9rem">Echte Referenzen · als reine Text-Logos dargestellt, mit Original-SVGs ersetzen</p>
   </div>
 </section>
 
@@ -954,6 +964,21 @@ html{scroll-snap-type:y proximity}
   </div>
 </section>
 
+<!-- MEMBERSHIP / RETAINER -->
+<section class="sec snap" id="mitgliedschaft">
+  <div class="wrap">
+    <div class="member rv">
+      <div class="scene g-city"><span class="bg"></span><span class="grain"></span></div>
+      <div class="member-in">
+        <p class="eyebrow" style="color:var(--lime)">Langfristige Partnerschaft</p>
+        <h2>Social Media Mitgliedschaft?</h2>
+        <p>Wir haben unter anderem langfristig die Social-Media-Arbeit für <strong style="color:#fff">Rolls-Royce Berlin</strong> übernommen und sorgen kontinuierlich für Content. Genau das können wir auch für dich tun – Monat für Monat, als dein festes Marketing-Team.</p>
+        <a href="#kontakt" class="btn btn-lime">Kontakt aufnehmen <span class="ar">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- TESTIMONIALS (cinematic) -->
 <section class="cine">
   <div class="wrap">
@@ -964,11 +989,11 @@ html{scroll-snap-type:y proximity}
       <div class="scene g-interior"><span class="bg"></span><span class="grain"></span></div>
       <span class="play"><svg width="20" height="22" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span>
       <div class="co">
-        <span class="badge">Video-Testimonial · Platzhalter</span>
-        <p class="q">„Obscura hat unseren Social-Media-Auftritt komplett übernommen – mehr Reichweite, mehr Anfragen, weniger Aufwand."</p>
+        <span class="badge">Kundenstimme</span>
+        <p class="q">„Wir sind zufrieden! Das Team von Obscura hat uns in mehreren Projekten begleitet – absolut nichts auszusetzen. Ein junges, dynamisches Team, mit dem es Spaß macht zu arbeiten."</p>
         <div class="who">
           <span class="av" style="background:linear-gradient(135deg,#2b3440,#6b7684)"></span>
-          <span><b class="phnote">Daniel K.</b><small>Rolls-Royce Berlin</small></span>
+          <span><b class="phnote">Zufriedener Kunde</b><small>Mehrere Projekte · echte Bewertung</small></span>
         </div>
       </div>
     </div>
