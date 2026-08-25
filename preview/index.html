@@ -648,6 +648,15 @@ footer{background:var(--dark);color:#f5f5f0;padding:4.5rem 0 2rem}
 .member h2{color:#fff;font-size:clamp(2rem,4.6vw,3.3rem);margin-top:1rem}
 .member p{color:rgba(255,255,255,.78);margin-top:1.1rem;font-size:1.12rem;line-height:1.6}
 .member .btn{margin-top:1.9rem}
+/* contact info */
+.contact-info{max-width:740px;margin:1.4rem auto 0;display:flex;flex-wrap:wrap;gap:1rem 2rem;justify-content:space-between;align-items:center;
+  border:1px solid var(--line);background:var(--surface);border-radius:18px;padding:1.3rem 1.5rem}
+.contact-info .ci-label{display:block;font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.35rem}
+.contact-info b{display:block;font-family:var(--display);font-weight:700;font-size:1rem}
+.contact-info span{font-size:.9rem;color:var(--muted)}
+.contact-info .ci-links{display:flex;flex-direction:column;gap:.5rem}
+.contact-info .ci-links a{display:inline-flex;align-items:center;gap:.5rem;font-size:.9rem;font-weight:600;color:var(--ink)}
+.contact-info .ci-links a:hover{color:var(--lime-ink)}
 /* scroll haptic */
 html{scroll-snap-type:y proximity}
 .snap{scroll-snap-align:start;scroll-snap-stop:normal}
@@ -1013,9 +1022,9 @@ html{scroll-snap-type:y proximity}
   <div class="wrap">
     <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1rem" class="rv">
       <div style="max-width:44ch">
-        <p class="eyebrow">Über uns · Berlin</p>
-        <h2 style="margin-top:1rem">Das Team hinter Obscura.</h2>
-        <p class="lead">Ein eingespieltes Team aus Strategen, Filmern und Performance-Marketern – aus Berlin, deutschlandweit für dich im Einsatz.</p>
+        <p class="eyebrow">Agentur · Über uns</p>
+        <h2 style="margin-top:1rem">Deine Marke zum Strahlen bringen.</h2>
+        <p class="lead">Willkommen bei Obscura – deiner Full-Service-Marketing-Agentur in Berlin. Bei uns geht es um mehr als Dienstleistungen: Wir erwecken deine Botschaft mit Kreativität und Leidenschaft zum Leben. Denn ein gut erzähltes visuelles Konzept erobert die Herzen und Köpfe deiner Zielgruppe.</p>
       </div>
       <a href="#kontakt" class="btn btn-ghost">Lern uns kennen <span class="ar">→</span></a>
     </div>
@@ -1054,6 +1063,14 @@ html{scroll-snap-type:y proximity}
         <button class="back hidden" id="backBtn">← Zurück</button>
       </div>
     </div>
+
+    <div class="contact-info rv">
+      <div><span class="ci-label">Hier findest du uns</span><b>Obscura Digital Marketing GmbH</b><span>Flemingstr. 12, 10557 Berlin</span></div>
+      <div class="ci-links">
+        <a href="mailto:info@obscura-berlin.de"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg> info@obscura-berlin.de</a>
+        <a href="https://wa.me/49000000000" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M.06 24l1.68-6.15A11.9 11.9 0 010 11.9C0 5.33 5.35 0 11.92 0a11.82 11.82 0 018.42 3.49 11.82 11.82 0 013.49 8.42c0 6.57-5.35 11.9-11.92 11.9a11.9 11.9 0 01-5.7-1.45L.06 24z"/></svg> WhatsApp schreiben</a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1064,8 +1081,11 @@ html{scroll-snap-type:y proximity}
     <div class="foot-grid">
       <div>
         <a class="logo">OBSCURA<sup>®</sup></a>
-        <p>Social Media. Content. Performance. Deine Social-Media-Agentur aus Berlin.</p>
-        <p class="phnote" style="margin-top:1rem">Platzhalter · +49 30 123 456 78<br>hallo@obscura-berlin.de</p>
+        <p>Full-Service Marketing. Deine Agentur aus Berlin für Video, Social Media, Web &amp; Ads.</p>
+        <p style="margin-top:1rem;color:rgba(255,255,255,.62);font-size:.87rem;line-height:1.7">
+          Obscura Digital Marketing GmbH<br>Flemingstr. 12, 10557 Berlin<br>
+          <a href="mailto:info@obscura-berlin.de" style="color:var(--lime)">info@obscura-berlin.de</a>
+        </p>
       </div>
       <div><h4>Unternehmen</h4><ul><li><a href="#leistungen">Über uns</a></li><li><a href="#content">Projekte</a></li><li><a href="#kontakt">Karriere</a></li><li><a href="#kontakt">Kontakt</a></li></ul></div>
       <div><h4>Leistungen</h4><ul><li><a href="#leistungen">Social Media Betreuung</a></li><li><a href="#content">Content Produktion</a></li><li><a href="#content">Video Produktion</a></li><li><a href="#leistungen">Werbeanzeigen</a></li></ul></div>
@@ -1365,8 +1385,8 @@ render();
       d:'Wir optimieren deine Marketingstrategie und schalten performante Werbeanzeigen auf Meta, Google, LinkedIn &amp; TikTok – mit Creatives, die wir selbst für dich produzieren.',
       v:['Klare, datenbasierte Strategie','Ads, die Anfragen bringen','Transparentes Reporting']},
     weiter:{ic:'<svg viewBox="0 0 24 24" fill="none" stroke="#0B0B0A" stroke-width="1.8"><path d="M22 10L12 5 2 10l10 5 10-5z"/></svg>',t:'Weiterbildung',
-      d:'Wir bieten berufliche Weiterbildung für Angestellte und Jobsuchende – praxisnah und auf die Anforderungen des modernen Marketings zugeschnitten.',
-      v:['Praxisnahe Inhalte','Flexibel &amp; verständlich','Zukunftssichere Skills']}
+      d:'Du suchst eine Weiterbildung für Arbeitssuchende oder Mitarbeiter? Wir sind zertifizierter Bildungsträger – daher übernimmt das Arbeitsamt 100 % der Kosten.',
+      v:['Zertifizierter Bildungsträger','100 % Kostenübernahme durch das Arbeitsamt','Praxisnahe, moderne Inhalte']}
   };
   var modal=document.getElementById('svcModal'),card=document.getElementById('svcModalCard');
   function open(key){var s=svcs[key];if(!s)return;

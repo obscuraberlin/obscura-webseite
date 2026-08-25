@@ -14,13 +14,13 @@ export const site = {
   domain: "https://www.obscura-berlin.de",
   city: "Berlin",
   tagline: "Social Media. Content. Performance.",
-  // PLACEHOLDER – mit echten Obscura-Kontaktdaten ersetzen
-  email: "hallo@obscura-berlin.de",
-  phone: "+49 30 123 456 78",
-  phoneHref: "+493012345678",
+  email: "info@obscura-berlin.de",
+  // PLACEHOLDER – echte Telefonnummer ergänzen
+  phone: "+49 30 000000",
+  phoneHref: "+4930000000",
   address: {
-    street: "PLACEHOLDER Straße 1",
-    zip: "10000",
+    street: "Flemingstr. 12",
+    zip: "10557",
     city: "Berlin",
     country: "Deutschland",
   },
