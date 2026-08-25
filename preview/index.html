@@ -354,6 +354,36 @@ footer{background:var(--dark);color:#f5f5f0;padding:4.5rem 0 2rem}
 .smcta.show{transform:none}
 .smcta a{display:flex;justify-content:center;background:var(--ink);color:#fff;border-radius:100px;padding:1rem;font-weight:600;box-shadow:0 14px 30px rgba(0,0,0,.25)}
 
+/* stats band */
+.stats{background:var(--ink);color:#fff;padding:4.5rem 0;overflow:hidden}
+.stats::before{content:'';position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(50% 60% at 20% 0%,rgba(199,255,24,.12),transparent 60%),radial-gradient(50% 60% at 85% 100%,rgba(120,150,255,.08),transparent 60%)}
+.stats .wrap{position:relative;z-index:2}
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:2rem}
+.stat{text-align:center;border-left:1px solid rgba(255,255,255,.1);padding:0 1rem}
+.stat:first-child{border-left:0}
+.stat b{display:block;font-family:var(--display);font-weight:900;font-size:clamp(2.4rem,4.5vw,3.6rem);
+  color:var(--lime);letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums}
+.stat span{display:block;margin-top:.6rem;font-size:.9rem;color:rgba(255,255,255,.62)}
+.stat-note{text-align:center;font-family:var(--mono);font-size:.62rem;letter-spacing:.04em;
+  color:rgba(255,255,255,.35);margin-top:1.8rem;text-transform:uppercase}
+.badges{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.7rem 1.6rem;margin-top:2rem;
+  padding-top:1.8rem;border-top:1px solid rgba(255,255,255,.1)}
+.badges .lbl{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4)}
+.badges b{font-family:var(--display);font-weight:800;font-size:1.05rem;color:rgba(255,255,255,.78)}
+/* guarantee */
+.guarantee{max-width:740px;margin:0 auto 1.6rem;display:flex;gap:1.1rem;align-items:center;
+  border:1px solid var(--line);background:var(--surface);border-radius:18px;padding:1.2rem 1.4rem}
+.guarantee .shield{width:44px;height:44px;flex:none;border-radius:100px;background:var(--lime);color:var(--ink);
+  display:grid;place-items:center;font-size:1.3rem;font-weight:800}
+.guarantee b{font-family:var(--display);font-weight:800;font-size:1rem}
+.guarantee p{font-size:.86rem;color:var(--muted);margin-top:.15rem}
+/* playful motion */
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.hero-phone{animation:floaty 6s ease-in-out infinite}
+@keyframes floaty2{0%,100%{transform:translateY(0) rotate(var(--rot))}50%{transform:translateY(-16px) rotate(var(--rot))}}
+.float.f1{--rot:-6deg}.float.f2{--rot:6deg}
+@media(prefers-reduced-motion:no-preference){.float{animation:floaty2 7s ease-in-out infinite}.float.f2{animation-delay:-2s}}
 /* comparison */
 .cmp{margin-top:3rem;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--surface)}
 .cmp-scroll{overflow-x:auto}
@@ -507,6 +537,24 @@ footer{background:var(--dark);color:#f5f5f0;padding:4.5rem 0 2rem}
   </div>
 </section>
 
+<!-- STATS -->
+<section class="stats">
+  <div class="wrap">
+    <p class="eyebrow rv" style="text-align:center;display:block;color:var(--lime)">Ergebnisse, die zählen</p>
+    <div class="stat-grid">
+      <div class="stat rv"><b data-count="230" data-prefix="+" data-suffix="%">+0%</b><span>durchschnittlich mehr Reichweite</span></div>
+      <div class="stat rv"><b data-count="100" data-suffix="+">0+</b><span>betreute Kanäle &amp; Projekte</span></div>
+      <div class="stat rv"><b data-static="3,4 Mio.">3,4 Mio.</b><span>monatliche Aufrufe</span></div>
+      <div class="stat rv"><b data-static="4,9 ★">4,9 ★</b><span>durchschnittliche Bewertung</span></div>
+    </div>
+    <p class="stat-note">Beispielwerte · Demo – mit echten Obscura-Zahlen ersetzen</p>
+    <div class="badges rv">
+      <span class="lbl">Wir arbeiten mit</span>
+      <b>Meta Ads</b><b>Google</b><b>Instagram</b><b>TikTok</b><b>YouTube</b>
+    </div>
+  </div>
+</section>
+
 <!-- SYSTEM (light) -->
 <section class="sec" id="leistungen">
   <div class="wrap">
@@ -655,6 +703,10 @@ footer{background:var(--dark);color:#f5f5f0;padding:4.5rem 0 2rem}
         <span><span class="c">✓</span> Persönliche Rückmeldung</span>
       </div>
     </div>
+    <div class="guarantee rv">
+      <div class="shield">✓</div>
+      <div><b>Unser Versprechen</b><p>Unverbindliches, kostenloses Erstgespräch. Individuelle Einschätzung für dein Unternehmen – ohne Verpflichtung, ohne Risiko.</p></div>
+    </div>
     <div class="form-card rv" id="formCard">
       <div id="formInner">
         <div class="prog"><span id="pLabel">Schritt 1 von 5</span><span id="pPct">20%</span></div>
@@ -715,6 +767,13 @@ function animateDash(){
     function step(ts){if(!t0)t0=ts;var p=Math.min((ts-t0)/1400,1);el.textContent=pre+Math.round((1-Math.pow(1-p,3))*to)+suf;if(p<1)requestAnimationFrame(step);}requestAnimationFrame(step);});
 }
 new IntersectionObserver(function(es,o){es.forEach(function(e){if(e.isIntersecting){animateDash();o.disconnect();}})},{threshold:.3}).observe(document.querySelector('.dash'));
+
+// stats band count-up
+var statBand=document.querySelector('.stats');
+if(statBand){new IntersectionObserver(function(es,o){es.forEach(function(e){if(!e.isIntersecting)return;o.disconnect();
+  statBand.querySelectorAll('[data-count]').forEach(function(el){var to=+el.dataset.count,pre=el.dataset.prefix||'',suf=el.dataset.suffix||'',t0=null;
+    function step(ts){if(!t0)t0=ts;var p=Math.min((ts-t0)/1600,1);el.textContent=pre+Math.round((1-Math.pow(1-p,3))*to)+suf;if(p<1)requestAnimationFrame(step);}requestAnimationFrame(step);});
+})},{threshold:.35}).observe(statBand);}
 
 var steps=document.getElementById('steps'),fill=document.getElementById('stepFill');
 if(steps&&fill){new IntersectionObserver(function(es,o){es.forEach(function(e){if(e.isIntersecting){if(innerWidth>1000){fill.style.width='100%';}else{fill.classList.add('v');fill.style.height='100%';}o.disconnect();}})},{threshold:.3}).observe(steps);}
