@@ -354,6 +354,25 @@ footer{background:var(--dark);color:#f5f5f0;padding:4.5rem 0 2rem}
 .smcta.show{transform:none}
 .smcta a{display:flex;justify-content:center;background:var(--ink);color:#fff;border-radius:100px;padding:1rem;font-weight:600;box-shadow:0 14px 30px rgba(0,0,0,.25)}
 
+/* cases */
+.cases{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:210px;gap:1rem;margin-top:2.5rem}
+.case{position:relative;overflow:hidden;border-radius:20px;isolation:isolate;cursor:pointer}
+.case .scene{position:absolute;inset:0;transition:transform .7s cubic-bezier(.16,1,.3,1)}
+.case:hover .scene{transform:scale(1.06)}
+.case .co{position:absolute;inset:0;z-index:4;display:flex;flex-direction:column;justify-content:flex-end;
+  padding:1.3rem;background:linear-gradient(0deg,rgba(0,0,0,.75),rgba(0,0,0,.05) 58%,transparent)}
+.case .brand{font-family:var(--mono);font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;color:var(--lime)}
+.case h3{font-family:var(--display);font-weight:800;color:#fff;font-size:1.2rem;margin-top:.25rem;letter-spacing:-.02em}
+.case .feat h3{font-size:1.8rem}
+.case .svc{color:rgba(255,255,255,.72);font-size:.85rem;margin-top:.15rem}
+.case .go{margin-top:.9rem;display:inline-flex;align-items:center;gap:.4rem;font-size:.78rem;font-weight:600;color:#fff;
+  background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22);padding:.4rem .8rem;border-radius:100px;
+  backdrop-filter:blur(6px);width:fit-content;transition:background .25s}
+.case:hover .go{background:var(--lime);color:var(--ink);border-color:var(--lime)}
+.case .feat{}
+.case.feat{grid-column:span 2;grid-row:span 2}
+.case .play{z-index:5}
+.cases-note{font-family:var(--mono);font-size:.6rem;letter-spacing:.03em;color:var(--faint);margin-top:1.2rem;text-transform:uppercase}
 /* stats band */
 .stats{background:var(--ink);color:#fff;padding:4.5rem 0;overflow:hidden}
 .stats::before{content:'';position:absolute;inset:0;pointer-events:none;
@@ -418,6 +437,8 @@ footer{background:var(--dark);color:#f5f5f0;padding:4.5rem 0 2rem}
   .sys{grid-template-columns:1fr;gap:1.2rem}.ring{order:-1}
   .bento,.proj,.team,.reviews,.stories{grid-template-columns:1fr 1fr}
   .bento .big,.bento .wide{grid-column:span 2}
+  .cases{grid-template-columns:1fr 1fr;grid-auto-rows:180px}.case.feat{grid-column:span 2}
+  .stat-grid{grid-template-columns:1fr 1fr;gap:2rem 1rem}.stat:nth-child(3){border-left:0}
   .ps{grid-template-columns:1fr}.connector{margin:0 auto;transform:rotate(90deg)}
   .report,.film-sec,.lt,.vids{grid-template-columns:1fr}
   .steps{grid-template-columns:1fr;gap:0}
@@ -431,6 +452,8 @@ footer{background:var(--dark);color:#f5f5f0;padding:4.5rem 0 2rem}
 @media(max-width:560px){
   .bento,.proj,.team,.reviews,.stories{grid-template-columns:1fr}
   .bento .big,.bento .wide{grid-column:span 1}.foot-grid{grid-template-columns:1fr}
+  .cases{grid-template-columns:1fr;grid-auto-rows:200px}.case.feat{grid-column:span 1;grid-row:span 1}
+  .stat-grid{grid-template-columns:1fr 1fr}
   .float{display:none}
 }
 @media(prefers-reduced-motion:reduce){*{animation-duration:.001ms!important;transition-duration:.001ms!important}html{scroll-behavior:auto}.rv{opacity:1;transform:none}}
@@ -440,7 +463,7 @@ footer{background:var(--dark);color:#f5f5f0;padding:4.5rem 0 2rem}
   <div class="wrap nav">
     <a href="#top" class="logo">OBSCURA<sup>®</sup></a>
     <nav class="nav-links">
-      <a href="#leistungen">Leistungen</a><a href="#content">Arbeit</a><a href="#vergleich">Vergleich</a><a href="#kontakt">Kontakt</a>
+      <a href="#leistungen">Leistungen</a><a href="#content">Arbeit</a><a href="#projekte">Projekte</a><a href="#vergleich">Vergleich</a><a href="#kontakt">Kontakt</a>
     </nav>
     <div class="nav-r">
       <a href="#kontakt" class="btn btn-dark">Erstgespräch <span class="ar">→</span></a>
@@ -673,6 +696,44 @@ footer{background:var(--dark);color:#f5f5f0;padding:4.5rem 0 2rem}
     <div class="scene r-film g-nature"><span class="bg"></span><span class="grain"></span><span class="play"><svg width="15" height="17" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span><div class="ig-bot"><div class="ig-cap"><b>Kampagne</b>Brand Film</div></div></div>
     <div class="scene r-film g-team"><span class="bg"></span><span class="grain"></span><span class="play"><svg width="15" height="17" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span><div class="ig-bot"><div class="ig-cap"><b>Recruiting</b>Recruiting Film</div></div></div>
   </div></div>
+</section>
+
+<!-- CASES -->
+<section class="sec" id="projekte" style="background:var(--soft)">
+  <div class="wrap">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1rem" class="rv">
+      <div>
+        <p class="eyebrow">Ausgewählte Projekte</p>
+        <h2 style="margin-top:1rem">Marken, die auf uns vertrauen.</h2>
+      </div>
+      <a href="#kontakt" class="btn btn-ghost">Alle Cases ansehen <span class="ar">→</span></a>
+    </div>
+
+    <div class="cases">
+      <div class="case feat rv">
+        <div class="scene g-auto"><span class="bg"></span><span class="grain"></span></div>
+        <span class="play"><svg width="16" height="18" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span>
+        <div class="co"><span class="brand">Rolls-Royce Berlin</span><h3>Reels Kampagne</h3><span class="svc">Automotive · Social Media · Content Produktion</span><span class="go">Case ansehen →</span></div>
+      </div>
+      <div class="case rv">
+        <div class="scene g-realestate"><span class="bg"></span><span class="grain"></span></div>
+        <div class="co"><span class="brand">Kensington Immobilien</span><h3>Social Media Betreuung</h3><span class="go">Case ansehen →</span></div>
+      </div>
+      <div class="case rv">
+        <div class="scene g-auto2"><span class="bg"></span><span class="grain"></span></div>
+        <div class="co"><span class="brand">Riller &amp; Schnauck</span><h3>Imagefilm Produktion</h3><span class="go">Case ansehen →</span></div>
+      </div>
+      <div class="case rv">
+        <div class="scene g-interior"><span class="bg"></span><span class="grain"></span></div>
+        <div class="co"><span class="brand">BMW</span><h3>Content &amp; Reels</h3><span class="go">Case ansehen →</span></div>
+      </div>
+      <div class="case rv">
+        <div class="scene g-nature"><span class="bg"></span><span class="grain"></span></div>
+        <div class="co"><span class="brand">Siroko</span><h3>Content Creation</h3><span class="go">Case ansehen →</span></div>
+      </div>
+    </div>
+    <p class="cases-note">Beispiel-Cases · mit echten Obscura-Projekten &amp; freigegebenen Ergebnissen ersetzen</p>
+  </div>
 </section>
 
 <!-- TESTIMONIALS -->
