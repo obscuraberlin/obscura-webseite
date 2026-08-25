@@ -354,6 +354,70 @@ footer{background:var(--dark);color:#f5f5f0;padding:4.5rem 0 2rem}
 .smcta.show{transform:none}
 .smcta a{display:flex;justify-content:center;background:var(--ink);color:#fff;border-radius:100px;padding:1rem;font-weight:600;box-shadow:0 14px 30px rgba(0,0,0,.25)}
 
+/* social check */
+.check{padding:6rem 0;background:var(--canvas)}
+.check-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:3rem;align-items:center;margin-top:1.5rem}
+.check-copy ul{list-style:none;margin-top:1.5rem;display:flex;flex-direction:column;gap:.75rem}
+.check-copy li{display:flex;gap:.6rem;font-size:.98rem;color:#44443c}
+.check-copy li .c{color:var(--lime-ink);font-weight:800}
+.checker{position:relative;background:var(--ink);color:#fff;border-radius:24px;padding:1.7rem;overflow:hidden;
+  box-shadow:0 40px 80px -40px rgba(0,0,0,.4)}
+.checker::before{content:'';position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(60% 60% at 85% 0,rgba(199,255,24,.12),transparent 60%)}
+.checker>*{position:relative;z-index:2}
+.chk-h{font-family:var(--display);font-weight:800;font-size:1.25rem}
+.chk-sub{color:rgba(255,255,255,.55);font-size:.86rem;margin-top:.25rem}
+.plat{display:flex;gap:.5rem;margin:1.2rem 0 .8rem}
+.plat button{flex:1;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.04);color:#fff;
+  border-radius:100px;padding:.55rem;cursor:pointer;font-weight:600;font-family:var(--body);font-size:.9rem;transition:.2s}
+.plat button.on{background:var(--lime);color:var(--ink);border-color:var(--lime)}
+.handle{display:flex;align-items:center;border:1px solid rgba(255,255,255,.16);border-radius:12px;
+  background:rgba(255,255,255,.05);padding-left:.9rem}
+.handle .at{color:rgba(255,255,255,.45)}
+.handle input{flex:1;background:none;border:0;color:#fff;padding:.85rem .5rem;font-size:1rem;outline:none;font-family:var(--body)}
+.chk-btn{width:100%;margin-top:.9rem;border:0;border-radius:100px;background:var(--lime);color:var(--ink);
+  font-family:var(--body);font-weight:700;font-size:.98rem;padding:.9rem;cursor:pointer;transition:.2s}
+.chk-btn:hover{filter:brightness(1.05)}
+.chk-note{text-align:center;font-family:var(--mono);font-size:.6rem;letter-spacing:.03em;color:rgba(255,255,255,.35);margin-top:.8rem;text-transform:uppercase}
+/* analyzing */
+.anz{text-align:center;padding:1.5rem 0}
+.anz .spin{width:54px;height:54px;margin:0 auto 1.2rem;border-radius:100px;border:3px solid rgba(255,255,255,.12);
+  border-top-color:var(--lime);animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.anz .st{font-family:var(--mono);font-size:.82rem;color:rgba(255,255,255,.7)}
+/* gauge */
+.gauge{position:relative;width:150px;height:150px;margin:.3rem auto 1rem}
+.gauge svg{transform:rotate(-90deg)}
+.gauge .gc{fill:none;stroke:rgba(255,255,255,.1);stroke-width:11}
+.gauge .gp{fill:none;stroke:var(--lime);stroke-width:11;stroke-linecap:round;
+  stroke-dasharray:396;stroke-dashoffset:396;transition:stroke-dashoffset 1.3s cubic-bezier(.16,1,.3,1)}
+.gauge .gn{position:absolute;inset:0;display:grid;place-items:center;flex-direction:column;text-align:center}
+.gauge .gn b{font-family:var(--display);font-weight:900;font-size:2.5rem;line-height:1}
+.gauge .gn small{font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;color:rgba(255,255,255,.5);text-transform:uppercase}
+.metrics{display:flex;flex-direction:column;gap:.7rem;margin-top:.4rem}
+.metric .ml{display:flex;justify-content:space-between;font-size:.84rem;margin-bottom:.3rem}
+.metric .mn{color:rgba(255,255,255,.8)}
+.metric .mv{font-family:var(--mono);color:var(--lime);font-weight:600}
+.metric .track{height:7px;border-radius:100px;background:rgba(255,255,255,.1);overflow:hidden}
+.metric .fill{height:100%;width:0;background:linear-gradient(90deg,var(--lime-ink),var(--lime));border-radius:100px;transition:width 1s cubic-bezier(.16,1,.3,1)}
+.locked .mv,.locked .track{filter:blur(6px)}
+.gate{margin-top:1.2rem;border-top:1px solid rgba(255,255,255,.1);padding-top:1.2rem}
+.gate p{font-size:.9rem;color:rgba(255,255,255,.8);margin-bottom:.7rem}
+.gate p b{color:#fff}
+.gate input{width:100%;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.05);color:#fff;
+  border-radius:12px;padding:.85rem 1rem;font-size:1rem;outline:none;font-family:var(--body)}
+.gate input:focus{border-color:var(--lime)}
+/* report */
+.rep-verdict{background:rgba(199,255,24,.08);border:1px solid rgba(199,255,24,.2);border-radius:14px;padding:1rem 1.1rem;margin-top:1.1rem}
+.rep-verdict b{color:var(--lime);font-family:var(--display)}
+.rep-verdict p{font-size:.88rem;color:rgba(255,255,255,.82);margin-top:.2rem}
+.rep-recs{margin-top:1.1rem;display:flex;flex-direction:column;gap:.7rem}
+.rep-rec{display:flex;gap:.7rem;font-size:.88rem;color:rgba(255,255,255,.85)}
+.rep-rec .n{flex:none;width:22px;height:22px;border-radius:100px;background:var(--lime);color:var(--ink);
+  display:grid;place-items:center;font-weight:800;font-size:.75rem;font-family:var(--display)}
+.rep-mail{font-size:.82rem;color:rgba(255,255,255,.55);margin-top:1rem}
+.rep-actions{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1.2rem}
+.rep-actions .lnk{background:none;border:0;color:rgba(255,255,255,.6);text-decoration:underline;cursor:pointer;font-size:.82rem;font-family:var(--body)}
 /* cases */
 .cases{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:210px;gap:1rem;margin-top:2.5rem}
 .case{position:relative;overflow:hidden;border-radius:20px;isolation:isolate;cursor:pointer}
@@ -440,7 +504,7 @@ footer{background:var(--dark);color:#f5f5f0;padding:4.5rem 0 2rem}
   .cases{grid-template-columns:1fr 1fr;grid-auto-rows:180px}.case.feat{grid-column:span 2}
   .stat-grid{grid-template-columns:1fr 1fr;gap:2rem 1rem}.stat:nth-child(3){border-left:0}
   .ps{grid-template-columns:1fr}.connector{margin:0 auto;transform:rotate(90deg)}
-  .report,.film-sec,.lt,.vids{grid-template-columns:1fr}
+  .report,.film-sec,.lt,.vids,.check-grid{grid-template-columns:1fr}
   .steps{grid-template-columns:1fr;gap:0}
   .steps .line{left:21px;right:auto;top:0;bottom:0;width:2px;height:auto}
   .steps .line .fill{width:100%!important;height:0}.steps .line .fill.v{transition:height 1.4s ease}
@@ -463,7 +527,7 @@ footer{background:var(--dark);color:#f5f5f0;padding:4.5rem 0 2rem}
   <div class="wrap nav">
     <a href="#top" class="logo">OBSCURA<sup>®</sup></a>
     <nav class="nav-links">
-      <a href="#leistungen">Leistungen</a><a href="#content">Arbeit</a><a href="#projekte">Projekte</a><a href="#vergleich">Vergleich</a><a href="#kontakt">Kontakt</a>
+      <a href="#leistungen">Leistungen</a><a href="#check">Gratis-Check</a><a href="#projekte">Projekte</a><a href="#vergleich">Vergleich</a><a href="#kontakt">Kontakt</a>
     </nav>
     <div class="nav-r">
       <a href="#kontakt" class="btn btn-dark">Erstgespräch <span class="ar">→</span></a>
@@ -473,7 +537,7 @@ footer{background:var(--dark);color:#f5f5f0;padding:4.5rem 0 2rem}
 </header>
 
 <div class="mobile-menu" id="mm">
-  <a href="#leistungen">Leistungen</a><a href="#content">Arbeit</a><a href="#vergleich">Vergleich</a><a href="#kontakt">Kontakt</a>
+  <a href="#leistungen">Leistungen</a><a href="#check">Gratis-Check</a><a href="#projekte">Projekte</a><a href="#vergleich">Vergleich</a><a href="#kontakt">Kontakt</a>
   <a href="#kontakt" class="btn btn-dark">Erstgespräch anfragen →</a>
 </div>
 
@@ -574,6 +638,29 @@ footer{background:var(--dark);color:#f5f5f0;padding:4.5rem 0 2rem}
     <div class="badges rv">
       <span class="lbl">Wir arbeiten mit</span>
       <b>Meta Ads</b><b>Google</b><b>Instagram</b><b>TikTok</b><b>YouTube</b>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL CHECK -->
+<section class="check" id="check">
+  <div class="wrap">
+    <div class="check-grid">
+      <div class="check-copy rv">
+        <p class="eyebrow">Kostenloser Social Media Check</p>
+        <h2 style="margin-top:1rem">Wie stark ist dein Auftritt wirklich?</h2>
+        <p class="lead">Gib deinen Account ein und erhalte in Sekunden eine Einschätzung deines Social-Media-Auftritts – inklusive Score, Stärken und konkreten Empfehlungen.</p>
+        <ul>
+          <li><span class="c">✓</span> Sofort-Score deines Profils</li>
+          <li><span class="c">✓</span> Analyse von 5 entscheidenden Faktoren</li>
+          <li><span class="c">✓</span> Persönlicher Bericht &amp; konkrete Empfehlungen</li>
+          <li><span class="c">✓</span> 100 % kostenlos &amp; unverbindlich</li>
+        </ul>
+      </div>
+
+      <div class="checker rv">
+        <div id="checkerInner"></div>
+      </div>
     </div>
   </div>
 </section>
@@ -853,6 +940,94 @@ document.querySelectorAll('.rb').forEach(function(btn){btn.addEventListener('cli
 
 var smcta=document.getElementById('smcta'),kontakt=document.getElementById('kontakt');
 addEventListener('scroll',function(){var r=kontakt.getBoundingClientRect();smcta.classList.toggle('show',scrollY>600&&r.top>innerHeight);},{passive:true});
+
+// ---- Social Media Check ----
+(function(){
+  var inner=document.getElementById('checkerInner');if(!inner)return;
+  var cats=[
+    {name:"Profil-Optimierung",tip:"Optimiere Bio, Highlights und Link-in-Bio, damit Besucher sofort verstehen, was du anbietest – und den nächsten Schritt gehen."},
+    {name:"Content-Konsistenz",tip:"Ein fester Redaktionsplan mit 3–4 Beiträgen pro Woche sorgt für einen wiedererkennbaren, verlässlichen Auftritt."},
+    {name:"Reichweiten-Potenzial",tip:"Reels mit klaren Hooks und plattformgerechten Formaten heben deine Reichweite deutlich – hier liegt ungenutztes Potenzial."},
+    {name:"Interaktion & Community",tip:"Aktives Community-Management (Antworten, Stories, Umfragen) steigert Bindung und Algorithmus-Reichweite spürbar."},
+    {name:"Markenauftritt",tip:"Ein einheitliches visuelles System aus Farben, Typografie und Bildsprache lässt deine Marke hochwertiger und wiedererkennbar wirken."}
+  ];
+  var state={platform:"Instagram",handle:"",data:null,email:""};
+  function seed(s){var h=2166136261;for(var i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619);}return h>>>0;}
+  function analyze(handle){
+    var s=seed((state.platform+handle).toLowerCase())||1;
+    function r(){s=Math.imul(s^(s>>>15),1|s);s^=s+Math.imul(s^(s>>>7),61|s);return((s^(s>>>14))>>>0)/4294967296;}
+    var scored=cats.map(function(c){return{name:c.name,tip:c.tip,score:55+Math.floor(r()*38)};});
+    var overall=Math.round(scored.reduce(function(a,c){return a+c.score;},0)/scored.length);
+    return{overall:overall,cats:scored};
+  }
+  function esc(x){return(x||"").replace(/[<>&"]/g,function(c){return{"<":"&lt;",">":"&gt;","&":"&amp;",'"':"&quot;"}[c];});}
+  function render(step){
+    if(step==="input"){
+      inner.innerHTML=
+        '<div class="chk-h">Starte deinen Gratis-Check</div>'+
+        '<div class="chk-sub">Wähle deine Plattform und gib deinen Account-Namen ein.</div>'+
+        '<div class="plat">'+["Instagram","TikTok"].map(function(p){return '<button class="'+(state.platform===p?"on":"")+'" data-p="'+p+'">'+p+'</button>';}).join('')+'</div>'+
+        '<div class="handle"><span class="at">@</span><input id="chkHandle" placeholder="deinunternehmen" value="'+esc(state.handle)+'" autocomplete="off"></div>'+
+        '<button class="chk-btn" id="chkGo">Jetzt kostenlos analysieren →</button>'+
+        '<div class="chk-note">Sofort-Analyse · unverbindlich · Vorschau mit Beispielwerten</div>';
+      inner.querySelectorAll('[data-p]').forEach(function(b){b.onclick=function(){state.platform=b.dataset.p;render("input");setTimeout(function(){var i=document.getElementById("chkHandle");if(i)i.focus();},10);};});
+      var go=function(){var i=document.getElementById("chkHandle");state.handle=(i.value||"").replace(/^@/,"").trim();if(!state.handle){i.focus();return;}render("analyzing");};
+      document.getElementById("chkGo").onclick=go;
+      document.getElementById("chkHandle").addEventListener("keydown",function(e){if(e.key==="Enter")go();});
+    }
+    else if(step==="analyzing"){
+      inner.innerHTML='<div class="anz"><div class="spin"></div><div class="st" id="anzSt">Profil wird geprüft…</div></div>';
+      var msgs=["Profil wird geprüft…","Content-Konsistenz wird analysiert…","Reichweiten-Potenzial wird berechnet…","Interaktion wird ausgewertet…","Score wird erstellt…"];var k=0;
+      var iv=setInterval(function(){k++;var el=document.getElementById("anzSt");if(el&&msgs[k])el.textContent=msgs[k];},420);
+      setTimeout(function(){clearInterval(iv);state.data=analyze(state.handle);render("preview");},2100);
+    }
+    else if(step==="preview"){
+      var d=state.data;var C=2*Math.PI*63;
+      inner.innerHTML=
+        '<div class="chk-h">@'+esc(state.handle)+' · '+state.platform+'</div>'+
+        '<div class="chk-sub">Dein vorläufiger Social-Media-Score</div>'+
+        '<div class="gauge"><svg width="150" height="150"><circle class="gc" cx="75" cy="75" r="63"/><circle class="gp" id="gp" cx="75" cy="75" r="63"/></svg><div class="gn"><b id="gnum">0</b><small>von 100</small></div></div>'+
+        '<div class="metrics locked" id="mets">'+d.cats.map(function(c){return '<div class="metric"><div class="ml"><span class="mn">'+c.name+'</span><span class="mv">'+c.score+'</span></div><div class="track"><div class="fill" style="width:'+c.score+'%"></div></div></div>';}).join('')+'</div>'+
+        '<div class="gate"><p>🔒 <b>Schalte deinen vollständigen Bericht frei.</b> Gib deine E-Mail ein und erhalte Score-Details, Analyse &amp; konkrete Empfehlungen.</p>'+
+        '<input id="chkEmail" type="email" placeholder="deine@email.de" autocomplete="email">'+
+        '<button class="chk-btn" id="chkUnlock">Bericht freischalten →</button>'+
+        '<div class="chk-note">Kein Spam · jederzeit abmeldbar</div></div>';
+      requestAnimationFrame(function(){var gp=document.getElementById("gp");gp.style.strokeDashoffset=C*(1-d.overall/100);
+        var t0=null;(function step(ts){var el=document.getElementById("gnum");if(!el)return;if(!t0)t0=ts;var p=Math.min((ts-t0)/1300,1);el.textContent=Math.round((1-Math.pow(1-p,3))*d.overall);if(p<1)requestAnimationFrame(step);})(performance.now());});
+      var unlock=function(){var e=document.getElementById("chkEmail");if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(e.value)){e.focus();e.style.borderColor="#ff6b6b";return;}state.email=e.value;render("report");};
+      document.getElementById("chkUnlock").onclick=unlock;
+      document.getElementById("chkEmail").addEventListener("keydown",function(ev){if(ev.key==="Enter")unlock();});
+    }
+    else if(step==="report"){
+      var d=state.data;var sorted=d.cats.slice().sort(function(a,b){return a.score-b.score;});
+      var weak=sorted.slice(0,3);
+      var verdict=d.overall<65?"Solides Fundament mit deutlichem ungenutzten Potenzial.":d.overall<80?"Guter Auftritt mit klaren Stellhebeln nach oben.":"Starker Auftritt – mit Feintuning holst du das letzte Potenzial raus.";
+      inner.innerHTML=
+        '<div class="chk-h">Dein Bericht · @'+esc(state.handle)+'</div>'+
+        '<div class="gauge"><svg width="150" height="150"><circle class="gc" cx="75" cy="75" r="63"/><circle class="gp" cx="75" cy="75" r="63" style="stroke-dashoffset:'+(2*Math.PI*63*(1-d.overall/100))+'"/></svg><div class="gn"><b>'+d.overall+'</b><small>von 100</small></div></div>'+
+        '<div class="metrics" id="mets2">'+d.cats.map(function(c){return '<div class="metric"><div class="ml"><span class="mn">'+c.name+'</span><span class="mv">'+c.score+'/100</span></div><div class="track"><div class="fill" style="width:'+c.score+'%"></div></div></div>';}).join('')+'</div>'+
+        '<div class="rep-verdict"><b>Einschätzung</b><p>'+verdict+' Die größten Hebel liegen bei: '+weak.slice(0,2).map(function(c){return c.name;}).join(" & ")+'.</p></div>'+
+        '<div class="rep-recs">'+weak.map(function(c,i){return '<div class="rep-rec"><span class="n">'+(i+1)+'</span><span><b style="color:#fff">'+c.name+':</b> '+c.tip+'</span></div>';}).join('')+'</div>'+
+        '<p class="rep-mail">📩 Deinen ausführlichen Bericht mit Maßnahmenplan senden wir zusätzlich an <b style="color:#fff">'+esc(state.email)+'</b>.</p>'+
+        '<button class="chk-btn" id="chkCTA" style="margin-top:1.1rem">Kostenloses Erstgespräch anfragen →</button>'+
+        '<div class="rep-actions"><button class="lnk" id="chkSave">Bericht speichern</button><button class="lnk" id="chkAgain">Anderen Account prüfen</button></div>';
+      document.getElementById("chkCTA").onclick=function(){document.getElementById("kontakt").scrollIntoView({behavior:"smooth"});};
+      document.getElementById("chkAgain").onclick=function(){state.handle="";state.data=null;state.email="";render("input");};
+      document.getElementById("chkSave").onclick=function(){saveReport(d,weak,verdict);};
+    }
+  }
+  function saveReport(d,weak,verdict){
+    var txt="OBSCURA · Social Media Check\n@"+state.handle+" ("+state.platform+")\n\nGesamt-Score: "+d.overall+"/100\n\n"+
+      d.cats.map(function(c){return "- "+c.name+": "+c.score+"/100";}).join("\n")+
+      "\n\nEinschätzung: "+verdict+"\n\nEmpfehlungen:\n"+weak.map(function(c,i){return (i+1)+". "+c.name+" – "+c.tip;}).join("\n")+
+      "\n\nBeispiel-Analyse (Vorschau). Ausführlicher Bericht folgt per E-Mail.\nobscura-berlin.de";
+    (async function(){
+      try{var dl=await claude.use("downloads");if(dl){await dl.save({filename:"obscura-social-check.txt",data:txt});return;}}catch(e){}
+      var a=document.createElement("a");a.href="data:text/plain;charset=utf-8,"+encodeURIComponent(txt);a.download="obscura-social-check.txt";a.click();
+    })();
+  }
+  render("input");
+})();
 
 var stepsData=[
   {q:"Was möchtest du aktuell verbessern?",o:["Mehr Sichtbarkeit","Regelmäßig Content","Professioneller Auftritt","Mehr Anfragen","Werbeanzeigen","Social Media abgeben","Noch nicht sicher"]},
