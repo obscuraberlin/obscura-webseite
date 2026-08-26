@@ -1,16 +1,30 @@
 <title>Obscura Berlin</title>
-<meta name="description" content="Social Media Agentur Berlin – Content, monatliche Betreuung & Ads. Dein Auftritt, unser System." />
+<meta name="description" content="Obscura übernimmt Social-Media-Betreuung, Content-Produktion, Reels, Video und Werbeanzeigen für Unternehmen deutschlandweit. Strategie, Produktion und Betreuung aus einem Team – Berlin based." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" />
 
 <style>
 :root{
-  --canvas:#FBFBF8; --surface:#FFFFFF; --soft:#F3F3EE; --line:#E8E8E1;
-  --ink:#0B0B0A; --muted:#78786C; --faint:#A9A99E;
-  --lime:#A6D93B; --lime-soft:#B9E45F; --lime-ink:#4E6B14; --dark:#0C0C0A;
+  /* Farbsystem – mehr Ebenen, gleiche Markenfarben */
+  --canvas:#F7F7F2;      /* Obscura Warm White (Standard) */
+  --surface:#FFFFFF;     /* Pure White */
+  --stone:#EFEFE8;       /* Soft Section Background */
+  --soft:#EFEFE8;
+  --line:#DEDFD8;        /* Border */
+  --ink:#0B0B0B;         /* Obscura Black */
+  --charcoal:#20211F;    /* Secondary Dark */
+  --muted:#777972;       /* Muted Text */
+  --faint:#A9A99E;
+  --lime:#B7EF35;        /* Signature Lime */
+  --lime-soft:#C7F55E; --lime-ink:#4E6B14; --lime-tint:#EFFFD2; --dark:#0B0B0B;
   --display:'Archivo',sans-serif; --body:'Instrument Sans',sans-serif; --mono:'JetBrains Mono',monospace;
-  --r:18px; --maxw:1200px;
+  --r:18px; --maxw:1440px;
+  /* Spacing-Skala (4 → 160) */
+  --s1:4px; --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px;
+  --s7:48px; --s8:64px; --s9:96px; --s10:128px; --s11:160px;
+  /* Container-Seitenabstand */
+  --pad:clamp(18px,5vw,72px);
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:84px;-webkit-text-size-adjust:100%}
@@ -19,7 +33,7 @@ body{background:var(--canvas);color:var(--ink);font-family:var(--body);line-heig
 img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
 :focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:6px}
-.wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:clamp(1.2rem,4vw,2rem)}
+.wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--pad)}
 .eyebrow{font-family:var(--mono);font-size:.7rem;font-weight:600;letter-spacing:.2em;
   text-transform:uppercase;color:var(--muted)}
 h1,h2,h3{font-family:var(--display);font-weight:900;letter-spacing:-.04em;line-height:.98;text-wrap:balance}
@@ -35,28 +49,46 @@ section{position:relative}
 .btn-lime{background:var(--lime);color:var(--ink)}.btn-lime:hover{filter:brightness(1.04)}
 .btn-ghost{border-color:var(--line);color:var(--ink);background:var(--surface)}.btn-ghost:hover{border-color:var(--ink)}
 
-/* header */
-header{position:fixed;inset:0 0 auto;z-index:60;transition:padding .3s,background .3s,box-shadow .3s}
-header.top{padding:1.05rem 0;background:transparent}
-header.scrolled{padding:.5rem 0;background:rgba(251,251,248,.75);backdrop-filter:blur(16px) saturate(1.4);
-  box-shadow:0 1px 0 rgba(0,0,0,.05)}
-.nav{display:flex;align-items:center;justify-content:space-between}
+/* header – ruhig, Apple-artig */
+header{position:fixed;inset:0 0 auto;z-index:60;
+  transition:transform .4s cubic-bezier(.16,1,.3,1),background .3s,box-shadow .3s,backdrop-filter .3s}
+header .nav{display:flex;align-items:center;justify-content:space-between;
+  height:80px;padding-inline:var(--pad);max-width:1600px;margin-inline:auto;transition:height .3s}
+header.top{background:transparent}
+header.scrolled{background:rgba(247,247,242,.72);backdrop-filter:blur(18px) saturate(1.3);
+  border-bottom:1px solid rgba(0,0,0,.06)}
+header.scrolled .nav{height:66px}
+header.hide{transform:translateY(-100%)}
 .logo{font-family:var(--display);font-weight:900;font-size:1.28rem;letter-spacing:-.05em}
 .logo sup{color:var(--lime-ink);font-size:.55em}
-.nav-links{display:flex;gap:1.6rem}
-.nav-links a{font-size:.9rem;font-weight:500;color:var(--muted);transition:color .2s}
+.nav-links{display:flex;gap:clamp(28px,2.4vw,40px)}
+.nav-links a{font-size:.92rem;font-weight:500;color:var(--muted);transition:color .2s}
 .nav-links a:hover{color:var(--ink)}
 .nav-r{display:flex;align-items:center;gap:.65rem}
-.burger{display:none;width:42px;height:42px;border:1px solid var(--line);border-radius:100px;
+.hdr-cta{padding:.68rem 1.25rem}
+.burger{display:none;width:44px;height:44px;border:1px solid var(--line);border-radius:100px;
   background:var(--surface);cursor:pointer;place-items:center}
 .burger span,.burger span::before,.burger span::after{content:'';display:block;width:18px;height:2px;
   background:var(--ink);position:relative;transition:.3s}
 .burger span::before{position:absolute;top:-6px}.burger span::after{position:absolute;top:6px}
-.mobile-menu{position:fixed;inset:0;z-index:55;background:var(--canvas);padding:5.5rem 1.5rem 2rem;
-  transform:translateX(100%);transition:transform .35s cubic-bezier(.16,1,.3,1);display:flex;flex-direction:column}
-.mobile-menu.open{transform:none}
-.mobile-menu a{font-family:var(--display);font-weight:800;font-size:1.9rem;padding:.65rem 0;border-bottom:1px solid var(--line)}
-.mobile-menu .btn{margin-top:1.4rem;justify-content:center;font-size:1.05rem;padding:1rem}
+/* mobile fullscreen menu */
+.mobile-menu{position:fixed;inset:0;z-index:70;background:var(--canvas);padding:calc(var(--pad) + 12px) var(--pad) 2rem;
+  transform:translateX(100%);transition:transform .4s cubic-bezier(.16,1,.3,1);display:flex;flex-direction:column;
+  opacity:0;visibility:hidden}
+.mobile-menu.open{transform:none;opacity:1;visibility:visible}
+.mm-close{position:absolute;top:1.1rem;right:var(--pad);width:44px;height:44px;border:1px solid var(--line);
+  border-radius:100px;background:var(--surface);font-size:1.5rem;line-height:1;cursor:pointer;color:var(--ink)}
+.mm-nav{display:flex;flex-direction:column;margin-top:3.4rem}
+.mm-nav a{font-family:var(--display);font-weight:800;font-size:2rem;padding:.7rem 0;
+  border-bottom:1px solid var(--line);opacity:0;transform:translateY(14px);transition:opacity .5s,transform .5s,color .2s}
+.mobile-menu.open .mm-nav a{opacity:1;transform:none}
+.mobile-menu.open .mm-nav a:nth-child(1){transition-delay:.06s}
+.mobile-menu.open .mm-nav a:nth-child(2){transition-delay:.12s}
+.mobile-menu.open .mm-nav a:nth-child(3){transition-delay:.18s}
+.mobile-menu.open .mm-nav a:nth-child(4){transition-delay:.24s}
+.mobile-menu.open .mm-nav a:nth-child(5){transition-delay:.30s}
+.mm-cta{margin-top:auto;justify-content:center;font-size:1.05rem;padding:1.05rem}
+.mm-geo{margin-top:1.1rem;text-align:center;font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;color:var(--muted)}
 
 /* ===== visual building blocks (rendered social content) ===== */
 .scene{position:relative;overflow:hidden;background:#111;isolation:isolate}
@@ -144,7 +176,9 @@ header.scrolled{padding:.5rem 0;background:rgba(251,251,248,.75);backdrop-filter
 .avatars{display:flex}
 .avatars .a{width:36px;height:36px;border-radius:100px;margin-left:-10px;border:2px solid var(--canvas);background-size:cover}
 .avatars .a:first-child{margin-left:0}
-.trust p{font-size:.84rem;color:var(--muted)}
+.trust p{font-size:.9rem;color:var(--muted);line-height:1.5}
+.geo-pin{width:36px;height:36px;flex:none;display:grid;place-items:center;border-radius:100px;
+  background:var(--lime-tint);color:var(--lime-ink);border:1px solid var(--line)}
 .stars{color:var(--lime-ink);letter-spacing:1px}
 .hero-visual{position:relative;display:flex;justify-content:center;align-items:center;min-height:520px}
 .float{position:absolute;border-radius:16px;overflow:hidden;box-shadow:0 26px 50px -18px rgba(0,0,0,.35);
@@ -162,22 +196,52 @@ header.scrolled{padding:.5rem 0;background:rgba(251,251,248,.75);backdrop-filter
 .showreel .sr-cap b{display:block;color:#fff;font-family:var(--display);font-weight:800;font-size:1.2rem;letter-spacing:-.02em}
 .showreel .sr-cap small{color:rgba(255,255,255,.72);font-size:.82rem;font-family:var(--mono);letter-spacing:.02em}
 
-/* ticker */
-.ticker{background:var(--ink);color:#fff;padding:.9rem 0;overflow:hidden}
-.ticker .track{display:flex;width:max-content;animation:tick 30s linear infinite}
-.ticker span{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:1rem;margin-inline:1.2rem;letter-spacing:-.01em}
-.ticker .dot{color:var(--lime);margin-inline:.7rem}
+/* diagonaler lime ticker */
+.ticker{background:var(--lime);color:var(--ink);padding:.85rem 0;overflow:hidden;
+  transform:rotate(-2.4deg) scale(1.04);margin:2.4rem 0;position:relative;z-index:5}
+.ticker .track{display:flex;width:max-content;animation:tick 42s linear infinite}
+.ticker:hover .track{animation-play-state:paused}
+.ticker span{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:1.02rem;margin-inline:1.1rem;letter-spacing:-.01em}
+.ticker .dot{color:var(--ink);opacity:.55;margin-inline:.5rem}
 @keyframes tick{to{transform:translateX(-50%)}}
+@media(max-width:700px){.ticker{transform:rotate(-2deg) scale(1.06);margin:1.6rem 0}.ticker .track{animation-duration:52s}}
+@media(prefers-reduced-motion:reduce){.ticker .track{animation:none}}
 
-/* clients */
-.clients{border-bottom:1px solid var(--line);padding:2.6rem 0}
-.clients .wrap{display:grid;grid-template-columns:auto 1fr;gap:2rem;align-items:center}
-.logos{display:flex;flex-wrap:wrap;gap:1.2rem 2.4rem;justify-content:flex-end;align-items:center}
-.logos b{font-family:var(--display);font-weight:800;font-size:1.1rem;color:#b0b0a4;transition:color .25s}
-.logos b:hover{color:var(--ink)}
+/* section-hintergründe – rhythmus */
+.bg-white{background:var(--surface)}
+.bg-stone{background:var(--stone)}
+/* referenzen – ruhiges, box-freies logo-raster */
+.clients{padding:clamp(72px,10vw,128px) 0;border-top:1px solid var(--line)}
+.ref-head{display:grid;grid-template-columns:1fr .8fr;gap:2rem;align-items:end;margin-bottom:clamp(48px,6vw,72px)}
+.ref-head h2{font-size:clamp(2rem,4.4vw,3.3rem)}
+.ref-sub{max-width:42ch;color:var(--muted);font-size:1.02rem;line-height:1.6;justify-self:end}
+.ref-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(24px,3vw,40px) clamp(16px,3vw,32px);align-items:center}
+.ref-logo{font-family:var(--display);font-weight:800;letter-spacing:-.03em;line-height:1.05;text-align:center;
+  color:var(--ink);opacity:0;transform:translateY(16px);
+  transition:opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1),filter .3s;
+  filter:grayscale(1);font-size:clamp(1rem,2vw,1.4rem)}
+.ref-logo.lg{font-size:clamp(1.15rem,2.5vw,1.75rem)}
+.ref-logo.sm{font-size:clamp(.9rem,1.7vw,1.15rem)}
+.ref-grid.in .ref-logo{opacity:.62;transform:none}
+.ref-grid.in .ref-logo:hover{opacity:1;transform:scale(1.02)}
+.ref-grid.in .ref-logo:nth-child(1){transition-delay:.03s}
+.ref-grid.in .ref-logo:nth-child(2){transition-delay:.06s}
+.ref-grid.in .ref-logo:nth-child(3){transition-delay:.09s}
+.ref-grid.in .ref-logo:nth-child(4){transition-delay:.12s}
+.ref-grid.in .ref-logo:nth-child(5){transition-delay:.15s}
+.ref-grid.in .ref-logo:nth-child(6){transition-delay:.18s}
+.ref-grid.in .ref-logo:nth-child(7){transition-delay:.21s}
+.ref-grid.in .ref-logo:nth-child(8){transition-delay:.24s}
+.ref-grid.in .ref-logo:nth-child(9){transition-delay:.27s}
+.ref-grid.in .ref-logo:nth-child(10){transition-delay:.30s}
+.ref-grid.in .ref-logo:nth-child(11){transition-delay:.33s}
+.ref-grid.in .ref-logo:nth-child(12){transition-delay:.36s}
+.ref-grid.in .ref-logo:nth-child(n+13){transition-delay:.40s}
+.ref-note{margin-top:clamp(40px,5vw,64px)}
+@media(prefers-reduced-motion:reduce){.ref-logo{transition:none}}
 
 /* section */
-.sec{padding:6.5rem 0}
+.sec{padding:clamp(80px,11vw,140px) 0}
 .sec h2{font-size:clamp(2.3rem,5.2vw,4rem)}
 .lead{margin-top:1.2rem;font-size:1.14rem;color:var(--muted);max-width:52ch}
 
@@ -824,7 +888,8 @@ html{scroll-snap-type:y proximity}
   .steps .line{left:21px;right:auto;top:0;bottom:0;width:2px;height:auto}
   .steps .line .fill{width:100%!important;height:0}.steps .line .fill.v{transition:height 1.4s ease}
   .step{padding-left:66px;padding-bottom:2rem}.step .n{position:absolute;left:0;top:0;margin:0}
-  .clients .wrap{grid-template-columns:1fr}.logos{justify-content:flex-start}
+  .ref-head{grid-template-columns:1fr;gap:1.2rem;align-items:start}.ref-sub{justify-self:start}
+  .ref-grid{grid-template-columns:repeat(3,1fr);gap:clamp(20px,4vw,32px)}
   .foot-grid{grid-template-columns:1fr 1fr}.opts,.fields{grid-template-columns:1fr}
   .smcta{display:block}
 }
@@ -835,27 +900,32 @@ html{scroll-snap-type:y proximity}
   .svc-grid{grid-template-columns:1fr}
   .stat-grid{grid-template-columns:1fr 1fr}
   .float{display:none}
+  .ref-grid{grid-template-columns:repeat(2,1fr);row-gap:2rem}
+  .sec{padding:clamp(56px,14vw,80px) 0}
 }
 @media(prefers-reduced-motion:reduce){*{animation-duration:.001ms!important;transition-duration:.001ms!important}html{scroll-behavior:auto}.rv{opacity:1;transform:none}}
 </style>
 
 <header class="top" id="hdr">
-  <div class="wrap nav">
+  <div class="nav">
     <a href="#top" class="logo">OBSCURA<sup>®</sup></a>
     <nav class="nav-links">
-      <a href="#leistungen">Leistungen</a><a href="#karriere">Karriere</a><a href="#projekte">Projekte</a><a href="#team">Über uns</a><a href="#kontakt">Kontakt</a>
+      <a href="#mitgliedschaft">Betreuung</a><a href="#projekte">Projekte</a><a href="#leistungen">Leistungen</a><a href="#team">Über uns</a><a href="#kontakt">Kontakt</a>
     </nav>
     <div class="nav-r">
-      <a class="wa-head" href="https://wa.me/4915758117356" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M.06 24l1.68-6.15A11.9 11.9 0 010 11.9C0 5.33 5.35 0 11.92 0a11.82 11.82 0 018.42 3.49 11.82 11.82 0 013.49 8.42c0 6.57-5.35 11.9-11.92 11.9a11.9 11.9 0 01-5.7-1.45L.06 24zM6.6 20.13l.36.22a9.9 9.9 0 005.05 1.38 9.9 9.9 0 009.9-9.9 9.9 9.9 0 00-16.9-7 9.9 9.9 0 00-2.9 7 9.9 9.9 0 001.5 5.26l.24.38-1 3.65 3.75-.99zM17.4 14.3c-.09-.15-.33-.24-.69-.42-.36-.18-2.13-1.05-2.46-1.17-.33-.12-.57-.18-.81.18-.24.36-.93 1.17-1.14 1.41-.21.24-.42.27-.78.09-.36-.18-1.52-.56-2.9-1.79-1.07-.95-1.79-2.13-2-2.49-.21-.36-.02-.55.16-.73.16-.16.36-.42.54-.63.18-.21.24-.36.36-.6.12-.24.06-.45-.03-.63-.09-.18-.81-1.95-1.11-2.67-.29-.7-.59-.6-.81-.61l-.69-.01c-.24 0-.63.09-.96.45-.33.36-1.26 1.23-1.26 3s1.29 3.48 1.47 3.72c.18.24 2.54 3.88 6.15 5.44.86.37 1.53.59 2.05.76.86.27 1.64.23 2.26.14.69-.1 2.13-.87 2.43-1.71.3-.84.3-1.56.21-1.71z"/></svg></a>
-      <a href="#kontakt" class="btn btn-dark">Erstgespräch <span class="ar">→</span></a>
+      <a href="#kontakt" class="btn btn-dark hdr-cta">Strategiegespräch <span class="ar">→</span></a>
       <button class="burger" id="burger" aria-label="Menü öffnen"><span></span></button>
     </div>
   </div>
 </header>
 
 <div class="mobile-menu" id="mm">
-  <a href="#leistungen">Leistungen</a><a href="#karriere">Karriere</a><a href="#projekte">Projekte</a><a href="#vergleich">Vergleich</a><a href="#kontakt">Kontakt</a>
-  <a href="#kontakt" class="btn btn-dark">Erstgespräch anfragen →</a>
+  <button class="mm-close" id="mmClose" aria-label="Menü schließen">×</button>
+  <nav class="mm-nav">
+    <a href="#mitgliedschaft">Betreuung</a><a href="#projekte">Projekte</a><a href="#leistungen">Leistungen</a><a href="#team">Über uns</a><a href="#kontakt">Kontakt</a>
+  </nav>
+  <a href="#kontakt" class="btn btn-dark mm-cta">Strategiegespräch anfragen →</a>
+  <p class="mm-geo">Berlin based. Deutschlandweit im Einsatz.</p>
 </div>
 
 <div class="scroll-prog" aria-hidden="true"><i id="scrollBar"></i></div>
@@ -868,12 +938,12 @@ html{scroll-snap-type:y proximity}
   <div class="aurora"></div>
   <div class="wrap hero-grid">
     <div class="rv in">
-      <p class="eyebrow">Full-Service Marketing-Agentur · Berlin</p>
+      <p class="eyebrow">Social Media · Content · Ads · Deutschlandweit</p>
       <h1 class="reveal-lines" style="margin-top:1.2rem"><span class="line"><span>Dein Auftritt.</span></span><span class="line"><span class="lime">Unser System.</span></span></h1>
-      <p class="sub">Video, Foto, Social Media &amp; Ads – dein komplettes Marketing aus einer Hand. Für mehr Sichtbarkeit, mehr Anfragen und einen Auftritt, der verkauft.</p>
-      <p class="plan">Du führst dein Business. Wir machen dich sichtbar.</p>
+      <p class="sub">Wir übernehmen deine Social-Media-Kanäle – von Strategie und monatlicher Content-Produktion über Veröffentlichung und Betreuung bis zu Werbeanzeigen und Reporting.</p>
+      <p class="plan">Ein Ansprechpartner. Ein Team. Monat für Monat.</p>
       <div class="ctas">
-        <a href="#kontakt" class="btn btn-dark">Jetzt Projekt anfragen <span class="ar">→</span></a>
+        <a href="#kontakt" class="btn btn-dark">Kostenloses Strategiegespräch <span class="ar">→</span></a>
         <a href="#content" class="btn btn-ghost">Unsere Arbeit ansehen <span class="ar">→</span></a>
       </div>
       <div class="trust-badges rv">
@@ -882,22 +952,18 @@ html{scroll-snap-type:y proximity}
         <span><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg> Deutsche Server</span>
       </div>
       <div class="trust">
-        <div class="avatars">
-          <span class="a" style="background:linear-gradient(135deg,#2b3440,#6b7684)"></span>
-          <span class="a" style="background:linear-gradient(135deg,#4a3a26,#8a6a40)"></span>
-          <span class="a" style="background:linear-gradient(135deg,#26404e,#4f7f95)"></span>
-          <span class="a" style="background:linear-gradient(135deg,#3a3226,#726144)"></span>
-        </div>
-        <p><b style="color:var(--ink)">100+</b> Unternehmen vertrauen uns · <span class="stars">★★★★★</span> 5,0<br><span class="phnote">Platzhalter – mit echten Obscura-Daten ersetzen</span></p>
+        <span class="geo-pin"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-6.4-7-11a7 7 0 1114 0c0 4.6-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+        <p><b style="color:var(--ink)">Berlin based.</b> Deutschlandweit im Einsatz.<br><span style="color:var(--muted)">Projekte im gesamten DACH-Raum möglich.</span></p>
       </div>
     </div>
 
+    <!-- HERO MEDIA STACK · echte Dropbox-Assets ersetzen die Platzhalter-Szenen (data-slot = Zieldatei) -->
     <div class="hero-visual rv in">
-      <div class="float f1 scene g-interior" data-sp="-70"><span class="bg"></span><span class="grain"></span><span class="play"><svg width="12" height="14" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span></div>
-      <div class="float f2 scene g-nature" data-sp="70"><span class="bg"></span><span class="grain"></span><span class="play"><svg width="12" height="14" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span></div>
-      <div class="showreel scene g-auto hero-phone">
+      <div class="float f1 scene g-interior" data-sp="-70" data-slot="HERO_BTS_01 · 4:5 · Team beim Dreh"><span class="bg"></span><span class="grain"></span><span class="play"><svg width="12" height="14" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span></div>
+      <div class="float f2 scene g-nature" data-sp="70" data-slot="HERO_REEL_02 · 9:16 · Kundenprojekt"><span class="bg"></span><span class="grain"></span><span class="play"><svg width="12" height="14" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span></div>
+      <div class="showreel scene g-auto hero-phone" data-slot="HERO_REEL_01 · 9:16 · stärkstes Kundenprojekt">
         <span class="bg"></span><span class="grain"></span>
-        <span class="sr-badge">Showreel 2025</span>
+        <span class="sr-badge">Showreel</span>
         <span class="play play-lg"><svg width="22" height="26" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span>
         <div class="sr-cap"><b>Unsere Arbeit in Bewegung.</b><small>Video · Foto · Social Media · Ads</small></div>
       </div>
@@ -908,16 +974,37 @@ html{scroll-snap-type:y proximity}
 <!-- TICKER -->
 <div class="ticker" aria-hidden="true"><div class="track" id="tickTrack"></div></div>
 
-<!-- CLIENTS -->
-<section class="clients">
+<!-- REFERENZEN · echte Kunden. Wortmarken = Platzhalter für Original-Logos (data-slot). -->
+<section class="clients bg-white" id="referenzen">
   <div class="wrap">
-    <p class="eyebrow">Marken, die mit uns arbeiten</p>
-    <div class="logos marquee"><div class="track" id="logoTrack">
-      <b>ROLLS-ROYCE</b><b>MADAME&nbsp;TUSSAUDS</b><b>AMAZON&nbsp;PRIME</b><b>ALLIANZ</b><b>MINI</b>
-      <b>RTL</b><b>SEA&nbsp;LIFE</b><b>KENSINGTON</b><b>RILLER&nbsp;&amp;&nbsp;SCHNAUCK</b>
-      <b>HOTEL&nbsp;ADLON</b><b>FRAMEN</b><b>WELLER&nbsp;ENERGIE</b><b>BRANDIDENT</b>
-    </div></div>
-    <p class="phnote" style="margin-top:.9rem">Echte Referenzen · als reine Text-Logos dargestellt, mit Original-SVGs ersetzen</p>
+    <div class="ref-head">
+      <div>
+        <p class="eyebrow rv">Ausgewählte Referenzen</p>
+        <h2 class="rv" style="margin-top:1rem">Unternehmen,<br>die uns vertrauen.</h2>
+      </div>
+      <p class="ref-sub rv">Von bekannten Marken bis zum Mittelstand – wir arbeiten deutschlandweit mit Unternehmen aus unterschiedlichen Branchen.</p>
+    </div>
+    <div class="ref-grid" id="refGrid">
+      <span class="ref-logo lg" data-slot="LOGO_ROLLS_ROYCE.svg">Rolls-Royce</span>
+      <span class="ref-logo" data-slot="LOGO_ALLIANZ.svg">Allianz</span>
+      <span class="ref-logo sm" data-slot="LOGO_RTL.svg">RTL</span>
+      <span class="ref-logo" data-slot="LOGO_SEA_LIFE.svg">SEA&nbsp;LIFE</span>
+      <span class="ref-logo" data-slot="LOGO_RILLER_SCHNAUCK.svg">Riller&nbsp;&amp;&nbsp;Schnauck</span>
+      <span class="ref-logo lg" data-slot="LOGO_AMAZON_PRIME.svg">Amazon&nbsp;Prime</span>
+      <span class="ref-logo" data-slot="LOGO_WELLER_ENERGIE.svg">Weller&nbsp;Energie</span>
+      <span class="ref-logo sm" data-slot="LOGO_MINI.svg">MINI</span>
+      <span class="ref-logo" data-slot="LOGO_MADAME_TUSSAUDS.svg">Madame&nbsp;Tussauds</span>
+      <span class="ref-logo sm" data-slot="LOGO_BRANDIDENT.svg">brandident</span>
+      <span class="ref-logo" data-slot="LOGO_AXEL_SPRINGER.svg">Axel&nbsp;Springer</span>
+      <span class="ref-logo sm" data-slot="LOGO_SOLAR_TECHNIK_LACKNER.svg">Solar&nbsp;Technik&nbsp;Lackner</span>
+      <span class="ref-logo sm" data-slot="LOGO_FRAMEN.svg">FRAMEN</span>
+      <span class="ref-logo" data-slot="LOGO_KENSINGTON.svg">Kensington</span>
+      <span class="ref-logo sm" data-slot="LOGO_JETCLEAN.svg">Jetclean&nbsp;Berlin</span>
+      <span class="ref-logo sm" data-slot="LOGO_ERTMEN.svg">ERTMEN</span>
+      <span class="ref-logo sm" data-slot="LOGO_FLAT_BERLIN.svg">Flat&nbsp;Berlin</span>
+      <span class="ref-logo sm" data-slot="LOGO_MISSION_KARRIERE.svg">Mission&nbsp;Karriere</span>
+    </div>
+    <p class="phnote ref-note">Echte Referenzen · als Wortmarken dargestellt – mit den Original-Logos aus dem Obscura-Logoordner ersetzen.</p>
   </div>
 </section>
 
@@ -1085,7 +1172,7 @@ html{scroll-snap-type:y proximity}
 </section>
 
 <!-- MEMBERSHIP / RETAINER -->
-<section class="sec snap" id="mitgliedschaft">
+<section class="sec snap bg-stone" id="mitgliedschaft">
   <div class="wrap">
     <div class="member rv">
       <div class="scene g-city"><span class="bg"></span><span class="grain"></span></div>
@@ -1258,7 +1345,7 @@ html{scroll-snap-type:y proximity}
     <div class="foot-grid">
       <div>
         <a class="logo">OBSCURA<sup>®</sup></a>
-        <p>Full-Service Marketing. Deine Agentur aus Berlin für Video, Social Media, Web &amp; Ads.</p>
+        <p>Dein externes Social-Media- und Content-Team. Berlin based, deutschlandweit im Einsatz – Projekte im gesamten DACH-Raum möglich.</p>
         <p style="margin-top:1rem;color:rgba(255,255,255,.62);font-size:.87rem;line-height:1.7">
           Obscura Digital Marketing GmbH<br>Flemingstr. 12, 10557 Berlin<br>
           <a href="tel:+493028678956" style="color:rgba(255,255,255,.8)">030 28678956</a><br>
@@ -1344,15 +1431,26 @@ if(matchMedia('(hover:hover)').matches&&!matchMedia('(prefers-reduced-motion:red
   });
 }
 
-var hdr=document.getElementById('hdr');
-addEventListener('scroll',function(){if(scrollY>16){hdr.classList.add('scrolled');hdr.classList.remove('top');}else{hdr.classList.add('top');hdr.classList.remove('scrolled');}},{passive:true});
+// header: kompakt beim scrollen + sanft ausblenden beim runterscrollen, zurück beim hochscrollen
+var hdr=document.getElementById('hdr'),lastY=0;
+addEventListener('scroll',function(){var y=scrollY;
+  if(y>16){hdr.classList.add('scrolled');hdr.classList.remove('top');}else{hdr.classList.add('top');hdr.classList.remove('scrolled');}
+  if(y>240&&y>lastY+4){hdr.classList.add('hide');}else if(y<lastY-4||y<160){hdr.classList.remove('hide');}
+  lastY=y;},{passive:true});
 
-var mm=document.getElementById('mm'),burger=document.getElementById('burger');
-burger.addEventListener('click',function(){mm.classList.toggle('open');document.body.style.overflow=mm.classList.contains('open')?'hidden':'';});
-mm.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){mm.classList.remove('open');document.body.style.overflow='';});});
+var mm=document.getElementById('mm'),burger=document.getElementById('burger'),mmClose=document.getElementById('mmClose');
+function closeMenu(){mm.classList.remove('open');document.body.style.overflow='';hdr.classList.remove('hide');}
+burger.addEventListener('click',function(){mm.classList.add('open');document.body.style.overflow='hidden';});
+if(mmClose)mmClose.addEventListener('click',closeMenu);
+mm.querySelectorAll('a').forEach(function(a){a.addEventListener('click',closeMenu);});
+addEventListener('keydown',function(e){if(e.key==='Escape'&&mm.classList.contains('open'))closeMenu();});
 
 var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.14,rootMargin:'-30px'});
 document.querySelectorAll('.rv').forEach(function(el){io.observe(el);});
+
+// referenzen-logos: gestaffeltes einblenden beim scrollen
+var refGrid=document.getElementById('refGrid');
+if(refGrid){var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');rio.unobserve(e.target);}})},{threshold:.18,rootMargin:'-40px'});rio.observe(refGrid);}
 
 // scroll-getriggerter Zeilen-Reveal fuer grosse Headlines
 (function(){
