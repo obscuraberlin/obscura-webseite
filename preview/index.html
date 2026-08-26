@@ -856,7 +856,8 @@ footer{background:var(--dark);color:#f5f5f0;padding:4.5rem 0 2rem}
 @media(max-width:820px){.kar-grid{grid-template-columns:1fr;gap:2rem}.kar-form .kf{grid-template-columns:1fr}.kar-form input.full,.kar-form textarea{grid-column:span 1}}
 /* ablauf / prozess (nummeriert, premium) */
 .steps4{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-top:3.2rem;position:relative}
-.step4{position:relative;padding-top:1.6rem;border-top:2px solid var(--line)}
+.step4{position:relative;padding-top:1.6rem;border-top:2px solid var(--line);transition:border-color .6s ease}
+.step4.in{border-top-color:var(--lime-ink)}
 .step4::before{content:'';position:absolute;top:-2px;left:0;width:44px;height:2px;background:var(--lime)}
 .step4 .s-num{font-family:var(--display);font-weight:900;font-size:clamp(2.4rem,3.6vw,3.2rem);line-height:1;color:var(--lime-ink);letter-spacing:-.04em;display:block}
 .step4 h3{font-family:var(--display);font-weight:800;font-size:1.2rem;margin-top:1rem;letter-spacing:-.02em}
@@ -972,7 +973,7 @@ html{scroll-snap-type:y proximity}
 @media(prefers-reduced-motion:reduce){.lr-fg,.lr-dot{transition:none}}
 /* ===== IMAGEFILM SCROLL-EXPANSION ===== */
 .film-sec{overflow:hidden}
-.film-head{text-align:center;max-width:900px;margin-inline:auto;margin-bottom:clamp(40px,5vw,64px)}
+.film-head{max-width:720px;margin-bottom:clamp(40px,5vw,64px)}
 .film-head h2{font-size:clamp(1.9rem,4.4vw,3.4rem)}
 .film-hold{display:flex;justify-content:center}
 .film-frame{position:relative;width:62%;aspect-ratio:16/9;border-radius:26px;overflow:hidden;cursor:pointer;
@@ -1364,7 +1365,7 @@ html{scroll-snap-type:y proximity}
 <!-- ABLAUF -->
 <section class="sec snap" id="ablauf">
   <div class="wrap">
-    <div style="text-align:center;max-width:42ch;margin-inline:auto" class="rv">
+    <div style="max-width:44ch" class="rv">
       <p class="eyebrow">So arbeiten wir zusammen</p>
       <h2 style="margin-top:1rem">In 4 Schritten<br>zu deinem Auftritt.</h2>
     </div>
