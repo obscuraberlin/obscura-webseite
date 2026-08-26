@@ -174,6 +174,7 @@ header.hide{transform:translateY(-100%)}
   background:#09090a;isolation:isolate}
 .hc-media{position:absolute;inset:-6% 0;z-index:0;will-change:transform}
 .hc-media .bg::before{display:none} /* Motiv-Silhouette im Vollbild ausblenden */
+.hc-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
 .hc-glow{position:absolute;inset:0;z-index:1;pointer-events:none;
   background:radial-gradient(60% 55% at 82% 14%,rgba(166,217,59,.11),transparent 64%),
              radial-gradient(75% 60% at 10% 98%,rgba(20,24,18,.55),transparent 60%)}
@@ -274,6 +275,27 @@ header.top .burger span,header.top .burger span::before,header.top .burger span:
 .perf-line{margin-top:1rem;font-family:var(--display);font-weight:900;letter-spacing:-.03em;
   font-size:clamp(1.3rem,3vw,2.1rem);line-height:1.05}
 .perf-line .lime{color:var(--lime-ink)}
+/* ===== LEISTUNGEN · sticky stacking cards ===== */
+.stacksec{overflow:visible}
+.stack{margin-top:clamp(2.4rem,5vw,3.4rem);display:flex;flex-direction:column;gap:clamp(1.4rem,3vw,2.2rem)}
+.stack-card{position:sticky;top:calc(96px + var(--i)*16px);background:var(--surface);
+  border:1px solid var(--line);border-radius:24px;box-shadow:0 30px 60px -36px rgba(0,0,0,.32);
+  display:grid;grid-template-columns:auto 1fr;gap:clamp(1.2rem,3vw,2.6rem);
+  padding:clamp(1.6rem,3.5vw,3rem);align-items:start}
+.sc-num{font-family:var(--display);font-weight:900;font-size:clamp(2.2rem,6vw,4.2rem);color:var(--line);line-height:.8}
+.sc-body h3{font-family:var(--display);font-weight:900;font-size:clamp(1.5rem,3.4vw,2.4rem);letter-spacing:-.03em}
+.sc-body p{margin-top:.8rem;color:var(--muted);font-size:1.04rem;line-height:1.55;max-width:54ch}
+.sc-badge{display:inline-block;font-family:var(--mono);font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;
+  background:var(--lime);color:var(--ink);padding:.35rem .7rem;border-radius:100px;margin-bottom:.9rem}
+.sc-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.3rem}
+.sc-tags span{font-size:.84rem;background:var(--soft);color:#57574d;border-radius:100px;padding:.4rem .85rem}
+.stack-card .btn{margin-top:1.6rem}
+.sc-focus{background:var(--dark);border-color:transparent}
+.sc-focus .sc-num{color:rgba(255,255,255,.16)}
+.sc-focus h3{color:#fff}.sc-focus p{color:rgba(255,255,255,.68)}
+.sc-focus .sc-tags span{background:rgba(255,255,255,.08);color:rgba(255,255,255,.82)}
+@media(max-width:640px){.stack-card{grid-template-columns:1fr;gap:.3rem;top:74px}.sc-num{font-size:2rem}}
+@media(prefers-reduced-motion:reduce){.stack-card{position:static}}
 
 /* dark accent */
 .dark{background:var(--dark);color:#f5f5f0;overflow:hidden}
@@ -1081,6 +1103,8 @@ html{scroll-snap-type:y proximity}
 <!-- HERO · cinematisches Netflix-Cover (echtes HERO_REEL_01 ersetzt die Platzhalter-Szene) -->
 <section class="hero-cover snap" id="hero">
   <div class="hc-media scene g-auto" data-sp="30" data-slot="HERO_REEL_01 · Showreel · stärkstes Kundenprojekt"><span class="bg"></span><span class="grain"></span></div>
+  <!-- HERO-VIDEO · Zusammenschnitt (Drohne, Gastro, Kohle …). src einsetzen, dann läuft er automatisch dahinter -->
+  <video class="hc-video" autoplay muted loop playsinline preload="metadata" data-slot="HERO_MONTAGE.mp4 · 16:9 · muted loop"></video>
   <div class="hc-glow" aria-hidden="true"></div>
   <div class="hc-veil" aria-hidden="true"></div>
   <button class="hc-play" id="hcPlay" aria-label="Showreel abspielen"><svg width="26" height="30" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg><span>Showreel</span></button>
@@ -1089,7 +1113,7 @@ html{scroll-snap-type:y proximity}
     <h1 class="hc-title reveal-lines"><span class="line"><span>Mehr Reichweite.</span></span><span class="line"><span>Mehr Anfragen.</span></span><span class="line"><span class="g">Mehr Kunden.</span></span></h1>
     <p class="hc-sub rv in">Wir übernehmen Social Media, Content &amp; Ads – für gezielte Neukundengewinnung, Monat für Monat. Ein Team, ein Ansprechpartner, deutschlandweit.</p>
     <div class="ctas rv in">
-      <a href="#kontakt" class="btn btn-lime">Kostenloses Strategiegespräch <span class="ar">→</span></a>
+      <a href="#kontakt" class="btn btn-lime">Strategiegespräch <span class="ar">→</span></a>
       <a href="#content" class="btn btn-glass">Unsere Arbeit ansehen <span class="ar">→</span></a>
     </div>
     <p class="cb-friction hc-friction rv in"><b>✓</b> Unverbindlich · Antwort in 24 h · Kein Verkaufsdruck</p>
@@ -1097,8 +1121,6 @@ html{scroll-snap-type:y proximity}
   </div>
 </section>
 
-<!-- TICKER · auf dunklem Band, nahtlos an den Hero -->
-<div class="ticker-band"><div class="ticker" aria-hidden="true"><div class="track" id="tickTrack"></div></div></div>
 
 <!-- CONTENT RAILS (3D coverflow) -->
 <section class="sec snap" id="content">
@@ -1125,6 +1147,60 @@ html{scroll-snap-type:y proximity}
   </div>
   <!-- DEV: Platzhalter-Reels (Szenen-Gradients) – mit echten Reels/Videos aus Dropbox ersetzen (PROJECT_REEL_xx). -->
 
+</section>
+
+<!-- CASES -->
+<section class="sec" id="projekte" style="background:var(--soft)">
+  <div class="wrap">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1rem" class="rv">
+      <div>
+        <p class="eyebrow">Case Studies</p>
+        <h2 style="margin-top:1rem">Echte Projekte.<br>Echte Marken.</h2>
+      </div>
+      <a href="#kontakt" class="btn btn-ghost">Alle Cases ansehen <span class="ar">→</span></a>
+    </div>
+
+    <div class="cases">
+      <div class="case feat rv">
+        <div class="scene g-auto"><span class="bg"></span><span class="grain"></span></div>
+        <span class="play"><svg width="16" height="18" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span>
+        <div class="co"><span class="brand">Rolls-Royce Berlin</span><h3>Reels Kampagne</h3><span class="svc">Automotive · Social Media · Content Produktion</span><span class="go">Case ansehen →</span></div>
+      </div>
+      <div class="case rv">
+        <div class="scene g-realestate"><span class="bg"></span><span class="grain"></span></div>
+        <div class="co"><span class="brand">Kensington</span><h3>Social Media Betreuung</h3><span class="go">Case ansehen →</span></div>
+      </div>
+      <div class="case rv">
+        <div class="scene g-auto2"><span class="bg"></span><span class="grain"></span></div>
+        <div class="co"><span class="brand">Riller &amp; Schnauck</span><h3>Imagefilm Produktion</h3><span class="go">Case ansehen →</span></div>
+      </div>
+      <div class="case rv">
+        <div class="scene g-interior"><span class="bg"></span><span class="grain"></span></div>
+        <div class="co"><span class="brand">MINI</span><h3>Content &amp; Reels</h3><span class="go">Case ansehen →</span></div>
+      </div>
+      <div class="case rv">
+        <div class="scene g-city"><span class="bg"></span><span class="grain"></span></div>
+        <div class="co"><span class="brand">SEA LIFE Berlin</span><h3>Social Media &amp; Foto</h3><span class="go">Case ansehen →</span></div>
+      </div>
+      <div class="case rv">
+        <div class="scene g-team"><span class="bg"></span><span class="grain"></span></div>
+        <div class="co"><span class="brand">Amazon Prime</span><h3>Content Produktion</h3><span class="go">Case ansehen →</span></div>
+      </div>
+      <div class="case rv">
+        <div class="scene g-product"><span class="bg"></span><span class="grain"></span></div>
+        <div class="co"><span class="brand">Madame Tussauds</span><h3>Reels &amp; Kampagne</h3><span class="go">Case ansehen →</span></div>
+      </div>
+      <div class="case rv">
+        <div class="scene g-nature"><span class="bg"></span><span class="grain"></span></div>
+        <div class="co"><span class="brand">RTL</span><h3>Content Creation</h3><span class="go">Case ansehen →</span></div>
+      </div>
+      <a href="#kontakt" class="case rv" style="display:grid;place-items:center;background:rgba(255,255,255,.03);border:1px dashed rgba(255,255,255,.18)">
+        <div style="text-align:center"><div style="font-family:var(--display);font-weight:800;font-size:1.4rem;color:#fff">+ 20 Marken</div><div style="color:rgba(255,255,255,.55);font-size:.8rem;margin-top:.2rem">Erstgespräch anfragen →</div></div>
+      </a>
+    </div>
+    <!-- DEV: Cover-Szenen sind Platzhalter – mit echten Projekt-Assets & (nur freigegebenen) Ergebnissen ersetzen. -->
+
+  </div>
 </section>
 
 <!-- REFERENZEN · echte Kunden. Wortmarken = Platzhalter für Original-Logos (data-slot). -->
@@ -1180,21 +1256,50 @@ html{scroll-snap-type:y proximity}
   </div>
 </section>
 
-<!-- SYSTEM (light) -->
-<section class="sec snap" id="leistungen" style="overflow:hidden">
-  <span class="bgword" data-bgword>CONTENT</span>
-  <div class="wrap" style="position:relative;z-index:1">
-    <div class="rv" style="text-align:center;max-width:44ch;margin-inline:auto">
+<!-- LEISTUNGEN · scroll-stapelnde Karten (Fokus: Mitgliedschaft) -->
+<section class="sec stacksec" id="leistungen">
+  <div class="wrap">
+    <div class="rv" style="max-width:46ch">
       <p class="eyebrow">Leistungen</p>
-      <h2 style="margin-top:1rem">Das machen wir – <span class="lime">richtig gut.</span></h2>
-      <p class="lead" style="margin-inline:auto">Fünf Leistungen, ein Ziel: deine Marke sichtbar machen und wachsen lassen.</p>
+      <h2 style="margin-top:1rem">Das können wir –<br><span class="lime">richtig gut.</span></h2>
+      <p class="lead">Vier Leistungen, ein Ziel: deine Marke sichtbar machen und wachsen lassen.</p>
     </div>
-    <div class="svc-list">
-      <button class="svc-row rv" data-svc="video"><span class="n">01</span><span class="nm">Videoproduktion</span><span class="dsc">Imagefilme · Werbevideos · Reels</span><span class="pl">+</span></button>
-      <button class="svc-row rv" data-svc="foto"><span class="n">02</span><span class="nm">Fotoproduktion</span><span class="dsc">Produkt · Image · Event</span><span class="pl">+</span></button>
-      <button class="svc-row rv" data-svc="social"><span class="n">03</span><span class="nm">Social-Media-Betreuung</span><span class="dsc">Content · Community · Mitgliedschaft</span><span class="pl">+</span></button>
-      <button class="svc-row rv" data-svc="ads"><span class="n">04</span><span class="nm">Werbeanzeigen</span><span class="dsc">Meta · Google · TikTok · LinkedIn</span><span class="pl">+</span></button>
-      <button class="svc-row rv" data-svc="beratung"><span class="n">05</span><span class="nm">Beratung</span><span class="dsc">Strategie · Optimierung</span><span class="pl">+</span></button>
+    <div class="stack">
+      <article class="stack-card sc-focus" style="--i:0">
+        <div class="sc-num">01</div>
+        <div class="sc-body">
+          <span class="sc-badge">Unser Herzstück</span>
+          <h3>Social-Media-Mitgliedschaft</h3>
+          <p>Wir werden dein externes Social-Media-Team und übernehmen deine Kanäle komplett – Strategie, Content-Produktion, Veröffentlichung, Community und Reporting. Monat für Monat, ein Ansprechpartner.</p>
+          <div class="sc-tags"><span>Strategie</span><span>Content</span><span>Community</span><span>Reporting</span></div>
+          <a href="#kontakt" class="btn btn-lime">Beratung anfragen <span class="ar">→</span></a>
+        </div>
+      </article>
+      <article class="stack-card" style="--i:1">
+        <div class="sc-num">02</div>
+        <div class="sc-body">
+          <h3>Content-Produktion</h3>
+          <p>Video, Foto &amp; Reels auf Produktionsniveau – von Drohnenaufnahmen bis Gastro, geplant und markengerecht umgesetzt.</p>
+          <div class="sc-tags"><span>Video</span><span>Foto</span><span>Reels</span><span>Imagefilm</span></div>
+        </div>
+      </article>
+      <article class="stack-card" style="--i:2">
+        <div class="sc-num">03</div>
+        <div class="sc-body">
+          <h3>Werbeanzeigen (Ads)</h3>
+          <p>Starke Inhalte gezielt ausgespielt – für mehr Reichweite, Anfragen und Umsatz. Meta, Google, TikTok &amp; LinkedIn.</p>
+          <div class="sc-tags"><span>Meta</span><span>Google</span><span>TikTok</span><span>LinkedIn</span></div>
+        </div>
+      </article>
+      <article class="stack-card" style="--i:3">
+        <div class="sc-num">04</div>
+        <div class="sc-body">
+          <h3>Beratung &amp; Strategie</h3>
+          <p>Klarer Plan statt Blindflug: Wir analysieren deinen Auftritt und zeigen dir, wo dein größtes Potenzial liegt.</p>
+          <div class="sc-tags"><span>Analyse</span><span>Strategie</span><span>Optimierung</span></div>
+          <a href="#kontakt" class="btn btn-ghost">Beratung anfragen <span class="ar">→</span></a>
+        </div>
+      </article>
     </div>
   </div>
 </section>
@@ -1258,59 +1363,7 @@ html{scroll-snap-type:y proximity}
   </div>
 </section>
 
-<!-- CASES -->
-<section class="sec" id="projekte" style="background:var(--soft)">
-  <div class="wrap">
-    <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1rem" class="rv">
-      <div>
-        <p class="eyebrow">Ausgewählte Projekte</p>
-        <h2 style="margin-top:1rem">Marken, die auf uns vertrauen.</h2>
-      </div>
-      <a href="#kontakt" class="btn btn-ghost">Alle Cases ansehen <span class="ar">→</span></a>
-    </div>
 
-    <div class="cases">
-      <div class="case feat rv">
-        <div class="scene g-auto"><span class="bg"></span><span class="grain"></span></div>
-        <span class="play"><svg width="16" height="18" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span>
-        <div class="co"><span class="brand">Rolls-Royce Berlin</span><h3>Reels Kampagne</h3><span class="svc">Automotive · Social Media · Content Produktion</span><span class="go">Case ansehen →</span></div>
-      </div>
-      <div class="case rv">
-        <div class="scene g-realestate"><span class="bg"></span><span class="grain"></span></div>
-        <div class="co"><span class="brand">Kensington</span><h3>Social Media Betreuung</h3><span class="go">Case ansehen →</span></div>
-      </div>
-      <div class="case rv">
-        <div class="scene g-auto2"><span class="bg"></span><span class="grain"></span></div>
-        <div class="co"><span class="brand">Riller &amp; Schnauck</span><h3>Imagefilm Produktion</h3><span class="go">Case ansehen →</span></div>
-      </div>
-      <div class="case rv">
-        <div class="scene g-interior"><span class="bg"></span><span class="grain"></span></div>
-        <div class="co"><span class="brand">MINI</span><h3>Content &amp; Reels</h3><span class="go">Case ansehen →</span></div>
-      </div>
-      <div class="case rv">
-        <div class="scene g-city"><span class="bg"></span><span class="grain"></span></div>
-        <div class="co"><span class="brand">SEA LIFE Berlin</span><h3>Social Media &amp; Foto</h3><span class="go">Case ansehen →</span></div>
-      </div>
-      <div class="case rv">
-        <div class="scene g-team"><span class="bg"></span><span class="grain"></span></div>
-        <div class="co"><span class="brand">Amazon Prime</span><h3>Content Produktion</h3><span class="go">Case ansehen →</span></div>
-      </div>
-      <div class="case rv">
-        <div class="scene g-product"><span class="bg"></span><span class="grain"></span></div>
-        <div class="co"><span class="brand">Madame Tussauds</span><h3>Reels &amp; Kampagne</h3><span class="go">Case ansehen →</span></div>
-      </div>
-      <div class="case rv">
-        <div class="scene g-nature"><span class="bg"></span><span class="grain"></span></div>
-        <div class="co"><span class="brand">RTL</span><h3>Content Creation</h3><span class="go">Case ansehen →</span></div>
-      </div>
-      <a href="#kontakt" class="case rv" style="display:grid;place-items:center;background:rgba(255,255,255,.03);border:1px dashed rgba(255,255,255,.18)">
-        <div style="text-align:center"><div style="font-family:var(--display);font-weight:800;font-size:1.4rem;color:#fff">+ 20 Marken</div><div style="color:rgba(255,255,255,.55);font-size:.8rem;margin-top:.2rem">Erstgespräch anfragen →</div></div>
-      </a>
-    </div>
-    <!-- DEV: Cover-Szenen sind Platzhalter – mit echten Projekt-Assets & (nur freigegebenen) Ergebnissen ersetzen. -->
-
-  </div>
-</section>
 
 <!-- CONVERSION-BAND · nach den Projekten (Proof → dein Zug) -->
 <section class="cta-band band-lime">
@@ -1320,7 +1373,7 @@ html{scroll-snap-type:y proximity}
     </div>
     <div class="cb-act">
       <p style="margin-top:0;max-width:38ch;color:#33450f">Wir schauen uns euren Auftritt an und zeigen euch konkret, was möglich ist.</p>
-      <a href="#kontakt" class="btn btn-dark">Kostenloses Strategiegespräch <span class="ar">→</span></a>
+      <a href="#kontakt" class="btn btn-dark">Strategiegespräch <span class="ar">→</span></a>
       <span class="cb-friction"><b>✓</b> Unverbindlich · Antwort in 24 h · Kein Verkaufsdruck</span>
     </div>
   </div>
@@ -1439,7 +1492,7 @@ html{scroll-snap-type:y proximity}
     </div>
     <div class="cb-act">
       <p style="margin-top:0;max-width:40ch">Social Media sollte keine weitere Aufgabe auf deiner Liste sein. Lass uns über deinen Auftritt sprechen.</p>
-      <a href="#kontakt" class="btn btn-lime">Kostenloses Strategiegespräch <span class="ar">→</span></a>
+      <a href="#kontakt" class="btn btn-lime">Strategiegespräch <span class="ar">→</span></a>
       <span class="cb-friction"><b>✓</b> Unverbindlich · Antwort in 24 h · Kein Verkaufsdruck</span>
     </div>
   </div>
@@ -1529,7 +1582,7 @@ html{scroll-snap-type:y proximity}
   <div class="wrap">
     <div class="check-grid">
       <div class="check-copy rv">
-        <p class="eyebrow">Kostenloser Social Media Check</p>
+        <p class="eyebrow">Social-Media-Check</p>
         <h2 style="margin-top:1rem">Wie stark ist dein Auftritt wirklich?</h2>
         <p class="lead">Gib deinen Account ein und erhalte in Sekunden eine Einschätzung deines Social-Media-Auftritts – inklusive Score, Stärken und konkreten Empfehlungen.</p>
         <ul>
@@ -1611,7 +1664,7 @@ html{scroll-snap-type:y proximity}
   </div>
 </footer>
 
-<div class="smcta" id="smcta"><a href="#kontakt">Kostenloses Strategiegespräch →</a></div>
+<div class="smcta" id="smcta"><a href="#kontakt">Strategiegespräch →</a></div>
 
 <!-- Video Modal -->
 <div class="modal" id="vidModal" role="dialog" aria-modal="true" aria-label="Video">
@@ -1657,7 +1710,7 @@ html{scroll-snap-type:y proximity}
 
 <script>
 (function(){var items=["Reels","Content","Social Media","Ads","Performance","Video","Foto","Strategie","Wachstum"];
-document.getElementById('tickTrack').innerHTML=(items.map(function(t){return '<span>'+t+' <span class="dot">✦</span></span>'}).join('')).repeat(2);})();
+var _tt=document.getElementById('tickTrack');if(_tt)_tt.innerHTML=(items.map(function(t){return '<span>'+t+' <span class="dot">✦</span></span>'}).join('')).repeat(2);})();
 document.getElementById('yr').textContent=new Date().getFullYear();
 
 // scroll progress bar
@@ -1902,7 +1955,7 @@ addEventListener('scroll',function(){var r=kontakt.getBoundingClientRect();smcta
         '<div class="rep-verdict"><b>Einschätzung</b><p>'+verdict+' Die größten Hebel liegen bei: '+weak.slice(0,2).map(function(c){return c.name;}).join(" & ")+'.</p></div>'+
         '<div class="rep-recs">'+weak.map(function(c,i){return '<div class="rep-rec"><span class="n">'+(i+1)+'</span><span><b style="color:#fff">'+c.name+':</b> '+c.tip+'</span></div>';}).join('')+'</div>'+
         '<p class="rep-mail">📩 Deinen ausführlichen Bericht mit Maßnahmenplan senden wir zusätzlich an <b style="color:#fff">'+esc(state.email)+'</b>.</p>'+
-        '<button class="chk-btn" id="chkCTA" style="margin-top:1.1rem">Kostenloses Erstgespräch anfragen →</button>'+
+        '<button class="chk-btn" id="chkCTA" style="margin-top:1.1rem">Erstgespräch anfragen →</button>'+
         '<div class="rep-actions"><button class="lnk" id="chkSave">Bericht speichern</button><button class="lnk" id="chkAgain">Anderen Account prüfen</button></div>';
       document.getElementById("chkCTA").onclick=function(){document.getElementById("kontakt").scrollIntoView({behavior:"smooth"});};
       document.getElementById("chkAgain").onclick=function(){state.handle="";state.data=null;state.email="";render("input");};
