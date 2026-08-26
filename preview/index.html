@@ -165,36 +165,45 @@ header.hide{transform:translateY(-100%)}
 .ig-nav svg{width:20px;height:20px;stroke:var(--ink);fill:none;stroke-width:1.7}
 .ig-nav .pf{width:20px;height:20px;border-radius:100px;background:linear-gradient(135deg,#2b3440,#54365a);border:1.5px solid var(--ink)}
 
-/* HERO */
-.hero{padding-top:8rem;overflow:hidden}
-.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:2rem;align-items:center;padding-bottom:3rem}
-.hero h1{font-size:clamp(2.9rem,7vw,5.8rem);letter-spacing:-.045em}
-.hero .sub{margin-top:1.5rem;max-width:38ch;font-size:1.16rem;color:var(--muted)}
-.hero .plan{margin-top:.9rem;font-weight:600;font-size:1.02rem}
-.hero .ctas{margin-top:2rem;display:flex;gap:.7rem;flex-wrap:wrap}
-.trust{margin-top:2.2rem;display:flex;align-items:center;gap:.9rem}
-.avatars{display:flex}
-.avatars .a{width:36px;height:36px;border-radius:100px;margin-left:-10px;border:2px solid var(--canvas);background-size:cover}
-.avatars .a:first-child{margin-left:0}
-.trust p{font-size:.9rem;color:var(--muted);line-height:1.5}
+/* HERO · Netflix-Cover */
 .geo-pin{width:36px;height:36px;flex:none;display:grid;place-items:center;border-radius:100px;
   background:var(--lime-tint);color:var(--lime-ink);border:1px solid var(--line)}
 .stars{color:var(--lime-ink);letter-spacing:1px}
-.hero-visual{position:relative;display:flex;justify-content:center;align-items:center;min-height:520px}
-.float{position:absolute;border-radius:16px;overflow:hidden;box-shadow:0 26px 50px -18px rgba(0,0,0,.35);
-  border:1px solid rgba(0,0,0,.05)}
-.float.f1{width:150px;aspect-ratio:9/16;left:-4%;top:6%;z-index:3;transform:rotate(-6deg)}
-.float.f2{width:130px;aspect-ratio:9/16;right:-2%;bottom:8%;z-index:3;transform:rotate(6deg)}
-.hero-phone{position:relative;z-index:2}
-.showreel{position:relative;width:100%;max-width:430px;aspect-ratio:4/5;border-radius:26px;overflow:hidden;
-  box-shadow:0 44px 90px -34px rgba(0,0,0,.5);border:1px solid rgba(0,0,0,.06);cursor:pointer}
-.showreel .sr-badge{position:absolute;top:1rem;right:1rem;z-index:4;font-family:var(--mono);font-size:.62rem;
-  letter-spacing:.08em;text-transform:uppercase;color:var(--ink);background:var(--lime);padding:.35rem .65rem;border-radius:100px}
-.play-lg{width:78px;height:78px}
-.showreel .sr-cap{position:absolute;left:0;right:0;bottom:0;z-index:4;padding:1.4rem 1.5rem;
-  background:linear-gradient(0deg,rgba(0,0,0,.78),transparent 62%)}
-.showreel .sr-cap b{display:block;color:#fff;font-family:var(--display);font-weight:800;font-size:1.2rem;letter-spacing:-.02em}
-.showreel .sr-cap small{color:rgba(255,255,255,.72);font-size:.82rem;font-family:var(--mono);letter-spacing:.02em}
+.hero-cover{position:relative;min-height:min(94vh,880px);display:flex;align-items:flex-end;overflow:hidden;
+  background:#09090a;isolation:isolate}
+.hc-media{position:absolute;inset:-6% 0;z-index:0;will-change:transform}
+.hc-media .bg::before{display:none} /* Motiv-Silhouette im Vollbild ausblenden */
+.hc-glow{position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(58% 55% at 80% 16%,rgba(166,217,59,.22),transparent 62%),
+             radial-gradient(70% 60% at 12% 96%,rgba(166,217,59,.10),transparent 60%)}
+.hc-veil{position:absolute;inset:0;z-index:2;pointer-events:none;
+  background:linear-gradient(180deg,rgba(8,8,7,.62) 0%,rgba(8,8,7,.12) 28%,rgba(8,8,7,.55) 68%,rgba(8,8,7,.94) 100%),
+             linear-gradient(90deg,rgba(8,8,7,.78),rgba(8,8,7,.15) 58%,transparent)}
+.hc-content{position:relative;z-index:4;padding-top:9rem;padding-bottom:clamp(3rem,7vh,5.5rem);max-width:960px}
+.hc-eyebrow{font-family:var(--mono);font-size:.72rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--lime)}
+.hc-title{font-family:var(--display);font-weight:900;letter-spacing:-.045em;line-height:.92;color:#fff;
+  font-size:clamp(2.7rem,8.4vw,6.8rem);margin-top:1rem;text-shadow:0 2px 30px rgba(0,0,0,.35)}
+.hc-title .g{color:var(--lime)}
+.hc-sub{margin-top:1.5rem;max-width:56ch;font-size:clamp(1.05rem,1.55vw,1.3rem);color:rgba(255,255,255,.84);line-height:1.5}
+.hero-cover .ctas{margin-top:2rem;display:flex;gap:.7rem;flex-wrap:wrap}
+.btn-glass{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.3);backdrop-filter:blur(10px)}
+.btn-glass:hover{background:rgba(255,255,255,.2);border-color:rgba(255,255,255,.5)}
+.hc-friction{margin-top:1.2rem;color:rgba(255,255,255,.7)}.hc-friction b{color:var(--lime)}
+.hc-geo{margin-top:1.1rem;display:inline-flex;align-items:center;gap:.5rem;font-family:var(--mono);
+  font-size:.72rem;letter-spacing:.04em;color:rgba(255,255,255,.6)}.hc-geo svg{color:var(--lime)}
+.hc-play{position:absolute;z-index:4;right:clamp(1.5rem,6vw,5.5rem);top:34%;display:flex;flex-direction:column;
+  align-items:center;gap:.5rem;width:96px;height:96px;border-radius:100px;border:1px solid rgba(255,255,255,.4);
+  background:rgba(255,255,255,.13);backdrop-filter:blur(8px);cursor:pointer;color:#fff;justify-content:center;
+  transition:transform .3s cubic-bezier(.16,1,.3,1),background .3s}
+.hc-play svg{fill:#fff;margin-left:4px}
+.hc-play span{font-family:var(--mono);font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;opacity:.8}
+.hc-play:hover{transform:scale(1.07);background:rgba(255,255,255,.24)}
+/* Header über dunklem Cover lesbar (nur am Seitenanfang) */
+header.top .logo{color:#fff}header.top .logo sup{color:var(--lime)}
+header.top .nav-links a{color:rgba(255,255,255,.8)}header.top .nav-links a:hover{color:#fff}
+header.top .hdr-cta{background:var(--lime);color:var(--ink)}
+header.top .burger{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.32)}
+header.top .burger span,header.top .burger span::before,header.top .burger span::after{background:#fff}
 
 /* diagonaler lime ticker */
 .ticker{background:var(--lime);color:var(--ink);padding:.85rem 0;overflow:hidden;
@@ -943,7 +952,7 @@ html{scroll-snap-type:y proximity}
 
 @media(max-width:1000px){
   .nav-links,header .btn-dark{display:none}.burger{display:grid}
-  .hero-grid{grid-template-columns:1fr;gap:2.5rem}.hero-visual{min-height:auto;margin-top:1rem}
+  .hc-play{display:none}.hc-content{padding-top:7rem}.hero-cover{min-height:min(90vh,760px)}
   .sys{grid-template-columns:1fr;gap:1.2rem}.ring{order:-1}
   .bento,.proj,.team,.reviews,.stories{grid-template-columns:1fr 1fr}
   .bento .big,.bento .wide{grid-column:span 2}
@@ -1021,37 +1030,22 @@ html{scroll-snap-type:y proximity}
 
 <main id="top">
 
-<!-- HERO -->
-<section class="hero snap">
-  <div class="aurora"></div>
-  <div class="wrap hero-grid">
-    <div class="rv in">
-      <p class="eyebrow">Social Media · Content · Ads · Deutschlandweit</p>
-      <h1 class="reveal-lines" style="margin-top:1.2rem"><span class="line"><span>Dein Auftritt.</span></span><span class="line"><span class="lime">Unser System.</span></span></h1>
-      <p class="sub">Wir übernehmen Social Media, Content und Ads – Monat für Monat.</p>
-      <p class="plan">Ein Ansprechpartner. Ein Team. Deutschlandweit.</p>
-      <div class="ctas">
-        <a href="#kontakt" class="btn btn-dark">Kostenloses Strategiegespräch <span class="ar">→</span></a>
-        <a href="#content" class="btn btn-ghost">Unsere Arbeit ansehen <span class="ar">→</span></a>
-      </div>
-      <p class="cb-friction" style="margin-top:1rem"><b>✓</b> Unverbindlich · Antwort in 24 h · Kein Verkaufsdruck</p>
-      <div class="trust">
-        <span class="geo-pin"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-6.4-7-11a7 7 0 1114 0c0 4.6-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
-        <p><b style="color:var(--ink)">Berlin based.</b> Deutschlandweit im Einsatz.<br><span style="color:var(--muted)">Projekte im gesamten DACH-Raum möglich.</span></p>
-      </div>
+<!-- HERO · cinematisches Netflix-Cover (echtes HERO_REEL_01 ersetzt die Platzhalter-Szene) -->
+<section class="hero-cover snap" id="hero">
+  <div class="hc-media scene g-auto" data-sp="30" data-slot="HERO_REEL_01 · Showreel · stärkstes Kundenprojekt"><span class="bg"></span><span class="grain"></span></div>
+  <div class="hc-glow" aria-hidden="true"></div>
+  <div class="hc-veil" aria-hidden="true"></div>
+  <button class="hc-play" id="hcPlay" aria-label="Showreel abspielen"><svg width="26" height="30" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg><span>Showreel</span></button>
+  <div class="wrap hc-content">
+    <p class="hc-eyebrow rv in">Social Media · Content · Ads · Deutschlandweit</p>
+    <h1 class="hc-title reveal-lines"><span class="line"><span>Mehr Reichweite.</span></span><span class="line"><span>Mehr Anfragen.</span></span><span class="line"><span class="g">Mehr Kunden.</span></span></h1>
+    <p class="hc-sub rv in">Wir übernehmen Social Media, Content &amp; Ads – für gezielte Neukundengewinnung, Monat für Monat. Ein Team, ein Ansprechpartner, deutschlandweit.</p>
+    <div class="ctas rv in">
+      <a href="#kontakt" class="btn btn-lime">Kostenloses Strategiegespräch <span class="ar">→</span></a>
+      <a href="#content" class="btn btn-glass">Unsere Arbeit ansehen <span class="ar">→</span></a>
     </div>
-
-    <!-- HERO MEDIA STACK · echte Dropbox-Assets ersetzen die Platzhalter-Szenen (data-slot = Zieldatei) -->
-    <div class="hero-visual rv in">
-      <div class="float f1 scene g-interior" data-sp="-70" data-slot="HERO_BTS_01 · 4:5 · Team beim Dreh"><span class="bg"></span><span class="grain"></span><span class="play"><svg width="12" height="14" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span></div>
-      <div class="float f2 scene g-nature" data-sp="70" data-slot="HERO_REEL_02 · 9:16 · Kundenprojekt"><span class="bg"></span><span class="grain"></span><span class="play"><svg width="12" height="14" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span></div>
-      <div class="showreel scene g-auto hero-phone" data-slot="HERO_REEL_01 · 9:16 · stärkstes Kundenprojekt">
-        <span class="bg"></span><span class="grain"></span>
-        <span class="sr-badge">Showreel</span>
-        <span class="play play-lg"><svg width="22" height="26" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span>
-        <div class="sr-cap"><b>Unsere Arbeit in Bewegung.</b><small>Video · Foto · Social Media · Ads</small></div>
-      </div>
-    </div>
+    <p class="cb-friction hc-friction rv in"><b>✓</b> Unverbindlich · Antwort in 24 h · Kein Verkaufsdruck</p>
+    <p class="hc-geo rv in"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-6.4-7-11a7 7 0 1114 0c0 4.6-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg> Berlin based · Deutschlandweit im Einsatz · Projekte im DACH-Raum möglich</p>
   </div>
 </section>
 
@@ -1764,7 +1758,7 @@ var steps=document.getElementById('steps'),fill=document.getElementById('stepFil
 if(steps&&fill){new IntersectionObserver(function(es,o){es.forEach(function(e){if(e.isIntersecting){if(innerWidth>1000){fill.style.width='100%';}else{fill.classList.add('v');fill.style.height='100%';}o.disconnect();}})},{threshold:.3}).observe(steps);}
 
 if(!matchMedia('(prefers-reduced-motion:reduce)').matches){
-  addEventListener('scroll',function(){var y=scrollY;document.querySelectorAll('.float[data-sp]').forEach(function(c){c.style.translate='0 '+(y*(+c.dataset.sp)/700)+'px';});},{passive:true});
+  addEventListener('scroll',function(){var y=scrollY;document.querySelectorAll('[data-sp]').forEach(function(c){c.style.translate='0 '+(y*(+c.dataset.sp)/700)+'px';});},{passive:true});
 }
 
 document.querySelectorAll('#filters button').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('#filters button').forEach(function(x){x.classList.remove('on');});b.classList.add('on');});});
@@ -1908,25 +1902,22 @@ render();
   function open(){modal.classList.add('open');document.body.style.overflow='hidden';}
   function close(){modal.classList.remove('open');document.body.style.overflow='';}
   document.addEventListener('click',function(e){
-    var trg=e.target.closest('.play, .showreel, .cine-feat, .vids .scene, .film-frame, .cover-card');
+    var trg=e.target.closest('.play, .showreel, .cine-feat, .vids .scene, .film-frame, .cover-card, .hc-play, .hc-media');
     if(trg && !e.target.closest('[data-close]')){e.preventDefault();open();return;}
   });
   modal.addEventListener('click',function(e){if(e.target.hasAttribute('data-close'))close();});
   addEventListener('keydown',function(e){if(e.key==='Escape'&&modal.classList.contains('open'))close();});
 })();
 
-// ---- Hero Maus-Parallax ----
+// ---- Hero-Cover Maus-Parallax (cinematische Tiefe) ----
 (function(){
-  var hero=document.querySelector('.hero'),hv=document.querySelector('.hero-visual');if(!hero||!hv)return;
+  var hero=document.getElementById('hero'),media=hero&&hero.querySelector('.hc-media');if(!hero||!media)return;
   if(!matchMedia('(hover:hover)').matches||matchMedia('(prefers-reduced-motion:reduce)').matches)return;
-  var sr=hv.querySelector('.showreel'),f1=hv.querySelector('.f1'),f2=hv.querySelector('.f2');
   hero.addEventListener('pointermove',function(e){
     var r=hero.getBoundingClientRect();var dx=(e.clientX-r.left-r.width/2)/r.width;var dy=(e.clientY-r.top-r.height/2)/r.height;
-    if(sr)sr.style.transform='translate('+(dx*14).toFixed(1)+'px,'+(dy*14).toFixed(1)+'px)';
-    if(f1)f1.style.transform='rotate(-6deg) translate('+(dx*-22).toFixed(1)+'px,'+(dy*-16).toFixed(1)+'px)';
-    if(f2)f2.style.transform='rotate(6deg) translate('+(dx*22).toFixed(1)+'px,'+(dy*16).toFixed(1)+'px)';
+    media.style.transform='scale(1.06) translate('+(dx*-16).toFixed(1)+'px,'+(dy*-12).toFixed(1)+'px)';
   });
-  hero.addEventListener('pointerleave',function(){if(sr)sr.style.transform='';if(f1)f1.style.transform='';if(f2)f2.style.transform='';});
+  hero.addEventListener('pointerleave',function(){media.style.transform='';});
 })();
 
 // ---- Hintergrund-Wort Parallax ----
