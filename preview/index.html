@@ -924,6 +924,22 @@ html{scroll-snap-type:y proximity}
 .film-cap b{display:block;color:#fff;font-family:var(--display);font-weight:800;font-size:1.35rem;letter-spacing:-.02em}
 .film-cap small{color:rgba(255,255,255,.72);font-size:.82rem;font-family:var(--mono)}
 @media(max-width:760px){.film-frame{width:100%!important;border-radius:16px!important}}
+/* ===== WIEDERKEHRENDE CONVERSION-BÄNDER ===== */
+.cta-band{padding:clamp(56px,7vw,88px) 0}
+.cta-band .cb-in{display:flex;align-items:center;justify-content:space-between;gap:1.6rem 2.5rem;flex-wrap:wrap}
+.cta-band h2{font-size:clamp(1.5rem,3.2vw,2.5rem);letter-spacing:-.03em;max-width:20ch;line-height:1.02}
+.cta-band p{margin-top:.7rem;max-width:44ch;font-size:1.02rem;line-height:1.5}
+.cta-band .cb-act{display:flex;flex-direction:column;gap:.6rem;align-items:flex-start}
+.cb-friction{font-family:var(--mono);font-size:.7rem;letter-spacing:.03em;color:var(--muted);display:inline-flex;align-items:center;gap:.5rem}
+.cb-friction b{color:var(--lime-ink);font-size:.9em}
+.band-lime{background:var(--lime)}
+.band-lime h2{color:var(--ink)}.band-lime p{color:#33450f}
+.band-lime .cb-friction{color:#33450f}.band-lime .cb-friction b{color:var(--ink)}
+.band-dark{background:var(--dark)}
+.band-dark h2{color:#fff}.band-dark p{color:rgba(255,255,255,.64)}
+.band-dark .cb-friction{color:rgba(255,255,255,.6)}.band-dark .cb-friction b{color:var(--lime)}
+@media(max-width:700px){.cta-band .cb-in{flex-direction:column;align-items:flex-start}
+  .cta-band .cb-act{width:100%}.cta-band .cb-act .btn{width:100%;justify-content:center}}
 
 @media(max-width:1000px){
   .nav-links,header .btn-dark{display:none}.burger{display:grid}
@@ -1018,6 +1034,7 @@ html{scroll-snap-type:y proximity}
         <a href="#kontakt" class="btn btn-dark">Kostenloses Strategiegespräch <span class="ar">→</span></a>
         <a href="#content" class="btn btn-ghost">Unsere Arbeit ansehen <span class="ar">→</span></a>
       </div>
+      <p class="cb-friction" style="margin-top:1rem"><b>✓</b> Unverbindlich · Antwort in 24 h · Kein Verkaufsdruck</p>
       <div class="trust">
         <span class="geo-pin"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-6.4-7-11a7 7 0 1114 0c0 4.6-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
         <p><b style="color:var(--ink)">Berlin based.</b> Deutschlandweit im Einsatz.<br><span style="color:var(--muted)">Projekte im gesamten DACH-Raum möglich.</span></p>
@@ -1241,6 +1258,20 @@ html{scroll-snap-type:y proximity}
   </div>
 </section>
 
+<!-- CONVERSION-BAND · nach den Projekten (Proof → dein Zug) -->
+<section class="cta-band band-lime">
+  <div class="wrap cb-in">
+    <div>
+      <h2>Über 20 Marken vertrauen uns.<br>Ihr könntet die nächste sein.</h2>
+    </div>
+    <div class="cb-act">
+      <p style="margin-top:0;max-width:38ch;color:#33450f">Wir schauen uns euren Auftritt an und zeigen euch konkret, was möglich ist.</p>
+      <a href="#kontakt" class="btn btn-dark">Kostenloses Strategiegespräch <span class="ar">→</span></a>
+      <span class="cb-friction"><b>✓</b> Unverbindlich · Antwort in 24 h · Kein Verkaufsdruck</span>
+    </div>
+  </div>
+</section>
+
 <!-- ABLAUF -->
 <section class="sec snap" id="ablauf">
   <div class="wrap">
@@ -1342,6 +1373,20 @@ html{scroll-snap-type:y proximity}
         <small class="lc-desc" id="lcDesc">Themen, Ziele und Redaktionsplan für den Monat.</small>
         <span class="lc-next" id="lcNext">Kreislauf startet</span>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONVERSION-BAND · nach dem System (verstanden → wir übernehmen) -->
+<section class="cta-band band-dark">
+  <div class="wrap cb-in">
+    <div>
+      <h2>Genau das übernehmen wir –<br>Monat für Monat.</h2>
+    </div>
+    <div class="cb-act">
+      <p style="margin-top:0;max-width:40ch">Social Media sollte keine weitere Aufgabe auf deiner Liste sein. Lass uns über deinen Auftritt sprechen.</p>
+      <a href="#kontakt" class="btn btn-lime">Kostenloses Strategiegespräch <span class="ar">→</span></a>
+      <span class="cb-friction"><b>✓</b> Unverbindlich · Antwort in 24 h · Kein Verkaufsdruck</span>
     </div>
   </div>
 </section>
