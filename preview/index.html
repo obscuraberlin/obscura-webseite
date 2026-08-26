@@ -49,16 +49,17 @@ section{position:relative}
 .btn-lime{background:var(--lime);color:var(--ink)}.btn-lime:hover{filter:brightness(1.04)}
 .btn-ghost{border-color:var(--line);color:var(--ink);background:var(--surface)}.btn-ghost:hover{border-color:var(--ink)}
 
-/* header – ruhig, Apple-artig */
-header{position:fixed;inset:0 0 auto;z-index:60;
-  transition:transform .4s cubic-bezier(.16,1,.3,1),background .3s,box-shadow .3s,backdrop-filter .3s}
-header .nav{display:flex;align-items:center;justify-content:space-between;
-  height:80px;padding-inline:var(--pad);max-width:1600px;margin-inline:auto;transition:height .3s}
-header.top{background:transparent}
-header.scrolled{background:rgba(247,247,242,.72);backdrop-filter:blur(18px) saturate(1.3);
-  border-bottom:1px solid rgba(0,0,0,.06)}
-header.scrolled .nav{height:66px}
-header.hide{transform:translateY(-100%)}
+/* header – schwebender Glass-Pill */
+header{position:fixed;inset:0 0 auto;z-index:60;padding:1rem var(--pad) 0;
+  transition:transform .45s cubic-bezier(.16,1,.3,1),padding .3s}
+header .nav{display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  height:64px;padding:0 .55rem 0 1.5rem;max-width:1240px;margin-inline:auto;border-radius:100px;
+  background:rgba(250,250,247,.72);backdrop-filter:blur(22px) saturate(1.5);
+  border:1px solid rgba(255,255,255,.55);box-shadow:0 14px 40px -18px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.4);
+  transition:height .3s,background .3s}
+header.scrolled{padding-top:.55rem}
+header.scrolled .nav{height:58px;background:rgba(250,250,247,.85)}
+header.hide{transform:translateY(-150%)}
 .logo{font-family:var(--display);font-weight:900;font-size:1.28rem;letter-spacing:-.05em}
 .logo sup{color:var(--lime-ink);font-size:.55em}
 .nav-links{display:flex;gap:clamp(28px,2.4vw,40px)}
@@ -182,6 +183,7 @@ header.hide{transform:translateY(-100%)}
   background:linear-gradient(180deg,rgba(8,8,7,.62) 0%,rgba(8,8,7,.12) 28%,rgba(8,8,7,.55) 68%,rgba(8,8,7,.94) 100%),
              linear-gradient(90deg,rgba(8,8,7,.78),rgba(8,8,7,.15) 58%,transparent)}
 .hc-content{position:relative;z-index:4;padding-top:9rem;padding-bottom:clamp(3rem,7vh,5.5rem);max-width:960px}
+@media(min-width:901px){.hc-content{max-width:680px}}
 .hc-eyebrow{font-family:var(--mono);font-size:.72rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--lime)}
 .hc-title{font-family:var(--display);font-weight:900;letter-spacing:-.045em;line-height:.92;color:#fff;
   font-size:clamp(2.7rem,8.4vw,6.8rem);margin-top:1rem;text-shadow:0 2px 30px rgba(0,0,0,.35)}
@@ -193,19 +195,24 @@ header.hide{transform:translateY(-100%)}
 .hc-friction{margin-top:1.2rem;color:rgba(255,255,255,.7)}.hc-friction b{color:var(--lime)}
 .hc-geo{margin-top:1.1rem;display:inline-flex;align-items:center;gap:.5rem;font-family:var(--mono);
   font-size:.72rem;letter-spacing:.04em;color:rgba(255,255,255,.6)}.hc-geo svg{color:var(--lime)}
-.hc-play{position:absolute;z-index:4;right:clamp(1.5rem,6vw,5.5rem);top:34%;display:flex;flex-direction:column;
-  align-items:center;gap:.5rem;width:96px;height:96px;border-radius:100px;border:1px solid rgba(255,255,255,.4);
-  background:rgba(255,255,255,.13);backdrop-filter:blur(8px);cursor:pointer;color:#fff;justify-content:center;
-  transition:transform .3s cubic-bezier(.16,1,.3,1),background .3s}
-.hc-play svg{fill:#fff;margin-left:4px}
-.hc-play span{font-family:var(--mono);font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;opacity:.8}
-.hc-play:hover{transform:scale(1.07);background:rgba(255,255,255,.24)}
+/* Glass-Panel rechts im Hero (über laufendem Video) */
+.hc-panel{position:absolute;z-index:4;right:clamp(1.5rem,5vw,5rem);top:50%;transform:translateY(-50%);
+  width:clamp(272px,26vw,352px);display:flex;flex-direction:column;gap:.7rem}
+.hc-showreel{display:flex;align-items:center;gap:.9rem;width:100%;padding:1.05rem 1.2rem;border-radius:20px;
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);backdrop-filter:blur(14px);
+  color:#fff;cursor:pointer;text-align:left;transition:background .3s,transform .3s}
+.hc-showreel:hover{background:rgba(255,255,255,.18);transform:translateY(-2px)}
+.hcs-play{width:44px;height:44px;flex:none;border-radius:100px;background:var(--lime);display:grid;place-items:center}
+.hcs-play svg{fill:var(--ink);margin-left:2px}
+.hcs-t{font-family:var(--display);font-weight:700;font-size:1.04rem}
+.hc-pills{display:flex;flex-direction:column;gap:.55rem}
+.hc-pill{display:flex;flex-direction:column;padding:.85rem 1.1rem;border-radius:16px;
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);backdrop-filter:blur(12px);color:#fff}
+.hc-pill b{font-family:var(--display);font-weight:700;font-size:.98rem}
+.hc-pill small{font-family:var(--mono);font-size:.66rem;color:rgba(255,255,255,.6);margin-top:.2rem;letter-spacing:.03em}
+@media(max-width:900px){.hc-panel{display:none}}
 /* Header über dunklem Cover lesbar (nur am Seitenanfang) */
-header.top .logo{color:#fff}header.top .logo sup{color:var(--lime)}
-header.top .nav-links a{color:rgba(255,255,255,.8)}header.top .nav-links a:hover{color:#fff}
-header.top .hdr-cta{background:var(--lime);color:var(--ink)}
-header.top .burger{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.32)}
-header.top .burger span,header.top .burger span::before,header.top .burger span::after{background:#fff}
+/* Glass-Pill: dunkle Schrift auf hellem Glas – über Hero wie über hellen Sektionen lesbar */
 
 /* diagonaler lime ticker */
 .ticker-band{background:#0a0a0b;padding:2.4rem 0;overflow:hidden}
@@ -1107,7 +1114,17 @@ html{scroll-snap-type:y proximity}
   <video class="hc-video" autoplay muted loop playsinline preload="metadata" data-slot="HERO_MONTAGE.mp4 · 16:9 · muted loop"></video>
   <div class="hc-glow" aria-hidden="true"></div>
   <div class="hc-veil" aria-hidden="true"></div>
-  <button class="hc-play" id="hcPlay" aria-label="Showreel abspielen"><svg width="26" height="30" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg><span>Showreel</span></button>
+  <div class="hc-panel">
+    <button class="hc-showreel" id="hcPlay" aria-label="Showreel abspielen">
+      <span class="hcs-play"><svg width="16" height="18" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span>
+      <span class="hcs-t">Showreel ansehen</span>
+    </button>
+    <div class="hc-pills">
+      <span class="hc-pill"><b>Social-Media-Betreuung</b><small>Monat für Monat</small></span>
+      <span class="hc-pill"><b>Content-Produktion</b><small>Video · Foto · Reels</small></span>
+      <span class="hc-pill"><b>Werbeanzeigen</b><small>Meta · TikTok · Google</small></span>
+    </div>
+  </div>
   <div class="wrap hc-content">
     <p class="hc-eyebrow rv in">Social Media · Content · Ads · Deutschlandweit</p>
     <h1 class="hc-title reveal-lines"><span class="line"><span>Mehr Reichweite.</span></span><span class="line"><span>Mehr Anfragen.</span></span><span class="line"><span class="g">Mehr Kunden.</span></span></h1>
@@ -2017,7 +2034,7 @@ render();
   function open(){modal.classList.add('open');document.body.style.overflow='hidden';}
   function close(){modal.classList.remove('open');document.body.style.overflow='';}
   document.addEventListener('click',function(e){
-    var trg=e.target.closest('.play, .showreel, .cine-feat, .vids .scene, .film-frame, .cover-card, .hc-play, .hc-media');
+    var trg=e.target.closest('.play, .showreel, .cine-feat, .vids .scene, .film-frame, .cover-card, .hc-showreel, .hc-media');
     if(trg && !e.target.closest('[data-close]')){e.preventDefault();open();return;}
   });
   modal.addEventListener('click',function(e){if(e.target.hasAttribute('data-close'))close();});
