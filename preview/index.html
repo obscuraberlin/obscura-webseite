@@ -934,18 +934,17 @@ html{scroll-snap-type:y proximity}
 .merge-intro{text-align:center;max-width:900px}
 .merge-intro h2{color:#fff;font-size:clamp(1.7rem,4.2vw,3rem);line-height:1.05}
 .merge-intro .eyebrow{color:var(--lime)}
-.merge-track{position:relative;height:220vh;margin-top:2rem}
+.merge-track{position:relative;height:200vh;margin-top:1rem}
 .merge-stage{position:sticky;top:0;height:100vh;min-height:560px;display:flex;align-items:center;justify-content:center;overflow:hidden}
 .merge-lines{position:absolute;inset:0;width:100%;height:100%;opacity:0;transition:opacity .2s}
 .merge-lines line{stroke:var(--lime);stroke-width:1;vector-effect:non-scaling-stroke;opacity:.55}
 .merge-core{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) scale(.7);text-align:center;opacity:0;pointer-events:none;padding:0 1rem}
-.mc-logo{font-family:var(--display);font-weight:900;font-size:clamp(2.4rem,7vw,5.2rem);letter-spacing:-.05em;color:#fff;display:block}
+.mc-logo{font-family:var(--display);font-weight:900;font-size:clamp(4.5rem,20vw,17rem);letter-spacing:-.05em;color:#fff;display:block}
 .mc-logo sup{color:var(--lime);font-size:.36em;vertical-align:super}
 .mc-sub{display:block;margin-top:.5rem;font-family:var(--mono);font-size:clamp(.62rem,1.4vw,.82rem);letter-spacing:.1em;color:rgba(255,255,255,.72);text-transform:uppercase}
 .chip{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
-  font-family:var(--mono);font-size:.78rem;font-weight:600;color:#fff;
-  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);border-radius:100px;
-  padding:.58rem 1rem;white-space:nowrap;will-change:transform,opacity}
+  font-family:var(--display);font-size:clamp(1.3rem,3vw,2.2rem);font-weight:800;letter-spacing:-.02em;color:#fff;
+  white-space:nowrap;will-change:transform,opacity;text-shadow:0 2px 20px rgba(0,0,0,.4)}
 .merge-statement{text-align:center;padding:clamp(70px,10vw,130px) 0}
 .merge-statement h2{color:#fff;font-size:clamp(1.7rem,4.2vw,3.1rem);max-width:1000px;margin-inline:auto}
 .merge-mobile{display:none}
@@ -991,9 +990,9 @@ html{scroll-snap-type:y proximity}
 .cta-band .cb-act{display:flex;flex-direction:column;gap:.6rem;align-items:flex-start}
 .cb-friction{font-family:var(--mono);font-size:.7rem;letter-spacing:.03em;color:var(--muted);display:inline-flex;align-items:center;gap:.5rem}
 .cb-friction b{color:var(--lime-ink);font-size:.9em}
-.band-lime{background:var(--lime)}
-.band-lime h2{color:var(--ink)}.band-lime p{color:#33450f}
-.band-lime .cb-friction{color:#33450f}.band-lime .cb-friction b{color:var(--ink)}
+.band-lime{background:var(--stone);border-block:1px solid var(--line)}
+.band-lime h2{color:var(--ink)}.band-lime p{color:var(--muted)}
+.band-lime .cb-friction{color:var(--muted)}.band-lime .cb-friction b{color:var(--lime-ink)}
 .band-dark{background:var(--dark)}
 .band-dark h2{color:#fff}.band-dark p{color:rgba(255,255,255,.64)}
 .band-dark .cb-friction{color:rgba(255,255,255,.6)}.band-dark .cb-friction b{color:var(--lime)}
@@ -1078,6 +1077,11 @@ html{scroll-snap-type:y proximity}
   .sec{padding:clamp(56px,14vw,80px) 0}
 }
 @media(prefers-reduced-motion:reduce){*{animation-duration:.001ms!important;transition-duration:.001ms!important}html{scroll-behavior:auto}.rv{opacity:1;transform:none}}
+/* ===== ART-DIRECTION-HARMONISIERUNG ===== */
+/* §31 Floating-Buttons: nur WhatsApp als ein kleiner Kreis */
+.chat-btn,.chat-panel,.callback-btn{display:none!important}
+.wa-float{display:grid!important;width:50px;height:50px;right:1.1rem;bottom:1.1rem}
+.wa-float svg{width:27px;height:27px}
 </style>
 
 <header class="top" id="hdr">
@@ -1127,8 +1131,8 @@ html{scroll-snap-type:y proximity}
   </div>
   <div class="wrap hc-content">
     <p class="hc-eyebrow rv in">Social Media · Content · Ads · Deutschlandweit</p>
-    <h1 class="hc-title reveal-lines"><span class="line"><span>Mehr Reichweite.</span></span><span class="line"><span>Mehr Anfragen.</span></span><span class="line"><span class="g">Mehr Kunden.</span></span></h1>
-    <p class="hc-sub rv in">Wir übernehmen Social Media, Content &amp; Ads – für gezielte Neukundengewinnung, Monat für Monat. Ein Team, ein Ansprechpartner, deutschlandweit.</p>
+    <h1 class="hc-title reveal-lines"><span class="line"><span>Dein Auftritt.</span></span><span class="line"><span class="g">Unser System.</span></span></h1>
+    <p class="hc-sub rv in">Social Media, um das du dich nicht mehr kümmern musst. Wir übernehmen Content, Betreuung &amp; Ads – Monat für Monat, mit einem Ansprechpartner.<br><b style="color:#fff">Mehr Sichtbarkeit. Mehr Anfragen. Ein professioneller Auftritt.</b></p>
     <div class="ctas rv in">
       <a href="#kontakt" class="btn btn-lime">Strategiegespräch <span class="ar">→</span></a>
       <a href="#content" class="btn btn-glass">Unsere Arbeit ansehen <span class="ar">→</span></a>
@@ -1321,46 +1325,7 @@ html{scroll-snap-type:y proximity}
   </div>
 </section>
 
-<!-- COMPARISON -->
-<section class="sec" id="vergleich">
-  <div class="wrap">
-    <p class="eyebrow rv">Der Unterschied</p>
-    <h2 class="rv" style="margin-top:1rem">Ein Team schlägt viele Einzellösungen.</h2>
-    <p class="lead rv">Statt fünf Dienstleister zu koordinieren, bekommst du alles aus einer Hand – von einem Team, mit einem Ansprechpartner.</p>
-    <div class="vs2 rv">
-      <div class="vs2-grid">
-        <div class="vs2-cell vs2-corner"></div>
-        <div class="vs2-cell vs2-head vs2-head-o"><b>Viele Dienstleister</b><small>Du koordinierst &amp; briefst selbst</small></div>
-        <div class="vs2-cell vs2-head vs2-head-y"><b>OBSCURA</b><small>Alles aus einer Hand</small></div>
 
-        <div class="vs2-cell vs2-feat">Strategie &amp; Redaktionsplan</div>
-        <div class="vs2-cell vs2-o"><span class="x">✕</span></div>
-        <div class="vs2-cell vs2-y"><span class="c">✓</span></div>
-
-        <div class="vs2-cell vs2-feat">Video, Foto &amp; Reels</div>
-        <div class="vs2-cell vs2-o"><span class="x">✕</span></div>
-        <div class="vs2-cell vs2-y"><span class="c">✓</span></div>
-
-        <div class="vs2-cell vs2-feat">Veröffentlichung &amp; Community</div>
-        <div class="vs2-cell vs2-o"><span class="x">✕</span></div>
-        <div class="vs2-cell vs2-y"><span class="c">✓</span></div>
-
-        <div class="vs2-cell vs2-feat">Werbeanzeigen (Ads)</div>
-        <div class="vs2-cell vs2-o"><span class="x">✕</span></div>
-        <div class="vs2-cell vs2-y"><span class="c">✓</span></div>
-
-        <div class="vs2-cell vs2-feat">Transparentes Reporting</div>
-        <div class="vs2-cell vs2-o"><span class="x">✕</span></div>
-        <div class="vs2-cell vs2-y"><span class="c">✓</span></div>
-
-        <div class="vs2-cell vs2-feat">Ein fester Ansprechpartner</div>
-        <div class="vs2-cell vs2-o vs2-last"><span class="x">✕</span></div>
-        <div class="vs2-cell vs2-y vs2-last"><span class="c">✓</span></div>
-      </div>
-      <p class="vs2-line"><span class="lime">Ein Team. Ein Ansprechpartner. Ein klarer Plan.</span></p>
-    </div>
-  </div>
-</section>
 
 
 
@@ -1375,7 +1340,7 @@ html{scroll-snap-type:y proximity}
     <div class="film-frame scene g-city" id="filmFrame" data-slot="IMAGEFILM_MAIN · 16:9">
       <span class="bg"></span><span class="grain"></span>
       <span class="play play-lg"><svg width="22" height="26" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span>
-      <div class="film-cap"><b>Imagefilm ansehen</b><small>Echter Film wird vor dem Livegang eingebunden</small></div>
+      <div class="film-cap"><b>Imagefilm ansehen</b><small>OBSCURA · Imagefilm</small></div>
     </div>
   </div>
 </section>
