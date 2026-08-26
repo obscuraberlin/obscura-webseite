@@ -650,6 +650,7 @@ footer{background:var(--dark);color:#f5f5f0;padding:4.5rem 0 2rem}
 .chat-btn{position:fixed;right:1.1rem;bottom:1.1rem;z-index:58;height:54px;padding:0 1.15rem;border-radius:100px;background:var(--ink);
   color:#fff;border:0;cursor:pointer;display:flex;align-items:center;gap:.55rem;font-weight:600;box-shadow:0 12px 30px rgba(0,0,0,.3);font-family:var(--body);font-size:.92rem}
 .chat-btn .dot{width:8px;height:8px;border-radius:100px;background:var(--lime);box-shadow:0 0 0 0 rgba(199,255,24,.6);animation:pulse 2s infinite}
+.chat-btn .chat-ic{display:none}
 @keyframes pulse{70%{box-shadow:0 0 0 8px rgba(199,255,24,0)}100%{box-shadow:0 0 0 0 rgba(199,255,24,0)}}
 .chat-panel{position:fixed;right:1.1rem;bottom:1.1rem;z-index:61;width:min(380px,calc(100vw - 2rem));height:min(560px,calc(100vh - 2rem));
   background:var(--surface);border:1px solid var(--line);border-radius:22px;box-shadow:0 30px 70px -20px rgba(0,0,0,.45);
@@ -868,6 +869,49 @@ html{scroll-snap-type:y proximity}
 .rv{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
 .rv.in{opacity:1;transform:none}
 
+/* ===== EIN-TEAM-MERGE ===== */
+.merge{padding:clamp(80px,11vw,130px) 0 0;background:linear-gradient(180deg,#0c0c0b,#161714 60%,#0c0c0b);overflow:visible}
+.merge-intro{text-align:center;max-width:900px}
+.merge-intro h2{color:#fff;font-size:clamp(1.7rem,4.2vw,3rem);line-height:1.05}
+.merge-intro .eyebrow{color:var(--lime)}
+.merge-track{position:relative;height:220vh;margin-top:2rem}
+.merge-stage{position:sticky;top:0;height:100vh;min-height:560px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.merge-lines{position:absolute;inset:0;width:100%;height:100%;opacity:0;transition:opacity .2s}
+.merge-lines line{stroke:var(--lime);stroke-width:1;vector-effect:non-scaling-stroke;opacity:.55}
+.merge-core{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) scale(.7);text-align:center;opacity:0;pointer-events:none;padding:0 1rem}
+.mc-logo{font-family:var(--display);font-weight:900;font-size:clamp(2.4rem,7vw,5.2rem);letter-spacing:-.05em;color:#fff;display:block}
+.mc-logo sup{color:var(--lime);font-size:.36em;vertical-align:super}
+.mc-sub{display:block;margin-top:.5rem;font-family:var(--mono);font-size:clamp(.62rem,1.4vw,.82rem);letter-spacing:.1em;color:rgba(255,255,255,.72);text-transform:uppercase}
+.chip{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  font-family:var(--mono);font-size:.78rem;font-weight:600;color:#fff;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);border-radius:100px;
+  padding:.58rem 1rem;white-space:nowrap;will-change:transform,opacity}
+.merge-statement{text-align:center;padding:clamp(70px,10vw,130px) 0}
+.merge-statement h2{color:#fff;font-size:clamp(1.7rem,4.2vw,3.1rem);max-width:1000px;margin-inline:auto}
+.merge-mobile{display:none}
+/* ===== MONATS-LOOP ===== */
+.loop-head{text-align:center;max-width:720px;margin-inline:auto}
+.loop-wrap{position:relative;width:min(500px,88vw);aspect-ratio:1;margin:clamp(48px,7vw,80px) auto 0}
+.loop-ring{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.lr-bg{fill:none;stroke:var(--line);stroke-width:2}
+.lr-fg{fill:none;stroke:var(--lime-ink);stroke-width:5;stroke-linecap:round;
+  stroke-dasharray:942;stroke-dashoffset:942;transform:rotate(-90deg);transform-origin:200px 200px}
+.lr-dot{fill:var(--lime-ink);stroke:var(--canvas);stroke-width:4;filter:drop-shadow(0 2px 6px rgba(0,0,0,.28))}
+.loop-nodes .ln{position:absolute;transform:translate(-50%,-50%);text-align:center;width:96px;
+  font-family:var(--mono);font-size:.72rem;font-weight:600;color:var(--faint);transition:color .3s,transform .3s}
+.loop-nodes .ln .d{width:12px;height:12px;border-radius:100px;background:var(--line);margin:0 auto .35rem;transition:background .3s,transform .3s,box-shadow .3s}
+.loop-nodes .ln.done{color:var(--muted)}
+.loop-nodes .ln.done .d{background:var(--lime-ink)}
+.loop-nodes .ln.active{color:var(--ink)}
+.loop-nodes .ln.active .d{background:var(--lime-ink);transform:scale(1.6);box-shadow:0 0 0 5px var(--lime-tint)}
+.loop-center{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);text-align:center;width:56%;pointer-events:none}
+.lc-step{font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;color:var(--lime-ink);text-transform:uppercase}
+.lc-title{display:block;font-family:var(--display);font-weight:900;font-size:clamp(1.5rem,3.4vw,2.3rem);letter-spacing:-.03em;margin:.3rem 0 .5rem}
+.lc-desc{display:block;font-size:.9rem;color:var(--muted);line-height:1.5;min-height:2.7em}
+.lc-next{display:inline-block;margin-top:.9rem;font-family:var(--mono);font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--lime-ink);background:var(--lime-tint);border-radius:100px;padding:.3rem .7rem}
+@media(prefers-reduced-motion:reduce){.lr-fg,.lr-dot{transition:none}}
+
 @media(max-width:1000px){
   .nav-links,header .btn-dark{display:none}.burger{display:grid}
   .hero-grid{grid-template-columns:1fr;gap:2.5rem}.hero-visual{min-height:auto;margin-top:1rem}
@@ -882,7 +926,10 @@ html{scroll-snap-type:y proximity}
   .svc-grid{grid-template-columns:1fr 1fr}
   .cover{height:400px}.cover-card{width:190px;height:332px;margin:-166px 0 0 -95px}
   .wa-float,.callback-btn{display:none}
-  .chat-btn{bottom:4.6rem;right:1rem;left:auto;height:48px;padding:0 1rem;font-size:.86rem}
+  /* mobile: nur kleiner icon-button statt großer pill, keine kollision mit sticky-cta */
+  .chat-btn{bottom:5.2rem;right:1rem;left:auto;width:48px;height:48px;padding:0;border-radius:100px;justify-content:center}
+  .chat-btn .chat-lbl,.chat-btn .dot{display:none}
+  .chat-btn .chat-ic{display:block;width:23px;height:23px;color:#fff}
   .chat-panel{bottom:.8rem}
   .steps{grid-template-columns:1fr;gap:0}
   .steps .line{left:21px;right:auto;top:0;bottom:0;width:2px;height:auto}
@@ -892,6 +939,18 @@ html{scroll-snap-type:y proximity}
   .ref-grid{grid-template-columns:repeat(3,1fr);gap:clamp(20px,4vw,32px)}
   .foot-grid{grid-template-columns:1fr 1fr}.opts,.fields{grid-template-columns:1fr}
   .smcta{display:block}
+  /* merge: sticky-parallax raus, statische darstellung */
+  .merge-track{display:none}
+  .merge-mobile{display:flex;flex-direction:column;align-items:center;gap:1.1rem;padding:2.6rem 1.2rem .5rem}
+  .mm-roles{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;max-width:420px}
+  .mm-roles span{font-family:var(--mono);font-size:.72rem;font-weight:600;color:#fff;
+    background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);border-radius:100px;padding:.5rem .8rem}
+  .mm-arrow{color:var(--lime);font-size:1.6rem;line-height:1}
+  .mm-core{text-align:center;font-family:var(--display);font-weight:900;font-size:2.4rem;letter-spacing:-.05em;color:#fff}
+  .mm-core sup{color:var(--lime);font-size:.36em;vertical-align:super}
+  .mm-core small{display:block;font-family:var(--mono);font-weight:600;font-size:.66rem;letter-spacing:.08em;
+    text-transform:uppercase;color:rgba(255,255,255,.7);margin-top:.5rem}
+  .loop-nodes .ln{width:74px;font-size:.62rem}
 }
 @media(max-width:560px){
   .bento,.proj,.team,.reviews,.stories,.benefits,.team-grid{grid-template-columns:1fr}
@@ -1199,6 +1258,67 @@ html{scroll-snap-type:y proximity}
   </div>
 </section>
 
+<!-- EIN TEAM · Merge-Wow-Moment (§63–68) -->
+<section class="merge dark" id="einteam" aria-label="Ein Team statt viele Dienstleister">
+  <div class="wrap merge-intro rv">
+    <p class="eyebrow">Ein Team statt viele Dienstleister</p>
+    <h2 style="margin-top:1rem">Du musst nicht mehr überlegen,<br>wer filmt, schneidet, postet<br>und die Ads betreut.</h2>
+  </div>
+  <div class="merge-track" id="mergeTrack">
+    <div class="merge-stage">
+      <svg class="merge-lines" id="mergeLines" viewBox="0 0 1080 680" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+        <line x1="540" y1="340" x2="185" y2="150"/><line x1="540" y1="340" x2="895" y2="140"/>
+        <line x1="540" y1="340" x2="120" y2="368"/><line x1="540" y1="340" x2="960" y2="392"/>
+        <line x1="540" y1="340" x2="250" y2="548"/><line x1="540" y1="340" x2="865" y2="556"/>
+      </svg>
+      <div class="merge-core" id="mergeCore">
+        <span class="mc-logo">OBSCURA<sup>®</sup></span>
+        <span class="mc-sub">Ein Ansprechpartner · Ein Team · Ein System</span>
+      </div>
+      <div class="chip" data-x="185" data-y="150">Videograf</div>
+      <div class="chip" data-x="895" data-y="140">Fotograf</div>
+      <div class="chip" data-x="120" data-y="368">Cutter</div>
+      <div class="chip" data-x="960" data-y="392">Social-Media-Manager</div>
+      <div class="chip" data-x="250" data-y="548">Ads-Manager</div>
+      <div class="chip" data-x="865" data-y="556">Tools &amp; Freelancer</div>
+    </div>
+  </div>
+  <!-- mobile: stark vereinfachte darstellung (§64) -->
+  <div class="merge-mobile" aria-hidden="true">
+    <div class="mm-roles"><span>Videograf</span><span>Fotograf</span><span>Cutter</span><span>Social-Media-Manager</span><span>Ads-Manager</span><span>Tools &amp; Freelancer</span></div>
+    <div class="mm-arrow">↓</div>
+    <div class="mm-core">OBSCURA<sup>®</sup><small>Ein Ansprechpartner · Ein Team · Ein System</small></div>
+  </div>
+  <div class="wrap merge-statement rv">
+    <h2>Nicht ein Shooting. Nicht eine Kampagne.<br><span class="lime">Ein System, das jeden Monat weiterarbeitet.</span></h2>
+  </div>
+</section>
+
+<!-- MONATS-LOOP · scroll-getriebener Kreislauf (§65–67) -->
+<section class="sec loop snap" id="loop">
+  <div class="wrap">
+    <div class="loop-head rv">
+      <p class="eyebrow">Dein Monat mit Obscura</p>
+      <h2 style="margin-top:1rem">Betreuung ist kein Projekt.<br>Es ist ein <span class="lime">Kreislauf.</span></h2>
+      <p class="lead" style="margin-inline:auto">Jeden Monat läuft derselbe Prozess – und wird dabei jedes Mal besser.</p>
+    </div>
+    <div class="loop-wrap rv">
+      <svg class="loop-ring" viewBox="0 0 400 400" aria-hidden="true">
+        <circle class="lr-bg" cx="200" cy="200" r="150"/>
+        <circle class="lr-fg" id="lrFg" cx="200" cy="200" r="150"/>
+        <circle class="lr-dot" id="lrDot" cx="200" cy="50" r="7"/>
+      </svg>
+      <div class="loop-nodes" id="loopNodes"></div>
+      <div class="loop-center">
+        <span class="lc-step" id="lcStep">01 / 08</span>
+        <b class="lc-title" id="lcTitle">Strategie</b>
+        <small class="lc-desc" id="lcDesc">Themen, Ziele und Redaktionsplan für den Monat.</small>
+        <span class="lc-next" id="lcNext">Kreislauf startet</span>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- TESTIMONIALS (Google) -->
 <section class="sec" id="bewertungen" style="background:var(--soft)">
   <div class="wrap">
@@ -1364,7 +1484,7 @@ html{scroll-snap-type:y proximity}
   </div>
 </footer>
 
-<div class="smcta" id="smcta"><a href="#kontakt">Jetzt Projekt anfragen →</a></div>
+<div class="smcta" id="smcta"><a href="#kontakt">Kostenloses Strategiegespräch →</a></div>
 
 <!-- Video Modal -->
 <div class="modal" id="vidModal" role="dialog" aria-modal="true" aria-label="Video">
@@ -1396,7 +1516,7 @@ html{scroll-snap-type:y proximity}
 </a>
 
 <!-- Chatbot -->
-<button class="chat-btn" id="chatBtn"><span class="dot"></span> Marketing-Berater</button>
+<button class="chat-btn" id="chatBtn"><svg class="chat-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 01-11.8 7.7L3 21l1.8-6.2A8.4 8.4 0 1121 11.5z"/></svg><span class="dot"></span><span class="chat-lbl">Marketing-Berater</span></button>
 <div class="chat-panel" id="chatPanel" role="dialog" aria-label="Marketing-Berater Chat">
   <div class="chat-top">
     <span class="av">O</span>
@@ -1451,6 +1571,72 @@ document.querySelectorAll('.rv').forEach(function(el){io.observe(el);});
 // referenzen-logos: gestaffeltes einblenden beim scrollen
 var refGrid=document.getElementById('refGrid');
 if(refGrid){var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');rio.unobserve(e.target);}})},{threshold:.18,rootMargin:'-40px'});rio.observe(refGrid);}
+
+// ===== EIN-TEAM-MERGE: scroll-getriebener merge (§63–68) =====
+(function(){
+  var track=document.getElementById('mergeTrack');if(!track)return;
+  var core=document.getElementById('mergeCore'),lines=document.getElementById('mergeLines'),
+      stage=track.querySelector('.merge-stage'),chips=[].slice.call(track.querySelectorAll('.chip'));
+  function apply(p){
+    var e=p<.5?2*p*p:1-Math.pow(-2*p+2,2)/2; // easeInOut, kein bounce
+    var sf=Math.min(stage.clientWidth,1080)/1080,t=1-e;
+    chips.forEach(function(c){
+      var ox=(parseFloat(c.dataset.x)-540)*sf,oy=(parseFloat(c.dataset.y)-340)*sf;
+      c.style.transform='translate(-50%,-50%) translate('+(ox*t).toFixed(1)+'px,'+(oy*t).toFixed(1)+'px) scale('+(1-.45*e).toFixed(3)+')';
+      c.style.opacity=(1-.8*e).toFixed(3);
+    });
+    core.style.opacity=Math.max(0,(e-.12)/.88).toFixed(3);
+    core.style.transform='translate(-50%,-50%) scale('+(.72+.28*e).toFixed(3)+')';
+    lines.style.opacity=(e<.5?e*2:Math.max(.05,(1-e)*1.9)).toFixed(3);
+  }
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches){apply(1);return;}
+  var tick=false;
+  function onScroll(){if(tick)return;tick=true;requestAnimationFrame(function(){
+    var r=track.getBoundingClientRect(),total=r.height-innerHeight;
+    var p=total>0?(-r.top)/total:0;apply(Math.max(0,Math.min(1,p)));tick=false;});}
+  addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',onScroll,{passive:true});
+  apply(0);onScroll();
+})();
+
+// ===== MONATS-LOOP: scroll-getriebener kreislauf (§65–67) =====
+(function(){
+  var sec=document.getElementById('loop');if(!sec)return;
+  var steps=[
+    ['Strategie','Themen, Ziele und Redaktionsplan für den Monat.'],
+    ['Content Day','Wir drehen und fotografieren deinen Content.'],
+    ['Schnitt','Reels, Videos und Fotos werden produziert.'],
+    ['Freigabe','Du gibst die Inhalte frei – transparent und einfach.'],
+    ['Publishing','Wir veröffentlichen zur besten Zeit auf deinen Kanälen.'],
+    ['Ads','Starke Inhalte werden gezielt beworben.'],
+    ['Reporting','Du siehst transparent, was funktioniert hat.'],
+    ['Optimierung','Wir verbessern Strategie & Content fürs nächste Mal.']
+  ];
+  var nodes=document.getElementById('loopNodes');
+  var els=steps.map(function(s,i){var a=(-90+i*45)*Math.PI/180;
+    var el=document.createElement('div');el.className='ln';
+    el.style.left=(50+37.5*Math.cos(a))+'%';el.style.top=(50+37.5*Math.sin(a))+'%';
+    el.innerHTML='<span class="d"></span>'+s[0];nodes.appendChild(el);return el;});
+  var fg=document.getElementById('lrFg'),dot=document.getElementById('lrDot'),C=2*Math.PI*150;
+  fg.setAttribute('stroke-dasharray',C.toFixed(1));
+  var lcStep=document.getElementById('lcStep'),lcTitle=document.getElementById('lcTitle'),
+      lcDesc=document.getElementById('lcDesc'),lcNext=document.getElementById('lcNext'),last=-1;
+  function apply(p){
+    fg.setAttribute('stroke-dashoffset',(C*(1-p)).toFixed(1));
+    var a=(-90+p*360)*Math.PI/180;
+    dot.setAttribute('cx',(200+150*Math.cos(a)).toFixed(1));
+    dot.setAttribute('cy',(200+150*Math.sin(a)).toFixed(1));
+    var idx=Math.min(7,Math.floor(p*8+.0001));
+    els.forEach(function(el,i){el.classList.toggle('active',i===idx);el.classList.toggle('done',i<idx);});
+    if(idx!==last){last=idx;lcStep.textContent='0'+(idx+1)+' / 08';lcTitle.textContent=steps[idx][0];
+      lcDesc.textContent=steps[idx][1];lcNext.textContent=idx>=7?'→ Nächster Monat':'Kreislauf läuft';}
+  }
+  var tick=false;
+  function onScroll(){if(tick)return;tick=true;requestAnimationFrame(function(){
+    var r=sec.getBoundingClientRect();
+    var p=(innerHeight*0.78-r.top)/(r.height*0.6);apply(Math.max(0,Math.min(1,p)));tick=false;});}
+  addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',onScroll,{passive:true});
+  apply(0);onScroll();
+})();
 
 // scroll-getriggerter Zeilen-Reveal fuer grosse Headlines
 (function(){
