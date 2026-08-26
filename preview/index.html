@@ -207,8 +207,9 @@ header.top .burger{background:rgba(255,255,255,.12);border-color:rgba(255,255,25
 header.top .burger span,header.top .burger span::before,header.top .burger span::after{background:#fff}
 
 /* diagonaler lime ticker */
+.ticker-band{background:#0a0a0b;padding:2.4rem 0;overflow:hidden}
 .ticker{background:var(--lime);color:var(--ink);padding:.85rem 0;overflow:hidden;
-  transform:rotate(-2.4deg) scale(1.04);margin:2.4rem 0;position:relative;z-index:5}
+  transform:rotate(-2.4deg) scale(1.04);margin:0;position:relative;z-index:5}
 .ticker .track{display:flex;width:max-content;animation:tick 42s linear infinite}
 .ticker:hover .track{animation-play-state:paused}
 .ticker span{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:1.02rem;margin-inline:1.1rem;letter-spacing:-.01em}
@@ -225,15 +226,17 @@ header.top .burger span,header.top .burger span::before,header.top .burger span:
 .ref-head{display:grid;grid-template-columns:1fr .8fr;gap:2rem;align-items:end;margin-bottom:clamp(48px,6vw,72px)}
 .ref-head h2{font-size:clamp(2rem,4.4vw,3.3rem)}
 .ref-sub{max-width:42ch;color:var(--muted);font-size:1.02rem;line-height:1.6;justify-self:end}
-.ref-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(24px,3vw,40px) clamp(16px,3vw,32px);align-items:center}
-.ref-logo{font-family:var(--display);font-weight:800;letter-spacing:-.03em;line-height:1.05;text-align:center;
-  color:var(--ink);opacity:0;transform:translateY(16px);
-  transition:opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1),filter .3s;
-  filter:grayscale(1);font-size:clamp(1rem,2vw,1.4rem)}
-.ref-logo.lg{font-size:clamp(1.15rem,2.5vw,1.75rem)}
-.ref-logo.sm{font-size:clamp(.9rem,1.7vw,1.15rem)}
-.ref-grid.in .ref-logo{opacity:.62;transform:none}
-.ref-grid.in .ref-logo:hover{opacity:1;transform:scale(1.02)}
+/* logo-wall: einheitliche graue wortmarken im raster mit haarlinien */
+.ref-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);
+  border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.ref-logo{background:var(--surface);display:flex;align-items:center;justify-content:center;
+  min-height:112px;padding:1.4rem 1rem;text-align:center;
+  font-family:var(--display);font-weight:800;letter-spacing:-.02em;line-height:1.12;
+  font-size:clamp(1rem,1.8vw,1.32rem);color:#71736c;filter:grayscale(1);
+  opacity:0;transform:translateY(14px);
+  transition:opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1),color .3s}
+.ref-grid.in .ref-logo{opacity:1;transform:none}
+.ref-grid.in .ref-logo:hover{color:var(--ink)}
 .ref-grid.in .ref-logo:nth-child(1){transition-delay:.03s}
 .ref-grid.in .ref-logo:nth-child(2){transition-delay:.06s}
 .ref-grid.in .ref-logo:nth-child(3){transition-delay:.09s}
@@ -950,6 +953,33 @@ html{scroll-snap-type:y proximity}
 .band-dark .cb-friction{color:rgba(255,255,255,.6)}.band-dark .cb-friction b{color:var(--lime)}
 @media(max-width:700px){.cta-band .cb-in{flex-direction:column;align-items:flex-start}
   .cta-band .cb-act{width:100%}.cta-band .cb-act .btn{width:100%;justify-content:center}}
+/* ===== VERGLEICH · klare zwei-seiten-tabelle ===== */
+.vs2{margin-top:clamp(2.5rem,5vw,3.5rem);max-width:820px}
+.vs2-grid{display:grid;grid-template-columns:1fr 128px 128px;
+  border:1px solid var(--line);border-radius:20px;overflow:hidden;background:var(--surface)}
+.vs2-cell{display:flex;align-items:center;justify-content:center;padding:1.05rem 1rem;
+  border-top:1px solid var(--line);border-left:1px solid var(--line);text-align:center}
+.vs2-corner,.vs2-feat{justify-content:flex-start;text-align:left}
+.vs2-grid>.vs2-cell:nth-child(-n+3){border-top:0}
+.vs2-grid>.vs2-cell:nth-child(3n+1){border-left:0}
+.vs2-feat{font-family:var(--display);font-weight:700;font-size:clamp(.95rem,1.6vw,1.08rem);color:var(--ink)}
+.vs2-head{flex-direction:column;gap:.15rem;padding:1.15rem .8rem;line-height:1.15}
+.vs2-head b{font-family:var(--display);font-weight:800;font-size:.98rem}
+.vs2-head small{font-size:.68rem;color:var(--muted);font-weight:500}
+.vs2-head-o b{color:var(--muted)}
+.vs2-head-y{background:var(--lime)}.vs2-head-y b{color:var(--ink)}.vs2-head-y small{color:#33450f}
+.vs2-o .x{display:grid;place-items:center;width:26px;height:26px;border-radius:100px;
+  background:var(--soft);color:var(--faint);font-size:.8rem}
+.vs2-y{background:var(--lime-tint)}
+.vs2-y .c{display:grid;place-items:center;width:28px;height:28px;border-radius:100px;
+  background:var(--lime);color:var(--ink);font-weight:800;font-size:.85rem}
+.vs2-line{margin-top:1.4rem;font-family:var(--display);font-weight:800;font-size:clamp(1.1rem,2.2vw,1.5rem);letter-spacing:-.02em}
+@media(max-width:560px){
+  .vs2-grid{grid-template-columns:1fr 68px 68px}
+  .vs2-cell{padding:.85rem .5rem}
+  .vs2-head b{font-size:.8rem}.vs2-head small{display:none}
+  .vs2-feat{font-size:.9rem}
+}
 
 @media(max-width:1000px){
   .nav-links,header .btn-dark{display:none}.burger{display:grid}
@@ -1050,8 +1080,8 @@ html{scroll-snap-type:y proximity}
   </div>
 </section>
 
-<!-- TICKER -->
-<div class="ticker" aria-hidden="true"><div class="track" id="tickTrack"></div></div>
+<!-- TICKER · auf dunklem Band, nahtlos an den Hero -->
+<div class="ticker-band"><div class="ticker" aria-hidden="true"><div class="track" id="tickTrack"></div></div></div>
 
 <!-- REFERENZEN · echte Kunden. Wortmarken = Platzhalter für Original-Logos (data-slot). -->
 <section class="clients bg-white" id="referenzen">
@@ -1064,28 +1094,54 @@ html{scroll-snap-type:y proximity}
       <p class="ref-sub rv">Von bekannten Marken bis zum Mittelstand – wir arbeiten deutschlandweit mit Unternehmen aus unterschiedlichen Branchen.</p>
     </div>
     <div class="ref-grid" id="refGrid">
-      <span class="ref-logo lg" data-slot="LOGO_ROLLS_ROYCE.svg">Rolls-Royce</span>
+      <span class="ref-logo" data-slot="LOGO_ROLLS_ROYCE.svg">Rolls-Royce</span>
       <span class="ref-logo" data-slot="LOGO_ALLIANZ.svg">Allianz</span>
-      <span class="ref-logo sm" data-slot="LOGO_RTL.svg">RTL</span>
+      <span class="ref-logo" data-slot="LOGO_RTL.svg">RTL</span>
       <span class="ref-logo" data-slot="LOGO_SEA_LIFE.svg">SEA&nbsp;LIFE</span>
       <span class="ref-logo" data-slot="LOGO_RILLER_SCHNAUCK.svg">Riller&nbsp;&amp;&nbsp;Schnauck</span>
-      <span class="ref-logo lg" data-slot="LOGO_AMAZON_PRIME.svg">Amazon&nbsp;Prime</span>
+      <span class="ref-logo" data-slot="LOGO_AMAZON_PRIME.svg">Amazon&nbsp;Prime</span>
       <span class="ref-logo" data-slot="LOGO_WELLER_ENERGIE.svg">Weller&nbsp;Energie</span>
-      <span class="ref-logo sm" data-slot="LOGO_MINI.svg">MINI</span>
+      <span class="ref-logo" data-slot="LOGO_MINI.svg">MINI</span>
       <span class="ref-logo" data-slot="LOGO_MADAME_TUSSAUDS.svg">Madame&nbsp;Tussauds</span>
-      <span class="ref-logo sm" data-slot="LOGO_BRANDIDENT.svg">brandident</span>
+      <span class="ref-logo" data-slot="LOGO_BRANDIDENT.svg">brandident</span>
       <span class="ref-logo" data-slot="LOGO_AXEL_SPRINGER.svg">Axel&nbsp;Springer</span>
-      <span class="ref-logo sm" data-slot="LOGO_SOLAR_TECHNIK_LACKNER.svg">Solar&nbsp;Technik&nbsp;Lackner</span>
-      <span class="ref-logo sm" data-slot="LOGO_FRAMEN.svg">FRAMEN</span>
+      <span class="ref-logo" data-slot="LOGO_SOLAR_TECHNIK_LACKNER.svg">Solar&nbsp;Technik&nbsp;Lackner</span>
+      <span class="ref-logo" data-slot="LOGO_FRAMEN.svg">FRAMEN</span>
       <span class="ref-logo" data-slot="LOGO_KENSINGTON.svg">Kensington</span>
-      <span class="ref-logo sm" data-slot="LOGO_JETCLEAN.svg">Jetclean&nbsp;Berlin</span>
-      <span class="ref-logo sm" data-slot="LOGO_ERTMEN.svg">ERTMEN</span>
-      <span class="ref-logo sm" data-slot="LOGO_FLAT_BERLIN.svg">Flat&nbsp;Berlin</span>
-      <span class="ref-logo sm" data-slot="LOGO_MISSION_KARRIERE.svg">Mission&nbsp;Karriere</span>
+      <span class="ref-logo" data-slot="LOGO_JETCLEAN.svg">Jetclean&nbsp;Berlin</span>
+      <span class="ref-logo" data-slot="LOGO_ERTMEN.svg">ERTMEN</span>
+      <span class="ref-logo" data-slot="LOGO_FLAT_BERLIN.svg">Flat&nbsp;Berlin</span>
+      <span class="ref-logo" data-slot="LOGO_MISSION_KARRIERE.svg">Mission&nbsp;Karriere</span>
     </div>
     <!-- DEV: Wortmarken sind Platzhalter – mit Original-Logos aus dem Obscura-Logoordner (data-slot je Eintrag) ersetzen. -->
     <p class="ref-legal">Referenzen ausgewählter Zusammenarbeit. Nicht jede Marke steht für dieselbe Leistung.</p>
   </div>
+</section>
+
+<!-- CONTENT RAILS (3D coverflow) -->
+<section class="sec snap" id="content">
+  <div class="wrap">
+    <p class="eyebrow rv">Content, der performt</p>
+    <h2 class="rv" style="margin-top:1rem">Reels, die deine Marke<br>in Bewegung bringen.</h2>
+    <p class="lead rv">Zieh dich durch – wisch oder klick dich durch echte Content-Beispiele aus unseren Produktionen.</p>
+  </div>
+  <div class="cover rv" id="cover">
+    <div class="cover-stage" id="coverStage">
+      <div class="cover-card" data-i="0"><div class="scene g-auto"><span class="bg"></span><span class="grain"></span></div><span class="play"><svg width="16" height="18" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span><div class="co"><span class="cat">Automotive</span><h4>Automotive Reel</h4><span class="views">▶ Reel ansehen</span></div></div>
+      <div class="cover-card" data-i="1"><div class="scene g-interior"><span class="bg"></span><span class="grain"></span></div><span class="play"><svg width="16" height="18" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span><div class="co"><span class="cat">Behind the Scenes</span><h4>Echte Einblicke</h4><span class="views">▶ Reel ansehen</span></div></div>
+      <div class="cover-card" data-i="2"><div class="scene g-realestate"><span class="bg"></span><span class="grain"></span></div><span class="play"><svg width="16" height="18" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span><div class="co"><span class="cat">Immobilien</span><h4>Deine Marke in Szene</h4><span class="views">▶ Reel ansehen</span></div></div>
+      <div class="cover-card" data-i="3"><div class="scene g-nature"><span class="bg"></span><span class="grain"></span></div><span class="play"><svg width="16" height="18" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span><div class="co"><span class="cat">Drohne</span><h4>Drohnenaufnahme</h4><span class="views">▶ Reel ansehen</span></div></div>
+      <div class="cover-card" data-i="4"><div class="scene g-city"><span class="bg"></span><span class="grain"></span></div><span class="play"><svg width="16" height="18" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span><div class="co"><span class="cat">Social Media</span><h4>Content der performt</h4><span class="views">▶ Reel ansehen</span></div></div>
+      <div class="cover-card" data-i="5"><div class="scene g-product"><span class="bg"></span><span class="grain"></span></div><span class="play"><svg width="16" height="18" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span><div class="co"><span class="cat">Produkt</span><h4>Produktvideo</h4><span class="views">▶ Reel ansehen</span></div></div>
+    </div>
+  </div>
+  <div class="cover-nav">
+    <button id="coverPrev" aria-label="Zurück">‹</button>
+    <div class="dots" id="coverDots"></div>
+    <button id="coverNext" aria-label="Weiter">›</button>
+  </div>
+  <!-- DEV: Platzhalter-Reels (Szenen-Gradients) – mit echten Reels/Videos aus Dropbox ersetzen (PROJECT_REEL_xx). -->
+
 </section>
 
 <!-- BENEFITS -->
@@ -1126,62 +1182,43 @@ html{scroll-snap-type:y proximity}
   <div class="wrap">
     <p class="eyebrow rv">Der Unterschied</p>
     <h2 class="rv" style="margin-top:1rem">Ein Team schlägt viele Einzellösungen.</h2>
-    <p class="lead rv">Content, Betreuung und Ads greifen bei uns ineinander – statt verteilt auf Tools, Freelancer und dein ohnehin volles Team.</p>
-    <div class="cmp cmp-scroll rv">
-      <table>
-        <thead><tr><th></th><th>Selbst / Inhouse</th><th>Einzelne Freelancer</th><th>Klassische Agentur</th><th class="own">Obscura</th></tr></thead>
-        <tbody>
-          <tr><th>Strategie &amp; Redaktionsplan</th><td class="part">teils</td><td class="no">✕</td><td class="yes">✓</td><td class="own yes">✓</td></tr>
-          <tr><th>Regelmäßiger Content</th><td class="part">teils</td><td class="yes">✓</td><td class="yes">✓</td><td class="own yes">✓</td></tr>
-          <tr><th>Video, Foto &amp; Reels</th><td class="no">✕</td><td class="yes">✓</td><td class="part">teils</td><td class="own yes">✓</td></tr>
-          <tr><th>Veröffentlichung &amp; Community</th><td class="part">selbst</td><td class="no">✕</td><td class="yes">✓</td><td class="own yes">✓</td></tr>
-          <tr><th>Werbeanzeigen (Ads)</th><td class="no">✕</td><td class="part">teils</td><td class="yes">✓</td><td class="own yes">✓</td></tr>
-          <tr><th>Transparentes Reporting</th><td class="no">✕</td><td class="no">✕</td><td class="yes">✓</td><td class="own yes">✓</td></tr>
-          <tr><th>Ein fester Ansprechpartner</th><td class="part">du selbst</td><td class="no">mehrere</td><td class="part">wechselnd</td><td class="own yes">✓</td></tr>
-          <tr><th>Geringer Aufwand für dich</th><td class="no">✕</td><td class="part">Koordination</td><td class="part">teils</td><td class="own yes">✓</td></tr>
-        </tbody>
-      </table>
-    </div>
+    <p class="lead rv">Statt fünf Dienstleister zu koordinieren, bekommst du alles aus einer Hand – von einem Team, mit einem Ansprechpartner.</p>
+    <div class="vs2 rv">
+      <div class="vs2-grid">
+        <div class="vs2-cell vs2-corner"></div>
+        <div class="vs2-cell vs2-head vs2-head-o"><b>Viele Dienstleister</b><small>Du koordinierst &amp; briefst selbst</small></div>
+        <div class="vs2-cell vs2-head vs2-head-y"><b>OBSCURA</b><small>Alles aus einer Hand</small></div>
 
-    <div class="cmp-cards rv">
-      <div class="cmp-legend"><span>Andere Lösungen</span><span class="cl-own">Obscura</span></div>
-      <div class="cmp-card"><span class="cc-feat">Strategie &amp; Redaktionsplan</span><span class="cc-vs"><span class="cc-other">teils</span><span class="cc-own">✓</span></span></div>
-      <div class="cmp-card"><span class="cc-feat">Regelmäßiger Content</span><span class="cc-vs"><span class="cc-other">teils</span><span class="cc-own">✓</span></span></div>
-      <div class="cmp-card"><span class="cc-feat">Video, Foto &amp; Reels</span><span class="cc-vs"><span class="cc-other">teils</span><span class="cc-own">✓</span></span></div>
-      <div class="cmp-card"><span class="cc-feat">Veröffentlichung &amp; Community</span><span class="cc-vs"><span class="cc-other">selten</span><span class="cc-own">✓</span></span></div>
-      <div class="cmp-card"><span class="cc-feat">Werbeanzeigen (Ads)</span><span class="cc-vs"><span class="cc-other">teils</span><span class="cc-own">✓</span></span></div>
-      <div class="cmp-card"><span class="cc-feat">Transparentes Reporting</span><span class="cc-vs"><span class="cc-other">selten</span><span class="cc-own">✓</span></span></div>
-      <div class="cmp-card"><span class="cc-feat">Fester Ansprechpartner</span><span class="cc-vs"><span class="cc-other">wechselnd</span><span class="cc-own">✓</span></span></div>
-      <div class="cmp-card"><span class="cc-feat">Geringer Aufwand für dich</span><span class="cc-vs"><span class="cc-other">hoch</span><span class="cc-own">✓</span></span></div>
+        <div class="vs2-cell vs2-feat">Strategie &amp; Redaktionsplan</div>
+        <div class="vs2-cell vs2-o"><span class="x">✕</span></div>
+        <div class="vs2-cell vs2-y"><span class="c">✓</span></div>
+
+        <div class="vs2-cell vs2-feat">Video, Foto &amp; Reels</div>
+        <div class="vs2-cell vs2-o"><span class="x">✕</span></div>
+        <div class="vs2-cell vs2-y"><span class="c">✓</span></div>
+
+        <div class="vs2-cell vs2-feat">Veröffentlichung &amp; Community</div>
+        <div class="vs2-cell vs2-o"><span class="x">✕</span></div>
+        <div class="vs2-cell vs2-y"><span class="c">✓</span></div>
+
+        <div class="vs2-cell vs2-feat">Werbeanzeigen (Ads)</div>
+        <div class="vs2-cell vs2-o"><span class="x">✕</span></div>
+        <div class="vs2-cell vs2-y"><span class="c">✓</span></div>
+
+        <div class="vs2-cell vs2-feat">Transparentes Reporting</div>
+        <div class="vs2-cell vs2-o"><span class="x">✕</span></div>
+        <div class="vs2-cell vs2-y"><span class="c">✓</span></div>
+
+        <div class="vs2-cell vs2-feat">Ein fester Ansprechpartner</div>
+        <div class="vs2-cell vs2-o vs2-last"><span class="x">✕</span></div>
+        <div class="vs2-cell vs2-y vs2-last"><span class="c">✓</span></div>
+      </div>
+      <p class="vs2-line"><span class="lime">Ein Team. Ein Ansprechpartner. Ein klarer Plan.</span></p>
     </div>
   </div>
 </section>
 
-<!-- CONTENT RAILS (3D coverflow) -->
-<section class="sec snap" id="content">
-  <div class="wrap">
-    <p class="eyebrow rv">Content, der performt</p>
-    <h2 class="rv" style="margin-top:1rem">Reels, die deine Marke<br>in Bewegung bringen.</h2>
-    <p class="lead rv">Zieh dich durch – wisch oder klick dich durch echte Content-Beispiele aus unseren Produktionen.</p>
-  </div>
-  <div class="cover rv" id="cover">
-    <div class="cover-stage" id="coverStage">
-      <div class="cover-card" data-i="0"><div class="scene g-auto"><span class="bg"></span><span class="grain"></span></div><span class="play"><svg width="16" height="18" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span><div class="co"><span class="cat">Automotive</span><h4>Automotive Reel</h4><span class="views">▶ Reel ansehen</span></div></div>
-      <div class="cover-card" data-i="1"><div class="scene g-interior"><span class="bg"></span><span class="grain"></span></div><span class="play"><svg width="16" height="18" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span><div class="co"><span class="cat">Behind the Scenes</span><h4>Echte Einblicke</h4><span class="views">▶ Reel ansehen</span></div></div>
-      <div class="cover-card" data-i="2"><div class="scene g-realestate"><span class="bg"></span><span class="grain"></span></div><span class="play"><svg width="16" height="18" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span><div class="co"><span class="cat">Immobilien</span><h4>Deine Marke in Szene</h4><span class="views">▶ Reel ansehen</span></div></div>
-      <div class="cover-card" data-i="3"><div class="scene g-nature"><span class="bg"></span><span class="grain"></span></div><span class="play"><svg width="16" height="18" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span><div class="co"><span class="cat">Drohne</span><h4>Drohnenaufnahme</h4><span class="views">▶ Reel ansehen</span></div></div>
-      <div class="cover-card" data-i="4"><div class="scene g-city"><span class="bg"></span><span class="grain"></span></div><span class="play"><svg width="16" height="18" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span><div class="co"><span class="cat">Social Media</span><h4>Content der performt</h4><span class="views">▶ Reel ansehen</span></div></div>
-      <div class="cover-card" data-i="5"><div class="scene g-product"><span class="bg"></span><span class="grain"></span></div><span class="play"><svg width="16" height="18" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span><div class="co"><span class="cat">Produkt</span><h4>Produktvideo</h4><span class="views">▶ Reel ansehen</span></div></div>
-    </div>
-  </div>
-  <div class="cover-nav">
-    <button id="coverPrev" aria-label="Zurück">‹</button>
-    <div class="dots" id="coverDots"></div>
-    <button id="coverNext" aria-label="Weiter">›</button>
-  </div>
-  <!-- DEV: Platzhalter-Reels (Szenen-Gradients) – mit echten Reels/Videos aus Dropbox ersetzen (PROJECT_REEL_xx). -->
 
-</section>
 
 <!-- IMAGEFILM · scroll-expansion stage (§70) -->
 <section class="sec film-sec bg-white" id="imagefilm">
