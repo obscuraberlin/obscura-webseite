@@ -251,12 +251,29 @@ header.top .burger span,header.top .burger span::before,header.top .burger span:
 .ref-grid.in .ref-logo:nth-child(12){transition-delay:.36s}
 .ref-grid.in .ref-logo:nth-child(n+13){transition-delay:.40s}
 .ref-note{margin-top:clamp(40px,5vw,64px)}
-@media(prefers-reduced-motion:reduce){.ref-logo{transition:none}}
+/* logo-marquee · durchlaufende, einheitlich graue wortmarken */
+.logo-marquee{margin-top:clamp(2.2rem,5vw,3.4rem);overflow:hidden;padding:.6rem 0;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.lm-track{display:flex;align-items:center;width:max-content;animation:lm 55s linear infinite}
+.logo-marquee:hover .lm-track{animation-play-state:paused}
+.lm-item{font-family:var(--display);font-weight:800;letter-spacing:-.02em;white-space:nowrap;
+  font-size:clamp(1.1rem,2vw,1.55rem);color:#83857d;filter:grayscale(1);padding:0 clamp(1.4rem,3vw,2.6rem);
+  position:relative;transition:color .3s}
+.lm-item:hover{color:var(--ink)}
+.lm-item::after{content:'';position:absolute;right:0;top:50%;transform:translateY(-50%);width:5px;height:5px;
+  border-radius:100px;background:var(--line)}
+@keyframes lm{to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.lm-track{animation:none;flex-wrap:wrap;justify-content:center;width:auto}
+  .lm-item::after{display:none}}
 
 /* section */
 .sec{padding:clamp(80px,11vw,140px) 0}
 .sec h2{font-size:clamp(2.3rem,5.2vw,4rem)}
 .lead{margin-top:1.2rem;font-size:1.14rem;color:var(--muted);max-width:52ch}
+.perf-line{margin-top:1rem;font-family:var(--display);font-weight:900;letter-spacing:-.03em;
+  font-size:clamp(1.3rem,3vw,2.1rem);line-height:1.05}
+.perf-line .lime{color:var(--lime-ink)}
 
 /* dark accent */
 .dark{background:var(--dark);color:#f5f5f0;overflow:hidden}
@@ -1083,47 +1100,13 @@ html{scroll-snap-type:y proximity}
 <!-- TICKER · auf dunklem Band, nahtlos an den Hero -->
 <div class="ticker-band"><div class="ticker" aria-hidden="true"><div class="track" id="tickTrack"></div></div></div>
 
-<!-- REFERENZEN · echte Kunden. Wortmarken = Platzhalter für Original-Logos (data-slot). -->
-<section class="clients bg-white" id="referenzen">
-  <div class="wrap">
-    <div class="ref-head">
-      <div>
-        <p class="eyebrow rv">Ausgewählte Referenzen</p>
-        <h2 class="rv" style="margin-top:1rem">Unternehmen,<br>die uns vertrauen.</h2>
-      </div>
-      <p class="ref-sub rv">Von bekannten Marken bis zum Mittelstand – wir arbeiten deutschlandweit mit Unternehmen aus unterschiedlichen Branchen.</p>
-    </div>
-    <div class="ref-grid" id="refGrid">
-      <span class="ref-logo" data-slot="LOGO_ROLLS_ROYCE.svg">Rolls-Royce</span>
-      <span class="ref-logo" data-slot="LOGO_ALLIANZ.svg">Allianz</span>
-      <span class="ref-logo" data-slot="LOGO_RTL.svg">RTL</span>
-      <span class="ref-logo" data-slot="LOGO_SEA_LIFE.svg">SEA&nbsp;LIFE</span>
-      <span class="ref-logo" data-slot="LOGO_RILLER_SCHNAUCK.svg">Riller&nbsp;&amp;&nbsp;Schnauck</span>
-      <span class="ref-logo" data-slot="LOGO_AMAZON_PRIME.svg">Amazon&nbsp;Prime</span>
-      <span class="ref-logo" data-slot="LOGO_WELLER_ENERGIE.svg">Weller&nbsp;Energie</span>
-      <span class="ref-logo" data-slot="LOGO_MINI.svg">MINI</span>
-      <span class="ref-logo" data-slot="LOGO_MADAME_TUSSAUDS.svg">Madame&nbsp;Tussauds</span>
-      <span class="ref-logo" data-slot="LOGO_BRANDIDENT.svg">brandident</span>
-      <span class="ref-logo" data-slot="LOGO_AXEL_SPRINGER.svg">Axel&nbsp;Springer</span>
-      <span class="ref-logo" data-slot="LOGO_SOLAR_TECHNIK_LACKNER.svg">Solar&nbsp;Technik&nbsp;Lackner</span>
-      <span class="ref-logo" data-slot="LOGO_FRAMEN.svg">FRAMEN</span>
-      <span class="ref-logo" data-slot="LOGO_KENSINGTON.svg">Kensington</span>
-      <span class="ref-logo" data-slot="LOGO_JETCLEAN.svg">Jetclean&nbsp;Berlin</span>
-      <span class="ref-logo" data-slot="LOGO_ERTMEN.svg">ERTMEN</span>
-      <span class="ref-logo" data-slot="LOGO_FLAT_BERLIN.svg">Flat&nbsp;Berlin</span>
-      <span class="ref-logo" data-slot="LOGO_MISSION_KARRIERE.svg">Mission&nbsp;Karriere</span>
-    </div>
-    <!-- DEV: Wortmarken sind Platzhalter – mit Original-Logos aus dem Obscura-Logoordner (data-slot je Eintrag) ersetzen. -->
-    <p class="ref-legal">Referenzen ausgewählter Zusammenarbeit. Nicht jede Marke steht für dieselbe Leistung.</p>
-  </div>
-</section>
-
 <!-- CONTENT RAILS (3D coverflow) -->
 <section class="sec snap" id="content">
   <div class="wrap">
     <p class="eyebrow rv">Content, der performt</p>
-    <h2 class="rv" style="margin-top:1rem">Reels, die deine Marke<br>in Bewegung bringen.</h2>
-    <p class="lead rv">Zieh dich durch – wisch oder klick dich durch echte Content-Beispiele aus unseren Produktionen.</p>
+    <h2 class="rv" style="margin-top:1rem">Wir helfen deiner Marke,<br>auf Social Media konstant zu performen.</h2>
+    <p class="perf-line rv"><span class="lime">Mehr Umsatz.</span> <span class="lime">Mehr Kunden.</span> <span class="lime">Mehr Reichweite.</span></p>
+    <p class="lead rv">Wisch oder klick dich durch echte Content-Beispiele aus unseren Produktionen.</p>
   </div>
   <div class="cover rv" id="cover">
     <div class="cover-stage" id="coverStage">
@@ -1142,6 +1125,45 @@ html{scroll-snap-type:y proximity}
   </div>
   <!-- DEV: Platzhalter-Reels (Szenen-Gradients) – mit echten Reels/Videos aus Dropbox ersetzen (PROJECT_REEL_xx). -->
 
+</section>
+
+<!-- REFERENZEN · echte Kunden. Wortmarken = Platzhalter für Original-Logos (data-slot). -->
+<section class="clients bg-white" id="referenzen">
+  <div class="wrap">
+    <div class="ref-head">
+      <div>
+        <p class="eyebrow rv">Ausgewählte Referenzen</p>
+        <h2 class="rv" style="margin-top:1rem">Unternehmen,<br>die uns vertrauen.</h2>
+      </div>
+      <p class="ref-sub rv">Von bekannten Marken bis zum Mittelstand – wir arbeiten deutschlandweit mit Unternehmen aus unterschiedlichen Branchen.</p>
+    </div>
+  </div>
+  <!-- Logo-Marquee · läuft durch; Wortmarken = Platzhalter, mit Original-Logos ersetzen (data-slot) -->
+  <div class="logo-marquee" aria-hidden="true">
+    <div class="lm-track" id="lmTrack">
+      <span class="lm-item" data-slot="LOGO_ROLLS_ROYCE.svg">Rolls-Royce</span>
+      <span class="lm-item" data-slot="LOGO_ALLIANZ.svg">Allianz</span>
+      <span class="lm-item" data-slot="LOGO_RTL.svg">RTL</span>
+      <span class="lm-item" data-slot="LOGO_SEA_LIFE.svg">SEA&nbsp;LIFE</span>
+      <span class="lm-item" data-slot="LOGO_RILLER_SCHNAUCK.svg">Riller&nbsp;&amp;&nbsp;Schnauck</span>
+      <span class="lm-item" data-slot="LOGO_AMAZON_PRIME.svg">Amazon&nbsp;Prime</span>
+      <span class="lm-item" data-slot="LOGO_WELLER_ENERGIE.svg">Weller&nbsp;Energie</span>
+      <span class="lm-item" data-slot="LOGO_MINI.svg">MINI</span>
+      <span class="lm-item" data-slot="LOGO_MADAME_TUSSAUDS.svg">Madame&nbsp;Tussauds</span>
+      <span class="lm-item" data-slot="LOGO_BRANDIDENT.svg">brandident</span>
+      <span class="lm-item" data-slot="LOGO_AXEL_SPRINGER.svg">Axel&nbsp;Springer</span>
+      <span class="lm-item" data-slot="LOGO_SOLAR_TECHNIK_LACKNER.svg">Solar&nbsp;Technik&nbsp;Lackner</span>
+      <span class="lm-item" data-slot="LOGO_FRAMEN.svg">FRAMEN</span>
+      <span class="lm-item" data-slot="LOGO_KENSINGTON.svg">Kensington</span>
+      <span class="lm-item" data-slot="LOGO_JETCLEAN.svg">Jetclean&nbsp;Berlin</span>
+      <span class="lm-item" data-slot="LOGO_ERTMEN.svg">ERTMEN</span>
+      <span class="lm-item" data-slot="LOGO_FLAT_BERLIN.svg">Flat&nbsp;Berlin</span>
+      <span class="lm-item" data-slot="LOGO_MISSION_KARRIERE.svg">Mission&nbsp;Karriere</span>
+    </div>
+  </div>
+  <div class="wrap"><!-- DEV: Wortmarken sind Platzhalter – mit Original-Logos ersetzen. -->
+    <p class="ref-legal">Referenzen ausgewählter Zusammenarbeit. Nicht jede Marke steht für dieselbe Leistung.</p>
+  </div>
 </section>
 
 <!-- BENEFITS -->
@@ -1643,9 +1665,11 @@ var scrollBar=document.getElementById('scrollBar');
 if(scrollBar){addEventListener('scroll',function(){var h=document.documentElement.scrollHeight-innerHeight;
   scrollBar.style.width=(h>0?(scrollY/h*100):0)+'%';},{passive:true});}
 
-// seamless logo marquee (duplicate content)
+// seamless logo marquee (duplicate content für nahtlosen -50%-loop)
 var lt=document.getElementById('logoTrack');
 if(lt){lt.innerHTML=lt.innerHTML+lt.innerHTML;}
+var lm=document.getElementById('lmTrack');
+if(lm){lm.innerHTML=lm.innerHTML+lm.innerHTML;}
 
 // magnetic buttons (desktop, motion allowed)
 if(matchMedia('(hover:hover)').matches&&!matchMedia('(prefers-reduced-motion:reduce)').matches){
