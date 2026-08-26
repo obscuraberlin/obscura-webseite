@@ -17,7 +17,7 @@
   --muted:#777972;       /* Muted Text */
   --faint:#A9A99E;
   --lime:#B7EF35;        /* Signature Lime */
-  --lime-soft:#C7F55E; --lime-ink:#4E6B14; --lime-tint:#EFFFD2; --dark:#0B0B0B;
+  --lime-soft:#C7F55E; --lime-ink:#5C8A12; --lime-tint:#EFFFD2; --dark:#0B0B0B;
   --display:'Archivo',sans-serif; --body:'Instrument Sans',sans-serif; --mono:'JetBrains Mono',monospace;
   --r:18px; --maxw:1440px;
   /* Spacing-Skala (4 → 160) */
@@ -434,6 +434,7 @@ footer{background:var(--dark);color:#f5f5f0;padding:4.5rem 0 2rem}
 .foot-bot{border-top:1px solid rgba(255,255,255,.1);padding-top:1.5rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;font-size:.81rem;color:rgba(255,255,255,.5)}
 .foot-bot .soc{display:flex;gap:1.2rem}.foot-bot .soc a:hover{color:var(--lime)}
 .phnote{font-family:var(--mono);font-size:.58rem;color:var(--faint);letter-spacing:.02em}
+.ref-legal{font-size:.78rem;color:var(--muted);text-align:center;max-width:60ch;margin:clamp(40px,5vw,64px) auto 0}
 
 /* sticky mobile cta */
 .smcta{position:fixed;left:1rem;right:1rem;bottom:1rem;z-index:50;display:none;transform:translateY(120%);transition:transform .35s}
@@ -911,6 +912,18 @@ html{scroll-snap-type:y proximity}
 .lc-next{display:inline-block;margin-top:.9rem;font-family:var(--mono);font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;
   color:var(--lime-ink);background:var(--lime-tint);border-radius:100px;padding:.3rem .7rem}
 @media(prefers-reduced-motion:reduce){.lr-fg,.lr-dot{transition:none}}
+/* ===== IMAGEFILM SCROLL-EXPANSION ===== */
+.film-sec{overflow:hidden}
+.film-head{text-align:center;max-width:900px;margin-inline:auto;margin-bottom:clamp(40px,5vw,64px)}
+.film-head h2{font-size:clamp(1.9rem,4.4vw,3.4rem)}
+.film-hold{display:flex;justify-content:center}
+.film-frame{position:relative;width:62%;aspect-ratio:16/9;border-radius:26px;overflow:hidden;cursor:pointer;
+  box-shadow:0 44px 90px -42px rgba(0,0,0,.55);border:1px solid rgba(0,0,0,.06);will-change:width,border-radius}
+.film-cap{position:absolute;left:0;right:0;bottom:0;z-index:4;padding:1.5rem 1.7rem;
+  background:linear-gradient(0deg,rgba(0,0,0,.78),transparent 72%)}
+.film-cap b{display:block;color:#fff;font-family:var(--display);font-weight:800;font-size:1.35rem;letter-spacing:-.02em}
+.film-cap small{color:rgba(255,255,255,.72);font-size:.82rem;font-family:var(--mono)}
+@media(max-width:760px){.film-frame{width:100%!important;border-radius:16px!important}}
 
 @media(max-width:1000px){
   .nav-links,header .btn-dark{display:none}.burger{display:grid}
@@ -999,16 +1012,11 @@ html{scroll-snap-type:y proximity}
     <div class="rv in">
       <p class="eyebrow">Social Media · Content · Ads · Deutschlandweit</p>
       <h1 class="reveal-lines" style="margin-top:1.2rem"><span class="line"><span>Dein Auftritt.</span></span><span class="line"><span class="lime">Unser System.</span></span></h1>
-      <p class="sub">Wir übernehmen deine Social-Media-Kanäle – von Strategie und monatlicher Content-Produktion über Veröffentlichung und Betreuung bis zu Werbeanzeigen und Reporting.</p>
-      <p class="plan">Ein Ansprechpartner. Ein Team. Monat für Monat.</p>
+      <p class="sub">Wir übernehmen Social Media, Content und Ads – Monat für Monat.</p>
+      <p class="plan">Ein Ansprechpartner. Ein Team. Deutschlandweit.</p>
       <div class="ctas">
         <a href="#kontakt" class="btn btn-dark">Kostenloses Strategiegespräch <span class="ar">→</span></a>
         <a href="#content" class="btn btn-ghost">Unsere Arbeit ansehen <span class="ar">→</span></a>
-      </div>
-      <div class="trust-badges rv">
-        <span><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg> DSGVO-konform</span>
-        <span><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg> SSL-verschlüsselt</span>
-        <span><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg> Deutsche Server</span>
       </div>
       <div class="trust">
         <span class="geo-pin"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-6.4-7-11a7 7 0 1114 0c0 4.6-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
@@ -1063,7 +1071,8 @@ html{scroll-snap-type:y proximity}
       <span class="ref-logo sm" data-slot="LOGO_FLAT_BERLIN.svg">Flat&nbsp;Berlin</span>
       <span class="ref-logo sm" data-slot="LOGO_MISSION_KARRIERE.svg">Mission&nbsp;Karriere</span>
     </div>
-    <p class="phnote ref-note">Echte Referenzen · als Wortmarken dargestellt – mit den Original-Logos aus dem Obscura-Logoordner ersetzen.</p>
+    <!-- DEV: Wortmarken sind Platzhalter – mit Original-Logos aus dem Obscura-Logoordner (data-slot je Eintrag) ersetzen. -->
+    <p class="ref-legal">Referenzen ausgewählter Zusammenarbeit. Nicht jede Marke steht für dieselbe Leistung.</p>
   </div>
 </section>
 
@@ -1145,12 +1154,12 @@ html{scroll-snap-type:y proximity}
   </div>
   <div class="cover rv" id="cover">
     <div class="cover-stage" id="coverStage">
-      <div class="cover-card" data-i="0"><div class="scene g-auto"><span class="bg"></span><span class="grain"></span></div><span class="play"><svg width="16" height="18" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span><div class="co"><span class="cat">Automotive</span><h4>Automotive Reel</h4><span class="views">▶ 12,3 Tsd. Aufrufe</span></div></div>
-      <div class="cover-card" data-i="1"><div class="scene g-interior"><span class="bg"></span><span class="grain"></span></div><span class="play"><svg width="16" height="18" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span><div class="co"><span class="cat">Behind the Scenes</span><h4>Echte Einblicke</h4><span class="views">▶ 8,7 Tsd. Aufrufe</span></div></div>
-      <div class="cover-card" data-i="2"><div class="scene g-realestate"><span class="bg"></span><span class="grain"></span></div><span class="play"><svg width="16" height="18" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span><div class="co"><span class="cat">Immobilien</span><h4>Deine Marke in Szene</h4><span class="views">▶ 11,1 Tsd. Aufrufe</span></div></div>
-      <div class="cover-card" data-i="3"><div class="scene g-nature"><span class="bg"></span><span class="grain"></span></div><span class="play"><svg width="16" height="18" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span><div class="co"><span class="cat">Drohne</span><h4>Drohnenaufnahme</h4><span class="views">▶ 9,4 Tsd. Aufrufe</span></div></div>
-      <div class="cover-card" data-i="4"><div class="scene g-city"><span class="bg"></span><span class="grain"></span></div><span class="play"><svg width="16" height="18" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span><div class="co"><span class="cat">Social Media</span><h4>Content der performt</h4><span class="views">▶ 14,2 Tsd. Aufrufe</span></div></div>
-      <div class="cover-card" data-i="5"><div class="scene g-product"><span class="bg"></span><span class="grain"></span></div><span class="play"><svg width="16" height="18" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span><div class="co"><span class="cat">Produkt</span><h4>Produktvideo</h4><span class="views">▶ 7,8 Tsd. Aufrufe</span></div></div>
+      <div class="cover-card" data-i="0"><div class="scene g-auto"><span class="bg"></span><span class="grain"></span></div><span class="play"><svg width="16" height="18" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span><div class="co"><span class="cat">Automotive</span><h4>Automotive Reel</h4><span class="views">▶ Reel ansehen</span></div></div>
+      <div class="cover-card" data-i="1"><div class="scene g-interior"><span class="bg"></span><span class="grain"></span></div><span class="play"><svg width="16" height="18" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span><div class="co"><span class="cat">Behind the Scenes</span><h4>Echte Einblicke</h4><span class="views">▶ Reel ansehen</span></div></div>
+      <div class="cover-card" data-i="2"><div class="scene g-realestate"><span class="bg"></span><span class="grain"></span></div><span class="play"><svg width="16" height="18" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span><div class="co"><span class="cat">Immobilien</span><h4>Deine Marke in Szene</h4><span class="views">▶ Reel ansehen</span></div></div>
+      <div class="cover-card" data-i="3"><div class="scene g-nature"><span class="bg"></span><span class="grain"></span></div><span class="play"><svg width="16" height="18" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span><div class="co"><span class="cat">Drohne</span><h4>Drohnenaufnahme</h4><span class="views">▶ Reel ansehen</span></div></div>
+      <div class="cover-card" data-i="4"><div class="scene g-city"><span class="bg"></span><span class="grain"></span></div><span class="play"><svg width="16" height="18" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span><div class="co"><span class="cat">Social Media</span><h4>Content der performt</h4><span class="views">▶ Reel ansehen</span></div></div>
+      <div class="cover-card" data-i="5"><div class="scene g-product"><span class="bg"></span><span class="grain"></span></div><span class="play"><svg width="16" height="18" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span><div class="co"><span class="cat">Produkt</span><h4>Produktvideo</h4><span class="views">▶ Reel ansehen</span></div></div>
     </div>
   </div>
   <div class="cover-nav">
@@ -1158,7 +1167,24 @@ html{scroll-snap-type:y proximity}
     <div class="dots" id="coverDots"></div>
     <button id="coverNext" aria-label="Weiter">›</button>
   </div>
-  <p class="wrap phnote" style="text-align:center;margin-top:1rem">Beispiel-Content · Aufrufe als Demo · mit echten Reels ersetzen</p>
+  <!-- DEV: Platzhalter-Reels (Szenen-Gradients) – mit echten Reels/Videos aus Dropbox ersetzen (PROJECT_REEL_xx). -->
+
+</section>
+
+<!-- IMAGEFILM · scroll-expansion stage (§70) -->
+<section class="sec film-sec bg-white" id="imagefilm">
+  <div class="wrap film-head rv">
+    <p class="eyebrow">Imagefilm</p>
+    <h2 style="margin-top:1rem">Manchmal braucht eine gute Story<br>mehr als 15 Sekunden.</h2>
+  </div>
+  <!-- IMAGEFILM_MAIN · 16:9 · 1920×1080+ · echter Obscura-Imagefilm ersetzt die Platzhalter-Szene -->
+  <div class="film-hold" id="filmHold">
+    <div class="film-frame scene g-city" id="filmFrame" data-slot="IMAGEFILM_MAIN · 16:9">
+      <span class="bg"></span><span class="grain"></span>
+      <span class="play play-lg"><svg width="22" height="26" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span>
+      <div class="film-cap"><b>Imagefilm ansehen</b><small>Echter Film wird vor dem Livegang eingebunden</small></div>
+    </div>
+  </div>
 </section>
 
 <!-- CASES -->
@@ -1180,7 +1206,7 @@ html{scroll-snap-type:y proximity}
       </div>
       <div class="case rv">
         <div class="scene g-realestate"><span class="bg"></span><span class="grain"></span></div>
-        <div class="co"><span class="brand">Kensington Immobilien</span><h3>Social Media Betreuung</h3><span class="go">Case ansehen →</span></div>
+        <div class="co"><span class="brand">Kensington</span><h3>Social Media Betreuung</h3><span class="go">Case ansehen →</span></div>
       </div>
       <div class="case rv">
         <div class="scene g-auto2"><span class="bg"></span><span class="grain"></span></div>
@@ -1188,11 +1214,11 @@ html{scroll-snap-type:y proximity}
       </div>
       <div class="case rv">
         <div class="scene g-interior"><span class="bg"></span><span class="grain"></span></div>
-        <div class="co"><span class="brand">BMW</span><h3>Content &amp; Reels</h3><span class="go">Case ansehen →</span></div>
+        <div class="co"><span class="brand">MINI</span><h3>Content &amp; Reels</h3><span class="go">Case ansehen →</span></div>
       </div>
       <div class="case rv">
         <div class="scene g-city"><span class="bg"></span><span class="grain"></span></div>
-        <div class="co"><span class="brand">Hotel Adlon</span><h3>Social Media &amp; Foto</h3><span class="go">Case ansehen →</span></div>
+        <div class="co"><span class="brand">SEA LIFE Berlin</span><h3>Social Media &amp; Foto</h3><span class="go">Case ansehen →</span></div>
       </div>
       <div class="case rv">
         <div class="scene g-team"><span class="bg"></span><span class="grain"></span></div>
@@ -1204,13 +1230,14 @@ html{scroll-snap-type:y proximity}
       </div>
       <div class="case rv">
         <div class="scene g-nature"><span class="bg"></span><span class="grain"></span></div>
-        <div class="co"><span class="brand">Siroko</span><h3>Content Creation</h3><span class="go">Case ansehen →</span></div>
+        <div class="co"><span class="brand">RTL</span><h3>Content Creation</h3><span class="go">Case ansehen →</span></div>
       </div>
       <a href="#kontakt" class="case rv" style="display:grid;place-items:center;background:rgba(255,255,255,.03);border:1px dashed rgba(255,255,255,.18)">
         <div style="text-align:center"><div style="font-family:var(--display);font-weight:800;font-size:1.4rem;color:#fff">+ 20 Marken</div><div style="color:rgba(255,255,255,.55);font-size:.8rem;margin-top:.2rem">Erstgespräch anfragen →</div></div>
       </a>
     </div>
-    <p class="cases-note">Beispiel-Cases · mit echten Obscura-Projekten &amp; freigegebenen Ergebnissen ersetzen</p>
+    <!-- DEV: Cover-Szenen sind Platzhalter – mit echten Projekt-Assets & (nur freigegebenen) Ergebnissen ersetzen. -->
+
   </div>
 </section>
 
@@ -1332,14 +1359,15 @@ html{scroll-snap-type:y proximity}
       </div>
     </div>
     <div class="greviews">
-      <figure class="grev rv"><div class="grev-top"><span class="g-av" style="background:linear-gradient(135deg,#4285F4,#34A853)">M</span><div><b class="phnote">Marcel B.</b><span class="grev-src">★★★★★ · Google</span></div></div><blockquote>„Wir sind zufrieden! Das Team von Obscura hat uns in mehreren Projekten begleitet – absolut nichts auszusetzen. Ein junges, dynamisches Team, mit dem es Spaß macht zu arbeiten."</blockquote></figure>
-      <figure class="grev rv"><div class="grev-top"><span class="g-av" style="background:linear-gradient(135deg,#EA4335,#FBBC05)">S</span><div><b class="phnote">Sandra K.</b><span class="grev-src">★★★★★ · Google</span></div></div><blockquote>„Professionell, kreativ und absolut zuverlässig. Unsere Videos und der Social-Media-Auftritt waren noch nie so stark."</blockquote></figure>
-      <figure class="grev rv"><div class="grev-top"><span class="g-av" style="background:linear-gradient(135deg,#34A853,#4285F4)">D</span><div><b class="phnote">Daniel R.</b><span class="grev-src">★★★★★ · Google</span></div></div><blockquote>„Top Qualität bei Foto und Video. Man merkt, dass hier Profis am Werk sind. Klare Empfehlung!"</blockquote></figure>
-      <figure class="grev rv"><div class="grev-top"><span class="g-av" style="background:linear-gradient(135deg,#FBBC05,#EA4335)">L</span><div><b class="phnote">Laura M.</b><span class="grev-src">★★★★★ · Google</span></div></div><blockquote>„Seit der Zusammenarbeit haben wir deutlich mehr Sichtbarkeit und Anfragen. Kompetentes, sympathisches Team."</blockquote></figure>
-      <figure class="grev rv"><div class="grev-top"><span class="g-av" style="background:linear-gradient(135deg,#4285F4,#EA4335)">T</span><div><b class="phnote">Thomas W.</b><span class="grev-src">★★★★★ · Google</span></div></div><blockquote>„Schnelle Umsetzung, klare Kommunikation und ein Ergebnis, das sich sehen lassen kann. Sehr zufrieden."</blockquote></figure>
-      <figure class="grev rv"><div class="grev-top"><span class="g-av" style="background:linear-gradient(135deg,#34A853,#FBBC05)">J</span><div><b class="phnote">Julia P.</b><span class="grev-src">★★★★★ · Google</span></div></div><blockquote>„Ein Team, das mitdenkt und unsere Marke perfekt in Szene setzt. Genau so stellt man sich eine Agentur vor."</blockquote></figure>
+      <figure class="grev rv"><div class="grev-top"><span class="g-av" style="background:linear-gradient(135deg,#4285F4,#34A853)">M</span><div><b>Marcel B.</b><span class="grev-src">★★★★★ · Google</span></div></div><blockquote>„Wir sind zufrieden! Das Team von Obscura hat uns in mehreren Projekten begleitet – absolut nichts auszusetzen. Ein junges, dynamisches Team, mit dem es Spaß macht zu arbeiten."</blockquote></figure>
+      <figure class="grev rv"><div class="grev-top"><span class="g-av" style="background:linear-gradient(135deg,#EA4335,#FBBC05)">S</span><div><b>Sandra K.</b><span class="grev-src">★★★★★ · Google</span></div></div><blockquote>„Professionell, kreativ und absolut zuverlässig. Unsere Videos und der Social-Media-Auftritt waren noch nie so stark."</blockquote></figure>
+      <figure class="grev rv"><div class="grev-top"><span class="g-av" style="background:linear-gradient(135deg,#34A853,#4285F4)">D</span><div><b>Daniel R.</b><span class="grev-src">★★★★★ · Google</span></div></div><blockquote>„Top Qualität bei Foto und Video. Man merkt, dass hier Profis am Werk sind. Klare Empfehlung!"</blockquote></figure>
+      <figure class="grev rv"><div class="grev-top"><span class="g-av" style="background:linear-gradient(135deg,#FBBC05,#EA4335)">L</span><div><b>Laura M.</b><span class="grev-src">★★★★★ · Google</span></div></div><blockquote>„Seit der Zusammenarbeit haben wir deutlich mehr Sichtbarkeit und Anfragen. Kompetentes, sympathisches Team."</blockquote></figure>
+      <figure class="grev rv"><div class="grev-top"><span class="g-av" style="background:linear-gradient(135deg,#4285F4,#EA4335)">T</span><div><b>Thomas W.</b><span class="grev-src">★★★★★ · Google</span></div></div><blockquote>„Schnelle Umsetzung, klare Kommunikation und ein Ergebnis, das sich sehen lassen kann. Sehr zufrieden."</blockquote></figure>
+      <figure class="grev rv"><div class="grev-top"><span class="g-av" style="background:linear-gradient(135deg,#34A853,#FBBC05)">J</span><div><b>Julia P.</b><span class="grev-src">★★★★★ · Google</span></div></div><blockquote>„Ein Team, das mitdenkt und unsere Marke perfekt in Szene setzt. Genau so stellt man sich eine Agentur vor."</blockquote></figure>
     </div>
-    <p class="phnote" style="text-align:center;margin-top:1.4rem">Platzhalter-Bewertungen · mit euren echten Google-Rezensionen ersetzen</p>
+    <!-- DEV: Vorschau-Bewertungen – vor Livegang mit echten, freigegebenen Google-Rezensionen ersetzen. -->
+    <p class="ref-legal" style="text-align:center;margin-top:1.4rem">Vorschau · echte Google-Rezensionen werden vor dem Livegang eingebunden.</p>
   </div>
 </section>
 
@@ -1355,10 +1383,10 @@ html{scroll-snap-type:y proximity}
       <a href="#kontakt" class="btn btn-ghost">Lern uns kennen <span class="ar">→</span></a>
     </div>
     <div class="team-grid">
-      <div class="tm rv"><div class="scene g-team"><span class="bg"></span><span class="grain"></span></div><div class="mm"><h3 class="phnote">Platzhalter Name</h3><p>Strategie &amp; Beratung</p></div></div>
-      <div class="tm rv"><div class="scene g-interior"><span class="bg"></span><span class="grain"></span></div><div class="mm"><h3 class="phnote">Platzhalter Name</h3><p>Film &amp; Videoproduktion</p></div></div>
-      <div class="tm rv"><div class="scene g-city"><span class="bg"></span><span class="grain"></span></div><div class="mm"><h3 class="phnote">Platzhalter Name</h3><p>Social Media &amp; Content</p></div></div>
-      <div class="tm rv"><div class="scene g-product"><span class="bg"></span><span class="grain"></span></div><div class="mm"><h3 class="phnote">Platzhalter Name</h3><p>Performance &amp; Ads</p></div></div>
+      <div class="tm rv"><div class="scene g-team"><span class="bg"></span><span class="grain"></span></div><div class="mm"><h3>Strategie &amp; Beratung</h3><p>Obscura · Berlin</p></div></div>
+      <div class="tm rv"><div class="scene g-interior"><span class="bg"></span><span class="grain"></span></div><div class="mm"><h3>Film &amp; Videoproduktion</h3><p>Obscura · Berlin</p></div></div>
+      <div class="tm rv"><div class="scene g-city"><span class="bg"></span><span class="grain"></span></div><div class="mm"><h3>Social Media &amp; Content</h3><p>Obscura · Berlin</p></div></div>
+      <div class="tm rv"><div class="scene g-product"><span class="bg"></span><span class="grain"></span></div><div class="mm"><h3>Performance &amp; Ads</h3><p>Obscura · Berlin</p></div></div>
     </div>
   </div>
 </section>
@@ -1492,7 +1520,7 @@ html{scroll-snap-type:y proximity}
   <div class="vid-card">
     <button class="mx" data-close aria-label="Schließen">×</button>
     <div class="vid-frame scene g-auto"><span class="bg"></span><span class="grain"></span>
-      <div class="vid-note">▶ Hier läuft später euer echtes Video.<small>Showreel &amp; Reels folgen – Platzhalter</small></div>
+      <div class="vid-note">▶ Showreel<small>Echtes Video wird vor dem Livegang eingebunden.</small></div>
     </div>
   </div>
 </div>
@@ -1634,6 +1662,21 @@ if(refGrid){var rio=new IntersectionObserver(function(es){es.forEach(function(e)
   function onScroll(){if(tick)return;tick=true;requestAnimationFrame(function(){
     var r=sec.getBoundingClientRect();
     var p=(innerHeight*0.78-r.top)/(r.height*0.6);apply(Math.max(0,Math.min(1,p)));tick=false;});}
+  addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',onScroll,{passive:true});
+  apply(0);onScroll();
+})();
+
+// ===== IMAGEFILM: scroll-expansion 62%→100% (§70) =====
+(function(){
+  var frame=document.getElementById('filmFrame'),hold=document.getElementById('filmHold');if(!frame||!hold)return;
+  if(matchMedia('(max-width:760px)').matches)return; // mobile: statisch volle breite
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches){frame.style.width='100%';frame.style.borderRadius='12px';return;}
+  function apply(p){var e=p<.5?2*p*p:1-Math.pow(-2*p+2,2)/2;
+    frame.style.width=(62+38*e).toFixed(2)+'%';frame.style.borderRadius=(26-16*e).toFixed(1)+'px';}
+  var tick=false;
+  function onScroll(){if(tick)return;tick=true;requestAnimationFrame(function(){
+    var r=hold.getBoundingClientRect();
+    var p=(innerHeight-r.top)/(innerHeight*0.85);apply(Math.max(0,Math.min(1,p)));tick=false;});}
   addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',onScroll,{passive:true});
   apply(0);onScroll();
 })();
@@ -1820,7 +1863,7 @@ render();
   function open(){modal.classList.add('open');document.body.style.overflow='hidden';}
   function close(){modal.classList.remove('open');document.body.style.overflow='';}
   document.addEventListener('click',function(e){
-    var trg=e.target.closest('.play, .showreel, .cine-feat, .vids .scene');
+    var trg=e.target.closest('.play, .showreel, .cine-feat, .vids .scene, .film-frame, .cover-card');
     if(trg && !e.target.closest('[data-close]')){e.preventDefault();open();return;}
   });
   modal.addEventListener('click',function(e){if(e.target.hasAttribute('data-close'))close();});
