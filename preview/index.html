@@ -304,8 +304,8 @@ header.hide{transform:translateY(-150%)}
 .ref-note{margin-top:clamp(40px,5vw,64px)}
 /* logo-marquee · durchlaufende, einheitlich graue wortmarken */
 .logo-marquee{margin-top:0;margin-bottom:clamp(2.2rem,5vw,3.4rem);overflow:hidden;padding:.6rem 0;
-  -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
-  mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 14%,#000 86%,transparent 100%);
+  mask-image:linear-gradient(90deg,transparent 0,#000 14%,#000 86%,transparent 100%)}
 .logo-marquee{display:flex;flex-direction:column;gap:clamp(.4rem,1.4vw,1rem)}
 .lm-track{display:flex;align-items:center;width:max-content;animation:lm linear infinite}
 .lm-r1{animation-duration:58s;animation-delay:-11s}
@@ -324,8 +324,8 @@ header.hide{transform:translateY(-150%)}
 @keyframes lm{to{transform:translateX(-50%)}}
 @media(max-width:640px){
   .logo-marquee{gap:.5rem;padding:.3rem 0;
-    -webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);
-    mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
+    -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 10%,#000 90%,transparent 100%);
+    mask-image:linear-gradient(90deg,transparent 0,#000 10%,#000 90%,transparent 100%)}
   .lm-item{font-size:1.02rem;padding:0 .95rem;letter-spacing:.03em}
   .lm-item::after{width:3px;height:3px}
 }
@@ -1852,7 +1852,16 @@ if(scrollBar){addEventListener('scroll',function(){var h=document.documentElemen
 // seamless logo marquee (duplicate content für nahtlosen -50%-loop)
 var lt=document.getElementById('logoTrack');
 if(lt){lt.innerHTML=lt.innerHTML+lt.innerHTML;}
-document.querySelectorAll('.lm-track').forEach(function(t){t.innerHTML=t.innerHTML+t.innerHTML;});
+document.querySelectorAll('.lm-track').forEach(function(t){
+  var base=t.innerHTML;                       // 6 Marken (gerade Anzahl → dick/dünn bleibt konsistent)
+  var vw=(t.parentElement&&t.parentElement.offsetWidth)||window.innerWidth||1200;
+  // eine Hälfte so oft wiederholen, dass sie breiter als der Viewport ist → lückenloser Loop
+  t.innerHTML=base;
+  var guard=0;
+  while(t.scrollWidth<vw*1.15&&guard<24){t.innerHTML+=base;guard++;}
+  // zwei identische Hälften → translateX(-50%) läuft nahtlos durch
+  t.innerHTML=t.innerHTML+t.innerHTML;
+});
 
 // magnetic buttons (desktop, motion allowed)
 if(matchMedia('(hover:hover)').matches&&!matchMedia('(prefers-reduced-motion:reduce)').matches){
