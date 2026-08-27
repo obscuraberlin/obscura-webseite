@@ -303,7 +303,7 @@ header.hide{transform:translateY(-150%)}
 .ref-grid.in .ref-logo:nth-child(n+13){transition-delay:.40s}
 .ref-note{margin-top:clamp(40px,5vw,64px)}
 /* logo-marquee · durchlaufende, einheitlich graue wortmarken */
-.logo-marquee{margin-top:clamp(2.2rem,5vw,3.4rem);overflow:hidden;padding:.6rem 0;
+.logo-marquee{margin-top:0;margin-bottom:clamp(2.2rem,5vw,3.4rem);overflow:hidden;padding:.6rem 0;
   -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
   mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
 .logo-marquee{display:flex;flex-direction:column;gap:clamp(.4rem,1.4vw,1rem)}
@@ -1276,15 +1276,6 @@ html{scroll-snap-type:y proximity}
 
 <!-- REFERENZEN · echte Kunden. Wortmarken = Platzhalter für Original-Logos (data-slot). -->
 <section class="clients bg-white" id="referenzen">
-  <div class="wrap">
-    <div class="ref-head">
-      <div>
-        <p class="eyebrow rv">Referenzen</p>
-        <h2 class="rv" style="margin-top:1rem">Von Weltmarken<br>bis Mittelstand.</h2>
-      </div>
-      <p class="ref-sub rv">Rolls-Royce, Amazon&nbsp;Prime, Madame&nbsp;Tussauds oder das Unternehmen von nebenan – wir liefern Content auf einem Level, dem hunderte Marken vertrauen. Deutschlandweit, Monat für Monat.</p>
-    </div>
-  </div>
   <!-- Logo-Marquee · läuft durch; Wortmarken = Platzhalter, mit Original-Logos ersetzen (data-slot) -->
   <div class="logo-marquee" aria-hidden="true">
     <div class="lm-track lm-rev lm-r1">
@@ -1310,6 +1301,15 @@ html{scroll-snap-type:y proximity}
       <span class="lm-item" data-slot="LOGO_JETCLEAN.svg">Jetclean&nbsp;Berlin</span>
       <span class="lm-item" data-slot="LOGO_FLAT_BERLIN.svg">Flat&nbsp;Berlin</span>
       <span class="lm-item" data-slot="LOGO_MISSION_KARRIERE.svg">Mission&nbsp;Karriere</span>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="ref-head">
+      <div>
+        <p class="eyebrow rv">Referenzen</p>
+        <h2 class="rv" style="margin-top:1rem">Unsere Kunden –<br>von Mittel- bis Weltmarken.</h2>
+      </div>
+      <p class="ref-sub rv">Rolls-Royce, Amazon&nbsp;Prime, Madame&nbsp;Tussauds oder das Unternehmen von nebenan – wir liefern Content auf einem Level, dem hunderte Marken vertrauen. Deutschlandweit, Monat für Monat.</p>
     </div>
   </div>
   <div class="wrap"><!-- DEV: Wortmarken sind Platzhalter – mit Original-Logos ersetzen. -->
