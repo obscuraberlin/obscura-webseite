@@ -322,6 +322,13 @@ header.hide{transform:translateY(-150%)}
 .lm-item::after{content:'';position:absolute;right:0;top:50%;transform:translateY(-50%);width:4px;height:4px;
   border-radius:100px;background:var(--line)}
 @keyframes lm{to{transform:translateX(-50%)}}
+@media(max-width:640px){
+  .logo-marquee{gap:.5rem;padding:.3rem 0;
+    -webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);
+    mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
+  .lm-item{font-size:1.02rem;padding:0 .95rem;letter-spacing:.03em}
+  .lm-item::after{width:3px;height:3px}
+}
 @media(prefers-reduced-motion:reduce){.logo-marquee{gap:1rem}.lm-track{animation:none;flex-wrap:wrap;justify-content:center;width:auto}
   .lm-item::after{display:none}}
 
