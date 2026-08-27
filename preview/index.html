@@ -448,6 +448,14 @@
       border-color:#c8d7b9;
       box-shadow:0 34px 70px -48px rgba(17,29,14,.36);
     }
+    /* Karten-Scroll-Effekt: Panels steigen beim Reinscrollen gestaffelt auf (nur transform/opacity) */
+    @keyframes svcRise{from{opacity:0;transform:translateY(44px)}to{opacity:1;transform:none}}
+    html.js .service-panel{opacity:0}
+    html.js .service-panel.revealed{animation:svcRise .7s cubic-bezier(.2,.75,.2,1) both;animation-delay:var(--rise-delay,0s)}
+    @media(prefers-reduced-motion:reduce){
+      html.js .service-panel{opacity:1}
+      html.js .service-panel.revealed{animation:none}
+    }
     .service-panel.dark{
       color:#fff;
       border-color:#253722;
@@ -1917,47 +1925,47 @@
         social:{
           kicker:'01 · Social Media',
           title:'Social Media',
-          copy:'Content, Betreuung &amp; Ads – laufend betreut.',
+          copy:'Wir übernehmen euren kompletten Social-Media-Auftritt – von der Strategie über die Content-Produktion bis zu Community und Ads. Ihr bekommt ein festes Team, das eure Kanäle Monat für Monat betreut und weiterentwickelt.',
           label:'Herzstück',
           tags:['Mitgliedschaft','Reels & Posts','Strategien','Meta Ads'],
           icon:'<svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M8 14l3-3 2 2 3-4"/></svg>',
-          items:['Social Media Mitgliedschaft / Manager','Social Media Reels & Posts','Social Media Strategien','Publishing & laufende Betreuung','Reporting & Optimierung','Paid Social / Meta Ads']
+          items:['Feste Betreuung als Social-Media-Mitgliedschaft','Redaktionsplan & Content-Strategie','Reels, Posts & Stories – regelmäßig produziert','Community-Management & Publishing','Monatliches Reporting & Optimierung','Paid Social / Meta Ads (optional)']
         },
         video:{
           kicker:'02 · Video-Produktion',
           title:'Video-Produktion',
-          copy:'Film, Reels und Kampagnen – von der Idee bis zur finalen Ausspielung.',
+          copy:'Von der Idee bis zum fertigen Film: Wir konzipieren, drehen und schneiden Imagefilme, Werbespots und Social Reels. Auf Wunsch als einzelne Produktion oder laufend als Teil eurer Betreuung – mit eigenem Studio und Equipment in Berlin.',
           label:'Produktion',
           tags:['Imagefilme','Werbespots','Interviews','Reels'],
           icon:'<svg viewBox="0 0 24 24"><rect x="3" y="5" width="13" height="14" rx="3"/><path d="M16 10l5-3v10l-5-3z"/></svg>',
-          items:['Image-Filme & Werbespots','Interviews & Erklärfilme','Social Media Ads & Reels','Konzept & Produktionsplanung','Dreh & Postproduktion']
+          items:['Imagefilme & Employer-Branding-Filme','Werbespots & Produktvideos','Social Reels & vertikale Kurzformate','Interviews & Erklärfilme','Konzept, Dreh & Postproduktion','Eigenes Fotostudio & Equipment']
         },
         design:{
-          kicker:'04 · Grafikdesign',
+          kicker:'03 · Grafikdesign',
           title:'Grafikdesign',
-          copy:'Visuelle Systeme und Assets für einen konsistenten Markenauftritt.',
+          copy:'Ein klarer, wiedererkennbarer Markenauftritt – online wie offline. Wir gestalten Logos, Kampagnenmotive und alle Assets, die ihr für Social Media, Print und Vertrieb braucht – konsistent über alle Kanäle.',
           label:'Design',
           tags:['Flyer','Broschüren','Logos','Mockups'],
           icon:'<svg viewBox="0 0 24 24"><path d="M4 20l5-1 10-10-4-4L5 15z"/><path d="M13 7l4 4"/></svg>',
-          items:['Flyer- & Messe-Design','Broschüren & Visitenkarten','Firmenlogos & Mockups','Corporate-Design-Anwendungen','Digitale Assets']
+          items:['Logo- & Corporate-Design','Kampagnen- & Social-Media-Motive','Flyer, Broschüren & Messematerial','Visitenkarten & Geschäftsausstattung','Produkt-Mockups & digitale Assets']
         },
         consulting:{
-          kicker:'05 · Marketing-Beratung',
+          kicker:'04 · Marketing-Beratung',
           title:'Marketing-Beratung',
-          copy:'Positionierung, Kampagnen und Prioritäten für ein Marketing, das zusammenpasst.',
+          copy:'Marketing mit klarer Richtung: Wir schärfen eure Positionierung, planen Kampagnen und setzen Prioritäten, damit Content, Ads und Auftritt zusammenspielen – statt aus Einzelmaßnahmen zu bestehen.',
           label:'Strategie',
           tags:['Social Strategien','Launches','Marken-Image'],
           icon:'<svg viewBox="0 0 24 24"><path d="M4 18v-6M10 18V6M16 18v-9M22 18H2"/><path d="M4 9l6-5 6 2 6-4"/></svg>',
-          items:['Marketing-Strategien für Social Media','Strategien für Produkteinführungen','Entwicklung eines Marken-Image','Kampagnen- & Kanalstrategie','Strategisches Sparring']
+          items:['Positionierung & Markenstrategie','Social-Media- & Content-Strategie','Kampagnen- & Kanalplanung','Go-to-Market für Produkteinführungen','Strategisches Sparring & Roadmap']
         },
         influencer:{
           kicker:'05 · Influencer-Marketing',
           title:'Influencer-Marketing',
-          copy:'Wir bringen passende Creator und Unternehmen für glaubwürdige Kooperationen zusammen.',
+          copy:'Wir bringen die passenden Creator und Marken zusammen – von der Auswahl über das Briefing bis zur fertigen Kooperation. So entsteht glaubwürdige Reichweite statt Streuverlust.',
           label:'Creator',
           tags:['Creator Matching','Kooperationen','Kampagnen'],
           icon:'<svg viewBox="0 0 24 24"><circle cx="8" cy="8" r="3"/><circle cx="17" cy="7" r="2.3"/><path d="M3 19c.7-3.5 2.6-5 5-5s4.4 1.5 5 5"/><path d="M14 16c.8-2 2-3 3.8-3 1.7 0 2.8.9 3.2 2.7"/></svg>',
-          items:['Creator- & Influencer-Matching','Kooperationsplanung','Kampagnenkonzeption','Briefing & Abstimmung','Content-Kooperationen mit Unternehmen']
+          items:['Creator- & Influencer-Matching','Kampagnen- & Kooperationskonzept','Briefing, Abstimmung & Steuerung','Content-Kooperationen mit Unternehmen','Auswertung & Folgekampagnen']
         }
       };
 
@@ -2003,13 +2011,34 @@
       // Main service cards stay in normal document flow. They only lift slightly while in view.
       const servicePanels = [...document.querySelectorAll('.service-panel')];
       if('IntersectionObserver' in window){
-        const panelObserver = new IntersectionObserver(entries => {
+        const panelObserver = new IntersectionObserver((entries, obs) => {
           entries.forEach(entry => {
-            entry.target.classList.toggle('in-view', entry.isIntersecting && entry.intersectionRatio > .55);
+            if(entry.isIntersecting){
+              entry.target.classList.add('revealed');
+              obs.unobserve(entry.target);
+            }
           });
-        }, {threshold:[.3,.55,.75], rootMargin:'-12% 0px -14% 0px'});
-        servicePanels.forEach(panel => panelObserver.observe(panel));
+        }, {threshold:.2, rootMargin:'0px 0px -10% 0px'});
+        servicePanels.forEach((panel,i) => {
+          // gestaffelt nach Zeile/Spalte im 2-Spalten-Raster
+          const delay = (Math.floor(i/2)*0.12 + (i%2)*0.07).toFixed(2);
+          panel.style.setProperty('--rise-delay', delay+'s');
+          panelObserver.observe(panel);
+        });
+      } else {
+        servicePanels.forEach(panel => panel.classList.add('revealed'));
       }
+      // Sicherheitsnetz: verpasst der Observer bei sehr schnellem Scrollen ein Panel, wird es hier sichtbar gemacht
+      const revealSafety = () => {
+        let pending = 0;
+        servicePanels.forEach(p => {
+          if(p.classList.contains('revealed')) return;
+          if(p.getBoundingClientRect().top < window.innerHeight * 0.9) p.classList.add('revealed');
+          else pending++;
+        });
+        if(!pending) window.removeEventListener('scroll', revealSafety);
+      };
+      window.addEventListener('scroll', revealSafety, {passive:true});
 
       const modal = document.getElementById('serviceModal');
       const modalTitle = document.getElementById('modalTitle');
