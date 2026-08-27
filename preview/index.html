@@ -218,6 +218,24 @@ header.hide{transform:translateY(-150%)}
   background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);backdrop-filter:blur(12px);color:#fff}
 .hc-pill b{font-family:var(--display);font-weight:700;font-size:.98rem}
 .hc-pill small{font-family:var(--mono);font-size:.66rem;color:rgba(255,255,255,.6);margin-top:.2rem;letter-spacing:.03em}
+/* Hero-Schnellauswahl (Booking) */
+.hc-pick{position:absolute;z-index:4;right:clamp(1.5rem,5vw,5rem);top:50%;transform:translateY(-50%);
+  width:clamp(300px,28vw,384px);padding:1.5rem;border-radius:22px;
+  background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(16px);
+  box-shadow:0 24px 60px -30px rgba(0,0,0,.6);color:#fff}
+.hp-t{font-family:var(--display);font-weight:700;font-size:1.12rem;margin-bottom:1rem}
+.hp-opts{display:flex;flex-direction:column;gap:.5rem}
+.hp-chip{text-align:left;padding:.82rem 1.05rem;border-radius:13px;background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.16);color:#fff;font-family:var(--body);font-weight:600;font-size:.96rem;
+  cursor:pointer;transition:background .2s,border-color .2s,transform .2s,color .2s}
+.hp-chip:hover{background:rgba(255,255,255,.14);transform:translateX(3px)}
+.hp-chip.sel{background:var(--lime);color:var(--ink);border-color:var(--lime)}
+.hp-cta{margin-top:1rem;width:100%;justify-content:center}
+.hp-showreel{margin-top:.7rem;width:100%;display:flex;align-items:center;justify-content:center;gap:.5rem;
+  background:transparent;border:0;color:rgba(255,255,255,.82);font-family:var(--body);font-weight:600;font-size:.9rem;cursor:pointer}
+.hp-showreel:hover{color:#fff}.hp-showreel .hcs-play{width:24px;height:24px;border-radius:100px;background:var(--lime);display:grid;place-items:center}
+.hp-showreel .hcs-play svg{fill:var(--ink);margin-left:1px}
+@media(max-width:900px){.hc-pick{display:none}}
 @media(max-width:900px){.hc-panel{display:none}}
 /* Header über dunklem Cover lesbar (nur am Seitenanfang) */
 /* Glass-Pill: dunkle Schrift auf hellem Glas – über Hero wie über hellen Sektionen lesbar */
@@ -1165,16 +1183,16 @@ html{scroll-snap-type:y proximity}
   <video class="hc-video" autoplay muted loop playsinline preload="metadata" data-slot="HERO_MONTAGE.mp4 · 16:9 · muted loop"></video>
   <div class="hc-glow" aria-hidden="true"></div>
   <div class="hc-veil" aria-hidden="true"></div>
-  <div class="hc-panel">
-    <button class="hc-showreel" id="hcPlay" aria-label="Showreel abspielen">
-      <span class="hcs-play"><svg width="16" height="18" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span>
-      <span class="hcs-t">Showreel ansehen</span>
-    </button>
-    <div class="hc-pills">
-      <span class="hc-pill"><b>Social-Media-Betreuung</b><small>Monat für Monat</small></span>
-      <span class="hc-pill"><b>Content-Produktion</b><small>Video · Foto · Reels</small></span>
-      <span class="hc-pill"><b>Werbeanzeigen</b><small>Meta · TikTok · Google</small></span>
+  <div class="hc-pick">
+    <p class="hp-t">Womit können wir helfen?</p>
+    <div class="hp-opts" id="hpOpts">
+      <button class="hp-chip" data-service="Social Media Betreuung">Social-Media-Betreuung</button>
+      <button class="hp-chip" data-service="Content Produktion">Content-Produktion</button>
+      <button class="hp-chip" data-service="Ads">Werbeanzeigen</button>
+      <button class="hp-chip" data-service="Komplettbetreuung">Komplettbetreuung</button>
     </div>
+    <a href="#kontakt" class="btn btn-lime hp-cta" id="hpCta">Strategiegespräch sichern <span class="ar">→</span></a>
+    <button class="hp-showreel" id="hcPlay" aria-label="Showreel abspielen"><span class="hcs-play"><svg width="12" height="14" viewBox="0 0 15 17"><path d="M0 0l15 8.5L0 17z"/></svg></span> Showreel ansehen</button>
   </div>
   <div class="wrap hc-content">
     <p class="hc-eyebrow rv in">Social Media · Content · Ads · Deutschlandweit</p>
@@ -2023,6 +2041,7 @@ var pLabel=document.getElementById('pLabel'),pPct=document.getElementById('pPct'
 function render(){
   pLabel.textContent='Schritt '+(cur+1)+' von 5';var pct=Math.round((cur+1)/5*100);pPct.textContent=pct+'%';pFill.style.width=pct+'%';
   back.classList.toggle('hidden',cur===0);
+  if(cur===1&&!answers[1]&&window.__heroService){answers[1]=window.__heroService;}
   if(cur<4){var s=stepsData[cur];
     box.innerHTML='<fieldset style="border:0"><legend class="q">'+s.q+'</legend><div class="opts">'+s.o.map(function(o){return '<button'+(answers[cur]===o?' class="sel"':'')+'>'+o+'</button>'}).join('')+'</div></fieldset>';
     box.querySelectorAll('.opts button').forEach(function(b){b.addEventListener('click',function(){answers[cur]=b.textContent;setTimeout(function(){cur++;render();},160);});});
@@ -2039,6 +2058,18 @@ function f(l,t,req){return '<div class="field"><label>'+l+'</label><input type="
 back.addEventListener('click',function(){if(cur>0){cur--;render();}});
 render();
 
+// ---- Hero Schnellauswahl -> Formular vorwählen ----
+(function(){
+  var opts=document.getElementById('hpOpts');if(!opts)return;
+  var chips=[].slice.call(opts.querySelectorAll('.hp-chip'));
+  chips.forEach(function(c){c.addEventListener('click',function(){
+    chips.forEach(function(x){x.classList.remove('sel');});c.classList.add('sel');
+    window.__heroService=c.dataset.service;
+    if(typeof render==='function'){try{render();}catch(e){}}
+    var k=document.getElementById('kontakt');if(k)k.scrollIntoView({behavior:'smooth'});
+  });});
+})();
+
 // ---- Karriere-Formular ----
 (function(){
   var f=document.getElementById('karForm');if(!f)return;
@@ -2053,7 +2084,7 @@ render();
   function open(){modal.classList.add('open');document.body.style.overflow='hidden';}
   function close(){modal.classList.remove('open');document.body.style.overflow='';}
   document.addEventListener('click',function(e){
-    var trg=e.target.closest('.play, .showreel, .cine-feat, .vids .scene, .film-frame, .cover-card, .hc-showreel, .hc-media');
+    var trg=e.target.closest('.play, .showreel, .cine-feat, .vids .scene, .film-frame, .cover-card, .hp-showreel, .hc-media');
     if(trg && !e.target.closest('[data-close]')){e.preventDefault();open();return;}
   });
   modal.addEventListener('click',function(e){if(e.target.hasAttribute('data-close'))close();});
