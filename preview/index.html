@@ -256,7 +256,7 @@ header.hide{transform:translateY(-150%)}
 .bg-white{background:var(--surface)}
 .bg-stone{background:var(--stone)}
 /* referenzen – ruhiges, box-freies logo-raster */
-.clients{padding:clamp(72px,10vw,128px) 0;border-top:1px solid var(--line)}
+.clients{padding:clamp(52px,6vw,84px) 0;border-top:1px solid var(--line)}
 .ref-head{display:grid;grid-template-columns:1fr .8fr;gap:2rem;align-items:end;margin-bottom:clamp(48px,6vw,72px)}
 .ref-head h2{font-size:clamp(2rem,4.4vw,3.3rem)}
 .ref-sub{max-width:42ch;color:var(--muted);font-size:1.02rem;line-height:1.6;justify-self:end}
@@ -302,7 +302,7 @@ header.hide{transform:translateY(-150%)}
   .lm-item::after{display:none}}
 
 /* section */
-.sec{padding:clamp(80px,11vw,140px) 0}
+.sec{padding:clamp(64px,8vw,104px) 0}
 .sec h2{font-size:clamp(2.3rem,5.2vw,4rem)}
 .lead{margin-top:1.2rem;font-size:1.14rem;color:var(--muted);max-width:52ch}
 .perf-line{margin-top:1rem;font-family:var(--display);font-weight:900;letter-spacing:-.03em;
@@ -310,26 +310,26 @@ header.hide{transform:translateY(-150%)}
 .perf-line .lime{color:var(--lime-ink)}
 /* ===== CONTENT SCROLL-STORY ===== */
 .story{position:relative}
-.story-track{position:relative;height:210vh}
+.story-track{position:relative;height:180vh}
 .story-stage{position:sticky;top:0;min-height:100vh;display:flex;align-items:center;overflow:hidden}
 .story-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(2rem,4vw,4rem);align-items:center;width:100%}
 .story-copy{position:relative;z-index:2}
 .story-h{font-size:clamp(2rem,4.4vw,3.6rem);line-height:1.02}
 .story-lead{margin-top:1.1rem;color:var(--muted);max-width:42ch;font-size:clamp(1rem,1.3vw,1.15rem)}
 .story-phases{position:relative;margin-top:clamp(1.8rem,4vh,2.8rem);min-height:186px}
-.sp{position:absolute;inset:0;opacity:0;transform:translateY(22px);transition:opacity .5s cubic-bezier(.16,1,.3,1),transform .5s cubic-bezier(.16,1,.3,1)}
-.sp.on{opacity:1;transform:none}
+.sp{position:absolute;inset:0;opacity:0;visibility:hidden;transform:translateY(16px);transition:opacity .35s cubic-bezier(.16,1,.3,1),transform .35s cubic-bezier(.16,1,.3,1),visibility .35s}
+.sp.on{opacity:1;visibility:visible;transform:none}
 .sp-n{font-family:var(--display);font-weight:900;font-size:clamp(1.8rem,3.4vw,2.6rem);color:var(--lime-ink);display:block;line-height:1}
 .sp b{display:block;font-family:var(--display);font-weight:800;font-size:clamp(1.35rem,2.4vw,2rem);letter-spacing:-.02em;margin-top:.3rem}
 .sp p{margin-top:.6rem;color:var(--muted);max-width:40ch;font-size:1.02rem;line-height:1.55}
-.story-media{position:relative;height:min(74vh,660px);display:flex;align-items:center;justify-content:center;will-change:transform}
+.story-media{position:relative;height:min(64vh,560px);display:flex;align-items:center;justify-content:center;will-change:transform}
 .sreel{position:absolute;border-radius:22px;overflow:hidden;box-shadow:0 44px 90px -34px rgba(0,0,0,.55);border:1px solid rgba(0,0,0,.06)}
 .sr-main{position:relative;width:clamp(300px,26vw,400px);aspect-ratio:9/16;z-index:3;cursor:pointer}
 .sr-l{width:clamp(210px,17vw,290px);aspect-ratio:9/16;transform:translate(-60%,-7%) rotate(-5deg) scale(.86);z-index:1;opacity:.68}
 .sr-r{width:clamp(210px,17vw,290px);aspect-ratio:9/16;transform:translate(60%,7%) rotate(5deg) scale(.86);z-index:1;opacity:.68}
 .sr-chip{position:absolute;left:1rem;bottom:1rem;z-index:4;font-weight:600;font-size:.86rem;color:var(--ink);
   background:var(--lime);padding:.4rem .8rem;border-radius:100px}
-.story-outro{position:absolute;left:0;right:0;bottom:clamp(1.6rem,5vh,3.4rem);text-align:center;opacity:0;
+.story-outro{position:absolute;left:max(var(--pad),calc((100vw - var(--maxw))/2 + var(--pad)));right:52%;bottom:clamp(1.6rem,5vh,3.4rem);text-align:left;opacity:0;
   transform:translateY(14px);transition:opacity .6s,transform .6s;z-index:5;pointer-events:none}
 .story-outro.on{opacity:1;transform:none}
 .story-outro span{font-family:var(--display);font-weight:800;font-size:clamp(1rem,1.6vw,1.5rem);margin:0 .55rem;color:var(--muted)}
@@ -348,25 +348,26 @@ header.hide{transform:translateY(-150%)}
 @media(prefers-reduced-motion:reduce){.sp{transition:none}.story-media{transform:none!important}}
 /* ===== LEISTUNGEN · sticky stacking cards ===== */
 .stacksec{overflow:visible}
-.stack{margin-top:clamp(2.4rem,5vw,3.4rem);display:flex;flex-direction:column;gap:clamp(1.4rem,3vw,2.2rem)}
-.stack-card{position:sticky;top:calc(96px + var(--i)*16px);background:var(--surface);
-  border:1px solid var(--line);border-radius:24px;box-shadow:0 30px 60px -36px rgba(0,0,0,.32);
-  display:grid;grid-template-columns:auto 1fr;gap:clamp(1.2rem,3vw,2.6rem);
-  padding:clamp(1.6rem,3.5vw,3rem);align-items:start}
-.sc-num{font-family:var(--display);font-weight:900;font-size:clamp(2.2rem,6vw,4.2rem);color:var(--line);line-height:.8}
-.sc-body h3{font-family:var(--display);font-weight:900;font-size:clamp(1.5rem,3.4vw,2.4rem);letter-spacing:-.03em}
-.sc-body p{margin-top:.8rem;color:var(--muted);font-size:1.04rem;line-height:1.55;max-width:54ch}
-.sc-badge{display:inline-block;font-family:var(--mono);font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;
-  background:var(--lime);color:var(--ink);padding:.35rem .7rem;border-radius:100px;margin-bottom:.9rem}
-.sc-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.3rem}
+.stack{margin-top:clamp(2.4rem,5vw,3.4rem);display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.1rem,2vw,1.6rem)}
+.stack-card{background:var(--surface);
+  border:1px solid var(--line);border-radius:24px;box-shadow:0 24px 50px -40px rgba(0,0,0,.28);
+  display:grid;grid-template-columns:auto 1fr;gap:clamp(1rem,2vw,1.8rem);
+  padding:clamp(1.6rem,3vw,2.6rem);align-items:start}
+.sc-num{font-family:var(--display);font-weight:900;font-size:clamp(1.8rem,4vw,3rem);color:var(--line);line-height:.8}
+.sc-body h3{font-family:var(--display);font-weight:900;font-size:clamp(1.4rem,2.6vw,2rem);letter-spacing:-.03em}
+.sc-body p{margin-top:.7rem;color:var(--muted);font-size:1rem;line-height:1.55;max-width:44ch}
+.sc-badge{display:inline-block;font-family:var(--body);font-size:.82rem;font-weight:700;
+  background:var(--lime);color:var(--ink);padding:.28rem .7rem;border-radius:100px;margin-bottom:.85rem}
+.sc-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.2rem}
 .sc-tags span{font-size:.84rem;background:var(--soft);color:#57574d;border-radius:100px;padding:.4rem .85rem}
-.stack-card .btn{margin-top:1.6rem}
-.sc-focus{background:var(--dark);border-color:transparent}
+.stack-card .btn{margin-top:1.5rem}
+.sc-focus{grid-column:1 / -1;background:var(--dark);border-color:transparent}
+.sc-focus .sc-body p{max-width:60ch}
 .sc-focus .sc-num{color:rgba(255,255,255,.16)}
 .sc-focus h3{color:#fff}.sc-focus p{color:rgba(255,255,255,.68)}
 .sc-focus .sc-tags span{background:rgba(255,255,255,.08);color:rgba(255,255,255,.82)}
-@media(max-width:640px){.stack-card{grid-template-columns:1fr;gap:.3rem;top:74px}.sc-num{font-size:2rem}}
-@media(prefers-reduced-motion:reduce){.stack-card{position:static}}
+@media(max-width:820px){.stack{grid-template-columns:1fr}.sc-focus{grid-column:auto}}
+@media(max-width:640px){.stack-card{grid-template-columns:1fr;gap:.3rem}.sc-num{font-size:2rem}}
 
 /* dark accent */
 .dark{background:var(--dark);color:#f5f5f0;overflow:hidden}
@@ -1376,7 +1377,7 @@ html{scroll-snap-type:y proximity}
         <div class="co"><span class="brand">RTL</span><h3>Content Creation</h3><span class="go">Case ansehen →</span></div>
       </div>
       <a href="#kontakt" class="case rv" style="display:grid;place-items:center;background:rgba(255,255,255,.03);border:1px dashed rgba(255,255,255,.18)">
-        <div style="text-align:center"><div style="font-family:var(--display);font-weight:800;font-size:1.4rem;color:#fff">+ 20 Marken</div><div style="color:rgba(255,255,255,.55);font-size:.8rem;margin-top:.2rem">Erstgespräch anfragen →</div></div>
+        <div style="text-align:center"><div style="font-family:var(--display);font-weight:800;font-size:1.4rem;color:#fff">+ Hunderte Marken</div><div style="color:rgba(255,255,255,.55);font-size:.8rem;margin-top:.2rem">Erstgespräch anfragen →</div></div>
       </a>
     </div>
     <!-- DEV: Cover-Szenen sind Platzhalter – mit echten Projekt-Assets & (nur freigegebenen) Ergebnissen ersetzen. -->
@@ -2137,8 +2138,7 @@ render();
   var mobile=matchMedia('(max-width:820px)').matches;
   var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
   if(mobile||reduce){phases.forEach(function(s){s.classList.add('on');});if(outro)outro.classList.add('on');return;}
-  var main=media.querySelector('.sr-main'),sl=media.querySelector('.sr-l'),sr=media.querySelector('.sr-r');
-  var last=-2,popT=0;
+  var last=-2;
   function apply(p){
     var end=p>=0.9;
     var idx=end?-1:Math.min(3,Math.floor(p/0.9*4));
@@ -2147,18 +2147,11 @@ render();
       if(chip&&idx>=0)chip.textContent=labels[idx];
     }
     outro.classList.toggle('on',end);
-    // Media-Bewegung mit mehr Action: Parallax der Reels, Sway + Zoom-Puls beim Phasenwechsel
+    // ruhige, professionelle Media-Bewegung: dezenter Drift + minimaler Zoom, kein Wackeln
     var e=Math.min(p,0.85);
-    var sway=Math.sin(p*Math.PI*2)*14;                 // horizontales Schwingen
-    var lift=-16+p*34;                                  // stärkerer vertikaler Drift
-    var zoom=1+0.09*e;                                  // deutlicher Zoom
-    // kurzer Pop-Scale direkt nach jedem Phasenwechsel
-    var since=(performance.now()-popT)/420;
-    var pop=since<1?0.06*(1-since)*Math.sin(since*Math.PI):0;
-    media.style.transform='translate3d('+sway.toFixed(1)+'px,'+lift.toFixed(1)+'px,0) scale('+(zoom+pop).toFixed(3)+')';
-    if(main)main.style.transform='rotate('+(Math.sin(p*Math.PI*2)*1.6).toFixed(2)+'deg) scale('+(1+pop*1.4).toFixed(3)+')';
-    if(sl)sl.style.transform='translate('+(-60-p*8).toFixed(1)+'%,'+(-7+sway*0.4).toFixed(1)+'%) rotate('+(-5-p*4).toFixed(1)+'deg) scale(.86)';
-    if(sr)sr.style.transform='translate('+(60+p*8).toFixed(1)+'%,'+(7-sway*0.4).toFixed(1)+'%) rotate('+(5+p*4).toFixed(1)+'deg) scale(.86)';
+    var lift=(-8+p*16).toFixed(1);
+    var zoom=(1+0.045*e).toFixed(3);
+    media.style.transform='translate3d(0,'+lift+'px,0) scale('+zoom+')';
   }
   var tick=false;
   function onScroll(){if(tick)return;tick=true;requestAnimationFrame(function(){
