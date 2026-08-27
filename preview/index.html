@@ -2068,6 +2068,27 @@ render();
   hero.addEventListener('pointerleave',function(){media.style.transform='';});
 })();
 
+// ---- Hero cinematischer Scroll-Exit (Kamera-Push + Text-Lift) ----
+(function(){
+  var hero=document.getElementById('hero');if(!hero)return;
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  var photo=hero.querySelector('.hc-photo'),video=hero.querySelector('.hc-video'),
+      content=hero.querySelector('.hc-content'),veil=hero.querySelector('.hc-veil');
+  var tick=false;
+  function apply(){
+    var h=hero.offsetHeight||innerHeight;
+    var p=Math.max(0,Math.min(1,scrollY/h));
+    var e=p*p; // beschleunigt gegen Ende (weich)
+    if(photo)photo.style.transform='scale('+(1+0.16*p).toFixed(3)+')';
+    if(video)video.style.transform='scale('+(1+0.16*p).toFixed(3)+')';
+    if(content){content.style.transform='translate3d(0,'+(-70*e).toFixed(1)+'px,0)';
+      content.style.opacity=(1-0.85*e).toFixed(3);}
+    if(veil)veil.style.opacity=(1+0.5*p).toFixed(3);
+  }
+  function onScroll(){if(tick)return;tick=true;requestAnimationFrame(function(){apply();tick=false;});}
+  addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',onScroll,{passive:true});apply();
+})();
+
 // ---- Hintergrund-Wort Parallax ----
 (function(){
   var words=document.querySelectorAll('[data-bgword]');if(!words.length)return;
