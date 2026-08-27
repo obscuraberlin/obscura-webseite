@@ -2,7 +2,7 @@
 <meta name="description" content="Obscura übernimmt Social-Media-Betreuung, Content-Produktion, Reels, Video und Werbeanzeigen für Unternehmen deutschlandweit. Strategie, Produktion und Betreuung aus einem Team – Berlin based." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" />
 
 <style>
 :root{
@@ -313,12 +313,13 @@ header.hide{transform:translateY(-150%)}
 .lm-r3{animation-duration:74s;animation-delay:-6s}
 .lm-rev{animation-direction:reverse}
 .logo-marquee:hover .lm-track{animation-play-state:paused}
-.lm-item{font-family:var(--display);font-weight:700;letter-spacing:-.02em;white-space:nowrap;
-  font-size:clamp(1rem,1.7vw,1.4rem);color:#9a9c93;filter:grayscale(1);padding:0 clamp(1.4rem,3vw,2.6rem);
-  position:relative;transition:color .3s}
-.lm-strong{font-weight:800;font-size:clamp(1.15rem,2vw,1.7rem);color:#5b5d55}
+.lm-item{font-family:'Space Grotesk',var(--display);font-weight:500;text-transform:uppercase;letter-spacing:.06em;
+  white-space:nowrap;font-size:clamp(1.05rem,1.7vw,1.5rem);color:#8f918a;filter:grayscale(1);
+  padding:0 clamp(1.5rem,3.4vw,3rem);position:relative;transition:color .3s}
+/* versetzt: abwechselnd dick & dünn für Premium-Rhythmus */
+.lm-item:nth-child(odd){font-weight:700;color:#4f5149}
 .lm-item:hover{color:var(--ink)}
-.lm-item::after{content:'';position:absolute;right:0;top:50%;transform:translateY(-50%);width:5px;height:5px;
+.lm-item::after{content:'';position:absolute;right:0;top:50%;transform:translateY(-50%);width:4px;height:4px;
   border-radius:100px;background:var(--line)}
 @keyframes lm{to{transform:translateX(-50%)}}
 @media(prefers-reduced-motion:reduce){.logo-marquee{gap:1rem}.lm-track{animation:none;flex-wrap:wrap;justify-content:center;width:auto}
