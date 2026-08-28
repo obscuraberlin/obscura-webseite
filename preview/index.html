@@ -227,19 +227,14 @@
       position:relative;
       overflow:hidden;
       padding:clamp(128px,12vw,172px) 0 clamp(78px,8vw,112px);
-      background:
-        radial-gradient(circle at 82% 16%,rgba(180,242,58,.21),transparent 25%),
-        radial-gradient(circle at 10% 72%,rgba(180,242,58,.08),transparent 27%),
-        linear-gradient(180deg,#fbfbf7 0%,var(--paper) 76%,#f2f4ec 100%);
+      background:linear-gradient(180deg,#fbfbf7 0%,var(--paper) 76%,#f2f4ec 100%);
     }
-    .hero:before{
-      content:"";position:absolute;inset:0;pointer-events:none;
-      background-image:
-        linear-gradient(var(--grid-light) 1px,transparent 1px),
-        linear-gradient(90deg,var(--grid-light) 1px,transparent 1px);
-      background-size:42px 42px;
-      mask-image:linear-gradient(180deg,rgba(0,0,0,.68),transparent 82%);
-    }
+    /* Leicht transparentes Hintergrundfoto hinter der Headline */
+    .hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;
+      opacity:.14;filter:grayscale(.25) contrast(1.02)}
+    .hero-veil{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+      background:linear-gradient(90deg,var(--paper) 26%,rgba(251,251,247,.62) 58%,rgba(251,251,247,.15) 100%),
+        linear-gradient(180deg,rgba(251,251,247,.2),transparent 30%,var(--paper))}
     .hero-grid{
       position:relative;z-index:1;
       display:grid;
@@ -1001,18 +996,7 @@
       border-radius:50%;
       background:rgba(173,255,47,.13);
     }
-    .reason-symbol{
-      position:relative;z-index:2;
-      width:48px;height:48px;
-      border-radius:14px;
-      display:grid;place-items:center;
-      background:#eef8dc;
-      border:1px solid #d8e6c6;
-      color:var(--lime-deep);
-      font-size:.72rem;
-      font-weight:900;
-      letter-spacing:-.02em;
-    }
+    .reason-symbol{display:none}
     .reason-stat .reason-symbol{
       width:auto;height:auto;
       justify-content:start;
@@ -1643,6 +1627,8 @@
 
   <main id="top">
     <section class="hero">
+      <img class="hero-bg" id="heroBg" alt="" aria-hidden="true">
+      <span class="hero-veil" aria-hidden="true"></span>
       <div class="wrap hero-grid">
         <div class="hero-copy">
           <h1 class="title-xl">
@@ -2674,6 +2660,13 @@
           breakdown.scrollIntoView({behavior:'smooth',block:'center'});
         });
         show(0);
+      })();
+
+      /* ===== Hero-Hintergrundfoto aus vorhandenem Bild setzen ===== */
+      (function(){
+        const bg=document.getElementById('heroBg');if(!bg)return;
+        const src=document.querySelector('.visual-people .tile-photo')||document.querySelector('.team-figures .tile-photo')||document.querySelector('.tile-photo');
+        if(src)bg.src=src.currentSrc||src.src;
       })();
 
       /* ===== KI-Chat-Assistent (regelbasiert, ohne Backend) ===== */
