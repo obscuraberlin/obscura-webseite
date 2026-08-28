@@ -110,7 +110,7 @@
 
     /* HEADER */
     .site-header{
-      position:fixed;
+      position:absolute;
       inset:0 0 auto;
       z-index:100;
       padding:16px var(--gutter) 0;
@@ -337,7 +337,7 @@
       .hero{overflow:visible}
       .hero-stage{overflow:visible}
       .hero-stage:before{display:none}
-      .stage-view{position:sticky;top:84px;z-index:2;will-change:transform;transform:translateZ(0)}
+      .stage-view{position:sticky;top:16px;z-index:2;will-change:transform;transform:translateZ(0)}
       .stage-rail{position:relative;z-index:1;margin-top:14px}
     }
     .stage-rail{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:12px}
