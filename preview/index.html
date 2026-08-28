@@ -324,21 +324,18 @@
       transform-origin:center;
     }
     .stage-card:hover{transform:translateY(-4px)}
+    /* Farb-Fokus folgt dem Scrollen: fokussierte Rail-Karte wird gruen */
     .stage-card.scroll-active{
       transform:translateY(-9px) scale(1.014);
-      border-color:#bed19f;
-      box-shadow:0 28px 48px -30px rgba(22,37,18,.34);
-    }
-    .stage-card.featured.scroll-active{
+      background:var(--forest);color:#fff;
       border-color:rgba(180,242,58,.48);
       box-shadow:0 30px 54px -30px rgba(11,22,9,.62);
     }
-    .stage-card.featured{background:var(--forest);color:#fff;border-color:var(--forest)}
     .stage-card .no{margin-bottom:auto;color:var(--lime-deep);font-size:.64rem;font-weight:800}
-    .stage-card.featured .no{color:var(--lime)}
+    .stage-card.scroll-active .no{color:var(--lime)}
     .stage-card strong{font-size:.96rem;letter-spacing:-.02em}
     .stage-card span{margin-top:4px;color:var(--muted);font-size:.7rem;line-height:1.34}
-    .stage-card.featured span{color:rgba(255,255,255,.6)}
+    .stage-card.scroll-active span{color:rgba(255,255,255,.6)}
 
     /* CLIENTS */
     .clients{
@@ -1453,7 +1450,7 @@
             </div>
           </div>
           <div class="stage-rail">
-            <a class="stage-card featured" href="#mitgliedschaft"><span class="no">01</span><strong>Mitgliedschaft</strong><span>Wir filmen, schneiden &amp; posten – Monat für Monat</span></a>
+            <a class="stage-card" href="#mitgliedschaft"><span class="no">01</span><strong>Mitgliedschaft</strong><span>Wir filmen, schneiden &amp; posten – Monat für Monat</span></a>
             <a class="stage-card" href="#arbeit"><span class="no">02</span><strong>Video-Produktion</strong><span>Film, Reels &amp; Kampagne</span></a>
             <a class="stage-card" href="#leistungen"><span class="no">03</span><strong>Design &amp; Beratung</strong><span>Markenauftritt &amp; Strategie</span></a>
           </div>
