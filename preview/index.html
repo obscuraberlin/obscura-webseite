@@ -315,31 +315,32 @@
     .stage-copy p{margin:0 0 10px;color:rgba(255,255,255,.55);font-size:.72rem;font-weight:650;letter-spacing:.02em;text-transform:none}
     .stage-copy h2{margin:0;font-size:clamp(2.45rem,3.8vw,4rem);line-height:.94;letter-spacing:-.04em}
     .stage-copy small{display:block;margin-top:14px;max-width:470px;color:rgba(255,255,255,.66);font-size:.86rem;line-height:1.48}
-    /* Zwei gestapelte Vorschau-Fenster (laufende Betreuung + Einzelproduktion) */
-    .stage-duo{display:flex;flex-direction:column;gap:12px}
-    .stage-win{position:relative;min-height:204px;border-radius:22px;overflow:hidden;border:1px solid rgba(255,255,255,.08);
-      box-shadow:0 24px 54px -40px rgba(10,17,9,.6);display:flex;flex-direction:column;justify-content:flex-end;
-      padding:18px;color:#fff;text-align:left;appearance:none;-webkit-appearance:none;font:inherit;cursor:pointer;background:var(--forest)}
-    .sw-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;transition:transform .6s cubic-bezier(.2,.75,.2,1)}
-    .stage-win:hover .sw-photo{transform:scale(1.05)}
-    .sw-veil{position:absolute;inset:0;z-index:1;background:linear-gradient(160deg,rgba(12,18,10,.32),rgba(12,18,10,.84))}
-    .sw-badge{position:absolute;top:14px;left:14px;z-index:2;display:inline-flex;align-items:center;gap:7px;padding:7px 11px;border-radius:999px;
+    /* Grosses Vorschau-Fenster – schiebt sich passend zur aktiven Karte auf */
+    .stage-view{position:relative;min-height:340px;border-radius:24px;overflow:hidden;color:#fff;
+      border:1px solid rgba(255,255,255,.08);box-shadow:0 30px 66px -44px rgba(10,17,9,.68);
+      display:flex;flex-direction:column;justify-content:flex-end;padding:20px;background:var(--forest)}
+    .sv-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;transition:opacity .45s ease,transform .8s cubic-bezier(.2,.75,.2,1)}
+    .sv-veil{position:absolute;inset:0;z-index:1;background:linear-gradient(158deg,rgba(12,18,10,.34),rgba(12,18,10,.85))}
+    .sv-badge{position:absolute;top:16px;left:16px;z-index:2;display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;
       background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(8px);font-size:.72rem;font-weight:720;letter-spacing:.02em;color:#fff}
-    .sw-badge i{width:7px;height:7px;border-radius:50%;background:var(--lime)}
-    .sw-badge.alt i{background:#fff}
-    .sw-copy{position:relative;z-index:2}
-    .sw-copy p{margin:0 0 6px;color:rgba(255,255,255,.62);font-size:.72rem;font-weight:650}
-    .sw-copy h3{margin:0;font-size:clamp(1.45rem,2.2vw,2rem);line-height:1.02;letter-spacing:-.03em;color:#fff}
-    .sw-copy small{display:block;margin-top:8px;color:rgba(255,255,255,.7);font-size:.82rem}
-    /* Sticky: die Fenster bleiben oben, waehrend die Karten darunter scrollen (gestapeltes Layout) */
+    .sv-badge i{width:7px;height:7px;border-radius:50%;background:var(--lime)}
+    .sv-copy{position:relative;z-index:2}
+    .sv-copy p{margin:0 0 8px;color:rgba(255,255,255,.6);font-size:.72rem;font-weight:650}
+    .sv-copy h3{margin:0;font-size:clamp(1.9rem,2.9vw,2.9rem);line-height:.98;letter-spacing:-.035em;color:#fff}
+    .sv-copy small{display:block;margin-top:10px;color:rgba(255,255,255,.68);font-size:.86rem}
+    /* Aufschieb-Animation beim Wechsel */
+    @keyframes svOpen{0%{opacity:0;transform:translateY(26px)}100%{opacity:1;transform:none}}
+    .stage-view.switching .sv-copy,.stage-view.switching .sv-badge{animation:svOpen .5s cubic-bezier(.2,.75,.2,1) both}
+    @media(prefers-reduced-motion:reduce){.stage-view.switching .sv-copy,.stage-view.switching .sv-badge{animation:none}.sv-photo{transition:none}}
+    /* Sticky: das grosse Fenster bleibt oben, waehrend die 4 Karten darunter scrollen */
     @media(max-width:1080px){
       .hero{overflow:visible}
       .hero-stage{overflow:visible}
       .hero-stage:before{display:none}
-      .stage-duo{position:sticky;top:84px;z-index:2}
+      .stage-view{position:sticky;top:84px;z-index:2;will-change:transform;transform:translateZ(0)}
       .stage-rail{position:relative;z-index:1;margin-top:14px}
     }
-    .stage-rail{display:grid;grid-template-columns:1.16fr 1fr 1fr;gap:9px;margin-top:10px}
+    .stage-rail{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:12px}
     .stage-card{
       appearance:none;-webkit-appearance:none;font:inherit;text-align:left;width:100%;color:var(--ink);cursor:pointer;
       min-height:116px;padding:15px 16px;border-radius:18px;background:#fff;border:1px solid #dfe6d8;
@@ -1543,24 +1544,21 @@
         </div>
 
         <div class="hero-stage" aria-label="Obscura Leistungswelt">
-          <div class="stage-duo" id="stageDuo">
-            <button class="stage-win sw-a" type="button" data-open="social">
-              <img class="sw-photo" data-from=".visual-people .tile-photo" alt="" loading="lazy">
-              <span class="sw-veil"></span>
-              <span class="sw-badge"><i></i> Laufende Betreuung</span>
-              <div class="sw-copy"><p>Social Media Mitgliedschaft</p><h3>Content. Betreuung. Ads.</h3><small>Monat für Monat.</small></div>
-            </button>
-            <button class="stage-win sw-b" type="button" data-open="video">
-              <img class="sw-photo" data-from=".visual-product .tile-photo" alt="" loading="lazy">
-              <span class="sw-veil"></span>
-              <span class="sw-badge alt"><i></i> Einzelproduktion</span>
-              <div class="sw-copy"><p>Film · Foto · Design</p><h3>Projektweise produziert.</h3><small>Auch extern buchbar.</small></div>
-            </button>
+          <div class="stage-view" id="stageView">
+            <img class="sv-photo" id="svPhoto" alt="">
+            <span class="sv-veil"></span>
+            <span class="sv-badge"><i id="svDot"></i> <b id="svBadge">Laufende Betreuung</b></span>
+            <div class="sv-copy" id="svCopy">
+              <p id="svEyebrow">Social Media Mitgliedschaft</p>
+              <h3 id="svTitle">Content. Betreuung. Ads.</h3>
+              <small id="svSmall">Monat für Monat.</small>
+            </div>
           </div>
           <div class="stage-rail">
             <button class="stage-card" type="button" data-open="social" data-stage="0"><span class="no">01</span><strong>Social Media Mitgliedschaft</strong><span>Wir filmen, schneiden &amp; posten – Monat für Monat</span></button>
             <button class="stage-card" type="button" data-open="video" data-stage="1"><span class="no">02</span><strong>Video-Produktion</strong><span>Film, Reels &amp; Kampagne</span></button>
-            <button class="stage-card" type="button" data-open="design" data-stage="2"><span class="no">03</span><strong>Design &amp; Beratung</strong><span>Markenauftritt &amp; Strategie</span></button>
+            <button class="stage-card" type="button" data-open="ads" data-stage="2"><span class="no">03</span><strong>Werbeanzeigen (Ads)</strong><span>Google &amp; Meta Ads – mehr Anfragen</span></button>
+            <button class="stage-card" type="button" data-open="design" data-stage="3"><span class="no">04</span><strong>Design &amp; Beratung</strong><span>Markenauftritt &amp; Strategie</span></button>
           </div>
         </div>
       </div>
@@ -2204,11 +2202,34 @@
       const stageRail = document.querySelector('.stage-rail');
       let railTicking = false;
 
-      // Bilder der zwei Stage-Fenster aus vorhandenen eingebetteten Fotos setzen (kein doppelter Ballast)
-      document.querySelectorAll('.sw-photo[data-from]').forEach(im=>{
-        const el=document.querySelector(im.dataset.from);
-        if(el) im.src = el.currentSrc || el.getAttribute('src');
-      });
+      // Grosses Vorschau-Fenster: schiebt sich passend zur aktiven Karte auf
+      const svPhoto=document.getElementById('svPhoto');
+      const svBadge=document.getElementById('svBadge');
+      const svEyebrow=document.getElementById('svEyebrow');
+      const svTitle=document.getElementById('svTitle');
+      const svSmall=document.getElementById('svSmall');
+      const svView=document.getElementById('stageView');
+      const grab=sel=>{const el=document.querySelector(sel);return el?(el.currentSrc||el.getAttribute('src')):null;};
+      const svData=[
+        {img:grab('.visual-people .tile-photo'), badge:'Laufende Betreuung', eyebrow:'Social Media Mitgliedschaft', title:'Content. Betreuung. Ads.', small:'Monat für Monat – dein festes Social-Media-Team.'},
+        {img:grab('.visual-product .tile-photo'), badge:'Einzelproduktion', eyebrow:'Video-Produktion', title:'Film. Reels. Kampagne.', small:'Von der Idee bis zum Schnitt – auch extern buchbar.'},
+        {img:grab('.visual-ads .tile-photo'), badge:'Performance', eyebrow:'Werbeanzeigen (Ads)', title:'Google & Meta Ads.', small:'Mehr Reichweite, Anfragen und Umsatz – gezielt ausgespielt.'},
+        {img:grab('.team-figures .tile-photo'), badge:'Marke & Strategie', eyebrow:'Design & Beratung', title:'Marke. Design. Strategie.', small:'Ein Auftritt mit Wirkung – online wie offline.'}
+      ];
+      let svLast=-1;
+      function applyStage(i){
+        i=+i; if(i===svLast||!svData[i]||!svView) return; svLast=i;
+        const d=svData[i];
+        if(svPhoto&&d.img){svPhoto.style.opacity='0';setTimeout(()=>{svPhoto.src=d.img;svPhoto.style.opacity='1';},170);}
+        if(svBadge)svBadge.textContent=d.badge;
+        if(svEyebrow)svEyebrow.textContent=d.eyebrow;
+        if(svTitle)svTitle.textContent=d.title;
+        if(svSmall)svSmall.textContent=d.small;
+        svView.classList.remove('switching');void svView.offsetWidth;svView.classList.add('switching');
+      }
+      applyStage(0);
+      // Desktop: beim Ueberfahren einer Karte schiebt sich die passende Erklaerung auf
+      railCards.forEach(c=>c.addEventListener('mouseenter',()=>applyStage(c.dataset.stage)));
 
       function updateRailCards(){
         railTicking = false;
@@ -2232,6 +2253,7 @@
           }
         });
         railCards.forEach(card => card.classList.toggle('scroll-active', card === closest));
+        if(closest) applyStage(closest.dataset.stage);
       }
 
       function requestRailUpdate(){
