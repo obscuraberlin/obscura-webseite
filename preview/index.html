@@ -2201,6 +2201,7 @@
       const railCards = [...document.querySelectorAll('.stage-card')];
       const stageRail = document.querySelector('.stage-rail');
       let railTicking = false;
+      let currentActive = null, lastSwitch = 0, railTrailing = null;
 
       // Grosses Vorschau-Fenster: schiebt sich passend zur aktiven Karte auf
       const svPhoto=document.getElementById('svPhoto');
@@ -2238,6 +2239,7 @@
         const visible = railRect.bottom > 70 && railRect.top < window.innerHeight - 40;
         if(!visible){
           railCards.forEach(card => card.classList.remove('scroll-active'));
+          currentActive = null;
           return;
         }
         const targetY = window.innerHeight * .62;
@@ -2252,8 +2254,19 @@
             closest = card;
           }
         });
-        railCards.forEach(card => card.classList.toggle('scroll-active', card === closest));
-        if(closest) applyStage(closest.dataset.stage);
+        // 1-Sekunden-Sperre: bei zu schnellem Wischen nicht durch alle Karten rattern
+        if(closest && closest !== currentActive){
+          const now = performance.now();
+          const since = now - lastSwitch;
+          if(since >= 1000){
+            currentActive = closest; lastSwitch = now;
+            railCards.forEach(card => card.classList.toggle('scroll-active', card === currentActive));
+            applyStage(currentActive.dataset.stage);
+          } else {
+            clearTimeout(railTrailing);
+            railTrailing = setTimeout(requestRailUpdate, 1000 - since + 20);
+          }
+        }
       }
 
       function requestRailUpdate(){
