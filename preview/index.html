@@ -2099,12 +2099,13 @@
                 <label class="field">E-Mail<input name="email" type="email" autocomplete="email" placeholder="name@unternehmen.de"></label>
                 <label class="field">Telefon<input name="phone" type="tel" autocomplete="tel" placeholder="+49 …"></label>
               </div>
-              <p class="privacy">Im Livegang wird das Formular an euren CRM-/Formular-Endpunkt und die Datenschutz-Einwilligung angebunden.</p>
+              <p class="privacy">Mit dem Absenden öffnet sich deine E-Mail-App mit der fertigen Anfrage an <a href="mailto:info@obscura-berlin.de" style="color:var(--lime-deep)">info@obscura-berlin.de</a>. Es gelten unsere <button type="button" class="lg-link" data-legal="datenschutz">Datenschutzhinweise</button>.</p>
             </div>
 
             <div class="quiz-success" id="quizSuccess">
-              <h3>Danke – die Anfrage ist vorbereitet.</h3>
-              <p>Für den Livegang fehlt nur noch die technische Formularanbindung.</p>
+              <h3>Danke – deine Anfrage ist fertig.</h3>
+              <p>Deine E-Mail-App sollte sich mit der vorausgefüllten Anfrage geöffnet haben. Falls nicht, kannst du sie hier direkt senden:</p>
+              <a class="btn btn-primary" id="quizSend" href="mailto:info@obscura-berlin.de">Anfrage per E-Mail senden <span class="arrow">→</span></a>
             </div>
 
             <div class="quiz-actions" id="quizActions">
@@ -2466,11 +2467,28 @@
       next.addEventListener('click',()=>{
         if(quizStep<4){quizStep++;renderQuiz();}
         else{
+          // Anfrage per E-Mail zusammenstellen (funktioniert ohne Backend)
+          const sel=g=>[...form.querySelectorAll('[data-group="'+g+'"] .choice.selected')].map(c=>c.textContent.trim());
+          const val=n=>{const el=form.querySelector('[name="'+n+'"]');return el?el.value.trim():'';};
+          const L=['Neue Projektanfrage über obscura-berlin.de','',
+            'Leistungen: '+(sel('services').join(', ')||'—'),
+            'Ziel: '+(sel('goal').join(', ')||'—'),
+            'Budget: '+(val('budget')||'—'),
+            'Start: '+(val('start')||'—'),
+            'Projekt: '+(val('project')||'—'),'',
+            'Name: '+(val('name')||'—'),
+            'Unternehmen: '+(val('company')||'—'),
+            'E-Mail: '+(val('email')||'—'),
+            'Telefon: '+(val('phone')||'—')];
+          const href='mailto:info@obscura-berlin.de?subject='+encodeURIComponent('Projektanfrage – '+(val('company')||val('name')||'Website'))+'&body='+encodeURIComponent(L.join('\n'));
           quizSteps.forEach(s=>s.classList.remove('active'));
           success.classList.add('show');
           actions.style.display='none';
           stepLabel.textContent='Fertig';
           progressBar.style.width='100%';
+          const sendLink=document.getElementById('quizSend');
+          if(sendLink)sendLink.href=href;
+          window.location.href=href;
         }
       });
       renderQuiz();
@@ -2530,7 +2548,18 @@
           e.preventDefault();
           if(!form.checkValidity()){form.reportValidity();return;}
           breakdown.classList.remove('locked');
-          gate.innerHTML='<div class="lockrow" style="color:var(--lime-deep)"><span aria-hidden="true">✓</span> Freigeschaltet</div><h3>Danke – deine Auswertung ist freigeschaltet.</h3><p>Oben siehst du deine detaillierte Analyse. Wir melden uns zusätzlich persönlich mit konkreten nächsten Schritten.</p><a class="btn btn-primary" href="#kontakt">Direkt Strategiegespräch sichern <span class="arrow">→</span></a>';
+          // Lead per E-Mail an Obscura (funktioniert ohne Backend)
+          const g=n=>{const el=form.querySelector('[name="'+n+'"]');return el?el.value.trim():'';};
+          const score=scoreNum.textContent;
+          const body=['Neuer Social-Media-Check über obscura-berlin.de','',
+            'Score: '+score+' / 100','',
+            'Name: '+(g('name')||'—'),
+            'Unternehmen: '+(g('company')||'—'),
+            'E-Mail: '+(g('email')||'—'),
+            'Telefon: '+(g('phone')||'—')].join('\n');
+          const href='mailto:info@obscura-berlin.de?subject='+encodeURIComponent('Social-Media-Check – '+(g('company')||g('name')||'Lead'))+'&body='+encodeURIComponent(body);
+          gate.innerHTML='<div class="lockrow" style="color:var(--lime-deep)"><span aria-hidden="true">✓</span> Freigeschaltet</div><h3>Danke – deine Auswertung ist freigeschaltet.</h3><p>Oben siehst du deine detaillierte Analyse. Wir melden uns zusätzlich persönlich mit konkreten nächsten Schritten.</p><a class="btn btn-primary" href="#kontakt">Kostenloses Erstgespräch sichern <span class="arrow">→</span></a>';
+          try{window.location.href=href;}catch(_){}
           breakdown.scrollIntoView({behavior:'smooth',block:'center'});
         });
         show(0);
