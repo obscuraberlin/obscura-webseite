@@ -562,6 +562,17 @@
     .service-footer strong{color:var(--ink);font-size:.82rem}
     .service-panel.dark .service-footer{color:rgba(255,255,255,.46)}
     .service-panel.dark .service-footer strong{color:#fff}
+    /* Aktive Karte beim Scrollen: nimmt die gruene Farbe an, Fokus wandert mit */
+    .service-panel{transition:background .55s ease,color .4s ease,border-color .4s ease,transform .55s cubic-bezier(.2,.75,.2,1),box-shadow .4s ease,opacity .55s ease}
+    .service-panel.active{color:#fff;border-color:#253722;background:radial-gradient(circle at 80% 14%,rgba(180,242,58,.19),transparent 20%),linear-gradient(145deg,#172316,#263b22 100%)}
+    .service-panel.active:after{background-image:linear-gradient(rgba(255,255,255,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.055) 1px,transparent 1px)}
+    .service-panel.active .service-no{color:var(--lime)}
+    .service-panel.active .service-plus{color:#fff;background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.14)}
+    .service-panel.active .service-icon{color:var(--lime);background:rgba(180,242,58,.09);border-color:rgba(180,242,58,.23)}
+    .service-panel.active>p{color:rgba(255,255,255,.67)}
+    .service-panel.active .service-products span{background:rgba(255,255,255,.055);border-color:rgba(255,255,255,.12);color:rgba(255,255,255,.72)}
+    .service-panel.active .service-footer{color:rgba(255,255,255,.46)}
+    .service-panel.active .service-footer strong{color:#fff}
 
 
     .influencer-panel{
@@ -1524,7 +1535,7 @@
         </div>
 
         <div class="service-grid">
-          <button class="service-panel dark" type="button" data-open="social">
+          <button class="service-panel" type="button" data-open="social">
             <div class="service-panel-top"><span class="service-no">01 · Herzstück</span><span class="service-plus">+</span></div>
             <span class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M8 14l3-3 2 2 3-4"/></svg></span>
             <h3>Social Media</h3>
@@ -1533,7 +1544,7 @@
             <div class="service-footer"><strong>Details öffnen</strong><span>monatlich betreut</span></div>
           </button>
 
-          <button class="service-panel mint" type="button" data-open="video">
+          <button class="service-panel" type="button" data-open="video">
             <div class="service-panel-top"><span class="service-no">02 · Produktion</span><span class="service-plus">+</span></div>
             <span class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="13" height="14" rx="3"/><path d="M16 10l5-3v10l-5-3z"/></svg></span>
             <h3>Video-Produktion</h3>
@@ -1542,7 +1553,7 @@
             <div class="service-footer"><strong>Details öffnen</strong><span>Produktion nach Bedarf</span></div>
           </button>
 
-          <button class="service-panel lime" type="button" data-open="design">
+          <button class="service-panel" type="button" data-open="design">
             <div class="service-panel-top"><span class="service-no">03 · Design</span><span class="service-plus">+</span></div>
             <span class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20l5-1 10-10-4-4L5 15z"/><path d="M13 7l4 4"/></svg></span>
             <h3>Grafikdesign</h3>
@@ -1551,7 +1562,7 @@
             <div class="service-footer"><strong>Details öffnen</strong><span>Brand &amp; Assets</span></div>
           </button>
 
-          <button class="service-panel mint" type="button" data-open="consulting">
+          <button class="service-panel" type="button" data-open="consulting">
             <div class="service-panel-top"><span class="service-no">04 · Strategie</span><span class="service-plus">+</span></div>
             <span class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 18v-6M10 18V6M16 18v-9M22 18H2"/><path d="M4 9l6-5 6 2 6-4"/></svg></span>
             <h3>Marketing-Beratung</h3>
@@ -1559,7 +1570,7 @@
             <div class="service-products"><span>Social Strategien</span><span>Produkteinführung</span><span>Marken-Image</span></div>
             <div class="service-footer"><strong>Details öffnen</strong><span>Strategie &amp; Wachstum</span></div>
           </button>
-          <button class="service-panel soft influencer-panel" type="button" data-open="influencer">
+          <button class="service-panel influencer-panel" type="button" data-open="influencer">
             <div class="service-panel-top"><span class="service-no">05 · Creator</span><span class="service-plus">+</span></div>
             <span class="service-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24">
@@ -2043,6 +2054,27 @@
         if(!pending) window.removeEventListener('scroll', revealSafety);
       };
       window.addEventListener('scroll', revealSafety, {passive:true});
+
+      // Farb-Fokus folgt dem Scrollen: die Karte nahe der Bildschirmmitte wird aktiv (gruen)
+      let activeTicking=false;
+      function updateActivePanel(){
+        activeTicking=false;
+        if(!servicePanels.length) return;
+        const mid=window.innerHeight*0.5;
+        let best=null,bestD=Infinity;
+        servicePanels.forEach(p=>{
+          const r=p.getBoundingClientRect();
+          if(r.bottom<60||r.top>window.innerHeight-60) return;
+          const c=r.top+r.height/2;
+          const d=Math.abs(c-mid);
+          if(d<bestD){bestD=d;best=p;}
+        });
+        servicePanels.forEach(p=>p.classList.toggle('active',p===best));
+      }
+      function reqActive(){ if(!activeTicking){activeTicking=true;requestAnimationFrame(updateActivePanel);} }
+      window.addEventListener('scroll',reqActive,{passive:true});
+      window.addEventListener('resize',reqActive,{passive:true});
+      updateActivePanel();
 
       const modal = document.getElementById('serviceModal');
       const modalTitle = document.getElementById('modalTitle');
