@@ -2254,18 +2254,10 @@
             closest = card;
           }
         });
-        // 1-Sekunden-Sperre: bei zu schnellem Wischen nicht durch alle Karten rattern
         if(closest && closest !== currentActive){
-          const now = performance.now();
-          const since = now - lastSwitch;
-          if(since >= 1000){
-            currentActive = closest; lastSwitch = now;
-            railCards.forEach(card => card.classList.toggle('scroll-active', card === currentActive));
-            applyStage(currentActive.dataset.stage);
-          } else {
-            clearTimeout(railTrailing);
-            railTrailing = setTimeout(requestRailUpdate, 1000 - since + 20);
-          }
+          currentActive = closest;
+          railCards.forEach(card => card.classList.toggle('scroll-active', card === currentActive));
+          applyStage(currentActive.dataset.stage);
         }
       }
 
@@ -2278,6 +2270,50 @@
       window.addEventListener('scroll', requestRailUpdate, {passive:true});
       window.addEventListener('resize', requestRailUpdate);
       requestRailUpdate();
+
+      // Schritt-Sperre: im Stage-Bereich rastet das Scrollen Karte fuer Karte ein (1s Lock),
+      // an erster/letzter Karte wird das normale Scrollen wieder freigegeben. Nur mobil/Tablet.
+      (function(){
+        const reduce = matchMedia('(prefers-reduced-motion:reduce)').matches;
+        let mobile = matchMedia('(max-width:1080px)').matches;
+        window.addEventListener('resize', ()=>{ mobile = matchMedia('(max-width:1080px)').matches; }, {passive:true});
+        const LOCK = 1000;
+        let locked = false;
+        function idxByScroll(){
+          const t = innerHeight*0.62; let best=0, bd=Infinity;
+          railCards.forEach((c,i)=>{ const r=c.getBoundingClientRect(); const d=Math.abs(r.top+r.height/2 - t); if(d<bd){bd=d;best=i;} });
+          return best;
+        }
+        function targetFor(i){ const r=railCards[i].getBoundingClientRect(); return r.top+scrollY+r.height/2 - innerHeight*0.62; }
+        function engaged(){
+          if(!mobile || reduce || !stageView || !stageRail) return false;
+          const v = stageView.getBoundingClientRect();
+          const rr = stageRail.getBoundingClientRect();
+          return v.top <= 110 && rr.bottom > innerHeight*0.42 && rr.top < innerHeight*0.62;
+        }
+        function step(dir){
+          const n = idxByScroll() + dir;
+          if(n < 0 || n > railCards.length-1) return false; // Rand -> normales Scrollen freigeben
+          locked = true;
+          window.scrollTo({ top: targetFor(n), behavior: 'smooth' });
+          setTimeout(()=>{ locked = false; }, LOCK);
+          return true;
+        }
+        window.addEventListener('wheel', e=>{
+          if(!engaged()) return;
+          if(locked){ e.preventDefault(); return; }
+          if(step(e.deltaY>0?1:-1)) e.preventDefault();
+        }, {passive:false});
+        let ty = null;
+        window.addEventListener('touchstart', e=>{ ty = e.touches[0].clientY; }, {passive:true});
+        window.addEventListener('touchmove', e=>{
+          if(!engaged() || ty===null) return;
+          if(locked){ e.preventDefault(); return; }
+          const dy = ty - e.touches[0].clientY;
+          if(Math.abs(dy) < 10) return;
+          if(step(dy>0?1:-1)){ e.preventDefault(); ty = e.touches[0].clientY; }
+        }, {passive:false});
+      })();
 
       // Main service cards stay in normal document flow. They only lift slightly while in view.
       const servicePanels = [...document.querySelectorAll('.service-panel')];
