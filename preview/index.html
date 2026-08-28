@@ -93,13 +93,25 @@
       cursor:pointer;
       transition:transform .22s ease,box-shadow .22s ease,background .22s ease,border-color .22s ease;
     }
+    .btn{position:relative;overflow:hidden;isolation:isolate}
+    /* Glanz-Sweep über jeden Button beim Hover */
+    .btn:before{content:"";position:absolute;top:0;left:-130%;width:60%;height:100%;z-index:1;
+      background:linear-gradient(105deg,transparent,rgba(255,255,255,.55),transparent);
+      transform:skewX(-18deg);transition:left .6s cubic-bezier(.2,.75,.2,1);pointer-events:none}
+    .btn:hover:before{left:135%}
+    .btn>*{position:relative;z-index:2}
     .btn:hover{transform:translateY(-2px)}
-    .btn-primary{background:var(--lime);color:#11160e;box-shadow:0 18px 42px -28px rgba(105,160,10,.42);border-color:#8fd51c}
-    .btn-primary:hover{background:var(--lime-strong)}
-    .btn-dark{background:var(--forest);color:#fff}
-    .btn-dark:hover{background:#111a10}
+    .btn:active{transform:translateY(0) scale(.985)}
+    .btn .arrow{transition:transform .25s ease}
+    .btn:hover .arrow{transform:translateX(4px)}
+    .btn-primary{background:linear-gradient(135deg,#c4ff4d,var(--lime) 45%,var(--lime-strong));color:#11160e;
+      box-shadow:0 16px 40px -20px rgba(120,190,10,.7),inset 0 1px 0 rgba(255,255,255,.5);border-color:#8fd51c}
+    .btn-primary:hover{box-shadow:0 22px 54px -18px rgba(120,190,10,.85),inset 0 1px 0 rgba(255,255,255,.55)}
+    .btn-dark{background:var(--forest);color:#fff;border-color:rgba(173,255,47,.0)}
+    .btn-dark:hover{background:#111a10;border-color:rgba(173,255,47,.45);box-shadow:0 20px 46px -26px rgba(173,255,47,.4)}
     .btn-light{background:#fff;border-color:var(--line);color:var(--ink)}
     .btn-light:hover{border-color:var(--line-2);box-shadow:0 18px 34px -29px rgba(17,28,14,.26)}
+    @media(prefers-reduced-motion:reduce){.btn:before{display:none}}
     .arrow{font-size:1.04em}
     .grid-bg{
       background-image:
@@ -257,10 +269,15 @@
     }
 
     .hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
-    .hero-actions .btn{min-height:52px;padding-inline:21px;font-size:.9rem}
-    .hero-actions .btn-primary{background:var(--forest);color:#fff;border-color:var(--forest);box-shadow:none}
-    .hero-actions .btn-primary:hover{background:#0d150c}
-    .hero-actions .btn-light{background:rgba(255,255,255,.76);backdrop-filter:blur(8px)}
+    .hero-actions .btn{min-height:52px;padding-inline:24px;font-size:.9rem}
+    .hero-actions .btn-light{background:rgba(255,255,255,.72);backdrop-filter:blur(8px);border-color:rgba(22,35,20,.12)}
+    .hero-actions .btn-light:hover{background:#fff}
+    /* Typewriter im Hero */
+    .tw{color:var(--lime-deep)}
+    .tw-caret{display:inline-block;width:.06em;min-width:4px;height:.86em;margin-left:.06em;
+      background:var(--lime-deep);vertical-align:-.06em;border-radius:2px;animation:twBlink 1s steps(1) infinite}
+    @keyframes twBlink{50%{opacity:0}}
+    @media(prefers-reduced-motion:reduce){.tw-caret{animation:none}}
 
     .hero-stage{
       position:relative;
@@ -1500,6 +1517,62 @@
     .closing .btn-light{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.2)}
     @media(max-width:560px){.closing-actions{width:100%}.closing-actions .btn{width:100%;min-height:54px}}
 
+    /* ===== Floating Action Stack: WhatsApp + KI-Chat ===== */
+    .fab-stack{position:fixed;right:clamp(14px,3vw,26px);bottom:clamp(14px,3vw,26px);z-index:130;
+      display:flex;flex-direction:column;gap:12px;align-items:flex-end}
+    .fab{width:60px;height:60px;border-radius:50%;display:grid;place-items:center;cursor:pointer;border:none;
+      box-shadow:0 18px 40px -14px rgba(0,0,0,.5);transition:transform .25s cubic-bezier(.2,.75,.2,1),box-shadow .25s ease;position:relative}
+    .fab:hover{transform:translateY(-3px) scale(1.05)}
+    .fab svg{width:30px;height:30px}
+    .fab-wa{background:#25d366}
+    .fab-wa svg{fill:#fff}
+    .fab-chat{background:var(--forest);color:var(--lime)}
+    .fab-chat svg{stroke:var(--lime);fill:none;stroke-width:2}
+    .fab-chat .fab-pulse{position:absolute;inset:0;border-radius:50%;background:var(--lime);opacity:.5;z-index:-1;animation:fabPulse 2.4s ease-out infinite}
+    @keyframes fabPulse{0%{transform:scale(1);opacity:.45}70%{transform:scale(1.7);opacity:0}100%{opacity:0}}
+    .fab-label{position:absolute;right:70px;top:50%;transform:translateY(-50%);white-space:nowrap;
+      background:var(--forest);color:#fff;font-size:.8rem;font-weight:700;padding:7px 12px;border-radius:10px;
+      opacity:0;pointer-events:none;transition:opacity .2s ease;box-shadow:0 10px 24px -14px rgba(0,0,0,.5)}
+    .fab:hover .fab-label{opacity:1}
+    @media(prefers-reduced-motion:reduce){.fab-pulse{animation:none}}
+
+    /* Chat-Panel */
+    .chatbot{position:fixed;right:clamp(14px,3vw,26px);bottom:calc(clamp(14px,3vw,26px) + 76px);z-index:135;
+      width:min(370px,calc(100vw - 28px));height:min(540px,calc(100vh - 130px));
+      background:var(--paper);border:1px solid var(--line);border-radius:22px;overflow:hidden;
+      display:flex;flex-direction:column;box-shadow:0 40px 90px -30px rgba(10,18,8,.55);
+      transform:translateY(16px) scale(.96);transform-origin:bottom right;opacity:0;pointer-events:none;
+      transition:transform .3s cubic-bezier(.2,.8,.2,1),opacity .25s ease}
+    .chatbot.open{transform:none;opacity:1;pointer-events:auto}
+    .chat-head{background:var(--forest);color:#fff;padding:15px 17px;display:flex;align-items:center;gap:11px}
+    .chat-ava{width:38px;height:38px;border-radius:50%;background:var(--lime);display:grid;place-items:center;flex:0 0 auto}
+    .chat-ava span{width:15px;height:15px;border-radius:50%;background:var(--forest);box-shadow:0 0 0 3px var(--lime),0 0 0 5px var(--forest)}
+    .chat-head b{font-size:.95rem;display:block;line-height:1.2}
+    .chat-head small{font-size:.72rem;color:rgba(255,255,255,.6);display:flex;align-items:center;gap:5px}
+    .chat-head small i{width:7px;height:7px;border-radius:50%;background:var(--lime);display:inline-block}
+    .chat-close{margin-left:auto;background:rgba(255,255,255,.12);border:none;color:#fff;width:30px;height:30px;border-radius:9px;cursor:pointer;font-size:1.1rem;line-height:1}
+    .chat-body{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;background:var(--paper-2)}
+    .chat-msg{max-width:82%;padding:10px 13px;border-radius:15px;font-size:.88rem;line-height:1.5;animation:chatIn .3s cubic-bezier(.2,.8,.2,1) both}
+    @keyframes chatIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+    .chat-msg.bot{background:#fff;border:1px solid var(--line);color:var(--ink);align-self:flex-start;border-bottom-left-radius:5px}
+    .chat-msg.user{background:var(--forest);color:#fff;align-self:flex-end;border-bottom-right-radius:5px}
+    .chat-msg a{color:var(--lime-deep);font-weight:700;text-decoration:underline}
+    .chat-msg.user a{color:var(--lime)}
+    .chat-chips{display:flex;flex-wrap:wrap;gap:7px;padding:0 16px 12px;background:var(--paper-2)}
+    .chat-chip{background:#fff;border:1px solid var(--line-2);color:var(--forest-2);font-size:.78rem;font-weight:650;
+      padding:7px 12px;border-radius:999px;cursor:pointer;transition:background .2s ease,border-color .2s ease}
+    .chat-chip:hover{background:var(--lime);border-color:var(--lime)}
+    .chat-form{display:flex;gap:8px;padding:12px;border-top:1px solid var(--line);background:var(--paper)}
+    .chat-form input{flex:1;border:1px solid var(--line-2);border-radius:12px;padding:11px 13px;font-size:.88rem;outline:none;background:#fff}
+    .chat-form input:focus{border-color:var(--lime-deep)}
+    .chat-send{background:var(--lime);border:none;width:44px;border-radius:12px;cursor:pointer;display:grid;place-items:center;flex:0 0 auto}
+    .chat-send svg{width:20px;height:20px;fill:var(--forest)}
+    .chat-typing{display:flex;gap:4px;padding:12px 14px;align-self:flex-start;background:#fff;border:1px solid var(--line);border-radius:15px;border-bottom-left-radius:5px}
+    .chat-typing i{width:7px;height:7px;border-radius:50%;background:var(--muted-2);animation:chatDot 1.1s infinite}
+    .chat-typing i:nth-child(2){animation-delay:.18s}.chat-typing i:nth-child(3){animation-delay:.36s}
+    @keyframes chatDot{0%,60%,100%{opacity:.3;transform:translateY(0)}30%{opacity:1;transform:translateY(-3px)}}
+    @media(max-width:560px){.chatbot{height:min(70vh,540px)}}
+
     .cookie-bar{position:fixed;left:clamp(12px,3vw,26px);right:clamp(12px,3vw,26px);bottom:clamp(12px,3vw,26px);z-index:120;
       max-width:620px;margin-inline:auto;background:var(--forest);color:#fff;border:1px solid rgba(255,255,255,.1);
       border-radius:16px;padding:13px 16px;box-shadow:0 24px 60px -30px rgba(0,0,0,.6);
@@ -1564,7 +1637,7 @@
           <h1 class="title-xl">
             <span>Mehr Sichtbarkeit.</span>
             <span>Mehr Anfragen.</span>
-            <span class="quiet">Mehr Umsatz.</span>
+            <span class="quiet">Mehr <span class="tw" id="heroTw">Umsatz.</span><span class="tw-caret" id="heroCaret" aria-hidden="true"></span></span>
           </h1>
           <p class="hero-sub"><strong>Social Media</strong>, <strong>Content</strong> &amp; <strong>Performance</strong> aus einer Hand – für Unternehmen, die <strong>planbar sichtbar</strong> werden und <strong>Anfragen gewinnen</strong> wollen.</p>
           <div class="hero-actions">
@@ -1781,8 +1854,8 @@
             <p class="lead">Wir übernehmen euren <strong>kompletten Social-Media-Auftritt</strong>.</p>
             <p class="membership-why">Für Unternehmen, die dauerhaft sichtbar bleiben wollen – <strong>ohne eigene Marketing-Abteilung</strong>. Statt klassischem Retainer bekommt ihr ein <strong>festes Team</strong>, <strong>planbare Kosten</strong> und Content, der Monat für Monat läuft.</p>
             <div class="hero-actions">
-              <a class="btn btn-primary" href="#kontakt">Kostenloses Erstgespräch <span class="arrow">→</span></a>
-              <a class="btn btn-light" href="#arbeit">Projekte ansehen</a>
+              <a class="btn btn-primary" href="social-media-mitgliedschaft.html">Mitgliedschaft &amp; Preise ansehen <span class="arrow">→</span></a>
+              <a class="btn btn-light" href="#kontakt">Kostenloses Erstgespräch</a>
             </div>
           </div>
           <div class="membership-points">
@@ -2156,6 +2229,33 @@
         <button class="btn btn-light modal-dismiss" type="button">Schließen</button>
       </div>
     </div>
+  </div>
+
+  <!-- Floating: WhatsApp + KI-Chat -->
+  <div class="fab-stack">
+    <button class="fab fab-chat" id="chatOpen" type="button" aria-label="Chat mit Obscura-Assistent öffnen">
+      <span class="fab-pulse" aria-hidden="true"></span>
+      <span class="fab-label">Fragen? Frag den Assistenten</span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-3.9-.9L3 21l1.9-5.6a8.5 8.5 0 0 1-.9-3.9A8.38 8.38 0 0 1 12.5 3 8.38 8.38 0 0 1 21 11.5z"/></svg>
+    </button>
+    <a class="fab fab-wa" id="waLink" href="https://wa.me/49XXXXXXXXXX?text=Hallo%20Obscura%2C%20ich%20interessiere%20mich%20f%C3%BCr%20eure%20Leistungen." target="_blank" rel="noopener" aria-label="WhatsApp">
+      <span class="fab-label">Direkt via WhatsApp</span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.8-1.5A10 10 0 1 0 12 2zm5.8 14.2c-.25.7-1.45 1.35-2 1.4-.5.05-1.15.07-1.85-.12-.43-.14-1-.33-1.7-.63-3-1.3-4.95-4.3-5.1-4.5-.15-.2-1.2-1.6-1.2-3.05 0-1.45.76-2.16 1.03-2.46.27-.3.6-.37.8-.37h.57c.18 0 .43-.07.67.5.25.6.85 2.05.92 2.2.08.15.13.32.03.52-.1.2-.15.32-.3.5-.15.17-.32.38-.45.5-.15.15-.3.32-.13.62.18.3.8 1.3 1.7 2.1 1.18 1.05 2.17 1.37 2.47 1.52.3.15.47.13.65-.08.18-.2.75-.87.95-1.17.2-.3.4-.25.67-.15.27.1 1.7.8 2 .95.3.15.5.22.57.35.07.12.07.7-.18 1.4z"/></svg>
+    </a>
+  </div>
+
+  <div class="chatbot" id="chatbot" role="dialog" aria-label="Obscura-Assistent">
+    <div class="chat-head">
+      <span class="chat-ava" aria-hidden="true"><span></span></span>
+      <div><b>Obscura-Assistent</b><small><i></i> Antwortet sofort</small></div>
+      <button class="chat-close" id="chatClose" type="button" aria-label="Chat schließen">×</button>
+    </div>
+    <div class="chat-body" id="chatBody"></div>
+    <div class="chat-chips" id="chatChips"></div>
+    <form class="chat-form" id="chatForm">
+      <input id="chatInput" type="text" placeholder="Frag etwas zu Projekten, Preisen …" autocomplete="off" aria-label="Nachricht">
+      <button class="chat-send" type="submit" aria-label="Senden"><svg viewBox="0 0 24 24"><path d="M3 20l18-8L3 4v6l12 2-12 2z"/></svg></button>
+    </form>
   </div>
 
   <!-- Cookie-Banner -->
@@ -2563,6 +2663,115 @@
           breakdown.scrollIntoView({behavior:'smooth',block:'center'});
         });
         show(0);
+      })();
+
+      /* ===== Hero-Typewriter ===== */
+      (function(){
+        const el=document.getElementById('heroTw');
+        if(!el) return;
+        const reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches;
+        const words=['Umsatz.','Wachstum.','Anfragen.','Reichweite.'];
+        if(reduce){el.textContent=words[0];return;}
+        let wi=0,ci=words[0].length,dir=-1; // startet voll ("Umsatz."), löscht dann
+        el.textContent=words[0];
+        function tick(){
+          const w=words[wi];
+          ci+=dir;
+          el.textContent=w.slice(0,ci);
+          let delay=dir>0?95:55;
+          if(dir<0&&ci<=0){dir=1;wi=(wi+1)%words.length;delay=260;}
+          else if(dir>0&&ci>=w.length){dir=-1;delay=1500;}
+          setTimeout(tick,delay);
+        }
+        setTimeout(tick,1600);
+      })();
+
+      /* ===== KI-Chat-Assistent (regelbasiert, ohne Backend) ===== */
+      (function(){
+        const openBtn=document.getElementById('chatOpen');
+        const panel=document.getElementById('chatbot');
+        if(!openBtn||!panel) return;
+        const body=document.getElementById('chatBody');
+        const chips=document.getElementById('chatChips');
+        const form=document.getElementById('chatForm');
+        const input=document.getElementById('chatInput');
+        const closeBtn=document.getElementById('chatClose');
+        let greeted=false;
+
+        const KB=[
+          {k:['leistung','service','angebot','was bietet','was macht','bereich','übernehm'],
+           a:'Wir übernehmen alles rund um eure Sichtbarkeit – aus einer Hand:<br>• <b>Social Media</b> (Mitgliedschaft, laufend betreut)<br>• <b>Video-Produktion</b> (Reels, Imagefilm, Spots)<br>• <b>Werbeanzeigen</b> (Google &amp; Meta Ads)<br>• <b>Grafikdesign</b><br>• <b>Marketing-Beratung</b><br>Was interessiert dich am meisten?'},
+          {k:['preis','kosten','budget','teuer','was kostet','tarif','paket'],
+           a:'Die Preise hängen vom Umfang ab. Unsere <b>Social-Media-Mitgliedschaft</b> gibt es in festen Paketen mit planbaren Monatskosten – Details &amp; Preistabelle findest du hier: <a href="social-media-mitgliedschaft.html">Mitgliedschaft &amp; Preise ansehen →</a>. Für Einzelprojekte machen wir dir ein individuelles Angebot im <a href="#kontakt">kostenlosen Erstgespräch</a>.'},
+          {k:['mitglied','abo','monatlich','retainer','betreuung','laufend'],
+           a:'Die <b>Social-Media-Mitgliedschaft</b> ist ein festes Team für euren kompletten Auftritt: Strategie, Foto/Video/Reels, Publishing, Reporting – Monat für Monat, ohne eigene Marketing-Abteilung. <a href="social-media-mitgliedschaft.html">Hier gibt es die ganze Seite mit Preisen →</a>'},
+          {k:['video','film','reel','dreh','produktion','spot','imagefilm'],
+           a:'Wir produzieren <b>Reels, Imagefilme, Werbespots, Interviews &amp; Social Cuts</b> – von der Idee bis zum Schnitt, auch als Einzelproduktion. Eigenes Fotostudio in Berlin inklusive. Magst du ein <a href="#kontakt">Erstgespräch</a>?'},
+          {k:['ads','werbung','google','meta','facebook','instagram ads','performance','leads'],
+           a:'Mit <b>Google &amp; Meta Ads</b> bringen wir eure Inhalte gezielt zu den richtigen Leuten – für mehr Reichweite und planbare Anfragen. Wir produzieren Creatives und schalten die Kampagnen aus einer Hand.'},
+          {k:['design','grafik','logo','flyer','broschüre','brand','marke'],
+           a:'Im <b>Grafikdesign</b> machen wir Logos, Brand Assets, Kampagnenmotive, Flyer, Broschüren &amp; Mockups – ein Auftritt mit Wirkung, online wie offline.'},
+          {k:['kontakt','termin','gespräch','anruf','erreich','melden','beratung','erstgespräch'],
+           a:'Am schnellsten geht’s per <a href="#kontakt">kostenlosem Erstgespräch</a> (kurzes Formular) oder direkt über den grünen WhatsApp-Button. Du kannst uns auch mailen: <a href="mailto:info@obscura-berlin.de">info@obscura-berlin.de</a>.'},
+          {k:['studio','berlin','standort','office','adresse','wo seid'],
+           a:'Wir sitzen mitten in Berlin: <b>Flemingstr. 12, 10557 Berlin</b> – mit eigenem Office &amp; Fotostudio.'},
+          {k:['check','analyse','score','test'],
+           a:'Unser kostenloser <a href="#check">Social-Media-Check</a> gibt euch in 60 Sekunden eine ehrliche Einschätzung eures Auftritts – als erste Agentur überhaupt. Probier ihn gern aus!'},
+          {k:['influencer','creator'],
+           a:'Wir arbeiten mit einem Netzwerk aus Creatorn und produzieren Content, der wie Empfehlung wirkt. Erzähl uns im <a href="#kontakt">Erstgespräch</a>, was du vorhast.'},
+          {k:['job','bewerb','kamera','showreel','arbeiten bei'],
+           a:'Kameraleute &amp; Videografen können sich jederzeit initiativ bewerben – schick uns dein Showreel an <a href="mailto:info@obscura-berlin.de?subject=Initiativbewerbung">info@obscura-berlin.de</a>.'},
+          {k:['danke','super','top','cool','perfekt'],
+           a:'Sehr gerne! 🙌 Wenn du magst, sichern wir dir direkt ein <a href="#kontakt">kostenloses Erstgespräch</a>.'},
+          {k:['hallo','hi','hey','moin','servus','guten'],
+           a:'Hi! 👋 Ich beantworte dir Fragen zu unseren Leistungen, Projekten und Preisen. Was möchtest du wissen?'}
+        ];
+        const FALLBACK='Gute Frage! Das klären wir am besten persönlich. Schreib uns direkt über den <b>WhatsApp-Button</b> oder sichere dir ein <a href="#kontakt">kostenloses Erstgespräch</a>. Ich kann dir auch etwas zu <b>Leistungen</b>, <b>Preisen</b>, <b>Mitgliedschaft</b> oder <b>Video/Ads</b> sagen.';
+        const QUICK=['Was bietet ihr an?','Was kostet das?','Social-Media-Mitgliedschaft','Termin vereinbaren'];
+
+        function scroll(){body.scrollTop=body.scrollHeight;}
+        function add(text,who){
+          const d=document.createElement('div');d.className='chat-msg '+who;d.innerHTML=text;
+          body.appendChild(d);scroll();return d;
+        }
+        function match(q){
+          const s=q.toLowerCase();
+          let best=null,score=0;
+          for(const item of KB){
+            let sc=0;for(const kw of item.k){if(s.includes(kw))sc+=kw.length;}
+            if(sc>score){score=sc;best=item;}
+          }
+          return score>0?best.a:FALLBACK;
+        }
+        function botReply(q){
+          const t=document.createElement('div');t.className='chat-typing';
+          t.innerHTML='<i></i><i></i><i></i>';body.appendChild(t);scroll();
+          setTimeout(()=>{t.remove();add(match(q),'bot');},520+Math.random()*350);
+        }
+        function renderChips(){
+          chips.innerHTML='';
+          QUICK.forEach(q=>{const b=document.createElement('button');b.type='button';b.className='chat-chip';b.textContent=q;
+            b.addEventListener('click',()=>{add(q,'user');botReply(q);});chips.appendChild(b);});
+        }
+        function greet(){
+          if(greeted)return;greeted=true;
+          add('Hi! 👋 Ich bin der Obscura-Assistent. Frag mich alles zu <b>Leistungen</b>, <b>Projekten</b>, <b>Preisen</b> oder der <b>Social-Media-Mitgliedschaft</b>.','bot');
+          renderChips();
+        }
+        function toggle(open){
+          panel.classList.toggle('open',open);
+          openBtn.setAttribute('aria-expanded',open?'true':'false');
+          if(open){greet();setTimeout(()=>input.focus(),320);}
+        }
+        openBtn.addEventListener('click',()=>toggle(!panel.classList.contains('open')));
+        closeBtn.addEventListener('click',()=>toggle(false));
+        form.addEventListener('submit',e=>{
+          e.preventDefault();const q=input.value.trim();if(!q)return;
+          add(q.replace(/</g,'&lt;'),'user');input.value='';botReply(q);
+        });
+        // WhatsApp-Nummer noch Platzhalter? -> Hinweis im Konsolen-Log
+        const wa=document.getElementById('waLink');
+        if(wa&&wa.href.includes('XXXX')){/* echte Nummer bei Livegang eintragen */}
       })();
 
       /* ===== Cookie-Banner ===== */
