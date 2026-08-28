@@ -289,11 +289,6 @@
     .hero-actions .btn-light{background:rgba(255,255,255,.72);backdrop-filter:blur(8px);border-color:rgba(22,35,20,.12)}
     .hero-actions .btn-light:hover{background:#fff}
     /* Typewriter im Hero */
-    .tw{color:var(--lime-deep)}
-    .tw-caret{display:inline-block;width:.06em;min-width:4px;height:.86em;margin-left:.06em;
-      background:var(--lime-deep);vertical-align:-.06em;border-radius:2px;animation:twBlink 1s steps(1) infinite}
-    @keyframes twBlink{50%{opacity:0}}
-    @media(prefers-reduced-motion:reduce){.tw-caret{animation:none}}
 
     .hero-stage{
       position:relative;
@@ -1653,7 +1648,7 @@
           <h1 class="title-xl">
             <span>Mehr Sichtbarkeit.</span>
             <span>Mehr Anfragen.</span>
-            <span class="quiet">Mehr <span class="tw" id="heroTw">Umsatz.</span><span class="tw-caret" id="heroCaret" aria-hidden="true"></span></span>
+            <span class="quiet">Mehr Umsatz.</span>
           </h1>
           <p class="hero-sub"><strong>Social Media</strong>, <strong>Content</strong> &amp; <strong>Performance</strong> aus einer Hand – für Unternehmen, die <strong>planbar sichtbar</strong> werden und <strong>Anfragen gewinnen</strong> wollen.</p>
           <div class="hero-actions">
@@ -2679,27 +2674,6 @@
           breakdown.scrollIntoView({behavior:'smooth',block:'center'});
         });
         show(0);
-      })();
-
-      /* ===== Hero-Typewriter ===== */
-      (function(){
-        const el=document.getElementById('heroTw');
-        if(!el) return;
-        const reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches;
-        const words=['Umsatz.','Wachstum.','Anfragen.','Reichweite.'];
-        if(reduce){el.textContent=words[0];return;}
-        let wi=0,ci=words[0].length,dir=-1; // startet voll ("Umsatz."), löscht dann
-        el.textContent=words[0];
-        function tick(){
-          const w=words[wi];
-          ci+=dir;
-          el.textContent=w.slice(0,ci);
-          let delay=dir>0?95:55;
-          if(dir<0&&ci<=0){dir=1;wi=(wi+1)%words.length;delay=260;}
-          else if(dir>0&&ci>=w.length){dir=-1;delay=1500;}
-          setTimeout(tick,delay);
-        }
-        setTimeout(tick,1600);
       })();
 
       /* ===== KI-Chat-Assistent (regelbasiert, ohne Backend) ===== */
