@@ -1390,6 +1390,86 @@
       *{scroll-behavior:auto!important;transition:none!important;animation:none!important}
       .js .offer-step:not(.is-active) .offer-card{opacity:1;transform:none}
     }
+    /* ===== SOCIAL-MEDIA-CHECK (Lead-Magnet mit Daten-Gate) ===== */
+    .smcheck{background:var(--paper-2);border-top:1px solid var(--line)}
+    .smc-badge{display:inline-flex;align-items:center;gap:8px;padding:7px 13px;border-radius:999px;background:var(--forest);color:#fff;font-size:.72rem;font-weight:720;letter-spacing:.02em;margin-bottom:16px}
+    .smc-badge i{width:7px;height:7px;border-radius:50%;background:var(--lime)}
+    .smc-shell{margin-top:clamp(28px,4vw,44px);background:#fff;border:1px solid var(--line);border-radius:26px;padding:clamp(22px,3vw,40px);box-shadow:var(--shadow)}
+    .smc-progress{height:6px;border-radius:999px;background:var(--paper-3);overflow:hidden;margin-bottom:26px}
+    .smc-progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--lime-deep),var(--lime));transition:width .4s ease}
+    .smc-q{display:none}
+    .smc-q.active{display:block;animation:svcRise .5s cubic-bezier(.2,.75,.2,1) both}
+    .smc-q h3{font-size:clamp(1.5rem,2.6vw,2.15rem);letter-spacing:-.03em;line-height:1.04}
+    .smc-q p{color:var(--muted);margin:8px 0 20px;font-size:.98rem}
+    .smc-opts{display:grid;gap:10px}
+    .smc-opt{text-align:left;padding:15px 18px;border-radius:15px;border:1px solid var(--line);background:var(--paper);
+      font-size:1rem;font-weight:600;color:var(--ink);cursor:pointer;transition:border-color .25s,background .25s,transform .25s;
+      display:flex;align-items:center;gap:12px}
+    .smc-opt:before{content:"";width:20px;height:20px;border-radius:50%;border:2px solid var(--line-2);flex:0 0 auto;transition:.25s}
+    .smc-opt:hover{border-color:var(--line-2)}
+    .smc-opt.sel{border-color:var(--forest);background:var(--paper-2)}
+    .smc-opt.sel:before{border-color:var(--lime-deep);background:radial-gradient(circle,var(--lime-deep) 42%,transparent 46%)}
+    .smc-nav{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-top:24px}
+    .smc-step-label{font-size:.8rem;color:var(--muted-2);font-weight:600}
+    /* Ergebnis + Gate */
+    .smc-result{display:none}
+    .smc-result.show{display:block;animation:svcRise .55s cubic-bezier(.2,.75,.2,1) both}
+    .smc-score{display:flex;align-items:center;gap:22px;flex-wrap:wrap;margin-bottom:26px}
+    .smc-ring{--p:0;width:132px;height:132px;border-radius:50%;flex:0 0 auto;display:grid;place-items:center;
+      background:conic-gradient(var(--lime-deep) calc(var(--p)*1%),var(--paper-3) 0);transition:--p 1s ease}
+    .smc-ring span{width:104px;height:104px;border-radius:50%;background:#fff;display:grid;place-items:center;
+      font-family:inherit;font-weight:800;font-size:2rem;letter-spacing:-.03em;color:var(--ink)}
+    .smc-score-copy strong{display:block;font-size:1.35rem;letter-spacing:-.02em}
+    .smc-score-copy span{color:var(--muted);font-size:.95rem}
+    .smc-breakdown{position:relative;display:grid;gap:10px}
+    .smc-item{display:flex;gap:13px;align-items:flex-start;padding:15px 17px;border-radius:15px;border:1px solid var(--line);background:var(--paper)}
+    .smc-item .ic{width:30px;height:30px;border-radius:9px;flex:0 0 auto;display:grid;place-items:center;background:var(--mint);color:var(--forest);font-weight:800;font-size:.85rem}
+    .smc-item b{font-size:.98rem}
+    .smc-item p{margin:3px 0 0;color:var(--muted);font-size:.9rem;line-height:1.5}
+    /* Sperre: Auswertung erst nach Kontaktdaten */
+    .smc-breakdown.locked{filter:blur(7px);pointer-events:none;user-select:none;opacity:.55}
+    .smc-lockwrap{position:relative;margin-top:20px}
+    .smc-gate{margin-top:22px;border-radius:20px;border:1px solid var(--line-2);background:linear-gradient(160deg,var(--paper-2),#fff);padding:clamp(20px,2.6vw,30px)}
+    .smc-gate .lockrow{display:flex;align-items:center;gap:10px;color:var(--lime-deep);font-weight:720;font-size:.82rem;letter-spacing:.02em;margin-bottom:10px}
+    .smc-gate h3{font-size:clamp(1.4rem,2.3vw,1.9rem);letter-spacing:-.03em}
+    .smc-gate>p{color:var(--muted);margin:8px 0 20px;max-width:52ch}
+    .smc-fields{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .smc-fields label{display:flex;flex-direction:column;gap:6px;font-size:.82rem;font-weight:600;color:var(--muted)}
+    .smc-fields input{padding:13px 15px;border-radius:12px;border:1px solid var(--line);background:#fff;font:inherit;font-size:.95rem;color:var(--ink)}
+    .smc-fields input:focus{outline:none;border-color:var(--forest)}
+    .smc-gate .btn{margin-top:16px}
+    .smc-consent{margin-top:12px;font-size:.76rem;color:var(--muted-2);line-height:1.5}
+    .smc-consent a{color:var(--lime-deep);text-decoration:underline}
+    @media(max-width:640px){.smc-fields{grid-template-columns:1fr}.smc-score{gap:16px}}
+
+    /* ===== COOKIE-BANNER ===== */
+    .cookie-bar{position:fixed;left:clamp(12px,3vw,26px);right:clamp(12px,3vw,26px);bottom:clamp(12px,3vw,26px);z-index:120;
+      max-width:720px;margin-inline:auto;background:var(--forest);color:#fff;border:1px solid rgba(255,255,255,.1);
+      border-radius:20px;padding:20px 22px;box-shadow:0 30px 70px -30px rgba(0,0,0,.6);
+      display:flex;gap:18px;align-items:center;flex-wrap:wrap;
+      transform:translateY(140%);transition:transform .5s cubic-bezier(.2,.75,.2,1)}
+    .cookie-bar.show{transform:none}
+    .cookie-bar p{margin:0;font-size:.86rem;line-height:1.5;color:rgba(255,255,255,.82);flex:1 1 300px}
+    .cookie-bar p a{color:var(--lime);text-decoration:underline}
+    .cookie-actions{display:flex;gap:10px;flex:0 0 auto}
+    .cookie-bar .btn{padding:11px 18px;font-size:.85rem}
+    .btn-cookie-ok{background:var(--lime);color:var(--ink)}
+    .btn-cookie-no{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.18)}
+    @media(max-width:560px){.cookie-actions{flex:1 1 100%}.cookie-bar .btn{flex:1}}
+
+    /* ===== LEGAL-MODAL ===== */
+    .legal-modal{position:fixed;inset:0;z-index:130;display:none;align-items:center;justify-content:center;padding:20px;
+      background:rgba(12,18,10,.55);backdrop-filter:blur(4px)}
+    .legal-modal.open{display:flex}
+    .legal-card{background:#fff;border-radius:24px;max-width:680px;width:100%;max-height:86vh;overflow:auto;padding:clamp(24px,3vw,40px);position:relative;box-shadow:var(--shadow-lg)}
+    .legal-card h3{font-size:clamp(1.6rem,3vw,2.2rem);letter-spacing:-.03em;margin-bottom:6px}
+    .legal-card h4{margin:20px 0 6px;font-size:1rem}
+    .legal-card p,.legal-card li{color:var(--muted);font-size:.92rem;line-height:1.6}
+    .legal-card ul{margin:6px 0 0 18px}
+    .legal-close{position:absolute;top:16px;right:16px;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:#fff;font-size:1.4rem;line-height:1;cursor:pointer;color:var(--ink)}
+    .legal-note{margin-top:18px;padding:12px 14px;border-radius:12px;background:var(--paper-2);color:var(--muted-2);font-size:.8rem}
+    .footer-bottom .lg-link{background:none;border:0;padding:0;color:inherit;font:inherit;cursor:pointer;text-decoration:none}
+    .footer-bottom .lg-link:hover{color:var(--ink)}
   </style>
 
   <header class="site-header">
@@ -1800,6 +1880,102 @@
       </div>
     </section>
 
+    <section class="section smcheck" id="check">
+      <div class="wrap">
+        <span class="smc-badge"><i></i> Exklusiv · Neu</span>
+        <h2 class="title-lg">Der Obscura<br>Social-Media-Check.</h2>
+        <p class="lead">Als <strong>erste Agentur</strong> geben wir Unternehmen eine ehrliche Einschätzung ihres Auftritts – <strong>in 60 Sekunden</strong>. Wir freuen uns, euch das bieten zu können.</p>
+
+        <div class="smc-shell">
+          <!-- Fragen -->
+          <div id="smcQuizArea">
+            <div class="smc-progress"><i id="smcBar"></i></div>
+            <div class="smc-q active" data-cat="Regelmäßigkeit">
+              <h3>Wie regelmäßig postet ihr aktuell?</h3>
+              <p>Kontinuität ist die Basis für Reichweite.</p>
+              <div class="smc-opts">
+                <button class="smc-opt" type="button" data-v="20">Mehrmals pro Woche</button>
+                <button class="smc-opt" type="button" data-v="12">Etwa 1× pro Woche</button>
+                <button class="smc-opt" type="button" data-v="4">Unregelmäßig</button>
+                <button class="smc-opt" type="button" data-v="0">Gar nicht</button>
+              </div>
+            </div>
+            <div class="smc-q" data-cat="Strategie">
+              <h3>Habt ihr eine Content-Strategie &amp; einen Redaktionsplan?</h3>
+              <p>Plan schlägt Zufall – jedes Mal.</p>
+              <div class="smc-opts">
+                <button class="smc-opt" type="button" data-v="20">Ja, klar strukturiert</button>
+                <button class="smc-opt" type="button" data-v="10">Grobe Idee, nichts Festes</button>
+                <button class="smc-opt" type="button" data-v="0">Nein</button>
+              </div>
+            </div>
+            <div class="smc-q" data-cat="Video &amp; Reels">
+              <h3>Produziert ihr Video-Content &amp; Reels?</h3>
+              <p>Bewegtbild bekommt heute die meiste Reichweite.</p>
+              <div class="smc-opts">
+                <button class="smc-opt" type="button" data-v="20">Ja, regelmäßig</button>
+                <button class="smc-opt" type="button" data-v="10">Ab und zu</button>
+                <button class="smc-opt" type="button" data-v="0">Nein, nur Bilder/Text</button>
+              </div>
+            </div>
+            <div class="smc-q" data-cat="Werbeanzeigen">
+              <h3>Schaltet ihr bezahlte Ads (Meta, Google &amp; Co.)?</h3>
+              <p>Guter Content + gezielte Ads = planbare Anfragen.</p>
+              <div class="smc-opts">
+                <button class="smc-opt" type="button" data-v="20">Ja, laufend</button>
+                <button class="smc-opt" type="button" data-v="10">Selten / getestet</button>
+                <button class="smc-opt" type="button" data-v="0">Nein</button>
+              </div>
+            </div>
+            <div class="smc-q" data-cat="Auswertung">
+              <h3>Kennt ihr eure Zahlen &amp; wertet sie aus?</h3>
+              <p>Was man misst, kann man verbessern.</p>
+              <div class="smc-opts">
+                <button class="smc-opt" type="button" data-v="20">Ja, monatliches Reporting</button>
+                <button class="smc-opt" type="button" data-v="10">Ab und zu ein Blick</button>
+                <button class="smc-opt" type="button" data-v="0">Nein</button>
+              </div>
+            </div>
+            <div class="smc-nav">
+              <span class="smc-step-label" id="smcStep">Frage 1 von 5</span>
+              <button class="btn btn-primary" type="button" id="smcNext" disabled>Weiter <span class="arrow">→</span></button>
+            </div>
+          </div>
+
+          <!-- Ergebnis + Gate -->
+          <div class="smc-result" id="smcResult">
+            <div class="smc-score">
+              <div class="smc-ring" id="smcRing"><span id="smcScoreNum">0</span></div>
+              <div class="smc-score-copy">
+                <strong id="smcScoreTitle">Dein Social-Media-Score</strong>
+                <span id="smcScoreSub">Deine detaillierte Auswertung ist fertig.</span>
+              </div>
+            </div>
+
+            <div class="smc-lockwrap">
+              <div class="smc-breakdown locked" id="smcBreakdown"></div>
+            </div>
+
+            <div class="smc-gate" id="smcGate">
+              <div class="lockrow"><span aria-hidden="true">🔒</span> Vollständige Auswertung freischalten</div>
+              <h3>Deine persönliche Analyse – konkret &amp; kostenlos</h3>
+              <p>Gib kurz deine Kontaktdaten ein und wir schalten die komplette Auswertung mit konkreten Empfehlungen für dich frei.</p>
+              <form id="smcForm">
+                <div class="smc-fields">
+                  <label>Name<input name="name" autocomplete="name" placeholder="Vor- und Nachname" required></label>
+                  <label>Unternehmen<input name="company" autocomplete="organization" placeholder="Unternehmen" required></label>
+                  <label>E-Mail<input name="email" type="email" autocomplete="email" placeholder="name@unternehmen.de" required></label>
+                  <label>Telefon<input name="phone" type="tel" autocomplete="tel" placeholder="+49 …"></label>
+                </div>
+                <button class="btn btn-primary" type="submit">Auswertung freischalten <span class="arrow">→</span></button>
+                <p class="smc-consent">Mit dem Absenden stimmst du zu, dass wir dich zur Auswertung kontaktieren dürfen. Es gelten unsere <button type="button" class="lg-link" data-legal="datenschutz">Datenschutzhinweise</button>.</p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="section contact" id="kontakt">
       <div class="wrap">
         <p class="eyebrow">Projekt anfragen</p>
@@ -1896,7 +2072,7 @@
         <div class="footer-col"><strong>Leistungen</strong><a href="#leistungen">Übersicht</a><a href="#mitgliedschaft">Social Media Mitgliedschaft</a><a href="#arbeit">Arbeit</a><a href="#team">Team &amp; Standort</a><a href="#kontakt">Projekt anfragen</a></div>
         <div class="footer-col"><strong>Kontakt</strong><span>OBSCURA DIGITAL MARKETING GMBH</span><span>Flemingstr. 12, 10557 Berlin</span><a href="mailto:info@obscura-berlin.de">info@obscura-berlin.de</a></div>
       </div>
-      <div class="footer-bottom"><span>© OBSCURA Berlin</span><span>Impressum · Datenschutz · Cookies</span></div>
+      <div class="footer-bottom"><span>© OBSCURA Berlin</span><span><button type="button" class="lg-link" data-legal="impressum">Impressum</button> · <button type="button" class="lg-link" data-legal="datenschutz">Datenschutz</button> · <button type="button" class="lg-link" data-legal="agb">AGB</button> · <button type="button" class="lg-link" id="cookieReopen">Cookies</button></span></div>
     </div>
   </footer>
 
@@ -1911,6 +2087,23 @@
         <a class="btn btn-primary" href="#kontakt" id="modalCta">Beratung anfragen <span class="arrow">→</span></a>
         <button class="btn btn-light modal-dismiss" type="button">Schließen</button>
       </div>
+    </div>
+  </div>
+
+  <!-- Cookie-Banner -->
+  <div class="cookie-bar" id="cookieBar" role="dialog" aria-label="Cookie-Hinweis">
+    <p>Wir verwenden Cookies, um die Website bereitzustellen und zu verbessern. Mehr in unseren <button type="button" class="lg-link" data-legal="datenschutz" style="color:var(--lime);text-decoration:underline;background:none;border:0;cursor:pointer;font:inherit">Datenschutzhinweisen</button>.</p>
+    <div class="cookie-actions">
+      <button class="btn btn-cookie-no" type="button" id="cookieNo">Nur notwendige</button>
+      <button class="btn btn-cookie-ok" type="button" id="cookieOk">Alle akzeptieren</button>
+    </div>
+  </div>
+
+  <!-- Legal-Modal (Impressum / Datenschutz / AGB) -->
+  <div class="legal-modal" id="legalModal" role="dialog" aria-modal="true" aria-labelledby="legalTitle">
+    <div class="legal-card">
+      <button class="legal-close" type="button" aria-label="Schließen">×</button>
+      <div id="legalContent"></div>
     </div>
   </div>
 
@@ -2136,8 +2329,98 @@
       });
       renderQuiz();
 
+      /* ===== Social-Media-Check ===== */
+      (function(){
+        const area=document.getElementById('smcQuizArea');
+        if(!area) return;
+        const qs=[...area.querySelectorAll('.smc-q')];
+        const bar=document.getElementById('smcBar');
+        const stepLbl=document.getElementById('smcStep');
+        const nextBtn=document.getElementById('smcNext');
+        const result=document.getElementById('smcResult');
+        const ring=document.getElementById('smcRing');
+        const scoreNum=document.getElementById('smcScoreNum');
+        const scoreSub=document.getElementById('smcScoreSub');
+        const breakdown=document.getElementById('smcBreakdown');
+        const gate=document.getElementById('smcGate');
+        const form=document.getElementById('smcForm');
+        let step=0; const answers=[];
+        function tip(cat,v){
+          const high={'Regelmäßigkeit':'Starke Basis – jetzt auf Qualität & Formate optimieren.',
+            'Strategie':'Top – eine klare Strategie zahlt sich langfristig aus.',
+            'Video & Reels':'Sehr gut – Bewegtbild ist euer Reichweiten-Hebel.',
+            'Werbeanzeigen':'Stark – mit besseren Creatives holt ihr noch mehr raus.',
+            'Auswertung':'Perfekt – datenbasiert lässt sich gezielt skalieren.'};
+          const mid={'Regelmäßigkeit':'Ausbaufähig – 3–5 Beiträge pro Woche sorgen für Kontinuität.',
+            'Strategie':'Ansatz da – ein fester Redaktionsplan bringt Struktur & Ruhe.',
+            'Video & Reels':'Luft nach oben – regelmäßige Reels pushen die Reichweite deutlich.',
+            'Werbeanzeigen':'Potenzial – mit laufenden, sauber getrackten Ads werden Anfragen planbar.',
+            'Auswertung':'Fast – monatliches Reporting macht Fortschritt sichtbar.'};
+          const low={'Regelmäßigkeit':'Größter Hebel – ein fester Posting-Rhythmus ist die Basis für alles.',
+            'Strategie':'Hier liegt Potenzial – mit Strategie & Plan wird Content planbar.',
+            'Video & Reels':'Großer Hebel – Video/Reels sind aktuell euer stärkstes Reichweiten-Werkzeug.',
+            'Werbeanzeigen':'Chance – gezielte Ads bringen sofort mehr Sichtbarkeit & Anfragen.',
+            'Auswertung':'Wichtig – ohne Zahlen bleibt Optimierung Rätselraten.'};
+          return v>=20?high[cat]:(v>=10?mid[cat]:low[cat]);
+        }
+        function show(i){qs.forEach((q,k)=>q.classList.toggle('active',k===i));bar.style.width=((i+1)/qs.length*100)+'%';stepLbl.textContent='Frage '+(i+1)+' von '+qs.length;nextBtn.disabled=!answers[i];nextBtn.innerHTML=i===qs.length-1?'Ergebnis anzeigen <span class="arrow">→</span>':'Weiter <span class="arrow">→</span>';}
+        qs.forEach((q,i)=>{q.querySelectorAll('.smc-opt').forEach(o=>{o.addEventListener('click',()=>{q.querySelectorAll('.smc-opt').forEach(x=>x.classList.remove('sel'));o.classList.add('sel');answers[i]={v:+o.dataset.v,cat:q.dataset.cat};nextBtn.disabled=false;});});});
+        nextBtn.addEventListener('click',()=>{
+          if(step<qs.length-1){step++;show(step);return;}
+          // Ergebnis berechnen
+          const total=answers.reduce((s,a)=>s+(a?a.v:0),0); // 0..100
+          area.style.display='none';result.classList.add('show');
+          breakdown.innerHTML=answers.map((a,i)=>{
+            const cat=qs[i].dataset.cat;
+            return '<div class="smc-item"><span class="ic">'+(i+1)+'</span><div><b>'+cat+'</b><p>'+tip(cat,a?a.v:0)+'</p></div></div>';
+          }).join('');
+          ring.style.background='conic-gradient(var(--lime-deep) '+total+'%,var(--paper-3) 0)';
+          let n=0;const t=setInterval(()=>{n+=2;if(n>=total){n=total;clearInterval(t);}scoreNum.textContent=n;},14);
+          scoreSub.textContent = total>=75?'Starker Auftritt – mit Feinschliff geht noch mehr.':(total>=40?'Solide Basis mit klarem Potenzial nach oben.':'Viel ungenutztes Potenzial – hier ist der Hebel groß.');
+          result.scrollIntoView({behavior:'smooth',block:'start'});
+        });
+        // Gate: volle Auswertung erst nach Kontaktdaten
+        form.addEventListener('submit',e=>{
+          e.preventDefault();
+          if(!form.checkValidity()){form.reportValidity();return;}
+          breakdown.classList.remove('locked');
+          gate.innerHTML='<div class="lockrow" style="color:var(--lime-deep)"><span aria-hidden="true">✓</span> Freigeschaltet</div><h3>Danke – deine Auswertung ist freigeschaltet.</h3><p>Oben siehst du deine detaillierte Analyse. Wir melden uns zusätzlich persönlich mit konkreten nächsten Schritten.</p><a class="btn btn-primary" href="#kontakt">Direkt Strategiegespräch sichern <span class="arrow">→</span></a>';
+          breakdown.scrollIntoView({behavior:'smooth',block:'center'});
+        });
+        show(0);
+      })();
+
+      /* ===== Cookie-Banner ===== */
+      (function(){
+        const bar=document.getElementById('cookieBar');if(!bar)return;
+        let ok=true;try{ok=!localStorage.getItem('obscura_cookie');}catch(e){}
+        if(ok)setTimeout(()=>bar.classList.add('show'),900);
+        function set(v){try{localStorage.setItem('obscura_cookie',v);}catch(e){}bar.classList.remove('show');}
+        const okBtn=document.getElementById('cookieOk'),noBtn=document.getElementById('cookieNo'),re=document.getElementById('cookieReopen');
+        if(okBtn)okBtn.addEventListener('click',()=>set('all'));
+        if(noBtn)noBtn.addEventListener('click',()=>set('necessary'));
+        if(re)re.addEventListener('click',()=>bar.classList.add('show'));
+      })();
+
+      /* ===== Legal-Modal (Impressum / Datenschutz / AGB) ===== */
+      (function(){
+        const modal=document.getElementById('legalModal');if(!modal)return;
+        const content=document.getElementById('legalContent');
+        const data={
+          impressum:'<h3>Impressum</h3><p>Angaben gemäß § 5 TMG</p><h4>Anbieter</h4><p>OBSCURA DIGITAL MARKETING GMBH<br>Flemingstr. 12<br>10557 Berlin</p><h4>Kontakt</h4><p>E-Mail: <a href="mailto:info@obscura-berlin.de" style="color:var(--lime-deep)">info@obscura-berlin.de</a></p><div class="legal-note">Bitte vor dem Livegang um Handelsregister-Nr., Geschäftsführung, USt-IdNr. und Verantwortlichen nach § 18 MStV ergänzen.</div>',
+          datenschutz:'<h3>Datenschutz</h3><p>Wir nehmen den Schutz eurer Daten ernst. Eure Angaben (z. B. aus Formularen und dem Social-Media-Check) verwenden wir ausschließlich zur Bearbeitung eurer Anfrage und Kontaktaufnahme.</p><h4>Verantwortlich</h4><p>OBSCURA DIGITAL MARKETING GMBH, Flemingstr. 12, 10557 Berlin</p><h4>Eure Rechte</h4><ul><li>Auskunft, Berichtigung und Löschung eurer Daten</li><li>Einschränkung der Verarbeitung &amp; Widerspruch</li><li>Widerruf erteilter Einwilligungen</li></ul><h4>Cookies</h4><p>Wir setzen technisch notwendige Cookies ein; weitere nur mit eurer Einwilligung über den Cookie-Hinweis.</p><div class="legal-note">Dies ist eine Kurzfassung. Vor dem Livegang bitte eine vollständige, rechtlich geprüfte Datenschutzerklärung einsetzen.</div>',
+          agb:'<h3>Allgemeine Geschäftsbedingungen</h3><h4>1. Geltungsbereich</h4><p>Diese AGB gelten für alle Leistungen der OBSCURA DIGITAL MARKETING GMBH (Social Media, Video, Ads, Design, Beratung, Influencer-Marketing).</p><h4>2. Leistungen</h4><p>Umfang und Konditionen ergeben sich aus dem jeweiligen Angebot bzw. der Mitgliedschaft.</p><h4>3. Laufzeit &amp; Kündigung</h4><p>Wird individuell im Angebot geregelt.</p><h4>4. Vergütung</h4><p>Es gelten die im Angebot vereinbarten Preise.</p><div class="legal-note">Dies ist ein Rahmen. Vor dem Livegang bitte finale, rechtlich geprüfte AGB einsetzen.</div>'
+        };
+        function open(key){content.innerHTML=data[key]||'';modal.classList.add('open');document.body.style.overflow='hidden';}
+        function close(){modal.classList.remove('open');document.body.style.overflow='';}
+        document.querySelectorAll('[data-legal]').forEach(b=>b.addEventListener('click',()=>open(b.dataset.legal)));
+        modal.querySelector('.legal-close').addEventListener('click',close);
+        modal.addEventListener('click',e=>{if(e.target===modal)close();});
+        window.__legalClose=close;
+      })();
+
       document.addEventListener('keydown',e=>{
-        if(e.key==='Escape'){closeMenu();closeModal();}
+        if(e.key==='Escape'){closeMenu();closeModal();if(window.__legalClose)window.__legalClose();}
       });
     })();
   </script>
