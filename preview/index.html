@@ -673,6 +673,16 @@
     .membership-card:before{content:"";position:absolute;right:-12%;top:-34%;width:440px;height:440px;border-radius:50%;
       background:radial-gradient(circle,rgba(173,255,47,.22),transparent 62%);pointer-events:none}
     .membership-card > *{position:relative;z-index:1}
+    /* Lime-Leiste oben: sofort klar erkennbar als monatliche Betreuung + Abgrenzung zu den Service-Karten */
+    .membership-card{padding-top:calc(clamp(28px,5vw,60px) + 40px)}
+    .mc-ribbon{position:absolute;top:0;left:0;right:0;z-index:2;grid-column:1/-1;
+      display:flex;align-items:center;justify-content:center;gap:9px;height:44px;
+      background:linear-gradient(90deg,var(--lime-strong),var(--lime));color:var(--forest);
+      font-size:.76rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;text-align:center;padding:0 16px}
+    .mc-rec{display:inline-block;font-size:1.05rem;font-weight:900;animation:mcSpin 6s linear infinite}
+    @keyframes mcSpin{to{transform:rotate(360deg)}}
+    @media(prefers-reduced-motion:reduce){.mc-rec{animation:none}}
+    @media(max-width:600px){.mc-ribbon{font-size:.68rem;height:40px;letter-spacing:.04em}.membership-card{padding-top:calc(26px + 30px)}}
     .membership-card .eyebrow{color:var(--lime)}
     .membership-card .title-lg{color:#fff}
     .mc-badge{display:inline-flex;align-items:center;gap:7px;background:var(--lime);color:var(--forest);
@@ -1942,9 +1952,9 @@
     <section class="section membership" id="mitgliedschaft">
       <div class="wrap">
         <div class="membership-card">
+          <div class="mc-ribbon"><span class="mc-rec" aria-hidden="true">↻</span> Monatliche Rundum-Betreuung · Monat für Monat</div>
           <div>
-            <span class="mc-badge">★ Unser Herzstück</span>
-            <p class="eyebrow">Social Media Mitgliedschaft</p>
+            <p class="eyebrow">Social Media Mitgliedschaft · Unser Herzstück</p>
             <h2 class="title-lg">Mehr Reichweite. Mehr Anfragen. Weniger Aufwand.</h2>
             <p class="mc-lead">Wir übernehmen euren <strong>kompletten Social-Media-Auftritt</strong> – als <strong>festes Team</strong> zu <strong>planbaren Monatskosten</strong>, ohne eigene Marketing-Abteilung. Content, der Monat für Monat läuft.</p>
             <div class="hero-actions">
