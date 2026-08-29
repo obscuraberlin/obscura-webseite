@@ -992,42 +992,38 @@
       grid-template-columns:repeat(3,minmax(0,1fr));
       gap:12px;
     }
-    /* Bildsprache: Foto-Kacheln mit Overlay-Text (wie Projekt-/Stage-Karten) */
+    /* Saubere Karten (ohne Foto) – nummeriert, gruener Aktiv-/Feature-Zustand */
     .reason-card{
-      position:relative;overflow:hidden;isolation:isolate;
-      min-height:230px;border-radius:20px;
-      display:flex;flex-direction:column;justify-content:flex-end;
-      padding:20px;color:#fff;
-      box-shadow:0 22px 48px -34px rgba(11,22,9,.55);
-      transition:transform .4s cubic-bezier(.2,.75,.2,1),box-shadow .4s ease,opacity .55s ease;
+      position:relative;
+      min-height:150px;padding:20px;border-radius:18px;
+      border:1px solid #dfe6d8;background:#fff;
+      box-shadow:0 14px 32px -29px rgba(17,29,14,.24);
+      display:flex;flex-direction:column;
+      transition:transform .36s cubic-bezier(.2,.75,.2,1),box-shadow .36s ease,border-color .36s ease,background .36s ease,opacity .55s ease;
     }
     .reason-card:after{display:none}
-    .reason-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;
-      transition:transform .6s cubic-bezier(.2,.75,.2,1)}
-    .reason-card:before{content:"";position:absolute;inset:0;z-index:-1;
-      background:linear-gradient(178deg,rgba(9,15,8,.12) 12%,rgba(9,15,8,.5) 55%,rgba(9,15,8,.88) 100%)}
-    .reason-card:hover{transform:translateY(-5px);box-shadow:0 34px 60px -34px rgba(11,22,9,.7)}
-    .reason-card:hover .reason-photo{transform:scale(1.06)}
-    .rc-tag{position:absolute;top:16px;left:16px;z-index:1;
-      display:inline-flex;align-items:center;background:rgba(13,20,11,.5);backdrop-filter:blur(4px);
-      border:1px solid rgba(180,242,58,.4);color:var(--lime);
-      font-size:.72rem;font-weight:800;letter-spacing:.04em;padding:5px 11px;border-radius:999px}
-    .rc-body strong{display:block;font-size:1.16rem;line-height:1.1;letter-spacing:-.022em;color:#fff}
-    .rc-body p{margin:8px 0 0;color:rgba(255,255,255,.78);font-size:.83rem;line-height:1.45}
-    /* Feature-Karte ueber volle Breite */
-    .reason-feature{grid-column:1 / -1;min-height:260px}
-    .reason-feature .rc-body{max-width:60%}
-    .reason-feature .rc-body strong{font-size:clamp(1.4rem,2.4vw,2rem);letter-spacing:-.03em}
-    .reason-feature .rc-body p{font-size:.9rem;max-width:52ch}
+    .reason-card .no{margin-bottom:auto;color:var(--lime-deep);font-size:.74rem;font-weight:800;letter-spacing:.03em}
+    .rc-body strong{display:block;margin-top:24px;font-size:1.12rem;line-height:1.1;letter-spacing:-.022em;color:var(--ink)}
+    .reason-card .no + .rc-body strong{margin-top:24px}
+    .rc-body p{margin:8px 0 0;color:var(--muted);font-size:.82rem;line-height:1.45}
+    .reason-card:hover{transform:translateY(-4px);border-color:rgba(180,242,58,.5);box-shadow:0 26px 48px -30px rgba(11,22,9,.4)}
+    /* Feature-Karte: volle Breite, dunkelgruen */
+    .reason-feature{grid-column:1 / -1;justify-content:center;min-height:auto;
+      background:var(--forest);border-color:rgba(180,242,58,.42);box-shadow:0 30px 54px -34px rgba(11,22,9,.55)}
+    .reason-feature .rc-tag{align-self:flex-start;margin-bottom:12px;color:var(--forest);
+      background:var(--lime);font-size:.72rem;font-weight:800;letter-spacing:.03em;padding:5px 12px;border-radius:999px}
+    .reason-feature .rc-body strong{margin-top:0;color:#fff;font-size:clamp(1.35rem,2.3vw,1.9rem);letter-spacing:-.03em}
+    .reason-feature .rc-body p{color:rgba(255,255,255,.7);font-size:.9rem;max-width:56ch}
+    .reason-feature:hover{transform:translateY(-4px)}
     /* Einblendung */
-    html.js .reason-card{opacity:0;transform:translateY(18px)}
+    html.js .reason-card{opacity:0;transform:translateY(16px)}
     html.js .reason-card.revealed{opacity:1;transform:none}
     .reason-grid .reason-card:nth-child(3){transition-delay:.06s}
     .reason-grid .reason-card:nth-child(4){transition-delay:.12s}
     .reason-grid .reason-card:nth-child(5){transition-delay:.06s}
     .reason-grid .reason-card:nth-child(6){transition-delay:.12s}
     .reason-grid .reason-card:nth-child(7){transition-delay:.18s}
-    @media(prefers-reduced-motion:reduce){html.js .reason-card{opacity:1;transform:none}.reason-photo{transition:none}}
+    @media(prefers-reduced-motion:reduce){html.js .reason-card{opacity:1;transform:none}}
 
     @media(max-width:900px){
       .media-head,.reasons-head{grid-template-columns:1fr;gap:16px}
@@ -1774,61 +1770,18 @@
 
         <div class="reason-grid" id="reasonGrid">
           <article class="reason-card reason-feature">
-            <img class="reason-photo" data-src=".visual-people .tile-photo" alt="" aria-hidden="true">
             <span class="rc-tag">Persönlich für euch</span>
             <div class="rc-body">
               <strong>Euer eigener Social-Media-Manager</strong>
               <p>Ihr bekommt eine feste Ansprechperson aus unserem Team – die euer Projekt kennt, plant und laufend betreut. Kein Ticket-System, kein Wechsel.</p>
             </div>
           </article>
-          <article class="reason-card">
-            <img class="reason-photo" data-src=".visual-product .tile-photo" alt="" aria-hidden="true">
-            <span class="rc-tag">01</span>
-            <div class="rc-body">
-              <strong>Alles aus einer Hand</strong>
-              <p>Strategie, Content, Ads, Design &amp; Produktion.</p>
-            </div>
-          </article>
-          <article class="reason-card">
-            <img class="reason-photo" data-src=".visual-bts .tile-photo" alt="" aria-hidden="true">
-            <span class="rc-tag">02</span>
-            <div class="rc-body">
-              <strong>Über 10 Jahre am Markt</strong>
-              <p>Erfahrung, die in der Umsetzung hilft.</p>
-            </div>
-          </article>
-          <article class="reason-card">
-            <img class="reason-photo" data-src=".visual-summer .tile-photo" alt="" aria-hidden="true">
-            <span class="rc-tag">03</span>
-            <div class="rc-body">
-              <strong>Großes Office in Berlin</strong>
-              <p>Zentral, persönlich und direkt erreichbar.</p>
-            </div>
-          </article>
-          <article class="reason-card">
-            <img class="reason-photo" data-src=".visual-auto .tile-photo" alt="" aria-hidden="true">
-            <span class="rc-tag">04</span>
-            <div class="rc-body">
-              <strong>Eigenes Fotostudio</strong>
-              <p>Produktion und Equipment direkt vor Ort.</p>
-            </div>
-          </article>
-          <article class="reason-card">
-            <img class="reason-photo" data-src=".team-figures .tile-photo" alt="" aria-hidden="true">
-            <span class="rc-tag">05</span>
-            <div class="rc-body">
-              <strong>Junges, modernes Team</strong>
-              <p>Kreativ, schnell und nah an den Plattformen.</p>
-            </div>
-          </article>
-          <article class="reason-card">
-            <img class="reason-photo" data-src=".visual-ads .tile-photo" alt="" aria-hidden="true">
-            <span class="rc-tag">06</span>
-            <div class="rc-body">
-              <strong>Content &amp; Ads aus einer Hand</strong>
-              <p>Creatives &amp; gezielte Google/Meta Ads – aus einer Produktion.</p>
-            </div>
-          </article>
+          <article class="reason-card"><span class="no">01</span><div class="rc-body"><strong>Alles aus einer Hand</strong><p>Strategie, Content, Ads, Design &amp; Produktion.</p></div></article>
+          <article class="reason-card"><span class="no">02</span><div class="rc-body"><strong>Über 10 Jahre am Markt</strong><p>Erfahrung, die in der Umsetzung hilft.</p></div></article>
+          <article class="reason-card"><span class="no">03</span><div class="rc-body"><strong>Großes Office in Berlin</strong><p>Zentral, persönlich und direkt erreichbar.</p></div></article>
+          <article class="reason-card"><span class="no">04</span><div class="rc-body"><strong>Eigenes Fotostudio</strong><p>Produktion und Equipment direkt vor Ort.</p></div></article>
+          <article class="reason-card"><span class="no">05</span><div class="rc-body"><strong>Junges, modernes Team</strong><p>Kreativ, schnell und nah an den Plattformen.</p></div></article>
+          <article class="reason-card"><span class="no">06</span><div class="rc-body"><strong>Content &amp; Ads aus einer Hand</strong><p>Creatives &amp; gezielte Google/Meta Ads – aus einer Produktion.</p></div></article>
         </div>
       </div>
     </section>
