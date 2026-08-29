@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#162314">
+<title>Werbeanzeigen & Meta Ads Berlin – OBSCURA®</title>
+<meta name="description" content="Meta & Google Ads aus Berlin: Werbeanzeigen mit performanten Creatives, sauberem Tracking und klarer Betreuung. Aus Klicks werden planbare Anfragen.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+  :root{
+    --lime:#adff2f;--lime-strong:#99f21f;--lime-deep:#5f8508;
+    --forest:#162314;--forest-2:#22351f;--forest-3:#314d2a;
+    --ink:#11150f;--muted:#667064;--muted-2:#8a9287;
+    --paper:#fbfbf7;--paper-2:#f3f5ed;--paper-3:#e9eee0;--white:#fff;
+    --line:#dfe5d8;--line-2:#cdd6c5;
+    --shadow:0 26px 70px -48px rgba(16,27,13,.32);
+    --radius:24px;--radius-lg:34px;
+    --wrap:1200px;--gutter:clamp(20px,4.2vw,64px);--section:clamp(72px,9vw,128px);
+    --font:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif;
+    --font-display:"Archivo","Inter",-apple-system,Arial,sans-serif;
+    --font-heading:"Archivo","Inter",-apple-system,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth;background:var(--paper)}
+  body{margin:0;font-family:var(--font);color:var(--ink);background:var(--paper);overflow-x:clip;
+    -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+  body:after{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.05;mix-blend-mode:multiply;
+    background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="180" height="180"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23n)"/></svg>')}
+  h1,h2,.plan-price b,.hero-fact b,.step b{font-family:var(--font-display);font-weight:800}
+  h3,.brand{font-family:var(--font-heading);font-weight:800;letter-spacing:-.01em}
+  a{color:inherit;text-decoration:none}
+  button{font:inherit;color:inherit}
+  .wrap{width:min(var(--wrap),100%);margin-inline:auto;padding-inline:var(--gutter)}
+  .eyebrow{font-size:.78rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--lime-deep);margin:0}
+  h1,h2,h3{margin:0;text-wrap:balance}
+  h1{font-size:clamp(2.5rem,5.6vw,4.4rem);line-height:1.04;letter-spacing:-.025em}
+  h2{font-size:clamp(2rem,3.8vw,3.1rem);line-height:1.06;letter-spacing:-.022em}
+  h3{letter-spacing:-.01em}
+  .lead{color:var(--muted);font-size:clamp(1.05rem,1.4vw,1.24rem);line-height:1.6;max-width:60ch}
+  .lead strong{color:var(--ink);font-weight:760}
+
+  /* Buttons (identisch zur Hauptseite) */
+  .btn{position:relative;overflow:hidden;isolation:isolate;min-height:56px;display:inline-flex;align-items:center;
+    justify-content:center;gap:10px;padding:0 26px;border-radius:999px;border:1px solid transparent;
+    font-size:.94rem;font-weight:760;cursor:pointer;transition:transform .22s ease,box-shadow .22s ease}
+  .btn:before{content:"";position:absolute;top:0;left:-130%;width:60%;height:100%;z-index:1;
+    background:linear-gradient(105deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-18deg);
+    transition:left .6s cubic-bezier(.2,.75,.2,1);pointer-events:none}
+  .btn:hover:before{left:135%}
+  .btn>*{position:relative;z-index:2}
+  .btn:hover{transform:translateY(-2px)}
+  .btn:active{transform:translateY(0) scale(.985)}
+  .btn .arrow{transition:transform .25s ease}.btn:hover .arrow{transform:translateX(4px)}
+  .btn-primary{background:linear-gradient(135deg,#c4ff4d,var(--lime) 45%,var(--lime-strong));color:#11160e;
+    box-shadow:0 16px 40px -20px rgba(120,190,10,.7),inset 0 1px 0 rgba(255,255,255,.5);border-color:#8fd51c}
+  .btn-light{background:#fff;border-color:var(--line);color:var(--ink)}
+  .btn-light:hover{border-color:var(--line-2);box-shadow:0 18px 34px -29px rgba(17,28,14,.26)}
+  .btn-ghost{background:rgba(255,255,255,.08);color:#fff;border-color:rgba(255,255,255,.22)}
+  .btn-ghost:hover{background:rgba(255,255,255,.14)}
+  @media(prefers-reduced-motion:reduce){.btn:before{display:none}}
+
+  /* Header */
+  .head{position:absolute;inset:0 0 auto;z-index:30;padding:16px var(--gutter) 0;pointer-events:none}
+  .head-shell{pointer-events:auto;max-width:var(--wrap);margin-inline:auto;height:66px;padding:0 10px 0 20px;
+    display:flex;align-items:center;justify-content:space-between;background:rgba(251,251,247,.72);
+    backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:999px;box-shadow:var(--shadow)}
+  .brand{display:inline-flex;align-items:center;gap:10px;font-weight:850;font-size:1.2rem;letter-spacing:-.02em}
+  .brand i{width:26px;height:26px;border-radius:50%;background:var(--forest);border:6px solid var(--lime);display:block}
+  .brand sup{color:var(--lime-deep)}
+  .head .btn{min-height:46px;padding:0 18px;font-size:.86rem}
+
+  /* Hero */
+  .hero{position:relative;padding:150px 0 var(--section);overflow:hidden}
+  .hero:before{content:"";position:absolute;inset:0;z-index:-2;
+    background:radial-gradient(1100px 620px at 78% -8%,rgba(173,255,47,.28),transparent 60%),
+      linear-gradient(180deg,#f6faef,var(--paper))}
+  .hero:after{content:"";position:absolute;inset:0;z-index:-1;opacity:.5;
+    background-image:linear-gradient(rgba(35,54,31,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(35,54,31,.06) 1px,transparent 1px);
+    background-size:54px 54px;mask-image:linear-gradient(180deg,#000,transparent 75%)}
+  .hero-tag{display:inline-flex;align-items:center;gap:9px;background:var(--forest);color:#fff;font-size:.8rem;font-weight:720;
+    padding:8px 15px;border-radius:999px;margin-bottom:22px}
+  .hero-tag i{width:8px;height:8px;border-radius:50%;background:var(--lime)}
+  .hero h1{max-width:16ch}
+  .hero .lead{margin-top:22px}
+  .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
+  .hero-facts{display:flex;flex-wrap:wrap;gap:26px;margin-top:40px}
+  .hero-fact b{display:block;font-size:1.9rem;font-weight:840;letter-spacing:-.03em;line-height:1}
+  .hero-fact span{font-size:.82rem;color:var(--muted);font-weight:620}
+
+  section{padding:var(--section) 0}
+  .sec-head{max-width:66ch;margin-bottom:44px}
+  .sec-head h2{margin-top:12px}.sec-head .lead{margin-top:16px}
+
+  /* Included */
+  .inc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .inc{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:26px 24px;transition:transform .3s ease,box-shadow .3s ease}
+  .inc:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+  .inc .ic{width:46px;height:46px;border-radius:13px;background:var(--paper-3);display:grid;place-items:center;margin-bottom:16px}
+  .inc .ic svg{width:24px;height:24px;stroke:var(--forest);fill:none;stroke-width:1.9}
+  .inc h3{font-size:1.2rem;margin-bottom:8px}
+  .inc p{margin:0;color:var(--muted);font-size:.92rem;line-height:1.55}
+
+  /* Pricing */
+  .pricing{background:var(--forest);color:#fff}
+  .pricing .eyebrow{color:var(--lime)}
+  .pricing .lead{color:rgba(255,255,255,.7)}.pricing .lead strong{color:#fff}
+  .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:stretch}
+  .plan{background:var(--forest-2);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius-lg);padding:30px 26px;display:flex;flex-direction:column}
+  .plan.featured{background:linear-gradient(180deg,#213520,#1a2b18);border-color:rgba(173,255,47,.5);box-shadow:0 40px 90px -40px rgba(173,255,47,.35);position:relative}
+  .plan-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--lime);color:#11160e;
+    font-size:.72rem;font-weight:820;letter-spacing:.05em;text-transform:uppercase;padding:6px 14px;border-radius:999px}
+  .plan h3{font-size:1.35rem}
+  .plan-desc{color:rgba(255,255,255,.62);font-size:.88rem;margin:8px 0 20px;line-height:1.5;min-height:2.6em}
+  .plan-price{display:flex;align-items:baseline;gap:6px}
+  .plan-price b{font-size:2.8rem;font-weight:850;letter-spacing:-.03em;line-height:1}
+  .plan-price span{color:rgba(255,255,255,.6);font-size:.85rem}
+  .plan-note{color:var(--lime);font-size:.78rem;font-weight:700;margin-top:6px}
+  .plan ul{list-style:none;margin:22px 0 26px;padding:0;display:flex;flex-direction:column;gap:11px}
+  .plan li{display:flex;gap:10px;font-size:.9rem;color:rgba(255,255,255,.86);line-height:1.4}
+  .plan li:before{content:"";flex:0 0 auto;width:19px;height:19px;margin-top:1px;border-radius:50%;
+    background:rgba(173,255,47,.16);background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23adff2f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4 10-11"/></svg>');
+    background-size:13px;background-position:center;background-repeat:no-repeat}
+  .plan li.off{color:rgba(255,255,255,.4)}
+  .plan li.off:before{background-color:rgba(255,255,255,.06);background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="%23808a7d" stroke-width="3" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>')}
+  .plan .btn{margin-top:auto;width:100%}
+  .price-foot{text-align:center;color:rgba(255,255,255,.55);font-size:.85rem;margin-top:26px}
+
+  /* Compare table */
+  .cmp{overflow-x:auto}
+  table.compare{width:100%;border-collapse:collapse;min-width:560px}
+  table.compare th,table.compare td{padding:14px 16px;text-align:left;border-bottom:1px solid var(--line)}
+  table.compare thead th{font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+  table.compare tbody th{font-weight:640;color:var(--ink)}
+  table.compare td{text-align:center;color:var(--forest-2);font-weight:700}
+  table.compare td.no{color:var(--muted-2)}
+  table.compare col.hl,table.compare th.hl{background:var(--paper-2)}
+
+  /* Process */
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .step{border:1px solid var(--line);border-radius:var(--radius);padding:24px;background:#fff}
+  .step b{font-size:1.9rem;color:var(--lime-deep);font-weight:840;letter-spacing:-.03em}
+  .step h3{font-size:1.1rem;margin:8px 0 6px}
+  .step p{margin:0;color:var(--muted);font-size:.9rem;line-height:1.5}
+
+  /* FAQ */
+  .faq{max-width:820px;margin-inline:auto}
+  details{border:1px solid var(--line);border-radius:16px;padding:4px 20px;margin-bottom:12px;background:#fff}
+  details[open]{border-color:var(--line-2);box-shadow:var(--shadow)}
+  summary{list-style:none;cursor:pointer;padding:16px 0;font-weight:740;font-size:1.02rem;display:flex;justify-content:space-between;align-items:center;gap:14px}
+  summary::-webkit-details-marker{display:none}
+  summary:after{content:"+";font-size:1.5rem;color:var(--lime-deep);transition:transform .25s ease}
+  details[open] summary:after{transform:rotate(45deg)}
+  details p{margin:0 0 18px;color:var(--muted);line-height:1.6}
+
+  /* CTA */
+  .cta{text-align:center}
+  .cta-card{background:var(--forest);color:#fff;border-radius:var(--radius-lg);padding:clamp(40px,6vw,72px) var(--gutter);position:relative;overflow:hidden}
+  .cta-card:before{content:"";position:absolute;inset:0;z-index:0;opacity:.5;
+    background:radial-gradient(700px 400px at 80% -20%,rgba(173,255,47,.35),transparent 60%)}
+  .cta-card>*{position:relative;z-index:1}
+  .cta-card h2{color:#fff}.cta-card .lead{color:rgba(255,255,255,.72);margin:16px auto 30px}
+  .cta-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+  footer{padding:44px 0;border-top:1px solid var(--line);color:var(--muted);font-size:.86rem}
+  .foot-row{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+  footer a:hover{color:var(--ink)}
+
+  @media(max-width:900px){
+    .inc-grid,.price-grid,.steps{grid-template-columns:1fr}
+    .price-grid{gap:20px}.plan.featured{order:-1}
+  }
+  @media(max-width:760px){
+    .hero{padding-top:130px}
+    .head .btn{display:none}
+    .hero-actions .btn{flex:1}
+  }
+</style>
+</head>
+<body>
+
+<header class="head">
+  <div class="head-shell">
+    <a class="brand" href="index.html"><i></i>OBSCURA<sup>®</sup></a>
+    <a class="btn btn-primary" href="index.html#kontakt">Kostenloses Erstgespräch <span class="arrow">→</span></a>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <span class="hero-tag"><i></i> Werbeanzeigen (Ads)</span>
+      <h1>Werbeanzeigen, die planbar Anfragen bringen.</h1>
+      <p class="lead">Wir bauen und betreuen eure <strong>Meta- und Google-Ads</strong> – mit Creatives, die stoppen, sauberem Tracking und ehrlichem Reporting. Kein Blindflug, kein Budget-Verbrennen: <strong>messbare Ergebnisse</strong> statt leerer Reichweite.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="index.html#kontakt">Kostenloses Erstgespräch <span class="arrow">→</span></a>
+        <a class="btn btn-light" href="#pakete">Pakete ansehen</a>
+      </div>
+      <div class="hero-facts"><div class="hero-fact"><b>Creative + Media</b><span>aus einer Hand</span></div><div class="hero-fact"><b>Transparent</b><span>ihr seht jeden Euro</span></div><div class="hero-fact"><b>Fokus: Leads</b><span>nicht nur Klicks</span></div></div>
+    </div>
+  </section>
+  <section>
+    <div class="wrap">
+      <div class="sec-head"><p class="eyebrow">Was wir übernehmen</p><h2>Von der Idee bis zur laufenden Optimierung.</h2><p class="lead">Gute Ads brauchen gute Creatives und sauberes Handwerk dahinter. Wir liefern beides – und optimieren kontinuierlich.</p></div>
+      <div class="inc-grid"><div class="inc"><div class="ic"><svg viewBox="0 0 24 24"><path d="M3 11l16-6-4 15-4-6-8-3z"/></svg></div><h3>Kampagnen-Strategie</h3><p>Wir definieren Zielgruppen, Funnel-Stufen und Botschaften, die zu euren Zielen passen.</p></div><div class="inc"><div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="14" height="12" rx="2"/><path d="M17 10l4-2v8l-4-2z"/></svg></div><h3>Ad-Creatives</h3><p>Performante Video- und Bildanzeigen, produziert im eigenen Studio – der wichtigste Hebel für gute Ergebnisse.</p></div><div class="inc"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/></svg></div><h3>Zielgruppen & Targeting</h3><p>Präzise Aussteuerung auf Meta & Google, statt Budget mit der Gießkanne zu verteilen.</p></div><div class="inc"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 5-3 7-7 9-4-2-7-4-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg></div><h3>Tracking & Setup</h3><p>Pixel, Conversions API und sauberes Setup – damit ihr wisst, was wirklich funktioniert.</p></div><div class="inc"><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 19V5M4 19h16M8 16v-5M13 16V8M18 16v-9"/></svg></div><h3>Reporting</h3><p>Verständliche Zahlen: Was kostet eine Anfrage, was bringt das Budget – ohne Kennzahlen-Dschungel.</p></div><div class="inc"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="6" r="2.5"/><path d="M8 16c8-1 2-9 8-10"/></svg></div><h3>Laufende Optimierung</h3><p>Wir testen Creatives und Zielgruppen fortlaufend und skalieren, was funktioniert.</p></div></div>
+    </div>
+  </section>
+  <section class="pricing" id="pakete">
+    <div class="wrap">
+      <div class="sec-head"><p class="eyebrow">Betreuung & Preise</p><h2>Betreuung passend zu eurem Budget.</h2><p class="lead">Unsere Betreuungspauschale kommt zzgl. eures Media-Budgets (das ihr direkt an Meta/Google zahlt und selbst bestimmt). Alle Preise zzgl. MwSt.</p></div>
+      <div class="price-grid"><div class="plan"><h3>Start</h3><p class="plan-desc">Für den sauberen Einstieg in Paid Social mit einer Plattform.</p>
+          <div class="plan-price"><b>ab 690 €</b><span>/ Monat</span></div>
+          <div class="plan-note">+ Media-Budget · zzgl. MwSt.</div>
+          <ul><li>1 Plattform (Meta o. Google)</li><li>Setup & Tracking</li><li>bis 2 Ad-Creatives / Monat</li><li>Monatliches Reporting</li><li>Laufende Optimierung</li><li class="off">Dediziertes Ad-Video-Team</li></ul>
+          <a class="btn btn-ghost" href="index.html#kontakt">Start anfragen</a></div><div class="plan featured"><span class="plan-badge">Beliebteste</span><h3>Wachstum</h3><p class="plan-desc">Konsequente Lead-Generierung mit frischen Creatives.</p>
+          <div class="plan-price"><b>ab 1.290 €</b><span>/ Monat</span></div>
+          <div class="plan-note">+ Media-Budget · zzgl. MwSt.</div>
+          <ul><li>Meta & Google</li><li>Setup & Conversions API</li><li>bis 6 Ad-Creatives / Monat</li><li>A/B-Tests & Skalierung</li><li>Reporting + Monats-Call</li><li>Landingpage-Empfehlungen</li></ul>
+          <a class="btn btn-primary" href="index.html#kontakt">Wachstum anfragen <span class="arrow">→</span></a></div><div class="plan"><h3>Performance</h3><p class="plan-desc">Maximale Schlagzahl für ambitionierte Wachstumsziele.</p>
+          <div class="plan-price"><b>auf Anfrage</b><span></span></div>
+          <div class="plan-note">ab 5.000 € Media/Monat</div>
+          <ul><li>Multi-Channel-Kampagnen</li><li>Wöchentliche Creative-Tests</li><li>Funnel- & Landingpage-Bau</li><li>Wöchentliches Reporting</li><li>Skalierendes Budget-Management</li><li>Strategische Quartalsplanung</li></ul>
+          <a class="btn btn-ghost" href="index.html#kontakt">Performance anfragen</a></div></div>
+      <p class="price-foot">Media-Budget bestimmt ihr selbst – wir empfehlen einen sinnvollen Startwert im Erstgespräch.</p>
+    </div>
+  </section>
+  <section class="pricing" style="background:var(--paper-2);color:var(--ink)">
+    <div class="wrap">
+      <div class="sec-head" style="margin-bottom:36px"><p class="eyebrow" style="color:var(--lime-deep)">So läuft's</p><h2>So starten eure Ads.</h2></div>
+      <div class="steps"><div class="step"><b>01</b><h3>Analyse</h3><p>Wir prüfen Ziele, Angebot und – falls vorhanden – bestehende Kampagnen.</p></div><div class="step"><b>02</b><h3>Setup</h3><p>Tracking, Kampagnenstruktur und erste Creatives werden aufgebaut.</p></div><div class="step"><b>03</b><h3>Launch</h3><p>Die Kampagnen gehen live – kontrolliert und mit klaren KPIs.</p></div><div class="step"><b>04</b><h3>Skalieren</h3><p>Wir testen, optimieren und skalieren, was nachweislich funktioniert.</p></div></div>
+    </div>
+  </section>
+  <section>
+    <div class="wrap">
+      <div class="sec-head" style="text-align:center;margin-inline:auto"><p class="eyebrow">Häufige Fragen</p><h2>Gut zu wissen.</h2></div>
+      <div class="faq"><details><summary>Kommt das Werbebudget noch dazu?</summary><p>Ja. Unsere Pauschale ist die Betreuung. Das Media-Budget zahlt ihr direkt an Meta bzw. Google und bestimmt die Höhe selbst – wir beraten euch zum sinnvollen Startwert.</p></details><details><summary>Produziert ihr auch die Anzeigen selbst?</summary><p>Ja, und das ist unser größter Vorteil: Wir erstellen die Video- und Bild-Creatives im eigenen Studio. Gute Creatives sind der wichtigste Faktor für erfolgreiche Ads.</p></details><details><summary>Ab welchem Budget lohnt sich das?</summary><p>Für die meisten kleinen und mittleren Unternehmen ist ein monatliches Media-Budget ab etwa 750 € ein sinnvoller Start. Wir schauen im Gespräch, was zu euren Zielen passt.</p></details><details><summary>Wie schnell sehen wir Ergebnisse?</summary><p>Erste Daten gibt es innerhalb von Tagen. Bis Kampagnen sauber optimiert und stabil sind, sollte man realistisch 4–8 Wochen einplanen.</p></details><details><summary>Gibt es eine Mindestlaufzeit?</summary><p>Ads brauchen etwas Anlaufzeit, deshalb empfehlen wir mindestens drei Monate. Die Konditionen halten wir fair und transparent.</p></details></div>
+    </div>
+  </section>
+  <section class="cta">
+    <div class="wrap">
+      <div class="cta-card">
+        <p class="eyebrow" style="color:var(--lime)">Bereit?</p>
+        <h2>Macht aus eurem Budget planbare Anfragen.</h2>
+        <p class="lead">Kostenloses Erstgespräch – wir zeigen euch ehrlich, welches Potenzial in euren Ads steckt.</p>
+        <div class="cta-actions">
+          <a class="btn btn-primary" href="index.html#kontakt">Kostenloses Erstgespräch <span class="arrow">→</span></a>
+          <a class="btn btn-ghost" href="index.html">Zurück zur Startseite</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot-row">
+    <a class="brand" href="index.html"><i></i>OBSCURA<sup>®</sup></a>
+    <span>OBSCURA DIGITAL MARKETING GMBH · Flemingstr. 12, 10557 Berlin · <a href="mailto:info@obscura-berlin.de">info@obscura-berlin.de</a></span>
+    <a href="index.html">← Startseite</a>
+  </div>
+</footer>
+
+</body>
+</html>
