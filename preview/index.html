@@ -1509,7 +1509,10 @@
 
     /* ===== Floating Action Stack: WhatsApp + KI-Chat ===== */
     .fab-stack{position:fixed;right:clamp(14px,3vw,26px);bottom:clamp(14px,3vw,26px);z-index:130;
-      display:flex;flex-direction:column;gap:12px;align-items:flex-end}
+      display:flex;flex-direction:column;gap:12px;align-items:flex-end;
+      opacity:0;visibility:hidden;transform:translateY(14px);
+      transition:opacity .35s ease,transform .35s cubic-bezier(.2,.8,.2,1),visibility .35s}
+    body.fabs-on .fab-stack{opacity:1;visibility:visible;transform:none}
     .fab{width:60px;height:60px;border-radius:50%;display:grid;place-items:center;cursor:pointer;border:none;
       box-shadow:0 18px 40px -14px rgba(0,0,0,.5);transition:transform .25s cubic-bezier(.2,.75,.2,1),box-shadow .25s ease;position:relative}
     .fab:hover{transform:translateY(-3px) scale(1.05)}
@@ -2408,7 +2411,7 @@
         const reduce = matchMedia('(prefers-reduced-motion:reduce)').matches;
         let mobile = matchMedia('(max-width:1080px)').matches;
         window.addEventListener('resize', ()=>{ mobile = matchMedia('(max-width:1080px)').matches; }, {passive:true});
-        const LOCK = 1000;
+        const LOCK = 1150;
         let locked = false;
         function idxByScroll(){
           const t = innerHeight*0.62; let best=0, bd=Infinity;
@@ -2435,15 +2438,22 @@
           if(locked){ e.preventDefault(); return; }
           if(step(e.deltaY>0?1:-1)) e.preventDefault();
         }, {passive:false});
-        let ty = null;
-        window.addEventListener('touchstart', e=>{ ty = e.touches[0].clientY; }, {passive:true});
+        let ty = null, swiped = false;
+        window.addEventListener('touchstart', e=>{ ty = e.touches[0].clientY; swiped = false; }, {passive:true});
         window.addEventListener('touchmove', e=>{
           if(!engaged() || ty===null) return;
-          if(locked){ e.preventDefault(); return; }
-          const dy = ty - e.touches[0].clientY;
-          if(Math.abs(dy) < 10) return;
-          if(step(dy>0?1:-1)){ e.preventDefault(); ty = e.touches[0].clientY; }
+          const dy = ty - e.touches[0].clientY;            // >0 = nach unten wischen
+          const idx = idxByScroll();
+          // An den Raendern (oben/unten) normales Scrollen zulassen – nicht abfangen
+          if((dy>0 && idx>=railCards.length-1) || (dy<0 && idx<=0)){ return; }
+          // Im Stage-Bereich: natives Scrollen/Momentum komplett unterbinden ...
+          e.preventDefault();
+          if(locked || swiped) return;                     // pro Geste nur EIN Schritt
+          if(Math.abs(dy) < 22) return;                    // kleiner Rutsch = nichts
+          swiped = true;
+          step(dy>0?1:-1);
         }, {passive:false});
+        window.addEventListener('touchend', ()=>{ ty = null; swiped = false; }, {passive:true});
       })();
 
       // Main service cards stay in normal document flow. They only lift slightly while in view.
@@ -2750,8 +2760,9 @@
       (function(){
         const bar=document.getElementById('cookieBar');if(!bar)return;
         let ok=true;try{ok=!localStorage.getItem('obscura_cookie');}catch(e){}
-        if(ok)setTimeout(()=>bar.classList.add('show'),900);
-        function set(v){try{localStorage.setItem('obscura_cookie',v);}catch(e){}bar.classList.remove('show');}
+        if(ok){setTimeout(()=>bar.classList.add('show'),900);}   // FABs bleiben verborgen bis Consent
+        else{document.body.classList.add('fabs-on');}            // schon zugestimmt -> FABs sofort zeigen
+        function set(v){try{localStorage.setItem('obscura_cookie',v);}catch(e){}bar.classList.remove('show');document.body.classList.add('fabs-on');}
         const okBtn=document.getElementById('cookieOk'),noBtn=document.getElementById('cookieNo'),re=document.getElementById('cookieReopen');
         if(okBtn)okBtn.addEventListener('click',()=>set('all'));
         if(noBtn)noBtn.addEventListener('click',()=>set('necessary'));
