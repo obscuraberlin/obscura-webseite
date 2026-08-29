@@ -1655,6 +1655,24 @@
     @keyframes chatDot{0%,60%,100%{opacity:.3;transform:translateY(0)}30%{opacity:1;transform:translateY(-3px)}}
     @media(max-width:560px){.chatbot{height:min(70vh,540px)}}
 
+    /* FAQ */
+    .faq-head{max-width:60ch;margin-bottom:32px}
+    .faq-head h2{margin-top:10px}
+    .faq-list{display:grid;gap:12px;max-width:860px}
+    .faq-item{border:1px solid var(--line);border-radius:16px;background:#fff;padding:2px 20px;
+      transition:border-color .25s ease,box-shadow .25s ease}
+    .faq-item[open]{border-color:var(--line-2);box-shadow:0 20px 44px -36px rgba(17,29,14,.4)}
+    .faq-item summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:16px;
+      padding:18px 0;font-family:var(--font-heading);font-weight:700;font-size:1.02rem;color:var(--ink)}
+    .faq-item summary::-webkit-details-marker{display:none}
+    .faq-item summary:after{content:"+";flex:0 0 auto;font-size:1.5rem;line-height:1;color:var(--lime-deep);
+      transition:transform .28s ease}
+    .faq-item[open] summary:after{transform:rotate(45deg)}
+    .faq-item p{margin:0 0 18px;color:var(--muted);font-size:.94rem;line-height:1.6}
+    .faq-item a{color:var(--lime-deep);font-weight:700;text-decoration:underline}
+    .faq-item summary:focus-visible{outline:2px solid var(--lime-deep);outline-offset:4px;border-radius:6px}
+    @media(max-width:560px){.faq-item{padding:2px 16px}.faq-item summary{font-size:.96rem}}
+
     .cookie-bar{position:fixed;left:clamp(12px,3vw,26px);right:clamp(12px,3vw,26px);bottom:clamp(12px,3vw,26px);z-index:120;
       max-width:620px;margin-inline:auto;background:var(--forest);color:#fff;border:1px solid rgba(255,255,255,.1);
       border-radius:16px;padding:13px 16px;box-shadow:0 24px 60px -30px rgba(0,0,0,.6);
@@ -2199,6 +2217,24 @@
               </form>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section faq" id="faq">
+      <div class="wrap">
+        <div class="faq-head">
+          <p class="eyebrow">FAQ</p>
+          <h2 class="title-md">Häufige Fragen.</h2>
+        </div>
+        <div class="faq-list">
+          <details class="faq-item"><summary>Wie schnell können wir starten?</summary><p>In der Regel innerhalb weniger Tage. Nach einem kurzen Erstgespräch legen wir Strategie und ersten Redaktionsplan fest und starten mit der Produktion.</p></details>
+          <details class="faq-item"><summary>Muss ich mich langfristig binden?</summary><p>Die Social-Media-Mitgliedschaft läuft monatlich. Wir empfehlen mindestens drei Monate, weil Social Media Zeit braucht, um Wirkung zu zeigen – die genauen Konditionen halten wir gemeinsam im Angebot fest.</p></details>
+          <details class="faq-item"><summary>Bekommen wir einen festen Ansprechpartner?</summary><p>Ja. Ihr habt eine feste Person aus unserem Team, die euer Projekt kennt, plant und laufend betreut – kein Ticket-System, kein ständiger Wechsel.</p></details>
+          <details class="faq-item"><summary>Bucht man nur die Mitgliedschaft oder auch einzelne Produktionen?</summary><p>Beides. Neben der laufenden Mitgliedschaft könnt ihr einzelne Leistungen – z. B. Foto-/Videoproduktion, Ads oder Recruiting – auch separat beauftragen.</p></details>
+          <details class="faq-item"><summary>Wo produziert ihr?</summary><p>In unserem eigenen Fotostudio in Berlin oder direkt bei euch vor Ort – je nachdem, was für die Inhalte am besten passt.</p></details>
+          <details class="faq-item"><summary>Kümmert ihr euch auch um die Werbeanzeigen (Ads)?</summary><p>Ja. Wir produzieren die Creatives und schalten Google &amp; Meta Ads gezielt aus – Content und Performance aus einer Hand. Das Media-Budget bestimmt ihr selbst.</p></details>
+          <details class="faq-item"><summary>Was kostet die Zusammenarbeit?</summary><p>Das hängt vom Umfang ab. Die Pakete der Mitgliedschaft findet ihr auf der <a href="social-media-mitgliedschaft.html">Mitgliedschaft-Seite</a>; für Einzelprojekte machen wir euch im kostenlosen Erstgespräch ein individuelles Angebot.</p></details>
         </div>
       </div>
     </section>
