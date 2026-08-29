@@ -1,7 +1,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#f8f8f3">
-  <meta name="description" content="OBSCURA Berlin – Social Media, Video, Grafikdesign, Grafikdesign und Marketing-Beratung.">
+  <meta name="description" content="OBSCURA Berlin – Social Media, Foto- & Videoproduktion, Werbeanzeigen, Mitarbeitergewinnung und Marketing-Beratung.">
   <title>OBSCURA® Berlin — Marketing, Content & Digital</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -286,6 +286,9 @@
     .hero-actions .btn{min-height:52px;padding-inline:24px;font-size:.9rem}
     .hero-actions .btn-light{background:rgba(255,255,255,.72);backdrop-filter:blur(8px);border-color:rgba(22,35,20,.12)}
     .hero-actions .btn-light:hover{background:#fff}
+    .btn-check{background:rgba(255,255,255,.72);backdrop-filter:blur(8px);border-color:rgba(95,133,8,.35);color:var(--forest)}
+    .btn-check:hover{background:#fff;border-color:var(--lime-deep);box-shadow:0 18px 34px -26px rgba(95,133,8,.5)}
+    .btn-check .bolt{color:var(--lime-deep);font-size:1.05em}
     /* Typewriter im Hero */
 
     .hero-stage{
@@ -1444,7 +1447,20 @@
       .js .offer-step:not(.is-active) .offer-card{opacity:1;transform:none}
     }
     /* ===== SOCIAL-MEDIA-CHECK (Lead-Magnet mit Daten-Gate) ===== */
-    .smcheck{background:var(--paper-2);border-top:1px solid var(--line)}
+    /* Social-Media-Check als Popup */
+    .smcheck{position:fixed;inset:0;z-index:200;display:none;overflow-y:auto;
+      background:rgba(6,10,5,.62);backdrop-filter:blur(3px);padding:clamp(14px,5vh,56px) clamp(12px,3vw,24px)}
+    .smcheck.open{display:block}
+    .smcheck > .wrap{position:relative;width:min(760px,100%);margin-inline:auto;
+      background:var(--paper);border:1px solid var(--line);border-radius:22px;
+      padding:clamp(26px,4.5vw,48px);box-shadow:0 50px 100px -40px rgba(6,10,5,.7);
+      animation:smcPop .4s cubic-bezier(.2,.8,.2,1) both}
+    @keyframes smcPop{from{opacity:0;transform:translateY(22px) scale(.98)}to{opacity:1;transform:none}}
+    .smc-close{position:absolute;top:14px;right:14px;z-index:3;width:38px;height:38px;border-radius:50%;
+      border:1px solid var(--line);background:#fff;color:var(--ink);font-size:1.4rem;line-height:1;cursor:pointer;
+      display:grid;place-items:center;transition:background .2s ease,transform .2s ease}
+    .smc-close:hover{background:var(--paper-2);transform:rotate(90deg)}
+    @media(prefers-reduced-motion:reduce){.smcheck > .wrap{animation:none}.smc-close:hover{transform:none}}
     .smc-badge{display:inline-flex;align-items:center;gap:8px;padding:7px 13px;border-radius:999px;background:var(--forest);color:#fff;font-size:.72rem;font-weight:720;letter-spacing:.02em;margin-bottom:16px}
     .smc-badge i{width:7px;height:7px;border-radius:50%;background:var(--lime)}
     .smc-shell{margin-top:clamp(28px,4vw,44px);background:#fff;border:1px solid var(--line);border-radius:26px;padding:clamp(22px,3vw,40px);box-shadow:var(--shadow)}
@@ -1656,7 +1672,7 @@
           <p class="hero-sub"><strong>Social Media</strong>, <strong>Content</strong> &amp; <strong>Performance</strong> aus einer Hand – für Unternehmen, die <strong>planbar sichtbar</strong> werden und <strong>Anfragen gewinnen</strong> wollen.</p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="#kontakt">Kostenloses Erstgespräch <span class="arrow">→</span></a>
-            <a class="btn btn-light" href="#arbeit">Projekte ansehen</a>
+            <button class="btn btn-check" type="button" data-open-check><span class="bolt" aria-hidden="true">⚡</span> Kostenloser Sofort-Check</button>
           </div>
         </div>
 
@@ -1673,9 +1689,9 @@
           </div>
           <div class="stage-rail">
             <button class="stage-card" type="button" data-open="social" data-stage="0"><span class="no">01</span><strong>Social Media Mitgliedschaft</strong><span>Wir filmen, schneiden &amp; posten – Monat für Monat</span></button>
-            <button class="stage-card" type="button" data-open="video" data-stage="1"><span class="no">02</span><strong>Video-Produktion</strong><span>Film, Reels &amp; Kampagne</span></button>
+            <button class="stage-card" type="button" data-open="video" data-stage="1"><span class="no">02</span><strong>Foto- &amp; Videoproduktion</strong><span>Foto, Film, Reels &amp; Kampagne</span></button>
             <button class="stage-card" type="button" data-open="ads" data-stage="2"><span class="no">03</span><strong>Werbeanzeigen (Ads)</strong><span>Google &amp; Meta Ads – mehr Anfragen</span></button>
-            <button class="stage-card" type="button" data-open="design" data-stage="3"><span class="no">04</span><strong>Design &amp; Beratung</strong><span>Markenauftritt &amp; Strategie</span></button>
+            <button class="stage-card" type="button" data-open="recruiting" data-stage="3"><span class="no">04</span><strong>Mitarbeitergewinnung</strong><span>Recruiting über Social Media</span></button>
           </div>
         </div>
       </div>
@@ -1843,9 +1859,9 @@
           <button class="service-panel" type="button" data-open="video">
             <div class="service-panel-top"><span class="service-no">02 · Produktion</span><span class="service-plus">+</span></div>
             <span class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="13" height="14" rx="3"/><path d="M16 10l5-3v10l-5-3z"/></svg></span>
-            <h3>Video-Produktion</h3>
-            <p>Reels, Kampagnen, Imagefilm &amp; Social Ads.</p>
-            <div class="service-products"><span>Imagefilme</span><span>Werbespots</span><span>Social Reels</span></div>
+            <h3>Foto- &amp; Videoproduktion</h3>
+            <p>Fotoshootings, Reels, Kampagnen &amp; Imagefilme.</p>
+            <div class="service-products"><span>Fotoshootings</span><span>Imagefilme</span><span>Social Reels</span></div>
             <div class="service-footer"><strong>Details öffnen <span aria-hidden="true">→</span></strong><span>Produktion nach Bedarf</span></div>
           </button>
 
@@ -1858,13 +1874,13 @@
             <div class="service-footer"><strong>Details öffnen <span aria-hidden="true">→</span></strong><span>Reichweite &amp; Anfragen</span></div>
           </button>
 
-          <button class="service-panel" type="button" data-open="design">
-            <div class="service-panel-top"><span class="service-no">04 · Design</span><span class="service-plus">+</span></div>
-            <span class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20l5-1 10-10-4-4L5 15z"/><path d="M13 7l4 4"/></svg></span>
-            <h3>Grafikdesign</h3>
-            <p>Brand Assets, Kampagnenmotive &amp; starke Gestaltung.</p>
-            <div class="service-products"><span>Logos &amp; Brand</span><span>Flyer &amp; Messe</span><span>Broschüren</span></div>
-            <div class="service-footer"><strong>Details öffnen <span aria-hidden="true">→</span></strong><span>Brand &amp; Assets</span></div>
+          <button class="service-panel" type="button" data-open="recruiting">
+            <div class="service-panel-top"><span class="service-no">04 · Recruiting</span><span class="service-plus">+</span></div>
+            <span class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M15 8a3 3 0 0 1 0 6M3 20c0-3.3 2.7-5.5 6-5.5s6 2.2 6 5.5M17 20c0-2.4-.9-4.3-2.4-5.4"/></svg></span>
+            <h3>Mitarbeitergewinnung</h3>
+            <p>Passende Bewerber über Social Recruiting – kein langes Suchen.</p>
+            <div class="service-products"><span>Recruiting-Kampagnen</span><span>Employer Branding</span><span>Bewerber-Funnel</span></div>
+            <div class="service-footer"><strong>Details öffnen <span aria-hidden="true">→</span></strong><span>Mehr Bewerbungen</span></div>
           </button>
 
           <button class="service-panel" type="button" data-open="consulting">
@@ -1985,8 +2001,8 @@
               <p>OBSCURA DIGITAL MARKETING GMBH<br>Flemingstr. 12 · 10557 Berlin<br><strong>Office &amp; eigenes Fotostudio</strong></p>
               <div class="location-meta">
                 <span>Social Media</span>
-                <span>Video-Produktion</span>
-                <span>Grafikdesign</span>
+                <span>Foto- &amp; Videoproduktion</span>
+                <span>Mitarbeitergewinnung</span>
                 <span>Beratung</span><span>Werbeanzeigen</span>
               </div>
             </article>
@@ -2015,8 +2031,9 @@
       </div>
     </section>
 
-    <section class="section smcheck" id="check">
+    <section class="section smcheck" id="check" role="dialog" aria-modal="true" aria-label="Social-Media-Check">
       <div class="wrap">
+        <button class="smc-close" type="button" id="smcClose" aria-label="Schließen">×</button>
         <span class="smc-badge"><i></i> Kostenlos · 60 Sekunden · unverbindlich</span>
         <h2 class="title-lg">Der Obscura<br>Social-Media-Check.</h2>
         <p class="lead">Als <strong>erste Agentur</strong> geben wir Unternehmen eine ehrliche Einschätzung ihres Auftritts – <strong>in 60 Sekunden</strong>. Wir freuen uns, euch das bieten zu können.</p>
@@ -2128,9 +2145,9 @@
               <p>Mehrfachauswahl ist möglich.</p>
               <div class="choice-grid" data-group="services">
                 <button class="choice" type="button">Social Media / Mitgliedschaft</button>
-                <button class="choice" type="button">Video-Produktion</button>
+                <button class="choice" type="button">Foto- &amp; Videoproduktion</button>
                 <button class="choice" type="button">Werbeanzeigen (Ads)</button>
-                <button class="choice" type="button">Grafikdesign</button>
+                <button class="choice" type="button">Mitarbeitergewinnung (Recruiting)</button>
                 <button class="choice" type="button">Marketing-Beratung</button>
                 <button class="choice" type="button">Noch unsicher</button>
               </div>
@@ -2315,22 +2332,22 @@
           items:['Feste Betreuung als Social-Media-Mitgliedschaft','Redaktionsplan & Content-Strategie','Reels, Posts & Stories – regelmäßig produziert','Community-Management & Publishing','Monatliches Reporting & Optimierung','Paid Social / Meta Ads (optional)']
         },
         video:{
-          kicker:'02 · Video-Produktion',
-          title:'Video-Produktion',
-          copy:'Von der Idee bis zum fertigen Film: Wir konzipieren, drehen und schneiden Imagefilme, Werbespots und Social Reels. Auf Wunsch als einzelne Produktion oder laufend als Teil eurer Betreuung – mit eigenem Studio und Equipment in Berlin.',
+          kicker:'02 · Foto- & Videoproduktion',
+          title:'Foto- & Videoproduktion',
+          copy:'Von der Idee bis zum fertigen Ergebnis: Wir konzipieren, fotografieren, drehen und schneiden – Fotoshootings, Imagefilme, Werbespots und Social Reels. Auf Wunsch als einzelne Produktion oder laufend als Teil eurer Betreuung – mit eigenem Studio und Equipment in Berlin.',
           label:'Produktion',
-          tags:['Imagefilme','Werbespots','Interviews','Reels'],
+          tags:['Fotoshootings','Imagefilme','Werbespots','Reels'],
           icon:'<svg viewBox="0 0 24 24"><rect x="3" y="5" width="13" height="14" rx="3"/><path d="M16 10l5-3v10l-5-3z"/></svg>',
-          items:['Imagefilme & Employer-Branding-Filme','Werbespots & Produktvideos','Social Reels & vertikale Kurzformate','Interviews & Erklärfilme','Konzept, Dreh & Postproduktion','Eigenes Fotostudio & Equipment']
+          items:['Fotoshootings & Produktfotografie','Imagefilme & Employer-Branding-Filme','Werbespots & Produktvideos','Social Reels & vertikale Kurzformate','Konzept, Dreh & Postproduktion','Eigenes Fotostudio & Equipment']
         },
-        design:{
-          kicker:'03 · Grafikdesign',
-          title:'Grafikdesign',
-          copy:'Ein klarer, wiedererkennbarer Markenauftritt – online wie offline. Wir gestalten Logos, Kampagnenmotive und alle Assets, die ihr für Social Media, Print und Vertrieb braucht – konsistent über alle Kanäle.',
-          label:'Design',
-          tags:['Flyer','Broschüren','Logos','Mockups'],
-          icon:'<svg viewBox="0 0 24 24"><path d="M4 20l5-1 10-10-4-4L5 15z"/><path d="M13 7l4 4"/></svg>',
-          items:['Logo- & Corporate-Design','Kampagnen- & Social-Media-Motive','Flyer, Broschüren & Messematerial','Visitenkarten & Geschäftsausstattung','Produkt-Mockups & digitale Assets']
+        recruiting:{
+          kicker:'04 · Mitarbeitergewinnung',
+          title:'Mitarbeitergewinnung (Recruiting)',
+          copy:'Kein langes Rumsuchen nach Personal: Über gezieltes Social Recruiting bringen wir die richtigen Bewerber direkt zu euch. Wir bauen eure Arbeitgebermarke auf, produzieren die passenden Anzeigen und leiten Interessenten durch einen klaren Bewerber-Funnel – die passenden Bewerbungen landen direkt auf eurem Tisch.',
+          label:'Recruiting',
+          tags:['Recruiting-Ads','Employer Branding','Bewerber-Funnel'],
+          icon:'<svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M15 8a3 3 0 0 1 0 6M3 20c0-3.3 2.7-5.5 6-5.5s6 2.2 6 5.5M17 20c0-2.4-.9-4.3-2.4-5.4"/></svg>',
+          items:['Social-Recruiting-Kampagnen (Meta & Co.)','Arbeitgebermarke & Employer Branding','Stellen-Creatives & Recruiting-Videos','Automatischer Bewerber-Funnel','Vorqualifizierte Bewerbungen statt Bewerbermangel']
         },
         consulting:{
           kicker:'04 · Marketing-Beratung',
@@ -2368,9 +2385,9 @@
       const grab=sel=>{const el=document.querySelector(sel);return el?(el.currentSrc||el.getAttribute('src')):null;};
       const svData=[
         {img:grab('.visual-people .tile-photo'), badge:'Laufende Betreuung', eyebrow:'Social Media Mitgliedschaft', title:'Content. Betreuung.', small:'Monat für Monat – dein festes Social-Media-Team.'},
-        {img:grab('.visual-product .tile-photo'), badge:'Einzelproduktion', eyebrow:'Video-Produktion', title:'Film. Reels. Kampagne.', small:'Von der Idee bis zum Schnitt – auch extern buchbar.'},
+        {img:grab('.visual-product .tile-photo'), badge:'Einzelproduktion', eyebrow:'Foto- & Videoproduktion', title:'Foto. Film. Reels.', small:'Von der Idee bis zum Schnitt – auch extern buchbar.'},
         {img:grab('.visual-ads .tile-photo'), badge:'Performance', eyebrow:'Werbeanzeigen (Ads)', title:'Google & Meta Ads.', small:'Mehr Reichweite, Anfragen und Umsatz – gezielt ausgespielt.'},
-        {img:grab('.team-figures .tile-photo'), badge:'Marke & Strategie', eyebrow:'Design & Beratung', title:'Marke. Design. Strategie.', small:'Ein Auftritt mit Wirkung – online wie offline.'}
+        {img:grab('.team-figures .tile-photo'), badge:'Recruiting & Beratung', eyebrow:'Mitarbeitergewinnung', title:'Neue Mitarbeiter.', small:'Passende Bewerbungen direkt auf den Tisch – über Social Recruiting.'}
       ];
       let svLast=-1;
       function applyStage(i){
@@ -2704,7 +2721,7 @@
 
         const KB=[
           {k:['leistung','service','angebot','was bietet','was macht','bereich','übernehm'],
-           a:'Wir übernehmen alles rund um eure Sichtbarkeit – aus einer Hand:<br>• <b>Social Media</b> (Mitgliedschaft, laufend betreut)<br>• <b>Video-Produktion</b> (Reels, Imagefilm, Spots)<br>• <b>Werbeanzeigen</b> (Google &amp; Meta Ads)<br>• <b>Grafikdesign</b><br>• <b>Marketing-Beratung</b><br>Was interessiert dich am meisten?'},
+           a:'Wir übernehmen alles rund um eure Sichtbarkeit – aus einer Hand:<br>• <b>Social Media</b> (Mitgliedschaft, laufend betreut)<br>• <b>Foto- &amp; Videoproduktion</b> (Shootings, Reels, Imagefilm)<br>• <b>Werbeanzeigen</b> (Google &amp; Meta Ads)<br>• <b>Mitarbeitergewinnung</b> (Recruiting)<br>• <b>Marketing-Beratung</b><br>Was interessiert dich am meisten?'},
           {k:['preis','kosten','budget','teuer','was kostet','tarif','paket'],
            a:'Die Preise hängen vom Umfang ab. Unsere <b>Social-Media-Mitgliedschaft</b> gibt es in festen Paketen mit planbaren Monatskosten – Details &amp; Preistabelle findest du hier: <a href="social-media-mitgliedschaft.html">Mitgliedschaft &amp; Preise ansehen →</a>. Für Einzelprojekte machen wir dir ein individuelles Angebot im <a href="#kontakt">kostenlosen Erstgespräch</a>.'},
           {k:['mitglied','abo','monatlich','retainer','betreuung','laufend'],
@@ -2713,8 +2730,8 @@
            a:'Wir produzieren <b>Reels, Imagefilme, Werbespots, Interviews &amp; Social Cuts</b> – von der Idee bis zum Schnitt, auch als Einzelproduktion. Eigenes Fotostudio in Berlin inklusive. Magst du ein <a href="#kontakt">Erstgespräch</a>?'},
           {k:['ads','werbung','google','meta','facebook','instagram ads','performance','leads'],
            a:'Mit <b>Google &amp; Meta Ads</b> bringen wir eure Inhalte gezielt zu den richtigen Leuten – für mehr Reichweite und planbare Anfragen. Wir produzieren Creatives und schalten die Kampagnen aus einer Hand.'},
-          {k:['design','grafik','logo','flyer','broschüre','brand','marke'],
-           a:'Im <b>Grafikdesign</b> machen wir Logos, Brand Assets, Kampagnenmotive, Flyer, Broschüren &amp; Mockups – ein Auftritt mit Wirkung, online wie offline.'},
+          {k:['recruiting','mitarbeiter','bewerber','personal','stellen','job ','einstellen'],
+           a:'Bei der <b>Mitarbeitergewinnung</b> holen wir über Social Recruiting passende Bewerber direkt zu euch – Employer Branding, Recruiting-Ads und ein Bewerber-Funnel, damit die richtigen Bewerbungen auf dem Tisch landen.'},
           {k:['kontakt','termin','gespräch','anruf','erreich','melden','beratung','erstgespräch'],
            a:'Am schnellsten geht’s per <a href="#kontakt">kostenlosem Erstgespräch</a> (kurzes Formular) oder direkt über den grünen WhatsApp-Button. Du kannst uns auch mailen: <a href="mailto:info@obscura-berlin.de">info@obscura-berlin.de</a>.'},
           {k:['studio','berlin','standort','office','adresse','wo seid'],
@@ -2797,6 +2814,23 @@
           ents.forEach(e=>{ if(e.isIntersecting){e.target.classList.add('revealed');io.unobserve(e.target);} });
         },{threshold:.25});
         cards.forEach(c=>io.observe(c));
+      })();
+
+      /* ===== Social-Media-Check als Popup ===== */
+      (function(){
+        const pop=document.getElementById('check');
+        if(!pop)return;
+        const closeBtn=document.getElementById('smcClose');
+        function open(){pop.classList.add('open');document.body.classList.add('modal-open');
+          const w=pop.querySelector('.wrap');if(w)w.scrollTop=0;pop.scrollTop=0;}
+        function close(){pop.classList.remove('open');document.body.classList.remove('modal-open');}
+        document.querySelectorAll('[data-open-check]').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();open();}));
+        // Alle Links auf #check oeffnen ebenfalls das Popup
+        document.querySelectorAll('a[href="#check"]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();open();}));
+        if(closeBtn)closeBtn.addEventListener('click',close);
+        pop.addEventListener('click',e=>{if(e.target===pop)close();}); // Klick auf Backdrop
+        document.addEventListener('keydown',e=>{if(e.key==='Escape'&&pop.classList.contains('open'))close();});
+        window.__smcOpen=open;
       })();
 
       /* ===== Kunden ausklappen ===== */
