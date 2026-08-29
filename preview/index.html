@@ -674,15 +674,15 @@
       background:radial-gradient(circle,rgba(173,255,47,.22),transparent 62%);pointer-events:none}
     .membership-card > *{position:relative;z-index:1}
     /* Lime-Leiste oben: sofort klar erkennbar als monatliche Betreuung + Abgrenzung zu den Service-Karten */
-    .membership-card{padding-top:calc(clamp(28px,5vw,60px) + 40px)}
+    .membership-card{padding-top:calc(clamp(28px,5vw,60px) + 52px)}
     .mc-ribbon{position:absolute;top:0;left:0;right:0;z-index:2;grid-column:1/-1;
-      display:flex;align-items:center;justify-content:center;gap:9px;height:44px;
+      display:flex;align-items:center;justify-content:center;gap:9px;min-height:44px;
       background:linear-gradient(90deg,var(--lime-strong),var(--lime));color:var(--forest);
-      font-size:.76rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;text-align:center;padding:0 16px}
+      font-size:.78rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;text-align:center;padding:9px 16px;line-height:1.25}
     .mc-rec{display:inline-block;font-size:1.05rem;font-weight:900;animation:mcSpin 6s linear infinite}
     @keyframes mcSpin{to{transform:rotate(360deg)}}
     @media(prefers-reduced-motion:reduce){.mc-rec{animation:none}}
-    @media(max-width:600px){.mc-ribbon{font-size:.68rem;height:40px;letter-spacing:.04em}.membership-card{padding-top:calc(26px + 30px)}}
+    @media(max-width:600px){.mc-ribbon{font-size:.68rem;letter-spacing:.04em;padding:8px 14px}.membership-card{padding-top:calc(26px + 54px)}}
     .membership-card .eyebrow{color:var(--lime)}
     .membership-card .title-lg{color:#fff}
     .mc-badge{display:inline-flex;align-items:center;gap:7px;background:var(--lime);color:var(--forest);
@@ -1471,7 +1471,7 @@
       .service-products{margin-top:15px}
       .service-panel.in-view{transform:translateY(-5px)}
       .stage-card.scroll-active{transform:translateY(-7px) scale(1.01)}
-      .membership-card{padding:26px 20px}
+      .membership-card{padding:calc(26px + 54px) 20px 26px}
       .project-grid{grid-template-columns:1fr}
       .project-card,.project-card.small{min-height:315px}
       .cases-head{grid-template-columns:1fr;gap:18px;margin-bottom:32px}
@@ -1970,11 +1970,11 @@
     <section class="section membership" id="mitgliedschaft">
       <div class="wrap">
         <div class="membership-card">
-          <div class="mc-ribbon"><span class="mc-rec" aria-hidden="true">↻</span> Monatliche Rundum-Betreuung · Monat für Monat</div>
+          <div class="mc-ribbon"><span class="mc-rec" aria-hidden="true">↻</span> Monatliche Betreuung · Monat für Monat</div>
           <div>
-            <p class="eyebrow">Social Media Mitgliedschaft · Unser Herzstück</p>
-            <h2 class="title-lg">Mehr Reichweite. Mehr Anfragen. Weniger Aufwand.</h2>
-            <p class="mc-lead">Wir übernehmen euren <strong>kompletten Social-Media-Auftritt</strong> – als <strong>festes Team</strong> zu <strong>planbaren Monatskosten</strong>, ohne eigene Marketing-Abteilung. Content, der Monat für Monat läuft.</p>
+            <p class="eyebrow">Unser Herzstück</p>
+            <h2 class="title-lg">Social Media Mitgliedschaft</h2>
+            <p class="mc-lead">Dein persönlicher <strong>Social-Media-Manager</strong> – und ein ganzes <strong>Team dahinter</strong>. Monatliche <strong>Video- &amp; Fotoproduktion</strong>: Wir posten, schneiden, schreiben eure Texte und sorgen für <strong>Reichweite</strong>.</p>
             <div class="hero-actions">
               <a class="btn btn-primary" href="social-media-mitgliedschaft.html">Mitgliedschaft &amp; Preise ansehen <span class="arrow">→</span></a>
               <a class="btn btn-ghost" href="#kontakt">Kostenloses Erstgespräch</a>
@@ -2652,7 +2652,9 @@
           const d=Math.abs(c-mid);
           if(d<bestD){bestD=d;best=p;}
         });
-        servicePanels.forEach(p=>p.classList.toggle('active',p===best));
+        // Nur aktiv, wenn die Karte wirklich nahe der Mitte ist – sonst wieder hell
+        const near = best && bestD < window.innerHeight*0.34;
+        servicePanels.forEach(p=>p.classList.toggle('active',p===best && near));
       }
       function reqActive(){ if(!activeTicking){activeTicking=true;requestAnimationFrame(updateActivePanel);} }
       window.addEventListener('scroll',reqActive,{passive:true});
