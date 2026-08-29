@@ -407,6 +407,8 @@
       box-shadow:0 16px 34px -31px rgba(17,29,14,.25);
     }
     .client-card:nth-child(2n){background:#f8f9f4}
+    .client-card{transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+    .client-card:hover{transform:translateY(-3px);border-color:var(--line-2);box-shadow:0 22px 40px -28px rgba(17,29,14,.4)}
     .client-logo{
       width:100%;height:62px;
       display:flex;align-items:center;justify-content:center;
@@ -1393,7 +1395,13 @@
       .stage-card{min-height:92px}
       .clients{padding:28px 0 44px}
       .clients-head{display:grid;gap:4px;align-items:start}
-      .client-rail{grid-template-columns:1fr 1fr;gap:8px}
+      .client-rail{grid-template-columns:repeat(3,1fr);gap:7px}
+      .client-card{min-height:82px;padding:10px 6px;border-radius:14px}
+      .client-logo{height:46px}
+      .client-logo img{max-height:34px;max-width:88%}
+      .client-logo.tall img{max-height:38px}
+      .client-logo.wide img{max-height:30px;max-width:94%}
+      .client-fallback{font-size:.6rem;line-height:1.15}
 
       .offers{padding:82px 0}
       .offers-intro{margin-bottom:34px}
