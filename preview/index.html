@@ -1002,15 +1002,38 @@
       position:relative;
       overflow:hidden;
     }
-    .reason-card:after{
-      content:"";
-      position:absolute;
-      right:-48px;top:-55px;
-      width:145px;height:145px;
-      border-radius:50%;
-      background:rgba(173,255,47,.13);
+    .reason-card:after{display:none}
+    /* Karten-Einblendung (gestaffelt) */
+    html.js .reason-card{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.8,.2,1)}
+    html.js .reason-card.revealed{opacity:1;transform:none}
+    .reason-grid .reason-card:nth-child(2){transition-delay:.07s}
+    .reason-grid .reason-card:nth-child(3){transition-delay:.14s}
+    .reason-grid .reason-card:nth-child(4){transition-delay:.05s}
+    .reason-grid .reason-card:nth-child(5){transition-delay:.12s}
+    .reason-grid .reason-card:nth-child(6){transition-delay:.19s}
+    /* Cockpit-Instrument */
+    .gauge{position:relative;width:74px;height:74px;margin-bottom:10px;z-index:2}
+    .gauge-svg{width:100%;height:100%;transform:rotate(-90deg);overflow:visible}
+    .gauge-ticks{fill:none;stroke:rgba(22,35,20,.22);stroke-width:2.4;stroke-dasharray:1.4 10.9}
+    .gauge-track{fill:none;stroke:rgba(22,35,20,.10);stroke-width:6}
+    .gauge-arc{fill:none;stroke:var(--lime-deep);stroke-width:6;stroke-linecap:round;
+      stroke-dasharray:264;stroke-dashoffset:264;transition:stroke-dashoffset 1.25s cubic-bezier(.2,.8,.2,1)}
+    .gauge-core{position:absolute;inset:0;display:grid;place-items:center;
+      font-family:var(--font-display);font-weight:800;font-size:1.35rem;color:var(--forest)}
+    .gauge-core svg{width:27px;height:27px;stroke:var(--forest-2);fill:none;stroke-width:1.9;
+      stroke-linecap:round;stroke-linejoin:round}
+    .gauge-core svg circle{fill:none}
+    .gauge-spin svg{transform:rotate(-90deg);opacity:0;transition:transform 1s cubic-bezier(.2,.8,.2,1) .15s,opacity .5s ease .15s}
+    .reason-card.revealed .gauge-spin svg{transform:rotate(0);opacity:1}
+    .gauge-trend{stroke:var(--lime-deep);stroke-width:2.1;stroke-dasharray:22;stroke-dashoffset:22;
+      transition:stroke-dashoffset .9s ease .5s}
+    .reason-card.revealed .gauge-trend{stroke-dashoffset:0}
+    .reason-card:hover .gauge-arc{stroke:var(--lime-strong);filter:drop-shadow(0 0 4px rgba(120,190,10,.5))}
+    @media(prefers-reduced-motion:reduce){
+      html.js .reason-card{opacity:1;transform:none}
+      .gauge-arc,.gauge-spin svg,.gauge-trend{transition:none}
+      .gauge-spin svg{opacity:1;transform:rotate(0)}
     }
-    .reason-symbol{display:none}
     .reason-stat .reason-symbol{
       width:auto;height:auto;
       justify-content:start;
@@ -1774,39 +1797,81 @@
           <p class="lead"><strong>Kurze Wege</strong>. <strong>Eigene Produktion</strong>. <strong>Ein Team</strong>.</p>
         </div>
 
-        <div class="reason-grid">
+        <div class="reason-grid" id="reasonGrid">
           <article class="reason-card">
-            <div class="reason-symbol">↔</div>
+            <div class="gauge" data-val="100">
+              <svg class="gauge-svg" viewBox="0 0 100 100" aria-hidden="true">
+                <circle class="gauge-ticks" cx="50" cy="50" r="47"/>
+                <circle class="gauge-track" cx="50" cy="50" r="42"/>
+                <circle class="gauge-arc" cx="50" cy="50" r="42"/>
+              </svg>
+              <span class="gauge-core"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="2.3"/><path d="M12 12L4 4M12 12l8-8M12 12l-8 8M12 12l8 8"/></svg></span>
+            </div>
             <strong>Alles aus einer Hand</strong>
             <p>Strategie, Content, Ads, Design &amp; Produktion.</p>
           </article>
 
-          <article class="reason-card reason-stat">
-            <div class="reason-symbol">10+</div>
+          <article class="reason-card">
+            <div class="gauge" data-val="88">
+              <svg class="gauge-svg" viewBox="0 0 100 100" aria-hidden="true">
+                <circle class="gauge-ticks" cx="50" cy="50" r="47"/>
+                <circle class="gauge-track" cx="50" cy="50" r="42"/>
+                <circle class="gauge-arc" cx="50" cy="50" r="42"/>
+              </svg>
+              <span class="gauge-core gauge-num" data-count="10" data-suffix="+">0</span>
+            </div>
             <strong>Über 10 Jahre am Markt</strong>
             <p>Erfahrung, die in der Umsetzung hilft.</p>
           </article>
 
           <article class="reason-card">
-            <div class="reason-symbol">BER</div>
+            <div class="gauge" data-val="72">
+              <svg class="gauge-svg" viewBox="0 0 100 100" aria-hidden="true">
+                <circle class="gauge-ticks" cx="50" cy="50" r="47"/>
+                <circle class="gauge-track" cx="50" cy="50" r="42"/>
+                <circle class="gauge-arc" cx="50" cy="50" r="42"/>
+              </svg>
+              <span class="gauge-core"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.2 7-11a7 7 0 10-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.4"/></svg></span>
+            </div>
             <strong>Großes Office in Berlin</strong>
             <p>Zentral, persönlich und direkt erreichbar.</p>
           </article>
 
           <article class="reason-card">
-            <div class="reason-symbol">◉</div>
+            <div class="gauge" data-val="80">
+              <svg class="gauge-svg" viewBox="0 0 100 100" aria-hidden="true">
+                <circle class="gauge-ticks" cx="50" cy="50" r="47"/>
+                <circle class="gauge-track" cx="50" cy="50" r="42"/>
+                <circle class="gauge-arc" cx="50" cy="50" r="42"/>
+              </svg>
+              <span class="gauge-core gauge-spin"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3l3.5 6M20.8 13.5l-6.9 .6M15.5 20.8l-3.4-6M8.5 20.8l3.4-6M3.2 13.5l6.9 .6M8.5 3.2L12 9"/></svg></span>
+            </div>
             <strong>Eigenes Fotostudio</strong>
             <p>Produktion und Equipment direkt vor Ort.</p>
           </article>
 
           <article class="reason-card">
-            <div class="reason-symbol">TEAM</div>
+            <div class="gauge" data-val="76">
+              <svg class="gauge-svg" viewBox="0 0 100 100" aria-hidden="true">
+                <circle class="gauge-ticks" cx="50" cy="50" r="47"/>
+                <circle class="gauge-track" cx="50" cy="50" r="42"/>
+                <circle class="gauge-arc" cx="50" cy="50" r="42"/>
+              </svg>
+              <span class="gauge-core"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="9" r="3"/><circle cx="17" cy="10" r="2.1"/><path d="M3.5 19c0-3 2.4-5 5.5-5s5.5 2 5.5 5M15 19c0-2 .7-3.6 2-4.4"/></svg></span>
+            </div>
             <strong>Junges, modernes Team</strong>
             <p>Kreativ, schnell und nah an den Plattformen.</p>
           </article>
 
           <article class="reason-card">
-            <div class="reason-symbol">ADS</div>
+            <div class="gauge" data-val="92">
+              <svg class="gauge-svg" viewBox="0 0 100 100" aria-hidden="true">
+                <circle class="gauge-ticks" cx="50" cy="50" r="47"/>
+                <circle class="gauge-track" cx="50" cy="50" r="42"/>
+                <circle class="gauge-arc" cx="50" cy="50" r="42"/>
+              </svg>
+              <span class="gauge-core"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20v-6M11 20V9M17 20v-9M3.5 20h17"/><path class="gauge-trend" d="M5 14l6-5 6 2"/></svg></span>
+            </div>
             <strong>Content &amp; Ads aus einer Hand</strong>
             <p>Wir produzieren Creatives und spielen sie über Google &amp; Meta Ads gezielt aus.</p>
           </article>
@@ -2792,6 +2857,42 @@
         // WhatsApp-Nummer noch Platzhalter? -> Hinweis im Konsolen-Log
         const wa=document.getElementById('waLink');
         if(wa&&wa.href.includes('XXXX')){/* echte Nummer bei Livegang eintragen */}
+      })();
+
+      /* ===== Cockpit-Instrumente (Gründe) ===== */
+      (function(){
+        const grid=document.getElementById('reasonGrid');
+        if(!grid)return;
+        const cards=[...grid.querySelectorAll('.reason-card')];
+        const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+        const C=2*Math.PI*42;
+        function fillGauge(card){
+          const g=card.querySelector('.gauge');
+          const arc=card.querySelector('.gauge-arc');
+          if(g&&arc){const val=Math.max(0,Math.min(100,+g.dataset.val||0));
+            arc.style.strokeDashoffset=String(C*(1-val/100));}
+          const num=card.querySelector('.gauge-num');
+          if(num){
+            const target=+num.dataset.count||0, suf=num.dataset.suffix||'';
+            if(reduce){num.textContent=target+suf;return;}
+            const dur=1100, t0=performance.now();
+            (function tick(t){
+              const p=Math.min(1,(t-t0)/dur);
+              num.textContent=Math.round(target*(1-Math.pow(1-p,3)))+(p>=1?suf:'');
+              if(p<1)requestAnimationFrame(tick);
+            })(t0);
+          }
+        }
+        if(!('IntersectionObserver'in window)||reduce){
+          cards.forEach(c=>{c.classList.add('revealed');fillGauge(c);});
+          return;
+        }
+        const io=new IntersectionObserver((ents)=>{
+          ents.forEach(e=>{
+            if(e.isIntersecting){e.target.classList.add('revealed');fillGauge(e.target);io.unobserve(e.target);}
+          });
+        },{threshold:.35});
+        cards.forEach(c=>io.observe(c));
       })();
 
       /* ===== Kunden ausklappen ===== */
