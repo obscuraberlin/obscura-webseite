@@ -410,7 +410,9 @@
     /* Ausklappbare Kunden */
     .client-extra{display:none}
     .client-rail.expanded .client-extra{display:flex}
-    .clients-more{display:flex;justify-content:center;margin-top:18px}
+    .clients-note{display:none;text-align:center;margin:20px 0 0;color:var(--muted-2);font-size:.82rem;font-style:italic}
+    .client-rail.expanded ~ .clients-note{display:block}
+    .clients-more{display:flex;justify-content:center;margin-top:16px}
     .clients-toggle{display:inline-flex;align-items:center;gap:9px;cursor:pointer;
       background:var(--forest);color:#fff;border:none;border-radius:999px;padding:12px 22px;
       font-size:.88rem;font-weight:700;transition:background .2s ease,transform .2s ease}
@@ -1748,7 +1750,11 @@
           <div class="client-card client-extra"><div class="client-logo"><span class="client-fallback">MISSION KARRIERE</span></div></div>
           <div class="client-card client-extra"><div class="client-logo"><span class="client-fallback">BRANDIDENT</span></div></div>
           <div class="client-card client-extra"><div class="client-logo"><span class="client-fallback">ERTMEN</span></div></div>
+          <div class="client-card client-extra"><div class="client-logo"><span class="client-fallback">KPM BERLIN</span></div></div>
+          <div class="client-card client-extra"><div class="client-logo"><span class="client-fallback">HOTEL ADLON KEMPINSKI</span></div></div>
+          <div class="client-card client-extra"><div class="client-logo"><span class="client-fallback">SEGELCLUB RAMMSEE</span></div></div>
         </div>
+        <p class="clients-note" id="clientsNote">* Auswahl aus Kunden- und Partnerprojekten der letzten Jahre.</p>
         <div class="clients-more">
           <button type="button" class="clients-toggle" id="clientsToggle" aria-expanded="false">
             <span class="ct-label">Mehr Kunden anzeigen</span>
