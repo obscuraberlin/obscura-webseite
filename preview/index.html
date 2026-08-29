@@ -1373,9 +1373,12 @@
     .quiz-actions{display:flex;justify-content:space-between;gap:10px;margin-top:25px}
     .privacy{margin-top:12px;color:var(--muted-2);font-size:.75rem;line-height:1.4}
     .quiz-success{display:none}
-    .quiz-success.show{display:block}
+    .quiz-success.show{display:block;text-align:center;padding:14px 0 6px}
     .quiz-success h3{margin:0 0 10px;font-size:2rem}
-    .quiz-success p{margin:0;color:var(--muted);line-height:1.5}
+    .quiz-success p{margin:0 auto;max-width:38ch;color:var(--muted);line-height:1.55}
+    .qs-check{width:66px;height:66px;margin:0 auto 18px;border-radius:50%;background:var(--lime);display:grid;place-content:center;box-shadow:0 10px 30px rgba(173,255,47,.35)}
+    .qs-check svg{width:32px;height:32px;fill:none;stroke:var(--forest);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+    .quiz-error{margin-top:12px;color:#c0341d;font-size:.82rem;line-height:1.45;background:rgba(192,52,29,.07);border:1px solid rgba(192,52,29,.22);border-radius:12px;padding:10px 13px}
 
     /* FOOTER */
     .footer{padding:52px 0 24px;background:#edf0e8;border-top:1px solid var(--line)}
@@ -1677,17 +1680,27 @@
     .tt-play svg{width:30px;height:30px;fill:var(--forest);margin-left:4px}
     .tt-note{position:absolute;left:0;right:0;bottom:16px;text-align:center;color:rgba(255,255,255,.66);font-size:.82rem}
     /* Team-Galerie */
-    .trust-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}
-    .tg-ph{margin:0;aspect-ratio:4/5;border-radius:16px;display:grid;place-content:center;justify-items:center;gap:9px;
+    .trust-gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:14px}
+    .trust-gallery--more{grid-template-columns:repeat(5,1fr);margin-top:12px}
+    .tg-ph{margin:0;aspect-ratio:4/5;border-radius:16px;display:grid;place-content:center;justify-items:center;gap:9px;position:relative;overflow:hidden;
       background:radial-gradient(120% 120% at 70% 10%,rgba(173,255,47,.12),transparent 55%),linear-gradient(160deg,#1a2a17,#0c130b);
       border:1px solid rgba(173,255,47,.16);color:rgba(255,255,255,.5);font-size:.76rem;font-weight:600}
+    .trust-gallery--more .tg-ph{aspect-ratio:1/1;font-size:.7rem}
     .tg-ph svg{width:30px;height:30px;stroke:var(--lime);fill:none;stroke-width:1.7;opacity:.85}
+    .tg-ph .tg-vid{fill:var(--lime);stroke:none;opacity:.9}
+    .tg-ph--vid::after{content:"Video";position:absolute;top:8px;right:8px;font-size:.6rem;letter-spacing:.06em;text-transform:uppercase;color:var(--forest);background:var(--lime);padding:2px 6px;border-radius:6px;font-weight:800}
     .tg-ph figcaption{opacity:.7}
+    .tg-toggle{display:inline-flex;align-items:center;gap:8px;margin:16px auto 0;padding:6px 4px;background:none;border:none;cursor:pointer;
+      color:rgba(255,255,255,.62);font-size:.85rem;font-weight:600;font-family:inherit;letter-spacing:.01em;border-bottom:1px solid rgba(173,255,47,.28);transition:color .18s}
+    .trust-gallery+.trust-gallery--more+.tg-toggle,.tg-toggle{display:flex;width:fit-content;margin-left:auto;margin-right:auto}
+    .tg-toggle:hover{color:#fff}
+    .tg-toggle-i{color:var(--lime);transition:transform .22s}
+    .tg-toggle[aria-expanded="true"] .tg-toggle-i{transform:rotate(180deg)}
     /* Fakten schlanke Zeile */
     .trust-meta{margin:22px 0 0;color:var(--muted);font-size:.9rem;line-height:1.6;text-align:center}
     .trust-meta strong{color:var(--ink);font-weight:800}
     .tm-star{color:#ffb300}
-    @media(max-width:640px){.trust-gallery{grid-template-columns:repeat(2,1fr);gap:10px}.tt-play{width:64px;height:64px}.tt-play svg{width:24px;height:24px}}
+    @media(max-width:640px){.trust-gallery{grid-template-columns:repeat(2,1fr);gap:10px}.trust-gallery--more{grid-template-columns:repeat(3,1fr)}.tt-play{width:64px;height:64px}.tt-play svg{width:24px;height:24px}}
     /* Persönlicher Kontaktblock */
     .speak{background:var(--paper-2);text-align:center}
     .speak-inner{max-width:640px;margin-inline:auto;display:flex;flex-direction:column;align-items:center}
@@ -2100,13 +2113,29 @@
         </div>
 
         <div class="trust-gallery">
-          <figure class="tg-ph"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="2.5"/><circle cx="12" cy="12.5" r="3.4"/><path d="M8 6l1.4-2h5.2L16 6"/></svg><figcaption>Team-Foto</figcaption></figure>
-          <figure class="tg-ph"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="2.5"/><circle cx="12" cy="12.5" r="3.4"/><path d="M8 6l1.4-2h5.2L16 6"/></svg><figcaption>Team-Foto</figcaption></figure>
-          <figure class="tg-ph"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="2.5"/><circle cx="12" cy="12.5" r="3.4"/><path d="M8 6l1.4-2h5.2L16 6"/></svg><figcaption>Team-Foto</figcaption></figure>
-          <figure class="tg-ph"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="2.5"/><circle cx="12" cy="12.5" r="3.4"/><path d="M8 6l1.4-2h5.2L16 6"/></svg><figcaption>Team-Foto</figcaption></figure>
-          <figure class="tg-ph"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="2.5"/><circle cx="12" cy="12.5" r="3.4"/><path d="M8 6l1.4-2h5.2L16 6"/></svg><figcaption>Team-Foto</figcaption></figure>
-          <figure class="tg-ph"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="2.5"/><circle cx="12" cy="12.5" r="3.4"/><path d="M8 6l1.4-2h5.2L16 6"/></svg><figcaption>Team-Foto</figcaption></figure>
+          <figure class="tg-ph"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="2.5"/><circle cx="12" cy="12.5" r="3.4"/><path d="M8 6l1.4-2h5.2L16 6"/></svg><figcaption>Team & Set</figcaption></figure>
+          <figure class="tg-ph"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="2.5"/><circle cx="12" cy="12.5" r="3.4"/><path d="M8 6l1.4-2h5.2L16 6"/></svg><figcaption>Foto-Produktion</figcaption></figure>
+          <figure class="tg-ph tg-ph--vid"><svg viewBox="0 0 24 24" aria-hidden="true" class="tg-vid"><circle cx="12" cy="12" r="9"/><path d="M10 8.5l5 3.5-5 3.5z"/></svg><figcaption>Reel-Dreh</figcaption></figure>
+          <figure class="tg-ph"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="2.5"/><circle cx="12" cy="12.5" r="3.4"/><path d="M8 6l1.4-2h5.2L16 6"/></svg><figcaption>Behind the Scenes</figcaption></figure>
         </div>
+        <div class="trust-gallery trust-gallery--more" id="tgMore" hidden>
+          <figure class="tg-ph"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="2.5"/><circle cx="12" cy="12.5" r="3.4"/><path d="M8 6l1.4-2h5.2L16 6"/></svg><figcaption>Studio-Shooting</figcaption></figure>
+          <figure class="tg-ph tg-ph--vid"><svg viewBox="0 0 24 24" aria-hidden="true" class="tg-vid"><circle cx="12" cy="12" r="9"/><path d="M10 8.5l5 3.5-5 3.5z"/></svg><figcaption>Reel</figcaption></figure>
+          <figure class="tg-ph"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="2.5"/><circle cx="12" cy="12.5" r="3.4"/><path d="M8 6l1.4-2h5.2L16 6"/></svg><figcaption>Produkt-Foto</figcaption></figure>
+          <figure class="tg-ph tg-ph--vid"><svg viewBox="0 0 24 24" aria-hidden="true" class="tg-vid"><circle cx="12" cy="12" r="9"/><path d="M10 8.5l5 3.5-5 3.5z"/></svg><figcaption>Interview</figcaption></figure>
+          <figure class="tg-ph tg-ph--vid"><svg viewBox="0 0 24 24" aria-hidden="true" class="tg-vid"><circle cx="12" cy="12" r="9"/><path d="M10 8.5l5 3.5-5 3.5z"/></svg><figcaption>Location-Dreh</figcaption></figure>
+          <figure class="tg-ph"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="2.5"/><circle cx="12" cy="12.5" r="3.4"/><path d="M8 6l1.4-2h5.2L16 6"/></svg><figcaption>Editorial</figcaption></figure>
+          <figure class="tg-ph"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="2.5"/><circle cx="12" cy="12.5" r="3.4"/><path d="M8 6l1.4-2h5.2L16 6"/></svg><figcaption>Kampagne</figcaption></figure>
+          <figure class="tg-ph tg-ph--vid"><svg viewBox="0 0 24 24" aria-hidden="true" class="tg-vid"><circle cx="12" cy="12" r="9"/><path d="M10 8.5l5 3.5-5 3.5z"/></svg><figcaption>Social Clip</figcaption></figure>
+          <figure class="tg-ph tg-ph--vid"><svg viewBox="0 0 24 24" aria-hidden="true" class="tg-vid"><circle cx="12" cy="12" r="9"/><path d="M10 8.5l5 3.5-5 3.5z"/></svg><figcaption>Making-of</figcaption></figure>
+          <figure class="tg-ph"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="2.5"/><circle cx="12" cy="12.5" r="3.4"/><path d="M8 6l1.4-2h5.2L16 6"/></svg><figcaption>Portrait</figcaption></figure>
+          <figure class="tg-ph"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="2.5"/><circle cx="12" cy="12.5" r="3.4"/><path d="M8 6l1.4-2h5.2L16 6"/></svg><figcaption>Food & Detail</figcaption></figure>
+          <figure class="tg-ph tg-ph--vid"><svg viewBox="0 0 24 24" aria-hidden="true" class="tg-vid"><circle cx="12" cy="12" r="9"/><path d="M10 8.5l5 3.5-5 3.5z"/></svg><figcaption>Event</figcaption></figure>
+          <figure class="tg-ph"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="2.5"/><circle cx="12" cy="12.5" r="3.4"/><path d="M8 6l1.4-2h5.2L16 6"/></svg><figcaption>Set-Aufbau</figcaption></figure>
+          <figure class="tg-ph"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="2.5"/><circle cx="12" cy="12.5" r="3.4"/><path d="M8 6l1.4-2h5.2L16 6"/></svg><figcaption>Ad Creative</figcaption></figure>
+          <figure class="tg-ph tg-ph--vid"><svg viewBox="0 0 24 24" aria-hidden="true" class="tg-vid"><circle cx="12" cy="12" r="9"/><path d="M10 8.5l5 3.5-5 3.5z"/></svg><figcaption>Doku-Clip</figcaption></figure>
+        </div>
+        <button type="button" class="tg-toggle" id="tgToggle" aria-expanded="false" aria-controls="tgMore">Mehr aus unseren Produktionen<span class="tg-toggle-i" aria-hidden="true">↓</span></button>
 
       </div>
     </section>
@@ -2197,13 +2226,14 @@
                 <label class="field">E-Mail<input name="email" type="email" autocomplete="email" placeholder="name@unternehmen.de"></label>
                 <label class="field">Telefon<input name="phone" type="tel" autocomplete="tel" placeholder="+49 …"></label>
               </div>
-              <p class="privacy">Mit dem Absenden öffnet sich deine E-Mail-App mit der fertigen Anfrage an <a href="mailto:info@obscura-berlin.de" style="color:var(--lime-deep)">info@obscura-berlin.de</a>. Es gelten unsere <button type="button" class="lg-link" data-legal="datenschutz">Datenschutzhinweise</button>.</p>
+              <p class="privacy">Mit dem Absenden schickt ihr eure Anfrage direkt an unser Team. Es gelten unsere <button type="button" class="lg-link" data-legal="datenschutz">Datenschutzhinweise</button>.</p>
+              <p class="quiz-error" id="quizError" hidden>Das hat leider nicht geklappt. Bitte versucht es noch einmal oder schreibt uns direkt an <a href="mailto:info@obscura-berlin.de" style="color:var(--lime-deep)">info@obscura-berlin.de</a>.</p>
             </div>
 
             <div class="quiz-success" id="quizSuccess">
-              <h3>Danke – deine Anfrage ist fertig.</h3>
-              <p>Deine E-Mail-App sollte sich mit der vorausgefüllten Anfrage geöffnet haben. Falls nicht, kannst du sie hier direkt senden:</p>
-              <a class="btn btn-primary" id="quizSend" href="mailto:info@obscura-berlin.de">Anfrage per E-Mail senden <span class="arrow">→</span></a>
+              <div class="qs-check" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg></div>
+              <h3>Danke – eure Anfrage ist bei uns.</h3>
+              <p>Wir haben eure Angaben erhalten und melden uns in der Regel innerhalb von 24&nbsp;Stunden persönlich bei euch.</p>
             </div>
 
             <div class="quiz-actions" id="quizActions">
@@ -2711,34 +2741,79 @@
         next.innerHTML = quizStep===4 ? 'Anfrage abschließen <span class="arrow">→</span>' : 'Weiter <span class="arrow">→</span>';
       }
       prev.addEventListener('click',()=>{if(quizStep>1){quizStep--;renderQuiz();}});
-      next.addEventListener('click',()=>{
-        if(quizStep<4){quizStep++;renderQuiz();}
-        else{
-          // Anfrage per E-Mail zusammenstellen (funktioniert ohne Backend)
-          const sel=g=>[...form.querySelectorAll('[data-group="'+g+'"] .choice.selected')].map(c=>c.textContent.trim());
-          const val=n=>{const el=form.querySelector('[name="'+n+'"]');return el?el.value.trim():'';};
-          const L=['Neue Projektanfrage über obscura-berlin.de','',
-            'Leistungen: '+(sel('services').join(', ')||'—'),
-            'Ziel: '+(sel('goal').join(', ')||'—'),
-            'Budget: '+(val('budget')||'—'),
-            'Start: '+(val('start')||'—'),
-            'Projekt: '+(val('project')||'—'),'',
-            'Name: '+(val('name')||'—'),
-            'Unternehmen: '+(val('company')||'—'),
-            'E-Mail: '+(val('email')||'—'),
-            'Telefon: '+(val('phone')||'—')];
-          const href='mailto:info@obscura-berlin.de?subject='+encodeURIComponent('Projektanfrage – '+(val('company')||val('name')||'Website'))+'&body='+encodeURIComponent(L.join('\n'));
-          quizSteps.forEach(s=>s.classList.remove('active'));
-          success.classList.add('show');
-          actions.style.display='none';
-          stepLabel.textContent='Fertig';
-          progressBar.style.width='100%';
-          const sendLink=document.getElementById('quizSend');
-          if(sendLink)sendLink.href=href;
-          window.location.href=href;
+
+      // ==== Direktversand an info@obscura-berlin.de (Web3Forms, kein Backend nötig) ====
+      // WICHTIG: <ACCESS_KEY> durch euren kostenlosen Web3Forms-Key ersetzen
+      // (https://web3forms.com – Key auf info@obscura-berlin.de ausstellen). Danach
+      // landen alle Anfragen direkt in eurem Postfach. Nichts anderes wird verschickt.
+      const WEB3FORMS_KEY='<ACCESS_KEY>';
+      const errorBox=document.getElementById('quizError');
+
+      async function sendQuiz(){
+        const sel=g=>[...form.querySelectorAll('[data-group="'+g+'"] .choice.selected')].map(c=>c.textContent.trim());
+        const val=n=>{const el=form.querySelector('[name="'+n+'"]');return el?el.value.trim():'';};
+        const services=sel('services').join(', ')||'—';
+        const company=val('company')||val('name')||'Website';
+        const payload={
+          access_key:WEB3FORMS_KEY,
+          from_name:'Obscura Website – Projektanfrage',
+          subject:'Neue Projektanfrage – '+company,
+          'Interesse an (Leistungen)':services,
+          'Ziel':sel('goal').join(', ')||'—',
+          'Budget':val('budget')||'—',
+          'Gewünschter Start':val('start')||'—',
+          'Projektbeschreibung':val('project')||'—',
+          'Name':val('name')||'—',
+          'Unternehmen':val('company')||'—',
+          'E-Mail':val('email')||'—',
+          'Telefon':val('phone')||'—',
+          replyto:val('email')||''
+        };
+        const res=await fetch('https://api.web3forms.com/submit',{
+          method:'POST',
+          headers:{'Content-Type':'application/json',Accept:'application/json'},
+          body:JSON.stringify(payload)
+        });
+        if(!res.ok) throw new Error('HTTP '+res.status);
+        const data=await res.json();
+        if(!data.success) throw new Error(data.message||'send failed');
+      }
+
+      function showQuizSuccess(){
+        quizSteps.forEach(s=>s.classList.remove('active'));
+        success.classList.add('show');
+        actions.style.display='none';
+        stepLabel.textContent='Fertig';
+        progressBar.style.width='100%';
+      }
+
+      next.addEventListener('click',async ()=>{
+        if(quizStep<4){quizStep++;renderQuiz();return;}
+        if(errorBox) errorBox.hidden=true;
+        const label=next.innerHTML;
+        next.disabled=true; next.innerHTML='Wird gesendet …';
+        try{
+          await sendQuiz();
+          showQuizSuccess();
+        }catch(err){
+          next.disabled=false; next.innerHTML=label;
+          if(errorBox) errorBox.hidden=false;
         }
       });
       renderQuiz();
+
+      /* ===== Team-Galerie: Mehr anzeigen ===== */
+      (function(){
+        const tgToggle=document.getElementById('tgToggle');
+        const tgMore=document.getElementById('tgMore');
+        if(!tgToggle||!tgMore) return;
+        tgToggle.addEventListener('click',()=>{
+          const open=tgMore.hidden;
+          tgMore.hidden=!open;
+          tgToggle.setAttribute('aria-expanded',open?'true':'false');
+          tgToggle.firstChild.textContent=open?'Weniger anzeigen':'Mehr aus unseren Produktionen';
+        });
+      })();
 
       /* ===== Social-Media-Check ===== */
       (function(){
