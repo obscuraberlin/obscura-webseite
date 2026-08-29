@@ -2640,21 +2640,24 @@
 
       // Farb-Fokus folgt dem Scrollen: die Karte nahe der Bildschirmmitte wird aktiv (gruen)
       let activeTicking=false;
+      const offersSection=document.getElementById('leistungen');
       function updateActivePanel(){
         activeTicking=false;
         if(!servicePanels.length) return;
         const mid=window.innerHeight*0.5;
+        // Farbfokus nur, solange der Leistungen-Bereich die Bildschirmmitte kreuzt.
+        // Ist man schon weiter (z.B. bei der Mitgliedschaft), werden alle Karten wieder hell.
+        const s=offersSection?offersSection.getBoundingClientRect():null;
+        const inSection = s && s.top < mid && s.bottom > mid;
+        if(!inSection){ servicePanels.forEach(p=>p.classList.remove('active')); return; }
         let best=null,bestD=Infinity;
         servicePanels.forEach(p=>{
           const r=p.getBoundingClientRect();
-          if(r.bottom<60||r.top>window.innerHeight-60) return;
           const c=r.top+r.height/2;
           const d=Math.abs(c-mid);
           if(d<bestD){bestD=d;best=p;}
         });
-        // Nur aktiv, wenn die Karte wirklich nahe der Mitte ist – sonst wieder hell
-        const near = best && bestD < window.innerHeight*0.34;
-        servicePanels.forEach(p=>p.classList.toggle('active',p===best && near));
+        servicePanels.forEach(p=>p.classList.toggle('active',p===best));
       }
       function reqActive(){ if(!activeTicking){activeTicking=true;requestAnimationFrame(updateActivePanel);} }
       window.addEventListener('scroll',reqActive,{passive:true});
