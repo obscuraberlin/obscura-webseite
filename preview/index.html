@@ -5,7 +5,7 @@
   <title>OBSCURA® Berlin — Marketing, Content & Digital</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@600;700;800;900&family=Inter:wght@400;500;600;700&display=swap">
   <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
   <style>
     :root{
@@ -35,7 +35,8 @@
       --gutter:clamp(20px,4.2vw,64px);
       --section:clamp(78px,9vw,136px);
       --font:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif;
-      --font-display:"Bricolage Grotesque","Inter",-apple-system,"Segoe UI",Arial,sans-serif;
+      --font-display:"Anton","Archivo","Arial Narrow",Impact,sans-serif;
+      --font-heading:"Archivo","Inter",-apple-system,"Segoe UI",Arial,sans-serif;
     }
 
     *{box-sizing:border-box}
@@ -66,27 +67,29 @@
       text-transform:none;
       color:var(--lime-deep);
     }
-    .title-xl,.title-lg,.title-md{
+    /* Netflix-artige Block-Display-Schrift (Anton) für die großen Titel */
+    .title-xl,.title-lg,.title-md,.stage-copy h2,.sv-copy h3{
       margin:0;
       font-family:var(--font-display);
-      font-weight:800;
+      font-weight:400;
       color:var(--ink);
       text-wrap:balance;
     }
-    /* Display-Schrift für alle Überschriften & Marke */
+    /* Kräftige, saubere Heading-Schrift (Archivo) für kleinere Überschriften & Marke */
     .brand,.service-panel h3,.project-copy h3,.case-copy strong,.reason-card strong,
-    .membership-card h2,.smc-score strong,.stat b,.hero-fact b,.plan h3,.step h3,
-    .stage-copy h2,.sv-copy h3,h3.smc,.about-obscura h3,.team-copy h3,.location-panel h3,.jobs-panel h3{
-      font-family:var(--font-display);
-      letter-spacing:-.02em;
+    .smc-score strong,.plan h3,.step h3,h3.smc,.about-obscura h3,.team-copy h3,
+    .location-panel h3,.jobs-panel h3{
+      font-family:var(--font-heading);
+      font-weight:800;
+      letter-spacing:-.01em;
     }
     /* Feiner Film-Grain über der ganzen Seite (wertige Textur) */
     body:after{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.05;mix-blend-mode:multiply;
       background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="180" height="180"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23n)"/></svg>')}
     @media(prefers-reduced-motion:reduce){body:after{opacity:.035}}
-    .title-xl{font-size:clamp(3.25rem,6.75vw,6.85rem);line-height:.94;letter-spacing:-.047em}
-    .title-lg{font-size:clamp(2.65rem,5.3vw,5.45rem);line-height:.95;letter-spacing:-.044em}
-    .title-md{font-size:clamp(2rem,3.6vw,3.6rem);line-height:1;letter-spacing:-.036em}
+    .title-xl{font-size:clamp(3.35rem,6.9vw,7rem);line-height:.96;letter-spacing:-.005em}
+    .title-lg{font-size:clamp(2.75rem,5.4vw,5.55rem);line-height:.98;letter-spacing:-.004em}
+    .title-md{font-size:clamp(2.1rem,3.7vw,3.7rem);line-height:1.02;letter-spacing:-.003em}
     .lead{
       margin:26px 0 0;
       max-width:760px;
@@ -336,7 +339,7 @@
     .stage-badge i{width:7px;height:7px;border-radius:50%;background:var(--lime)}
     .stage-copy{position:absolute;left:30px;right:30px;bottom:32px;width:auto;max-width:560px;z-index:2}
     .stage-copy p{margin:0 0 10px;color:rgba(255,255,255,.55);font-size:.72rem;font-weight:650;letter-spacing:.02em;text-transform:none}
-    .stage-copy h2{margin:0;font-size:clamp(2.45rem,3.8vw,4rem);line-height:.94;letter-spacing:-.04em}
+    .stage-copy h2{margin:0;font-size:clamp(2.45rem,3.8vw,4rem);line-height:.98;letter-spacing:0}
     .stage-copy small{display:block;margin-top:14px;max-width:470px;color:rgba(255,255,255,.66);font-size:.86rem;line-height:1.48}
     /* Grosses Vorschau-Fenster – schiebt sich passend zur aktiven Karte auf */
     .stage-view{position:relative;min-height:340px;border-radius:24px;overflow:hidden;color:#fff;
@@ -349,7 +352,7 @@
     .sv-badge i{width:7px;height:7px;border-radius:50%;background:var(--lime)}
     .sv-copy{position:relative;z-index:2}
     .sv-copy p{margin:0 0 8px;color:rgba(255,255,255,.6);font-size:.72rem;font-weight:650}
-    .sv-copy h3{margin:0;font-size:clamp(1.9rem,2.9vw,2.9rem);line-height:.98;letter-spacing:-.035em;color:#fff}
+    .sv-copy h3{margin:0;font-size:clamp(1.9rem,2.9vw,2.9rem);line-height:1.0;letter-spacing:.002em;color:#fff}
     .sv-copy small{display:block;margin-top:10px;color:rgba(255,255,255,.68);font-size:.86rem}
     /* Aufschieb-Animation beim Wechsel */
     @keyframes svOpen{0%{opacity:0;transform:translateY(26px)}100%{opacity:1;transform:none}}
