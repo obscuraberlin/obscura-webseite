@@ -397,8 +397,7 @@
     .clients-head{display:flex;justify-content:space-between;gap:24px;align-items:end;margin-bottom:17px}
     .clients-head strong{font-size:1rem;letter-spacing:-.025em}
     .clients-head span{color:var(--muted-2);font-size:.84rem}
-    .client-rail{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(200px,1fr);gap:10px;overflow:auto;scrollbar-width:none;padding-bottom:4px}
-    .client-rail::-webkit-scrollbar{display:none}
+    .client-rail{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
     .client-card{
       min-height:112px;padding:18px 22px;border-radius:20px;background:#fff;border:1px solid var(--line);
       display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;
@@ -1391,7 +1390,7 @@
       .stage-card{min-height:92px}
       .clients{padding:28px 0 44px}
       .clients-head{display:grid;gap:4px;align-items:start}
-      .client-rail{grid-auto-columns:76%}
+      .client-rail{grid-template-columns:1fr 1fr;gap:8px}
 
       .offers{padding:82px 0}
       .offers-intro{margin-bottom:34px}
@@ -1482,13 +1481,6 @@
     @media(max-width:640px){.smc-fields{grid-template-columns:1fr}.smc-score{gap:16px}}
 
     /* ===== COOKIE-BANNER ===== */
-    /* Proof / Zahlen-Strip */
-    .stat-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:26px;padding-top:24px;border-top:1px solid var(--line)}
-    .stat{display:flex;flex-direction:column;gap:3px}
-    .stat b{font-size:clamp(1.9rem,3.4vw,2.9rem);line-height:1;letter-spacing:-.03em;color:var(--ink);font-weight:830}
-    .stat span{font-size:.82rem;color:var(--muted);font-weight:620}
-    @media(max-width:760px){.stat-strip{grid-template-columns:1fr 1fr;gap:16px 12px;margin-top:22px}.stat b{font-size:2.05rem}}
-
     /* Membership Positionierung */
     .membership-why{margin:14px 0 0;font-size:.96rem;line-height:1.6;color:var(--muted);max-width:46ch}
     .membership-why strong{color:var(--ink);font-weight:760}
@@ -1725,12 +1717,6 @@
               <span class="client-fallback" hidden>SEA LIFE</span>
             </div>
           </div>
-        </div>
-        <div class="stat-strip" aria-label="Obscura in Zahlen">
-          <div class="stat"><b>10+</b><span>Jahre Erfahrung</span></div>
-          <div class="stat"><b>150+</b><span>Projekte umgesetzt</span></div>
-          <div class="stat"><b>50+</b><span>betreute Marken</span></div>
-          <div class="stat"><b>1</b><span>eigenes Fotostudio</span></div>
         </div>
       </div>
     </section>
