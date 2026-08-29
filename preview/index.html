@@ -402,13 +402,21 @@
     .clients-head span{color:var(--muted-2);font-size:.84rem}
     .client-rail{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
     .client-card{
-      min-height:112px;padding:18px 22px;border-radius:20px;background:#fff;border:1px solid var(--line);
+      min-height:112px;padding:18px 22px;border-radius:20px;background:#ebece8;border:1px solid #dfe0da;
       display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;
-      box-shadow:0 16px 34px -31px rgba(17,29,14,.25);
+      transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease,background .25s ease;
     }
-    .client-card:nth-child(2n){background:#f8f9f4}
-    .client-card{transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
-    .client-card:hover{transform:translateY(-3px);border-color:var(--line-2);box-shadow:0 22px 40px -28px rgba(17,29,14,.4)}
+    .client-card:hover{transform:translateY(-3px);background:#e4e6e0;border-color:#d2d4cc;box-shadow:0 22px 40px -28px rgba(17,29,14,.3)}
+    /* Ausklappbare Kunden */
+    .client-extra{display:none}
+    .client-rail.expanded .client-extra{display:flex}
+    .clients-more{display:flex;justify-content:center;margin-top:18px}
+    .clients-toggle{display:inline-flex;align-items:center;gap:9px;cursor:pointer;
+      background:var(--forest);color:#fff;border:none;border-radius:999px;padding:12px 22px;
+      font-size:.88rem;font-weight:700;transition:background .2s ease,transform .2s ease}
+    .clients-toggle:hover{background:#0f1a0d;transform:translateY(-2px)}
+    .clients-toggle .ct-icon{transition:transform .3s ease;font-size:1rem}
+    .client-rail.expanded ~ .clients-more .ct-icon{transform:rotate(180deg)}
     .client-logo{
       width:100%;height:62px;
       display:flex;align-items:center;justify-content:center;
@@ -1731,6 +1739,21 @@
               <span class="client-fallback" hidden>SEA LIFE</span>
             </div>
           </div>
+          <div class="client-card client-extra"><div class="client-logo"><span class="client-fallback">FRAMEN</span></div></div>
+          <div class="client-card client-extra"><div class="client-logo"><span class="client-fallback">AXEL SPRINGER</span></div></div>
+          <div class="client-card client-extra"><div class="client-logo"><span class="client-fallback">FLAT BERLIN</span></div></div>
+          <div class="client-card client-extra"><div class="client-logo"><span class="client-fallback">WELLER ENERGIE</span></div></div>
+          <div class="client-card client-extra"><div class="client-logo"><span class="client-fallback">SOLAR TECHNIK LACKNER</span></div></div>
+          <div class="client-card client-extra"><div class="client-logo"><span class="client-fallback">JETCLEAN BERLIN</span></div></div>
+          <div class="client-card client-extra"><div class="client-logo"><span class="client-fallback">MISSION KARRIERE</span></div></div>
+          <div class="client-card client-extra"><div class="client-logo"><span class="client-fallback">BRANDIDENT</span></div></div>
+          <div class="client-card client-extra"><div class="client-logo"><span class="client-fallback">ERTMEN</span></div></div>
+        </div>
+        <div class="clients-more">
+          <button type="button" class="clients-toggle" id="clientsToggle" aria-expanded="false">
+            <span class="ct-label">Mehr Kunden anzeigen</span>
+            <span class="ct-icon" aria-hidden="true">↓</span>
+          </button>
         </div>
       </div>
     </section>
@@ -2763,6 +2786,21 @@
         // WhatsApp-Nummer noch Platzhalter? -> Hinweis im Konsolen-Log
         const wa=document.getElementById('waLink');
         if(wa&&wa.href.includes('XXXX')){/* echte Nummer bei Livegang eintragen */}
+      })();
+
+      /* ===== Kunden ausklappen ===== */
+      (function(){
+        const btn=document.getElementById('clientsToggle');
+        const rail=document.querySelector('.client-rail');
+        if(!btn||!rail)return;
+        const label=btn.querySelector('.ct-label');
+        const icon=btn.querySelector('.ct-icon');
+        btn.addEventListener('click',()=>{
+          const open=rail.classList.toggle('expanded');
+          btn.setAttribute('aria-expanded',open?'true':'false');
+          label.textContent=open?'Weniger anzeigen':'Mehr Kunden anzeigen';
+          icon.style.transform=open?'rotate(180deg)':'';
+        });
       })();
 
       /* ===== Cookie-Banner ===== */
