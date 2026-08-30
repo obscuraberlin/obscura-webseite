@@ -1587,6 +1587,10 @@
     .closing .check-link:hover{color:var(--lime)}
     .closing .btn-light{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.2)}
     @media(max-width:560px){.closing-actions{width:100%}.closing-actions .btn{width:100%;min-height:54px}}
+    .contact-alt{margin-top:22px;padding-top:22px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;align-items:center;gap:12px}
+    .contact-alt>span{color:var(--muted);font-size:.92rem;font-weight:600}
+    .contact-alt .check-link{margin-top:0;margin-left:auto}
+    @media(max-width:560px){.contact-alt{flex-direction:column;align-items:stretch;text-align:center}.contact-alt .btn-wa{width:100%;min-height:52px}.contact-alt .check-link{margin-left:0}}
 
     /* ===== Floating Action Stack: WhatsApp + KI-Chat ===== */
     .fab-stack{position:fixed;right:clamp(14px,3vw,26px);bottom:clamp(14px,3vw,26px);z-index:130;
@@ -2159,24 +2163,11 @@
       </div>
     </section>
 
-    <section class="section closing" aria-label="Kontakt & Abschluss">
-      <div class="wrap closing-inner">
-        <p class="eyebrow">Direkt mit uns sprechen</p>
-        <h2 class="title-lg">Bereit für mehr Sichtbarkeit?</h2>
-        <p class="lead">Ihr habt ein Projekt im Kopf oder wollt wissen, was für euch Sinn ergibt? Sprecht direkt mit uns – ehrlich, unverbindlich und ohne Verkaufsdruck.</p>
-        <div class="closing-actions">
-          <a class="btn btn-primary" href="#kontakt">Kostenloses Erstgespräch <span class="arrow">→</span></a>
-          <a class="btn btn-wa" href="https://wa.me/49XXXXXXXXXX?text=Hallo%20Obscura%2C%20ich%20habe%20eine%20Frage." target="_blank" rel="noopener"><span class="wa-ic" aria-hidden="true">&#9993;</span> WhatsApp schreiben</a>
-        </div>
-        <button type="button" class="check-link" data-open-check>Noch unsicher? 60-Sekunden Social-Media-Check <span aria-hidden="true">→</span></button>
-      </div>
-    </section>
-
     <section class="section contact" id="kontakt">
       <div class="wrap">
-        <p class="eyebrow">Projekt anfragen</p>
-        <h2 class="title-lg">Was sollen wir für euch umsetzen?</h2>
-        <p class="lead"><strong>Vier kurze Fragen.</strong> Dann wissen wir, was ihr braucht.</p>
+        <p class="eyebrow">Direkt mit uns sprechen</p>
+        <h2 class="title-lg">Bereit für mehr Sichtbarkeit?</h2>
+        <p class="lead"><strong>Vier kurze Fragen</strong> – dann wissen wir, was ihr braucht. Ehrlich, unverbindlich und ohne Verkaufsdruck.</p>
 
         <form class="quiz-shell" id="quizForm">
           <div class="quiz-head">
@@ -2255,6 +2246,11 @@
             </div>
           </div>
         </form>
+        <div class="contact-alt">
+          <span>Lieber direkt schreiben?</span>
+      <a class="btn btn-wa" href="https://wa.me/49XXXXXXXXXX?text=Hallo%20Obscura%2C%20ich%20habe%20eine%20Frage." target="_blank" rel="noopener"><span class="wa-ic" aria-hidden="true">&#9993;</span> WhatsApp schreiben</a>
+          <button type="button" class="check-link" data-open-check>Noch unsicher? 60-Sekunden Social-Media-Check <span aria-hidden="true">→</span></button>
+        </div>
       </div>
     </section>
 
