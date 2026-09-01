@@ -26,3 +26,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Generierte Vorschau-Snapshots (kein Teil der App)
+preview-live.html
