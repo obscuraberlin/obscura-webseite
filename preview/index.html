@@ -238,15 +238,24 @@
     .hero{
       position:relative;
       overflow:hidden;
-      padding:clamp(128px,12vw,172px) 0 clamp(78px,8vw,112px);
-      background:linear-gradient(180deg,#fbfbf7 0%,var(--paper) 76%,#f2f4ec 100%);
+      padding:clamp(128px,12vw,172px) 0 clamp(96px,9vw,132px);
+      background:linear-gradient(180deg,#fbfbf7 0%,var(--paper) 68%,#f6f7f1 88%,#fff 100%);
+    }
+    /* Weicher, organischer Auslauf des Hero in die naechste Sektion (kein harter Cut) */
+    .hero:after{
+      content:"";position:absolute;left:0;right:0;bottom:0;z-index:1;pointer-events:none;
+      height:clamp(200px,26vw,360px);
+      background:linear-gradient(180deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.28) 38%,rgba(255,255,255,.7) 68%,rgba(255,255,255,.94) 88%,#fff 100%);
     }
     /* Leicht transparentes Hintergrundfoto hinter der Headline */
     .hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;
       opacity:.14;filter:grayscale(.25) contrast(1.02)}
-    /* Bewegtes Hintergrundvideo im Header – laeuft stumm in Dauerschleife, deutlich sichtbar */
+    /* Bewegtes Hintergrundvideo im Header – laeuft stumm in Dauerschleife, deutlich sichtbar.
+       Laeuft nach unten (und seitlich) per Maske weich aus -> keine harte Videokante. */
     .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;
-      opacity:.82;pointer-events:none;filter:saturate(1.04) contrast(1.02)}
+      opacity:.82;pointer-events:none;filter:saturate(1.04) contrast(1.02);
+      -webkit-mask-image:linear-gradient(180deg,#000 0%,#000 46%,rgba(0,0,0,.55) 74%,transparent 100%);
+      mask-image:linear-gradient(180deg,#000 0%,#000 46%,rgba(0,0,0,.55) 74%,transparent 100%)}
     .hero-veil{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
       background:linear-gradient(90deg,var(--paper) 30%,rgba(251,251,247,.74) 55%,rgba(251,251,247,.30) 78%,rgba(251,251,247,.08) 100%),
         linear-gradient(180deg,rgba(251,251,247,.28),transparent 26%,transparent 66%,var(--paper)),
@@ -386,13 +395,13 @@
     @keyframes svOpen{0%{opacity:0;transform:translateY(26px)}100%{opacity:1;transform:none}}
     .stage-view.switching .sv-copy,.stage-view.switching .sv-badge{animation:svOpen .5s cubic-bezier(.2,.75,.2,1) both}
     @media(prefers-reduced-motion:reduce){.stage-view.switching .sv-copy,.stage-view.switching .sv-badge{animation:none}.sv-photo{transition:none}}
-    /* Sticky: das grosse Fenster bleibt oben, waehrend die 4 Karten darunter scrollen */
+    /* Mobil: klare, natuerliche Abfolge – grosses Bild statisch, Karten darunter (kein Sticky-Overlap) */
     @media(max-width:1080px){
-      .hero{overflow:visible}
+      .hero{overflow:hidden}
       .hero-stage{overflow:visible}
       .hero-stage:before{display:none}
-      .stage-view{position:sticky;top:16px;z-index:2;will-change:transform;transform:translateZ(0)}
-      .stage-rail{position:relative;z-index:1;margin-top:14px}
+      .stage-view{position:relative;top:auto;z-index:1;min-height:clamp(260px,64vw,340px)}
+      .stage-rail{position:relative;z-index:1;margin-top:16px}
     }
     .stage-rail{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:12px}
     .stage-card{
@@ -420,9 +429,11 @@
 
     /* CLIENTS */
     .clients{
-      padding:34px 0 52px;
+      position:relative;z-index:2;
+      margin-top:clamp(-56px,-5vw,-34px);
+      padding:calc(34px + clamp(34px,5vw,56px)) 0 52px;
       background:#fff;
-      border-top:1px solid var(--line);
+      border-top:0;
       border-bottom:1px solid var(--line);
     }
     .clients-head{display:flex;justify-content:space-between;gap:24px;align-items:end;margin-bottom:17px}
@@ -430,11 +441,12 @@
     .clients-head span{color:var(--muted-2);font-size:.84rem}
     .client-rail{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
     .client-card{
-      min-height:112px;padding:18px 22px;border-radius:20px;background:#ebece8;border:1px solid #dfe0da;
+      min-height:104px;padding:18px 22px;border-radius:18px;background:#fbfcfa;border:1px solid #e6e8e1;
       display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;
+      box-shadow:0 10px 26px -24px rgba(17,29,14,.28),inset 0 1px 0 rgba(255,255,255,.7);
       transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease,background .25s ease;
     }
-    .client-card:hover{transform:translateY(-3px);background:#e4e6e0;border-color:#d2d4cc;box-shadow:0 22px 40px -28px rgba(17,29,14,.3)}
+    .client-card:hover{transform:translateY(-3px);background:#fff;border-color:#d6d9cf;box-shadow:0 24px 44px -28px rgba(17,29,14,.32),inset 0 1px 0 rgba(255,255,255,.8)}
     /* Ausklappbare Kunden */
     .client-extra{display:none}
     .client-rail.expanded .client-extra{display:flex}
@@ -461,8 +473,11 @@
     .client-logo.tall img{max-height:58px}
     .client-logo.wide img{max-width:90%;max-height:48px}
     .client-fallback{
-      font-size:.9rem;font-weight:850;letter-spacing:-.03em;color:#394438;text-align:center;
+      font-family:var(--font-heading);
+      font-size:clamp(.8rem,1.05vw,.96rem);font-weight:800;letter-spacing:.055em;text-transform:uppercase;
+      color:#636d61;text-align:center;line-height:1.15;transition:color .25s ease;
     }
+    .client-card:hover .client-fallback{color:var(--forest)}
 
     /* SERVICES — no sticky phone, clear readable cards */
     .offers{
@@ -1473,7 +1488,7 @@
       .stage-copy small{font-size:.8rem;max-width:92%}
       .stage-rail{grid-template-columns:1fr;gap:7px}
       .stage-card{min-height:92px}
-      .clients{padding:28px 0 44px}
+      .clients{padding:calc(28px + clamp(26px,7vw,44px)) 0 44px;margin-top:clamp(-44px,-8vw,-26px)}
       .clients-head{display:grid;gap:4px;align-items:start}
       .client-rail{grid-template-columns:repeat(3,1fr);gap:7px}
       .client-card{min-height:82px;padding:10px 6px;border-radius:14px}
@@ -1986,56 +2001,47 @@ body.lb-open{overflow:hidden}
         <div class="client-rail">
           <div class="client-card">
             <div class="client-logo wide">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/0/0a/Rolls_royce_motorcars_logo.svg" alt="Rolls-Royce Motor Cars" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
-              <span class="client-fallback" hidden>ROLLS-ROYCE</span>
+              <span class="client-fallback">ROLLS-ROYCE</span>
             </div>
           </div>
           <div class="client-card">
             <div class="client-logo wide">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/4/43/Amazon_Prime_Video_logo_%282022%29.svg" alt="Amazon Prime Video" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
-              <span class="client-fallback" hidden>AMAZON PRIME</span>
+              <span class="client-fallback">AMAZON PRIME</span>
             </div>
           </div>
           <div class="client-card">
             <div class="client-logo wide">
-              <img src="https://commercial.allianz.com/content/dam/onemarketing/commercial/commercial/logo/AZ-Logo-positive-rgb.png" alt="Allianz" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
-              <span class="client-fallback" hidden>ALLIANZ</span>
+              <span class="client-fallback">ALLIANZ</span>
             </div>
           </div>
           <div class="client-card">
             <div class="client-logo">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/e/e9/MINI_logo.svg" alt="MINI" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
-              <span class="client-fallback" hidden>MINI</span>
+              <span class="client-fallback">MINI</span>
             </div>
           </div>
           <div class="client-card">
             <div class="client-logo">
-              <img src="https://company.rtl.com/.galleries/images/rtl-group/press-releases/2026/rtl-logo-12-may-2026.png" alt="RTL" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
-              <span class="client-fallback" hidden>RTL</span>
+              <span class="client-fallback">RTL</span>
             </div>
           </div>
           <div class="client-card">
             <div class="client-logo wide">
-              <img src="https://static.funnelcockpit.com/upload/RBQjxJBoixoW3jkEN/1cc83b5397198caced4efdedcd619704.png" alt="Kensington Finest Properties International" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
-              <span class="client-fallback" hidden>KENSINGTON</span>
+              <span class="client-fallback">KENSINGTON</span>
             </div>
           </div>
           <div class="client-card">
             <div class="client-logo wide">
-              <img src="https://static.funnelcockpit.com/upload/RBQjxJBoixoW3jkEN/93bdf791f2e0b80269253ee11ea59fe5.png" alt="Riller & Schnauck" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
-              <span class="client-fallback" hidden>RILLER &amp; SCHNAUCK</span>
+              <span class="client-fallback">RILLER &amp; SCHNAUCK</span>
             </div>
           </div>
           <div class="client-card">
             <div class="client-logo">
-              <img src="https://www.madametussauds.com/berlin/media/ofndhvcr/mt-berlin-logo-on-red.png?format=webp&amp;quality=80&amp;width=400" alt="Madame Tussauds Berlin" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
-              <span class="client-fallback" hidden>MADAME TUSSAUDS</span>
+              <span class="client-fallback">MADAME TUSSAUDS</span>
             </div>
           </div>
           <div class="client-card">
             <div class="client-logo">
-              <img src="https://static.funnelcockpit.com/upload/bRQimNkQCS8WJCKga/cb5011e7a2f2991ba9389cb1d1a6e67b.png" alt="SEA LIFE" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
-              <span class="client-fallback" hidden>SEA LIFE</span>
+              <span class="client-fallback">SEA LIFE</span>
             </div>
           </div>
           <div class="client-card client-extra"><div class="client-logo"><span class="client-fallback">FRAMEN</span></div></div>
@@ -2739,11 +2745,8 @@ body.lb-open{overflow:hidden}
         }
         function targetFor(i){ const r=railCards[i].getBoundingClientRect(); return r.top+scrollY+r.height/2 - innerHeight*0.62; }
         function engaged(){
-          if(!mobile || reduce || !stageRail) return false;
-          // Sperre aktiv, sobald der Karten-Bereich die Bildschirmmitte kreuzt
-          // (unabhaengig vom Sticky-Verhalten des grossen Bildes)
-          const rr = stageRail.getBoundingClientRect();
-          return rr.top < innerHeight*0.72 && rr.bottom > innerHeight*0.34;
+          // Kein Scroll-Hijacking mehr: Mobil scrollt natuerlich, Karten bleiben antippbar.
+          return false;
         }
         function step(dir){
           const n = idxByScroll() + dir;
