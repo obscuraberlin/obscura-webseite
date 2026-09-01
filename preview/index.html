@@ -1477,15 +1477,17 @@
       .title-xl{font-size:clamp(2.35rem,9.2vw,3.3rem);line-height:1.04;letter-spacing:-.03em}
       .title-lg{font-size:clamp(2.05rem,8.4vw,2.85rem);line-height:1.07;letter-spacing:-.02em}
       .hero h1 .quiet{filter:drop-shadow(0 5px 14px rgba(95,133,8,.14))}
-      .hero-sub{font-size:1rem;line-height:1.55;margin-top:20px;max-width:36ch;color:#525c50}
-      .hero-service-line{font-size:.67rem;gap:8px 15px;margin-top:19px}
+      /* Mobil: alles mittig ausrichten */
+      .hero-copy{max-width:100%;text-align:center}
+      .hero-sub{font-size:1rem;line-height:1.55;margin:20px auto 0;max-width:36ch;color:#525c50}
+      .hero-service-line{font-size:.67rem;gap:8px 15px;margin-top:19px;justify-content:center}
       /* Buttons: ruhiger & editorialer – kompakter, gleichmaessige Schriftstaerke */
-      .hero-actions{margin-top:26px;gap:10px}
+      .hero-actions{margin-top:26px;gap:10px;justify-content:center}
       .hero-actions .btn{width:100%;min-height:52px;border-radius:14px;font-size:.92rem;font-weight:680;letter-spacing:.006em}
       .hero-actions .btn-primary{font-weight:720}
       .hero-actions .btn-light{background:#fff;border:1px solid #d7dccf;color:#1c261a;
         box-shadow:0 8px 22px -20px rgba(17,28,14,.4),inset 0 1px 0 rgba(255,255,255,.8)}
-      .hero-check{margin-top:24px;font-size:.88rem;font-weight:640}
+      .hero-check{margin:24px auto 0;font-size:.88rem;font-weight:640;justify-content:center}
       .hero-stage{min-height:auto;padding:12px;border-radius:27px}
       .stage-screen{min-height:405px}
       .stage-badge:last-child{display:none}
@@ -1493,9 +1495,11 @@
       .stage-copy h2{font-size:2.55rem}
       .stage-copy small{font-size:.8rem;max-width:92%}
       .stage-rail{grid-template-columns:1fr;gap:7px}
-      .stage-card{min-height:92px}
+      .stage-card{min-height:92px;align-items:center;text-align:center}
+      .sv-copy{text-align:center}
+      .sv-badge{left:50%;transform:translateX(-50%)}
       .clients{padding:calc(28px + clamp(26px,7vw,44px)) 0 44px;margin-top:clamp(-44px,-8vw,-26px)}
-      .clients-head{display:grid;gap:4px;align-items:start}
+      .clients-head{display:grid;gap:4px;align-items:center;justify-items:center;text-align:center}
       .client-rail{grid-template-columns:repeat(3,1fr);gap:7px}
       .client-card{min-height:82px;padding:10px 6px;border-radius:14px}
       .client-logo{height:46px}
