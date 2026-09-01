@@ -1,3 +1,5 @@
+import fs from "fs";
+import path from "path";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Ticker from "@/components/Ticker";
@@ -18,11 +20,15 @@ import Footer from "@/components/Footer";
 import StickyMobileCTA from "@/components/StickyMobileCTA";
 
 export default function Home() {
+  // Banner-Hintergrundvideo nur einbinden, wenn es tatsächlich vorliegt (echtes MP4).
+  const bannerVideo = fs.existsSync(
+    path.join(process.cwd(), "public/media/banner.mp4"),
+  );
   return (
     <>
       <Header />
       <main>
-        <Hero />
+        <Hero bannerVideo={bannerVideo} />
         <Ticker />
         <ClientLogos />
         <ServiceSystem />

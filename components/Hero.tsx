@@ -11,7 +11,7 @@ const cards = [
   { label: "Automotive", tone: 4, img: "/media/reels/r4.webp", className: "right-0 bottom-0 rotate-[-3deg]" },
 ];
 
-export default function Hero() {
+export default function Hero({ bannerVideo = false }: { bannerVideo?: boolean }) {
   const ref = useRef<HTMLDivElement>(null);
   const reduce = useReducedMotion();
   const { scrollYProgress } = useScroll({
@@ -29,6 +29,23 @@ export default function Hero() {
       id="hauptinhalt"
       className="relative overflow-hidden pt-28 md:pt-36"
     >
+      {bannerVideo && (
+        <div className="pointer-events-none absolute inset-0 -z-10" aria-hidden>
+          <video
+            className="h-full w-full object-cover opacity-30"
+            src="/media/banner.mp4"
+            poster="/media/banner-poster.jpg"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+          />
+          {/* Deckkraft/Overlay für Lesbarkeit von Headline & CTA */}
+          <div className="absolute inset-0 bg-gradient-to-r from-canvas via-canvas/80 to-canvas/40" />
+          <div className="absolute inset-0 bg-gradient-to-b from-canvas/70 via-transparent to-canvas" />
+        </div>
+      )}
       <div className="container-x grid items-center gap-12 pb-16 lg:grid-cols-[1.05fr_0.95fr] lg:pb-24">
         <motion.div style={{ y: yText }}>
           <p className="mb-5 text-xs font-semibold uppercase tracking-[0.22em] text-ink/50">
