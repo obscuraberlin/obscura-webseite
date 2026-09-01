@@ -28,7 +28,9 @@ export default function Projects() {
                 <div className="relative">
                   <PlaceholderMedia
                     tone={p.tone}
-                    play
+                    play={!p.img}
+                    src={p.img}
+                    alt={`${p.client} – ${p.leistung}`}
                     className="aspect-[4/3] w-full transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>

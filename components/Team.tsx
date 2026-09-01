@@ -35,19 +35,33 @@ export default function Team() {
           </div>
         </Reveal>
 
-        {/* Echtes Foto: Office & Fotostudio in Berlin */}
-        <Reveal className="mt-10">
-          <div className="overflow-hidden rounded-card border border-line">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/media/studio/office.jpg"
-              alt="Office und Fotostudio von Obscura in Berlin"
-              loading="lazy"
-              decoding="async"
-              className="aspect-[16/9] w-full object-cover"
-            />
-          </div>
-        </Reveal>
+        {/* Echte Fotos aus der Produktion */}
+        <div className="mt-10 grid gap-4 md:grid-cols-[1.6fr_1fr]">
+          <Reveal>
+            <div className="overflow-hidden rounded-card border border-line">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/media/ueber-uns/set-rolls-royce.webp"
+                alt="Obscura am Set bei Rolls-Royce Berlin"
+                loading="lazy"
+                decoding="async"
+                className="aspect-[16/9] w-full object-cover"
+              />
+            </div>
+          </Reveal>
+          <Reveal delay={0.08}>
+            <div className="h-full overflow-hidden rounded-card border border-line">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/media/studio/office.jpg"
+                alt="Office und Fotostudio von Obscura in Berlin"
+                loading="lazy"
+                decoding="async"
+                className="h-full min-h-48 w-full object-cover"
+              />
+            </div>
+          </Reveal>
+        </div>
 
         {/* mobil swipebar, Desktop Grid */}
         <div className="no-scrollbar mt-12 flex gap-4 overflow-x-auto pb-2 md:grid md:grid-cols-4 md:overflow-visible">
