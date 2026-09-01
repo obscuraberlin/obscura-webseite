@@ -72,6 +72,7 @@ export const nav = [
 /** Kundenlogos – verifizierte Referenzen (vom Kunden bestätigt). */
 export const clients = [
   "ROLLS-ROYCE BERLIN",
+  "HOTEL ADLON KEMPINSKI",
   "RILLER & SCHNAUCK",
   "SJS CARSTYLING",
   "KENSINGTON",
@@ -232,8 +233,9 @@ export const projects: {
   tone: number;
   img?: string;
 }[] = [
-  { client: "Rolls-Royce Berlin", branche: "Automotive", leistung: "Langfristige Social-Media- & Content-Betreuung", tone: 1, img: "/media/projekte/rolls-royce.webp" },
-  { client: "Riller & Schnauck", branche: "Automotive", leistung: "Social-Media-Content & Videoproduktion", tone: 3 },
+  { client: "Rolls-Royce Berlin × Hotel Adlon Kempinski", branche: "Automotive · Luxury", leistung: "Werbespot-Produktion", tone: 1, img: "/media/projekte/rolls-royce.webp" },
+  { client: "Rolls-Royce Berlin", branche: "Automotive", leistung: "Langfristige Social-Media- & Content-Betreuung", tone: 3 },
+  { client: "Riller & Schnauck", branche: "Automotive", leistung: "Social-Media-Content & Videoproduktion", tone: 5 },
   { client: "SJS Carstyling", branche: "Carstyling", leistung: "Content- & Videoproduktion", tone: 2 },
   { client: "Kensington Immobilien", branche: "Immobilien", leistung: "Social-Media-Betreuung & Content", tone: 4 },
 ];
