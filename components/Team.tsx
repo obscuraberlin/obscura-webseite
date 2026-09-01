@@ -35,32 +35,36 @@ export default function Team() {
           </div>
         </Reveal>
 
-        {/* Echte Fotos aus der Produktion */}
-        <div className="mt-10 grid gap-4 md:grid-cols-[1.6fr_1fr]">
-          <Reveal>
-            <div className="overflow-hidden rounded-card border border-line">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/media/ueber-uns/set-rolls-royce.webp"
-                alt="Obscura am Set bei Rolls-Royce Berlin"
-                loading="lazy"
-                decoding="async"
-                className="aspect-[16/9] w-full object-cover"
-              />
-            </div>
-          </Reveal>
-          <Reveal delay={0.08}>
-            <div className="h-full overflow-hidden rounded-card border border-line">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/media/studio/office.jpg"
-                alt="Office und Fotostudio von Obscura in Berlin"
-                loading="lazy"
-                decoding="async"
-                className="h-full min-h-48 w-full object-cover"
-              />
-            </div>
-          </Reveal>
+        {/* Behind the Scenes – echte Aufnahmen aus unseren Produktionen */}
+        <Reveal className="mt-12">
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-ink/50">
+            Behind the Scenes
+          </p>
+          <h3 className="mt-3 text-2xl font-extrabold tracking-tight">
+            Aus unseren Produktionen.
+          </h3>
+        </Reveal>
+        <div className="mt-6 grid grid-cols-2 gap-3 md:grid-cols-4">
+          {[
+            { src: "/media/ueber-uns/set-rolls-royce.webp", alt: "Am Set beim Rolls-Royce-Spectre-Shooting", span: "col-span-2 row-span-2 aspect-[4/3] md:aspect-auto" },
+            { src: "/media/bts/garage.webp", alt: "Kamerafahrt am Rolls-Royce Spectre", span: "aspect-[4/3]" },
+            { src: "/media/bts/suite.webp", alt: "Dreh in der Hotelsuite im Adlon Kempinski", span: "aspect-[3/4] row-span-2" },
+            { src: "/media/bts/reception.webp", alt: "Dreh an der Rezeption vor Ort", span: "aspect-[4/3]" },
+            { src: "/media/bts/office.webp", alt: "Obscura-Team im eigenen Studio in Berlin", span: "aspect-[4/3]" },
+          ].map((m, i) => (
+            <Reveal key={m.src} delay={i * 0.05} className={m.span}>
+              <div className="h-full w-full overflow-hidden rounded-card border border-line">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={m.src}
+                  alt={m.alt}
+                  loading="lazy"
+                  decoding="async"
+                  className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
+                />
+              </div>
+            </Reveal>
+          ))}
         </div>
 
         {/* mobil swipebar, Desktop Grid */}

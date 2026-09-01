@@ -74,6 +74,8 @@ export const clients = [
   "ROLLS-ROYCE BERLIN",
   "HOTEL ADLON KEMPINSKI",
   "RILLER & SCHNAUCK",
+  "LUSSO",
+  "SOLARTECHNIK LAUCKNER",
   "SJS CARSTYLING",
   "KENSINGTON",
 ];
@@ -234,10 +236,11 @@ export const projects: {
   img?: string;
 }[] = [
   { client: "Rolls-Royce Spectre × Hotel Adlon Kempinski", branche: "Automotive · Luxury", leistung: "Werbespot-Produktion", tone: 1, img: "/media/projekte/rolls-royce.webp" },
-  { client: "Rolls-Royce Berlin", branche: "Automotive", leistung: "Langfristige Social-Media- & Content-Betreuung", tone: 3 },
-  { client: "Riller & Schnauck", branche: "Automotive", leistung: "Social-Media-Content & Videoproduktion", tone: 5 },
-  { client: "SJS Carstyling", branche: "Carstyling", leistung: "Content- & Videoproduktion", tone: 2 },
+  { client: "Lusso", branche: "Gastronomie", leistung: "Food- & Beverage-Content", tone: 3, img: "/media/projekte/gastro.webp" },
+  { client: "SolarTechnik Lauckner", branche: "Handwerk & B2B", leistung: "Foto- & Videoproduktion vor Ort", tone: 5, img: "/media/projekte/solar.webp" },
+  { client: "Riller & Schnauck", branche: "Automotive", leistung: "Social-Media-Content & Videoproduktion", tone: 2 },
   { client: "Kensington Immobilien", branche: "Immobilien", leistung: "Social-Media-Betreuung & Content", tone: 4 },
+  { client: "SJS Carstyling", branche: "Carstyling", leistung: "Content- & Videoproduktion", tone: 6 },
 ];
 
 /** Mini Success Stories – als Muster, später durch echte Stories ersetzen */
