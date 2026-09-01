@@ -34,7 +34,7 @@ export default function Hero({ bannerVideo = false }: { bannerVideo?: boolean })
           <video
             className="h-full w-full object-cover opacity-30"
             src="/media/banner.mp4"
-            poster="/media/banner-poster.jpg"
+            poster="/media/films/f1.webp"
             autoPlay
             muted
             loop
