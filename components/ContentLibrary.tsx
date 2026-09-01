@@ -40,12 +40,12 @@ export default function ContentLibrary() {
       <div className="mt-10 space-y-8">
         <Rail title="Reels · 9:16" ratio="9/16">
           {reels.map((r) => (
-            <RailCard key={r.title} ratio="9/16" tone={r.tone} label={r.title} category={r.category} />
+            <RailCard key={r.title} ratio="9/16" tone={r.tone} label={r.title} category={r.category} img={r.img} />
           ))}
         </Rail>
         <Rail title="Filme · 16:9" ratio="16/9">
           {films.map((f) => (
-            <RailCard key={f.title} ratio="16/9" tone={f.tone} label={f.title} category={f.category} wide />
+            <RailCard key={f.title} ratio="16/9" tone={f.tone} label={f.title} category={f.category} img={f.img} wide />
           ))}
         </Rail>
       </div>
@@ -110,12 +110,14 @@ function RailCard({
   tone,
   label,
   category,
+  img,
   wide = false,
 }: {
   ratio: string;
   tone: number;
   label: string;
   category: string;
+  img?: string;
   wide?: boolean;
 }) {
   return (
@@ -126,7 +128,9 @@ function RailCard({
     >
       <PlaceholderMedia
         tone={tone}
-        play
+        play={!img}
+        src={img}
+        alt={`${category} – ${label}`}
         className={`w-full transition-transform duration-500 group-hover:scale-[1.04] ${
           wide ? "aspect-video" : "aspect-[9/16]"
         }`}

@@ -5,10 +5,10 @@ import { useRef } from "react";
 import { ArrowCTA, PlaceholderMedia } from "./ui";
 
 const cards = [
-  { label: "Automotive Reel", tone: 1, className: "left-0 top-0 rotate-[-4deg]" },
-  { label: "Behind the Scenes", tone: 2, className: "right-6 top-10 rotate-[3deg]" },
-  { label: "Immobilien", tone: 3, className: "left-10 bottom-8 rotate-[2deg]" },
-  { label: "Drohnenaufnahme", tone: 4, className: "right-0 bottom-0 rotate-[-3deg]" },
+  { label: "Rolls-Royce Spectre", tone: 1, img: "/media/reels/r1.webp", className: "left-0 top-0 rotate-[-4deg]" },
+  { label: "Behind the Scenes", tone: 2, img: "/media/reels/r2.webp", className: "right-6 top-10 rotate-[3deg]" },
+  { label: "Gastronomie", tone: 3, img: "/media/reels/r3.webp", className: "left-10 bottom-8 rotate-[2deg]" },
+  { label: "Automotive", tone: 4, img: "/media/reels/r4.webp", className: "right-0 bottom-0 rotate-[-3deg]" },
 ];
 
 export default function Hero() {
@@ -90,7 +90,9 @@ export default function Hero() {
               <PlaceholderMedia
                 tone={c.tone}
                 label={c.label}
-                play
+                src={c.img}
+                play={!c.img}
+                alt={c.label}
                 className="h-full w-full rounded-2xl border border-white/10"
               />
             </motion.div>
@@ -104,7 +106,9 @@ export default function Hero() {
               <PlaceholderMedia
                 tone={c.tone}
                 label={c.label}
-                play
+                src={c.img}
+                play={!c.img}
+                alt={c.label}
                 className="aspect-[9/16] w-full rounded-2xl"
               />
             </div>

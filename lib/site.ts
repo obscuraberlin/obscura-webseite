@@ -178,21 +178,21 @@ export const contentFilters = [
   "Social Media",
 ];
 
-/** Content-Rails – Kategorien statt erfundener Projekte. */
+/** Content-Rails – echte Aufnahmen aus Produktionen. */
 export const reels = [
-  { title: "Automotive Reel", category: "Automotive", tone: 1 },
-  { title: "Behind the Scenes", category: "BTS", tone: 2 },
-  { title: "Immobilien", category: "Immobilien", tone: 3 },
-  { title: "Drohnenaufnahme", category: "Drohne", tone: 4 },
-  { title: "Social Media", category: "Social", tone: 5 },
-  { title: "Produktvideo", category: "Produkt", tone: 6 },
+  { title: "Rolls-Royce Spectre", category: "Automotive", tone: 1, img: "/media/reels/r1.webp" },
+  { title: "Behind the Scenes", category: "Adlon Kempinski", tone: 2, img: "/media/reels/r2.webp" },
+  { title: "Signature Drink", category: "Gastronomie", tone: 3, img: "/media/reels/r3.webp" },
+  { title: "Automotive", category: "Rolls-Royce", tone: 4, img: "/media/reels/r4.webp" },
+  { title: "Food & Plating", category: "Gastronomie", tone: 5, img: "/media/reels/r5.webp" },
+  { title: "Details", category: "Editorial", tone: 6, img: "/media/reels/r6.webp" },
 ];
 
 export const films = [
-  { title: "Imagefilm", category: "Imagefilm", tone: 2 },
-  { title: "Unternehmensfilm", category: "Corporate", tone: 4 },
-  { title: "Kampagnenfilm", category: "Kampagne", tone: 1 },
-  { title: "Recruiting Film", category: "Recruiting", tone: 3 },
+  { title: "Rolls-Royce Spectre", category: "Werbespot", tone: 2, img: "/media/films/f1.webp" },
+  { title: "Behind the Scenes", category: "Produktion", tone: 4, img: "/media/films/f2.webp" },
+  { title: "Studio & Team", category: "Berlin", tone: 1, img: "/media/films/f3.webp" },
+  { title: "SolarTechnik Lauckner", category: "Handwerk & B2B", tone: 3, img: "/media/films/f4.webp" },
 ];
 
 /** Ablauf / Prozess */

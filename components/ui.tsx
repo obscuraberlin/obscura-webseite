@@ -89,7 +89,7 @@ export function PlaceholderMedia({
   /** Alt-/Beschreibungstext für echtes Medium */
   alt?: string;
 }) {
-  // Echtes Video, sobald bereitgestellt
+  // Echtes Video als stille Dauerschleife (autoplay, muted, loop, kein Button)
   if (video) {
     return (
       <div className={`ph-media ph-tone-${tone} relative overflow-hidden ${className}`}>
@@ -97,13 +97,18 @@ export function PlaceholderMedia({
           className="absolute inset-0 h-full w-full object-cover"
           src={video}
           poster={poster}
+          autoPlay
           muted
           loop
           playsInline
-          preload="none"
-          controls
+          preload="metadata"
           aria-label={alt || label || "Video"}
         />
+        {label && (
+          <span className="absolute bottom-3 left-3 z-10 rounded-full bg-black/40 px-2.5 py-1 text-[10px] font-medium uppercase tracking-wider text-white/80 backdrop-blur">
+            {label}
+          </span>
+        )}
       </div>
     );
   }
