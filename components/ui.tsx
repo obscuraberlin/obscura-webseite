@@ -71,12 +71,62 @@ export function PlaceholderMedia({
   label,
   className = "",
   play = false,
+  src,
+  video,
+  poster,
+  alt,
 }: {
   tone?: number;
   label?: string;
   className?: string;
   play?: boolean;
+  /** Pfad zu einem echten Bild in /public (z. B. "/media/hero/reel-1.jpg") */
+  src?: string;
+  /** Pfad zu einem echten Video in /public (z. B. "/media/reels/reel-1.mp4") */
+  video?: string;
+  /** Vorschaubild für Videos (Poster) */
+  poster?: string;
+  /** Alt-/Beschreibungstext für echtes Medium */
+  alt?: string;
 }) {
+  // Echtes Video, sobald bereitgestellt
+  if (video) {
+    return (
+      <div className={`ph-media ph-tone-${tone} relative overflow-hidden ${className}`}>
+        <video
+          className="absolute inset-0 h-full w-full object-cover"
+          src={video}
+          poster={poster}
+          muted
+          loop
+          playsInline
+          preload="none"
+          controls
+          aria-label={alt || label || "Video"}
+        />
+      </div>
+    );
+  }
+  // Echtes Bild, sobald bereitgestellt
+  if (src) {
+    return (
+      <div className={`ph-media ph-tone-${tone} relative overflow-hidden ${className}`}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={src}
+          alt={alt || label || ""}
+          loading="lazy"
+          decoding="async"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        {label && (
+          <span className="absolute bottom-3 left-3 z-10 rounded-full bg-black/40 px-2.5 py-1 text-[10px] font-medium uppercase tracking-wider text-white/80 backdrop-blur">
+            {label}
+          </span>
+        )}
+      </div>
+    );
+  }
   return (
     <div
       className={`ph-media ph-tone-${tone} ${className}`}

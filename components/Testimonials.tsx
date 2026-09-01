@@ -2,6 +2,9 @@ import { reviews } from "@/lib/site";
 import { PlaceholderMedia, Reveal } from "./ui";
 
 export default function Testimonials() {
+  // Keine erfundenen Kundenstimmen: Abschnitt bleibt aus, bis echte,
+  // freigegebene Stimmen/Videos vorliegen.
+  if (reviews.length === 0) return null;
   return (
     <section className="bg-soft py-24">
       <div className="container-x">
@@ -49,7 +52,6 @@ export default function Testimonials() {
                 <figcaption className="mt-5 flex items-center gap-3">
                   <span className={`ph-media ph-tone-${(i % 6) + 1} h-9 w-9 rounded-full`} />
                   <span>
-                    {/* PLACEHOLDER: echte, freigegebene Kundenstimme */}
                     <span className="block text-sm font-semibold">{r.name}</span>
                     <span className="block text-xs text-ink/50">{r.company}</span>
                   </span>

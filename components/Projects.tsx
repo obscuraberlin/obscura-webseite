@@ -37,7 +37,6 @@ export default function Projects() {
                     {p.branche}
                   </p>
                   <h3 className="mt-1 font-bold">{p.leistung}</h3>
-                  {/* PLACEHOLDER: echten Kunden + freigegebenes Ergebnis ergänzen */}
                   <p className="mt-1 text-sm text-surface/50">{p.client}</p>
                 </div>
               </article>

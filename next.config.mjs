@@ -7,9 +7,9 @@ const nextConfig = {
     formats: ["image/avif", "image/webp"],
   },
   async redirects() {
-    // Bestehende URLs des alten Auftritts beim Relaunch abfangen (301).
-    // PLACEHOLDER: Mit den tatsächlichen Alt-URLs von obscura-berlin.de ergänzen,
-    // sobald diese vorliegen. Beispiele:
+    // Bestehende URLs des alten Auftritts beim Relaunch abfangen (301),
+    // damit Rankings/Backlinks erhalten bleiben. Bei Bedarf um weitere
+    // konkrete Alt-URLs der bisherigen Website ergänzen.
     return [
       { source: "/home", destination: "/", permanent: true },
       { source: "/leistungen", destination: "/#leistungen", permanent: true },

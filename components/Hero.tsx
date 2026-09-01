@@ -61,19 +61,20 @@ export default function Hero() {
             </ArrowCTA>
           </div>
 
-          <div className="mt-8 flex items-center gap-4">
-            <div className="flex -space-x-3" aria-hidden>
-              {[1, 2, 3, 4].map((t) => (
-                <span
-                  key={t}
-                  className={`ph-media ph-tone-${t} h-9 w-9 rounded-full ring-2 ring-canvas`}
-                />
-              ))}
-            </div>
+          <div className="mt-8 flex items-center gap-3">
+            <span
+              className="h-2.5 w-2.5 rounded-full bg-lime"
+              aria-hidden
+            />
             <p className="text-sm text-ink/60">
-              {/* PLACEHOLDER: echte Zahl bestätigen */}
-              100+ Unternehmen vertrauen uns · 5,0{" "}
-              <span className="text-lime">★★★★★</span>
+              Vertrauen von Marken wie{" "}
+              <span className="font-semibold text-ink/80">
+                Rolls-Royce Berlin
+              </span>{" "}
+              &amp;{" "}
+              <span className="font-semibold text-ink/80">
+                Riller &amp; Schnauck
+              </span>
             </p>
           </div>
         </motion.div>

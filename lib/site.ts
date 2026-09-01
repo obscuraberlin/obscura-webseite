@@ -1,11 +1,9 @@
 /**
  * Zentrale Inhalts- und Konfigurationsdatei.
  *
- * WICHTIG: Alle mit "PLACEHOLDER" markierten Werte müssen durch echte
- * Obscura-Daten (obscura-berlin.de) ersetzt werden. Es wurden bewusst KEINE
- * Kundennamen, Zahlen, Reichweiten oder Ergebnisse erfunden – die hier
- * hinterlegten Beispielwerte stammen aus dem vom Kunden gelieferten Design-
- * Entwurf und sind als Platzhalter zu verstehen.
+ * Enthält die verifizierten Firmen-, Kontakt- und Referenzdaten von Obscura.
+ * Es werden bewusst keine Kundennamen, Zahlen, Reichweiten oder Ergebnisse
+ * erfunden; nicht verifizierbare Angaben (z. B. Social-Profile) bleiben leer.
  */
 
 export const site = {
@@ -25,14 +23,42 @@ export const site = {
     city: "Berlin",
     country: "Deutschland",
   },
+  // Registerangaben (Impressum / strukturierte Daten)
+  register: {
+    court: "Amtsgericht Charlottenburg",
+    hrb: "HRB 254391 B",
+    vatId: "DE362483133",
+    taxNr: "3045900015",
+  },
+  // Vorbelegte WhatsApp-Nachricht
+  whatsappText: "Hallo Obscura, ich interessiere mich für eine Zusammenarbeit.",
+  // Geschäftsführung / Gründer (verifiziert)
+  management: ["Maher Samir Moussa", "Marcel Mancic"],
   social: {
-    // PLACEHOLDER – nur echte, tatsächlich vorhandene Profile eintragen
-    instagram: "https://instagram.com/obscura.berlin",
-    linkedin: "https://www.linkedin.com/company/obscura-berlin",
-    tiktok: "https://www.tiktok.com/@obscura.berlin",
-    youtube: "https://www.youtube.com/@obscura.berlin",
+    // Nur verifizierte, offizielle Profile eintragen. Konnten aktuell nicht
+    // eindeutig verifiziert werden -> leer lassen (Icons werden ausgeblendet),
+    // statt ein falsches generisches Profil zu verlinken.
+    instagram: "",
+    linkedin: "",
+    tiktok: "",
+    youtube: "",
   },
 };
+
+/** WhatsApp-Deep-Link mit vorbelegter Nachricht */
+export const whatsappUrl = `https://wa.me/${site.whatsappHref}?text=${encodeURIComponent(
+  site.whatsappText,
+)}`;
+
+/** Nur tatsächlich hinterlegte (verifizierte) Social-Profile */
+export const socialLinks = (
+  [
+    { label: "Instagram", href: site.social.instagram },
+    { label: "TikTok", href: site.social.tiktok },
+    { label: "LinkedIn", href: site.social.linkedin },
+    { label: "YouTube", href: site.social.youtube },
+  ] as const
+).filter((s) => s.href && s.href.length > 0);
 
 export const nav = [
   { label: "Leistungen", href: "#leistungen" },
@@ -43,13 +69,12 @@ export const nav = [
   { label: "Kontakt", href: "#kontakt" },
 ];
 
-/** Kundenlogos – PLACEHOLDER: echte Referenzen von obscura-berlin.de verwenden */
+/** Kundenlogos – verifizierte Referenzen (vom Kunden bestätigt). */
 export const clients = [
-  "BMW",
-  "ROLLS-ROYCE",
-  "KENSINGTON",
+  "ROLLS-ROYCE BERLIN",
   "RILLER & SCHNAUCK",
-  "SIROKO",
+  "SJS CARSTYLING",
+  "KENSINGTON",
 ];
 
 /** Leistungsbausteine rund um die Systemgrafik */
@@ -197,14 +222,14 @@ export const process = [
 ];
 
 /**
- * Projekte – PLACEHOLDER. Keine Ergebnisse/Kennzahlen erfunden.
- * Mit echten Obscura-Cases inkl. Freigabe ersetzen.
+ * Projekte – verifizierte Referenzen, qualitativ beschrieben.
+ * Keine erfundenen Ergebnisse/Kennzahlen.
  */
 export const projects = [
-  { client: "PLACEHOLDER Kunde", branche: "Automotive", leistung: "Reels Kampagne", tone: 1 },
-  { client: "PLACEHOLDER Kunde", branche: "Immobilien", leistung: "Social Media Betreuung", tone: 3 },
-  { client: "PLACEHOLDER Kunde", branche: "B2B", leistung: "Imagefilm Produktion", tone: 2 },
-  { client: "PLACEHOLDER Kunde", branche: "Dienstleister", leistung: "Content Creation", tone: 4 },
+  { client: "Rolls-Royce Berlin", branche: "Automotive", leistung: "Langfristige Social-Media- & Content-Betreuung", tone: 1 },
+  { client: "Riller & Schnauck", branche: "Automotive", leistung: "Social-Media-Content & Videoproduktion", tone: 3 },
+  { client: "SJS Carstyling", branche: "Carstyling", leistung: "Content- & Videoproduktion", tone: 2 },
+  { client: "Kensington Immobilien", branche: "Immobilien", leistung: "Social-Media-Betreuung & Content", tone: 4 },
 ];
 
 /** Mini Success Stories – als Muster, später durch echte Stories ersetzen */
@@ -216,48 +241,18 @@ export const stories = [
   "Monatlicher Content für einen einheitlichen Auftritt.",
 ];
 
-/** Team – PLACEHOLDER: echte Teamdaten verwenden, keine Personen erfinden */
+/** Team – nur verifizierte Personen (Geschäftsführung / Gründer). */
 export const team = [
-  { name: "PLACEHOLDER Name", role: "Strategie & Beratung", tone: 1 },
-  { name: "PLACEHOLDER Name", role: "Videoproduktion", tone: 2 },
-  { name: "PLACEHOLDER Name", role: "Social Media Management", tone: 3 },
-  { name: "PLACEHOLDER Name", role: "Performance & Ads", tone: 4 },
+  { name: "Maher Samir Moussa", role: "Geschäftsführung", tone: 1 },
+  { name: "Marcel Mancic", role: "Geschäftsführung", tone: 4 },
 ];
 
 /**
- * Text-Reviews – PLACEHOLDER. Die Zitate stammen aus dem gelieferten
- * Design-Entwurf und sind durch echte, freigegebene Kundenstimmen zu ersetzen.
+ * Text-Reviews – nur echte, vom Kunden freigegebene Stimmen einsetzen.
+ * Bis diese vorliegen bewusst leer (keine erfundenen Bewertungen).
+ * Format: { quote, name, company, stars }
  */
-export const reviews = [
-  {
-    quote:
-      "Obscura hat unseren Social-Media-Auftritt auf ein neues Level gebracht. Mehr Reichweite, mehr Anfragen, mehr Kunden.",
-    name: "PLACEHOLDER",
-    company: "PLACEHOLDER Unternehmen",
-    stars: 5,
-  },
-  {
-    quote:
-      "Professionell, kreativ und zuverlässig. Unser Content war noch nie so stark und unsere Kanäle performen besser denn je.",
-    name: "PLACEHOLDER",
-    company: "PLACEHOLDER Unternehmen",
-    stars: 5,
-  },
-  {
-    quote:
-      "Seit wir mit Obscura arbeiten, haben wir eine deutlich höhere Sichtbarkeit und mehr qualifizierte Anfragen.",
-    name: "PLACEHOLDER",
-    company: "PLACEHOLDER Unternehmen",
-    stars: 5,
-  },
-  {
-    quote:
-      "Ein tolles Team, das wirklich mitdenkt und unsere Marke perfekt in Szene setzt.",
-    name: "PLACEHOLDER",
-    company: "PLACEHOLDER Unternehmen",
-    stars: 5,
-  },
-];
+export const reviews: { quote: string; name: string; company: string; stars: number }[] = [];
 
 /** Mehrstufiges Formular */
 export const formSteps = {

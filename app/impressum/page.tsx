@@ -11,7 +11,6 @@ export const metadata: Metadata = {
 export default function Impressum() {
   return (
     <LegalLayout title="Impressum">
-      {/* PLACEHOLDER – MIT ECHTEN OBSCURA DATEN ERSETZEN (§ 5 DDG / § 18 MStV) */}
       <h2>Angaben gemäß § 5 DDG</h2>
       <p>
         {site.legalName}
@@ -19,37 +18,80 @@ export default function Impressum() {
         {site.address.street}
         <br />
         {site.address.zip} {site.address.city}
+        <br />
+        {site.address.country}
       </p>
 
-      <h2>Vertreten durch</h2>
+      <h2>Vertreten durch die Geschäftsführung</h2>
       <p>
-        Marcel Mancic
-        <br />
         Maher Samir Moussa
+        <br />
+        Marcel Mancic
       </p>
 
       <h2>Kontakt</h2>
       <p>
-        Telefon: {site.phone}
+        Telefon: <a href={`tel:${site.phoneHref}`}>{site.phone}</a>
         <br />
-        E-Mail: {site.email}
+        E-Mail: <a href={`mailto:${site.email}`}>{site.email}</a>
         <br />
         Internet: www.obscura-berlin.de
       </p>
 
       <h2>Registereintrag</h2>
       <p>
-        Registergericht: Amtsgericht Charlottenburg
+        Registergericht: {site.register.court}
         <br />
-        Registernummer: HRB 254391 B
+        Registernummer: {site.register.hrb}
       </p>
 
-      {/* PLACEHOLDER: USt-IdNr. ergänzen, falls vorhanden */}
-      <h2>Umsatzsteuer-ID</h2>
-      <p>USt-IdNr. gemäß § 27 a UStG: PLACEHOLDER</p>
+      <h2>Umsatzsteuer-Identifikationsnummer</h2>
+      <p>USt-IdNr. gemäß § 27 a UStG: {site.register.vatId}</p>
+
+      <h2>Steuernummer</h2>
+      <p>{site.register.taxNr}</p>
 
       <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
-      <p>Marcel Mancic, Maher Samir Moussa – Anschrift wie oben</p>
+      <p>
+        Maher Samir Moussa und Marcel Mancic
+        <br />
+        {site.address.street}, {site.address.zip} {site.address.city}
+      </p>
+
+      <h2>EU-Streitschlichtung</h2>
+      <p>
+        Die Europäische Kommission stellt eine Plattform zur
+        Online-Streitbeilegung (OS) bereit:{" "}
+        <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener">
+          https://ec.europa.eu/consumers/odr/
+        </a>
+        . Wir sind nicht verpflichtet und nicht bereit, an
+        Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle
+        teilzunehmen.
+      </p>
+
+      <h2>Haftung für Inhalte</h2>
+      <p>
+        Als Diensteanbieter sind wir für eigene Inhalte auf diesen Seiten nach
+        den allgemeinen Gesetzen verantwortlich. Wir sind jedoch nicht
+        verpflichtet, übermittelte oder gespeicherte fremde Informationen zu
+        überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige
+        Tätigkeit hinweisen.
+      </p>
+
+      <h2>Haftung für Links</h2>
+      <p>
+        Unser Angebot enthält Links zu externen Websites Dritter, auf deren
+        Inhalte wir keinen Einfluss haben. Für die Inhalte der verlinkten
+        Seiten ist stets der jeweilige Anbieter oder Betreiber verantwortlich.
+      </p>
+
+      <h2>Urheberrecht</h2>
+      <p>
+        Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen
+        Seiten unterliegen dem deutschen Urheberrecht. Beiträge Dritter sind als
+        solche gekennzeichnet.
+      </p>
     </LegalLayout>
   );
 }

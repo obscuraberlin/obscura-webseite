@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { site } from "@/lib/site";
+import { site, socialLinks, whatsappUrl } from "@/lib/site";
 
 const cols = [
   {
@@ -53,11 +53,27 @@ export default function Footer() {
               monatliche Betreuung, Content und Performance.
             </p>
             <div className="mt-6 space-y-1 text-sm text-surface/70">
-              {/* PLACEHOLDER: echte Kontaktdaten */}
-              <p>{site.phone}</p>
+              <p>
+                {site.address.street}, {site.address.zip} {site.address.city}
+              </p>
+              <p>
+                <a href={`tel:${site.phoneHref}`} className="hover:text-lime">
+                  {site.phone}
+                </a>
+              </p>
               <p>
                 <a href={`mailto:${site.email}`} className="hover:text-lime">
                   {site.email}
+                </a>
+              </p>
+              <p>
+                <a
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noopener"
+                  className="hover:text-lime"
+                >
+                  WhatsApp: {site.whatsapp}
                 </a>
               </p>
             </div>
@@ -88,13 +104,22 @@ export default function Footer() {
           <p>
             © {new Date().getFullYear()} {site.legalName}
           </p>
-          <div className="flex gap-4">
-            {/* PLACEHOLDER: nur real vorhandene Profile verlinken */}
-            <a href={site.social.instagram} className="hover:text-lime" aria-label="Instagram">Instagram</a>
-            <a href={site.social.tiktok} className="hover:text-lime" aria-label="TikTok">TikTok</a>
-            <a href={site.social.linkedin} className="hover:text-lime" aria-label="LinkedIn">LinkedIn</a>
-            <a href={site.social.youtube} className="hover:text-lime" aria-label="YouTube">YouTube</a>
-          </div>
+          {socialLinks.length > 0 && (
+            <div className="flex gap-4">
+              {socialLinks.map((s) => (
+                <a
+                  key={s.label}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener"
+                  className="hover:text-lime"
+                  aria-label={s.label}
+                >
+                  {s.label}
+                </a>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </footer>
