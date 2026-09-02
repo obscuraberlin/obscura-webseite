@@ -432,6 +432,7 @@
       .stage-rail{position:relative;z-index:1;margin-top:16px}
     }
     .stage-rail{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:12px}
+    .stage-rail-label{display:none}
     .stage-card{
       appearance:none;-webkit-appearance:none;font:inherit;text-align:left;width:100%;color:var(--ink);cursor:pointer;
       min-height:116px;padding:16px 17px;border-radius:14px;background:#fff;border:1px solid rgba(11,16,10,.07);
@@ -1555,8 +1556,14 @@
       .nav-shell{height:52px;padding-left:16px;border-radius:14px}
       .brand{font-size:1.1rem}
       .brand-mark{width:24px;height:28px}
-      .hero{padding-top:92px;padding-bottom:0}
+      .hero{padding-top:92px;padding-bottom:clamp(28px,7vw,44px)}
       .hero-grid{gap:0}
+      /* Abschnitts-Label ueber den Leistungs-Karten (nur mobil) */
+      .stage-rail-label{display:block;margin:26px 0 10px;font-family:var(--font-heading);
+        font-size:.72rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--lime-deep)}
+      /* Karten kommen beim ersten Erscheinen einmal sanft hoch – kein Scroll-Koppeln mehr */
+      html.js .stage-card{opacity:0;transform:translateY(14px);transition:opacity .55s ease,transform .55s cubic-bezier(.2,.75,.2,1)}
+      html.js .stage-card.revealed{opacity:1;transform:none}
       /* Copy fuellt luftig den ersten Screen; die Karte kommt erst darunter (nach kurzem Scrollen) */
       .hero-copy{min-height:calc(100svh - 124px);display:flex;flex-direction:column;justify-content:center;
         text-shadow:0 1px 16px rgba(0,0,0,.5)}
@@ -1654,6 +1661,7 @@
     @media(prefers-reduced-motion:reduce){
       *{scroll-behavior:auto!important;transition:none!important;animation:none!important}
       .js .offer-step:not(.is-active) .offer-card{opacity:1;transform:none}
+      html.js .stage-card{opacity:1;transform:none}
     }
     /* ===== SOCIAL-MEDIA-CHECK (Lead-Magnet mit Daten-Gate) ===== */
     /* Social-Media-Check als Popup */
@@ -2105,6 +2113,7 @@ body.lb-open{overflow:hidden}
               <small id="svSmall">Monat für Monat.</small>
             </div>
           </div>
+          <p class="stage-rail-label">Unsere Leistungen</p>
           <div class="stage-rail">
             <button class="stage-card" type="button" data-open="social" data-stage="0"><span class="no">01</span><strong>Social Media Mitgliedschaft</strong><span>Wir filmen, schneiden &amp; posten – Monat für Monat</span></button>
             <button class="stage-card" type="button" data-open="video" data-stage="1"><span class="no">02</span><strong>Foto- &amp; Videoproduktion</strong><span>Foto, Film, Reels &amp; Kampagne</span></button>
@@ -2807,33 +2816,9 @@ body.lb-open{overflow:hidden}
       if(stageRail){ stageRail.addEventListener('mouseleave',()=>{ hovering=false; }); }
 
       function updateRailCards(){
+        // Mobil nicht mehr an den Scroll koppeln: natuerliches, ruckelfreies Scrollen.
+        // Die Karten erscheinen einmalig sanft (Reveal-Observer weiter unten).
         railTicking = false;
-        if(isDesktop()) return;               // Desktop: Scroll steuert die Stage NICHT
-        if(!stageRail || !railCards.length) return;
-        const railRect = stageRail.getBoundingClientRect();
-        const visible = railRect.bottom > 70 && railRect.top < window.innerHeight - 40;
-        if(!visible){
-          railCards.forEach(card => card.classList.remove('scroll-active'));
-          currentActive = null;
-          return;
-        }
-        const targetY = window.innerHeight * .62;
-        let closest = null;
-        let closestDistance = Infinity;
-        railCards.forEach(card => {
-          const r = card.getBoundingClientRect();
-          const center = r.top + r.height / 2;
-          const d = Math.abs(center - targetY);
-          if(d < closestDistance){
-            closestDistance = d;
-            closest = card;
-          }
-        });
-        if(closest && closest !== currentActive){
-          currentActive = closest;
-          railCards.forEach(card => card.classList.toggle('scroll-active', card === currentActive));
-          applyStage(currentActive.dataset.stage);
-        }
       }
 
       function requestRailUpdate(){
@@ -2849,8 +2834,19 @@ body.lb-open{overflow:hidden}
         else { stopAuto(); }
       });
       requestRailUpdate();
-      // Start: Desktop = Auto-Wechsel ab Feld 01; Mobil = Scroll-Steuerung (unveraendert)
+      // Start: Desktop = Auto-Wechsel ab Feld 01; Mobil = statische Stage + einmaliges Reveal
       if(isDesktop()){ setActive(0); startAuto(); }
+      else { applyStage('0'); }
+      // Mobil: Karten kommen beim ersten Erscheinen einmal sanft hoch (kein Scroll-Koppeln)
+      (function(){
+        if(!railCards.length) return;
+        const reduce = matchMedia('(prefers-reduced-motion:reduce)').matches;
+        if(reduce || !('IntersectionObserver' in window)){ railCards.forEach(c=>c.classList.add('revealed')); return; }
+        const io = new IntersectionObserver((ents)=>{
+          ents.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('revealed'); io.unobserve(e.target); } });
+        }, {threshold:.2, rootMargin:'0px 0px -8% 0px'});
+        railCards.forEach(c=>io.observe(c));
+      })();
 
       // Schritt-Sperre: im Stage-Bereich rastet das Scrollen Karte fuer Karte ein (1s Lock),
       // an erster/letzter Karte wird das normale Scrollen wieder freigegeben. Nur mobil/Tablet.
