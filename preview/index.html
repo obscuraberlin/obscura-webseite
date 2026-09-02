@@ -333,7 +333,7 @@
     .hero-actions .btn{min-height:50px;padding-inline:22px;font-size:.9rem}
     /* Auf dunklem Hero: Primaer als Lime, Sekundaer als heller Ghost */
     .hero-actions .btn-primary{background:var(--lime);color:#0f1509;border-color:transparent;
-      box-shadow:0 14px 34px -18px rgba(120,190,10,.5)}
+      box-shadow:0 10px 26px -18px rgba(120,190,10,.32)}
     .hero-actions .btn-primary:hover{background:var(--lime-strong)}
     .hero-actions .btn-primary .arrow{color:#0f1509}
     .hero-actions .btn-light{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.28);color:#fff}
@@ -1509,25 +1509,36 @@
       .brand{font-size:1.1rem}
       .brand-mark{width:24px;height:28px}
       .hero{padding-top:88px;padding-bottom:40px}
-      .hero-grid{gap:22px}
-      .title-xl{font-size:clamp(2.3rem,9vw,3.15rem);line-height:1.02;letter-spacing:-.035em}
+      .hero-grid{gap:30px}
+      .title-xl{font-size:clamp(2.15rem,8.4vw,2.95rem);line-height:.99;letter-spacing:-.042em}
       .title-lg{font-size:clamp(2.05rem,8.4vw,2.85rem);line-height:1.07;letter-spacing:-.02em}
       .hero h1 .quiet{filter:none}
-      /* Mobil: dunkler Schutz-Veil (heller, zentrierter Text ueber dem Video) */
-      .hero-veil{background:linear-gradient(180deg,rgba(6,9,5,.62),rgba(6,9,5,.42) 44%,rgba(6,9,5,.26) 74%,rgba(6,9,5,.15))}
+      /* Mobil: cineastisches Grading – Sattigung runter, waermer zurueckgenommen, dunkler hinter dem Text, feine Tiefenunschaerfe */
+      .hero-video{filter:saturate(.82) contrast(1.04) brightness(.9) blur(2px)}
+      .hero-veil{background:linear-gradient(180deg,rgba(6,9,5,.78),rgba(6,9,5,.6) 40%,rgba(6,9,5,.42) 70%,rgba(6,9,5,.24)),
+        radial-gradient(120% 80% at 50% 30%,rgba(6,9,5,.4),transparent 70%)}
       /* Mobil: alles mittig ausrichten */
       .hero-copy{max-width:100%;text-align:center}
-      .hero-eyebrow{justify-content:center;font-size:.62rem;letter-spacing:.18em;margin-bottom:14px}
+      /* Kicker: dezenter, kleiner, kleinerer Punkt */
+      .hero-eyebrow{justify-content:center;font-size:.58rem;letter-spacing:.14em;margin-bottom:15px;color:rgba(255,255,255,.72)}
+      .hero-eyebrow-dot{width:5px;height:5px}
       .hero-eyebrow-sep,.hero-eyebrow-city{display:none}
-      .hero-sub{font-size:.96rem;line-height:1.5;margin:16px auto 0;max-width:34ch;color:#fff}
+      /* Subtext: kompakter, kuerzere Zeilen, feine Weiss-/Grau-Hierarchie */
+      .hero-sub{font-size:.92rem;line-height:1.5;margin:15px auto 0;max-width:30ch;color:rgba(255,255,255,.72)}
+      .hero-sub strong{color:#fff;font-weight:600}
       .hero-service-line{font-size:.67rem;gap:8px 15px;margin-top:19px;justify-content:center}
-      /* Kompakte, cleane CTAs – Sekundaer deutlich leichter/kleiner */
-      .hero-actions{margin-top:22px;gap:9px;justify-content:center}
-      .hero-actions .btn-primary{width:100%;min-height:48px;border-radius:12px;font-size:.9rem}
-      .hero-actions .btn-light{width:auto;min-height:40px;padding-inline:16px;border-radius:10px;font-size:.85rem;
-        background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.28);color:#fff}
-      .hero-check{margin:18px auto 0;font-size:.85rem;font-weight:600;justify-content:center}
-      .hero-stage{min-height:auto;padding:10px;border-radius:22px}
+      /* CTAs: praeziser, flacher; Sekundaer klar untergeordnet */
+      .hero-actions{margin-top:24px;gap:8px;justify-content:center}
+      .hero-actions .btn-primary{width:100%;min-height:46px;border-radius:12px;font-size:.9rem;
+        box-shadow:0 8px 20px -16px rgba(120,190,10,.3)}
+      .hero-actions .btn-light{width:auto;min-height:36px;padding-inline:15px;border-radius:9px;font-size:.82rem;font-weight:500;
+        background:transparent;border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.86)}
+      .hero-actions .btn-light:hover{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.3)}
+      /* Social-Media-Check: kleiner, ruhiger, kein dritter CTA */
+      .hero-check{margin:16px auto 0;font-size:.78rem;font-weight:500;justify-content:center;color:rgba(255,255,255,.66);
+        border-bottom-color:rgba(255,255,255,.18)}
+      /* Leistungskarte taucht staerker aus dem Hero auf */
+      .hero-stage{min-height:auto;padding:10px;border-radius:22px;margin-top:-22px}
       .stage-screen{min-height:405px}
       .stage-badge:last-child{display:none}
       .stage-copy{left:20px;right:20px;bottom:22px;width:auto;max-width:none}
@@ -1703,6 +1714,8 @@
       opacity:0;visibility:hidden;transform:translateY(14px);
       transition:opacity .35s ease,transform .35s cubic-bezier(.2,.8,.2,1),visibility .35s}
     body.fabs-on .fab-stack{opacity:1;visibility:visible;transform:none}
+    /* Mobil: nur ein permanenter Floating-Button (WhatsApp) – weniger Rauschen */
+    @media(max-width:760px){.fab-chat{display:none}.fab{width:54px;height:54px}.fab svg{width:27px;height:27px}}
     .fab{width:60px;height:60px;border-radius:50%;display:grid;place-items:center;cursor:pointer;border:none;
       box-shadow:0 18px 40px -14px rgba(0,0,0,.5);transition:transform .25s cubic-bezier(.2,.75,.2,1),box-shadow .25s ease;position:relative}
     .fab:hover{transform:translateY(-3px) scale(1.05)}
@@ -2013,7 +2026,7 @@ body.lb-open{overflow:hidden}
             <span>Mehr Anfragen.</span>
             <span class="quiet">Mehr Umsatz.</span>
           </h1>
-          <p class="hero-sub"><strong>Social Media</strong>, <strong>Content</strong> &amp; <strong>Performance</strong> aus einer Hand – für Unternehmen, die <strong>planbar sichtbar</strong> werden und <strong>Anfragen gewinnen</strong> wollen.</p>
+          <p class="hero-sub">Social Media, Content &amp; Performance aus einer Hand – für Unternehmen, die <strong>planbar sichtbar</strong> werden und <strong>Anfragen gewinnen</strong> wollen.</p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="#kontakt">Kostenloses Erstgespräch <span class="arrow">→</span></a>
             <a class="btn btn-light" href="#arbeit">Projekte ansehen</a>
