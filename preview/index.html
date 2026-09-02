@@ -290,6 +290,12 @@
       color:rgba(255,255,255,.9)}
     .hero-eyebrow-dot{width:6px;height:6px;border-radius:50%;background:var(--lime)}
     .hero-eyebrow-sep{width:22px;height:1px;background:linear-gradient(90deg,rgba(255,255,255,.5),rgba(255,255,255,0))}
+    /* Leistungs-Metadaten im Streaming-Bibliothek-Stil (Punkt-getrennt, kraeftig) */
+    .hero-tags{display:flex;flex-wrap:wrap;align-items:center;margin:20px 0 0;row-gap:6px;
+      font-family:var(--font-heading);font-size:.84rem;font-weight:750;letter-spacing:.01em;color:rgba(255,255,255,.94)}
+    .hero-tags span{display:inline-flex;align-items:center}
+    .hero-tags span:not(:first-child)::before{content:"";display:inline-block;width:4px;height:4px;border-radius:50%;
+      background:var(--lime);margin:0 13px;flex:none}
     .hero h1{letter-spacing:-.042em;line-height:.97;font-weight:900}
     .hero h1 span{display:block}
     .hero h1 span:not(.quiet){color:#fff}
@@ -1523,11 +1529,14 @@
       /* Mobil: alles mittig ausrichten */
       .hero-copy{max-width:100%;text-align:center}
       /* Kicker: dezenter, kleiner, kleinerer Punkt */
-      .hero-eyebrow{justify-content:center;font-size:.58rem;letter-spacing:.14em;margin-bottom:22px;color:rgba(255,255,255,.72)}
+      .hero-eyebrow{justify-content:center;font-size:.58rem;letter-spacing:.14em;margin-bottom:26px;color:rgba(255,255,255,.72)}
       .hero-eyebrow-dot{width:5px;height:5px}
       .hero-eyebrow-sep,.hero-eyebrow-city{display:none}
+      /* Leistungs-Metadaten zentriert, kraeftig */
+      .hero-tags{justify-content:center;font-size:.8rem;margin-top:26px}
+      .hero-tags span:not(:first-child)::before{margin:0 11px}
       /* Subtext: kuerzere Zeilen, feine Weiss-/Grau-Hierarchie, mehr Luft */
-      .hero-sub{font-size:.95rem;line-height:1.55;margin:24px auto 0;max-width:32ch;color:rgba(255,255,255,.74)}
+      .hero-sub{font-size:.95rem;line-height:1.55;margin:26px auto 0;max-width:32ch;color:rgba(255,255,255,.74)}
       .hero-sub strong{color:#fff;font-weight:600}
       .hero-service-line{font-size:.67rem;gap:8px 15px;margin-top:19px;justify-content:center}
       /* CTAs: praeziser, flacher; Sekundaer klar untergeordnet – mit Luft */
@@ -2029,6 +2038,7 @@ body.lb-open{overflow:hidden}
             <span>Mehr Anfragen.</span>
             <span class="quiet">Mehr Umsatz.</span>
           </h1>
+          <p class="hero-tags" aria-label="Unsere Leistungen"><span>Social Media</span><span>Videoproduktion</span><span>Performance&nbsp;Ads</span><span>Recruiting</span></p>
           <p class="hero-sub">Social Media, Content &amp; Performance aus einer Hand – für Unternehmen, die <strong>planbar sichtbar</strong> werden und <strong>Anfragen gewinnen</strong> wollen.</p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="#kontakt">Kostenloses Erstgespräch <span class="arrow">→</span></a>
