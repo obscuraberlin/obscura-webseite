@@ -3200,17 +3200,17 @@ body.lb-open{overflow:hidden}
         function updateReasonActive(){
           rTick=false;
           if(isDesk()||reduce){ clearActive(); return; }
-          const mid=innerHeight*0.5;
-          let best=null,bd=Infinity;
-          highlightable.forEach(c=>{
-            const r=c.getBoundingClientRect();
-            if(r.bottom<0 || r.top>innerHeight) return;   // ausserhalb -> ignorieren
-            const d=Math.abs(r.top+r.height/2-mid);
-            if(d<bd){bd=d;best=c;}
-          });
-          if(best && bd < innerHeight*0.42){
-            if(best!==rActive){ clearActive(); rActive=best; best.classList.add('scroll-active'); }
-          } else { clearActive(); }
+          const n=highlightable.length; if(!n){ clearActive(); return; }
+          const vh=innerHeight, gr=grid.getBoundingClientRect();
+          // Ausserhalb des sichtbaren Bereichs -> nichts hervorheben
+          if(gr.bottom < vh*0.2 || gr.top > vh*0.85){ clearActive(); return; }
+          // Scroll-Fortschritt durch die Sektion -> Karten der Reihe nach 1..6 durchschalten
+          const span = gr.height + vh*0.5;            // Gesamt-Weg
+          const travelled = (vh*0.7 - gr.top);        // wie weit die Sektion durchgelaufen ist
+          let p = travelled/span; p = Math.max(0, Math.min(0.9999, p));
+          const idx = Math.floor(p*n);
+          const best = highlightable[idx];
+          if(best && best!==rActive){ clearActive(); rActive=best; best.classList.add('scroll-active'); }
         }
         function reqReason(){ if(!rTick){rTick=true;requestAnimationFrame(updateReasonActive);} }
         addEventListener('scroll',reqReason,{passive:true});
