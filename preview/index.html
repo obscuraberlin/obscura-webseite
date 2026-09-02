@@ -814,6 +814,11 @@
     @media(min-width:1081px){
       .project-grid{grid-template-columns:1fr}
       .project-card,.project-card.small,.project-card--film,.project-card--wide,.project-card--band{min-height:440px}
+      /* Desktop-Reihenfolge: Rolls, Kensington, Weller Energie (Redo), Image */
+      .project-grid>[data-case="caseModal"]{order:1}
+      .project-grid>[data-case="kensModal"]{order:2}
+      .project-grid>[data-case="redoModal"]{order:3}
+      .project-grid>.project-card--band{order:4}
     }
     /* Case-Popup */
     .case-modal{position:fixed;inset:0;z-index:200;display:grid;place-items:center;padding:clamp(12px,3vw,32px)}
@@ -3459,6 +3464,19 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape"&&!lb.hidden)
   var sel="img,video,picture,svg,canvas,.hero,.hero-video,.hero-video-m,.hero-stage,.stage-view,.sv-photo,.project-card,.project-art,.case-card,.case-art,.client-logo,.reason-card,.lb-item";
   document.addEventListener("contextmenu",function(e){ if(e.target.closest&&e.target.closest(sel)) e.preventDefault(); }, {capture:true});
   document.addEventListener("dragstart",function(e){ var t=e.target; if(t&&(t.tagName==="IMG"||t.tagName==="VIDEO"||t.tagName==="PICTURE"||(t.closest&&t.closest(sel)))) e.preventDefault(); }, {capture:true});
+})();
+/* Alle Videos non-stop in Dauerschleife halten (auch nach Tab-Wechsel/Pause) */
+(function(){
+  function tryPlay(v){ try{ var p=v.play(); if(p&&p.catch) p.catch(function(){}); }catch(e){} }
+  function playAll(){ document.querySelectorAll('video').forEach(tryPlay); }
+  document.addEventListener('visibilitychange',function(){ if(!document.hidden) playAll(); });
+  window.addEventListener('pageshow', playAll);
+  window.addEventListener('focus', playAll);
+  document.querySelectorAll('video').forEach(function(v){
+    v.addEventListener('pause', function(){ if(!document.hidden) tryPlay(v); });
+    v.addEventListener('ended', function(){ tryPlay(v); });
+  });
+  playAll();
 })();
 (function(){
   var cards=document.querySelectorAll('.project-card--film');
