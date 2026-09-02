@@ -423,12 +423,13 @@
     @keyframes svOpen{0%{opacity:0;transform:translateY(26px)}100%{opacity:1;transform:none}}
     .stage-view.switching .sv-copy,.stage-view.switching .sv-badge{animation:svOpen .5s cubic-bezier(.2,.75,.2,1) both}
     @media(prefers-reduced-motion:reduce){.stage-view.switching .sv-copy,.stage-view.switching .sv-badge{animation:none}.sv-photo{transition:none}}
-    /* Mobil: klare, natuerliche Abfolge – grosses Bild statisch, Karten darunter (kein Sticky-Overlap) */
+    /* Mobil: die grosse Vorschau bleibt beim Scrollen oben stehen (sticky),
+       damit man sie zur gerade aktiven Karte mitlesen kann. */
     @media(max-width:1080px){
-      .hero{overflow:hidden}
+      .hero{overflow:visible}
       .hero-stage{overflow:visible}
       .hero-stage:before{display:none}
-      .stage-view{position:relative;top:auto;z-index:1;min-height:clamp(260px,64vw,340px)}
+      .stage-view{position:sticky;top:64px;z-index:6;min-height:clamp(228px,52vw,300px)}
       .stage-rail{position:relative;z-index:1;margin-top:16px}
     }
     .stage-rail{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:12px}
