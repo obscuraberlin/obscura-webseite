@@ -1639,10 +1639,10 @@
       .project-grid{grid-template-columns:1fr}
       /* Mobil: Kensington-Case ueber Rolls-Royce ziehen (Desktop unveraendert) */
       .project-card--wide{order:-1}
-      .project-card,.project-card.small{min-height:360px}
-      /* Mobil: Video-Case-Karten hoeher/laenglich (nicht quadratisch) */
-      .project-card--film{min-height:460px}
-      .project-card--wide{min-height:560px}
+      /* Mobil: alle Case-Fenster gleich gross (Netflix-Kachel-Look) */
+      .project-card,.project-card.small,.project-card--film,.project-card--wide{min-height:500px}
+      /* Text etwas hoeher, mehr Luft nach unten */
+      .project-copy{bottom:42px}
       .cases-head{grid-template-columns:1fr;gap:18px;margin-bottom:32px}
       .cases-head .lead{justify-self:start}
       .case-card,.case-card.featured,.case-card.side{grid-column:1/-1;min-height:330px}
