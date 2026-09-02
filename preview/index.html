@@ -30,10 +30,10 @@
       --forest:#162314;
       --forest-2:#22351f;
       --forest-3:#314d2a;
-      --ink:#11150f;
-      --muted:#667064;
+      --ink:#0b100a;
+      --muted:#616b5e;
       --muted-2:#8a9287;
-      --paper:#fbfbf7;
+      --paper:#faf9f4;
       --paper-2:#f3f5ed;
       --paper-3:#e9eee0;
       --white:#fff;
@@ -249,18 +249,18 @@
     }
     /* Leicht transparentes Hintergrundfoto hinter der Headline */
     .hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;
-      opacity:.14;filter:grayscale(.25) contrast(1.02)}
+      opacity:.16;filter:saturate(1.2) contrast(1.03)}
     /* Bewegtes Hintergrundvideo im Header – laeuft stumm in Dauerschleife, deutlich sichtbar.
        Laeuft nach unten (und seitlich) per Maske weich aus -> keine harte Videokante. */
     .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;
       object-position:72% 58%;
-      opacity:.82;pointer-events:none;filter:saturate(1.06) contrast(1.05) brightness(1.05);
+      opacity:.9;pointer-events:none;filter:saturate(1.42) contrast(1.1) brightness(1.08);
       -webkit-mask-image:linear-gradient(180deg,#000 0%,#000 46%,rgba(0,0,0,.55) 74%,transparent 100%);
       mask-image:linear-gradient(180deg,#000 0%,#000 46%,rgba(0,0,0,.55) 74%,transparent 100%)}
     .hero-veil{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
-      background:linear-gradient(90deg,var(--paper) 24%,rgba(251,251,247,.6) 44%,rgba(251,251,247,.2) 64%,rgba(251,251,247,0) 82%),
-        linear-gradient(180deg,rgba(251,251,247,.22),transparent 22%,transparent 70%,var(--paper)),
-        radial-gradient(120% 92% at 80% 34%,rgba(12,18,10,.12),transparent 62%)}
+      background:linear-gradient(90deg,var(--paper) 20%,rgba(250,249,244,.52) 40%,rgba(250,249,244,.14) 62%,rgba(250,249,244,0) 80%),
+        linear-gradient(180deg,rgba(250,249,244,.2),transparent 20%,transparent 72%,var(--paper)),
+        radial-gradient(130% 96% at 82% 32%,rgba(10,16,8,.16),transparent 64%)}
     .hero-grid{
       position:relative;z-index:1;
       display:grid;
@@ -269,7 +269,14 @@
       align-items:center;
     }
     .hero-copy{max-width:760px}
-    .hero h1{letter-spacing:-.032em;line-height:1.015}
+    /* Premium-Kicker ueber der Headline */
+    .hero-eyebrow{display:inline-flex;align-items:center;gap:12px;margin:0 0 22px;
+      font-family:var(--font-heading);font-size:.72rem;font-weight:750;letter-spacing:.2em;text-transform:uppercase;
+      color:#5a6555}
+    .hero-eyebrow-dot{width:8px;height:8px;border-radius:50%;background:var(--lime);
+      box-shadow:0 0 0 4px rgba(173,255,47,.18),0 0 14px rgba(173,255,47,.5)}
+    .hero-eyebrow-sep{width:22px;height:1px;background:linear-gradient(90deg,rgba(90,101,85,.55),rgba(90,101,85,0))}
+    .hero h1{letter-spacing:-.038em;line-height:1.005;font-weight:900}
     .hero h1 span{display:block}
     .hero h1 span:not(.quiet){color:var(--ink)}
     /* "Mehr Umsatz." – edler, editorialer Akzent: satter Gruen-Verlauf + minimaler Glow */
@@ -1482,6 +1489,8 @@
       .hero-veil{background:linear-gradient(180deg,rgba(251,251,247,.62),rgba(251,251,247,.42) 42%,rgba(251,251,247,.24) 72%,var(--paper))}
       /* Mobil: alles mittig ausrichten */
       .hero-copy{max-width:100%;text-align:center}
+      .hero-eyebrow{justify-content:center;font-size:.64rem;letter-spacing:.16em;margin-bottom:16px}
+      .hero-eyebrow-sep,.hero-eyebrow-city{display:none}
       .hero-sub{font-size:1rem;line-height:1.55;margin:20px auto 0;max-width:36ch;color:#525c50}
       .hero-service-line{font-size:.67rem;gap:8px 15px;margin-top:19px;justify-content:center}
       /* Buttons: ruhiger & editorialer – kompakter, gleichmaessige Schriftstaerke */
@@ -1971,6 +1980,7 @@ body.lb-open{overflow:hidden}
       <span class="hero-veil" aria-hidden="true"></span>
       <div class="wrap hero-grid">
         <div class="hero-copy">
+          <p class="hero-eyebrow"><span class="hero-eyebrow-dot" aria-hidden="true"></span>Creative &amp; Performance Studio<span class="hero-eyebrow-sep" aria-hidden="true"></span><span class="hero-eyebrow-city">Berlin</span></p>
           <h1 class="title-xl">
             <span>Mehr Sichtbarkeit.</span>
             <span>Mehr Anfragen.</span>
