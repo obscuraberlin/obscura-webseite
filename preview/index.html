@@ -1078,6 +1078,16 @@
     .reason-card .no + .rc-body strong{margin-top:24px}
     .rc-body p{margin:8px 0 0;color:var(--muted);font-size:.82rem;line-height:1.45}
     .reason-card:hover{transform:translateY(-4px);border-color:rgba(180,242,58,.5);box-shadow:0 26px 48px -30px rgba(11,22,9,.4)}
+    /* Mobil: aktive Karte in der Bildschirmmitte leuchtet gruen (wie die Header-Karten) */
+    html.js .reason-card.scroll-active{
+      transform:translateY(-4px) scale(1.012);
+      background:linear-gradient(160deg,var(--forest-2),var(--forest));
+      border-color:rgba(180,242,58,.5);color:#fff;
+      box-shadow:0 32px 58px -30px rgba(11,22,9,.62),0 6px 16px -10px rgba(11,22,9,.4),inset 0 1px 0 rgba(255,255,255,.08);
+    }
+    .reason-card.scroll-active .no{color:var(--lime)}
+    .reason-card.scroll-active .rc-body strong{color:#fff}
+    .reason-card.scroll-active .rc-body p{color:rgba(255,255,255,.72)}
     /* Feature-Karte: volle Breite, dunkelgruen */
     .reason-feature{grid-column:1 / -1;justify-content:center;min-height:auto;
       background:var(--forest);border-color:rgba(180,242,58,.42);box-shadow:0 30px 54px -34px rgba(11,22,9,.55)}
@@ -3175,6 +3185,31 @@ body.lb-open{overflow:hidden}
           ents.forEach(e=>{ if(e.isIntersecting){e.target.classList.add('revealed');io.unobserve(e.target);} });
         },{threshold:.25});
         cards.forEach(c=>io.observe(c));
+
+        // Mobil: Karte in der Bildschirmmitte hebt sich hervor (gleicher Effekt wie im Header)
+        const highlightable=cards.filter(c=>!c.classList.contains('reason-feature'));
+        const isDesk=()=>matchMedia('(min-width:1081px)').matches;
+        let rTick=false, rActive=null;
+        function clearActive(){ if(rActive){rActive.classList.remove('scroll-active');rActive=null;} }
+        function updateReasonActive(){
+          rTick=false;
+          if(isDesk()||reduce){ clearActive(); return; }
+          const mid=innerHeight*0.5;
+          let best=null,bd=Infinity;
+          highlightable.forEach(c=>{
+            const r=c.getBoundingClientRect();
+            if(r.bottom<0 || r.top>innerHeight) return;   // ausserhalb -> ignorieren
+            const d=Math.abs(r.top+r.height/2-mid);
+            if(d<bd){bd=d;best=c;}
+          });
+          if(best && bd < innerHeight*0.42){
+            if(best!==rActive){ clearActive(); rActive=best; best.classList.add('scroll-active'); }
+          } else { clearActive(); }
+        }
+        function reqReason(){ if(!rTick){rTick=true;requestAnimationFrame(updateReasonActive);} }
+        addEventListener('scroll',reqReason,{passive:true});
+        addEventListener('resize',reqReason,{passive:true});
+        reqReason();
       })();
 
       /* ===== Social-Media-Check als Popup ===== */
