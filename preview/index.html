@@ -1516,9 +1516,10 @@
       .hero h1 .quiet{filter:none}
       /* Mobil: cineastisches Grading – ruhig, aber erkennbar (weniger Blur), Motiv besser im Bild */
       .hero-video{display:none}
-      .hero-video-m{display:block;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;
-        object-position:center 42%;opacity:.92;filter:saturate(.92) contrast(1.04) brightness(.96);
-        -webkit-mask-image:linear-gradient(180deg,#000 62%,transparent 100%);mask-image:linear-gradient(180deg,#000 62%,transparent 100%)}
+      /* Portrait-Video deckt nur den ersten Screen ab (nicht die ganze hohe Hero-Flaeche) -> kein Ueberzoom */
+      .hero-video-m{display:block;position:absolute;top:0;left:0;width:100%;height:100svh;object-fit:cover;z-index:0;
+        object-position:center 38%;opacity:.92;filter:saturate(.92) contrast(1.04) brightness(.96);
+        -webkit-mask-image:linear-gradient(180deg,#000 68%,transparent 100%);mask-image:linear-gradient(180deg,#000 68%,transparent 100%)}
       /* Scrim: oben/unten dunkler (hinter Kicker/Headline & CTAs), Mitte durchlaessiger -> Video erkennbar */
       .hero-veil{background:linear-gradient(180deg,rgba(6,9,5,.62),rgba(6,9,5,.34) 40%,rgba(6,9,5,.34) 62%,rgba(6,9,5,.6))}
       /* Mobil: alles mittig ausrichten */
