@@ -810,7 +810,11 @@
     .project-card--film:focus-visible{outline:2px solid var(--lime);outline-offset:3px}
     .project-card--wide{grid-column:1/-1;min-height:360px}
     .project-card--band{grid-column:1/-1;min-height:360px}
-    .project-card.small.project-card--band{min-height:360px}
+    /* Desktop: alle Cases als lange, volle Breite (cineastische Baender) */
+    @media(min-width:1081px){
+      .project-grid{grid-template-columns:1fr}
+      .project-card,.project-card.small,.project-card--film,.project-card--wide,.project-card--band{min-height:440px}
+    }
     /* Case-Popup */
     .case-modal{position:fixed;inset:0;z-index:200;display:grid;place-items:center;padding:clamp(12px,3vw,32px)}
     .case-modal[hidden]{display:none!important}
