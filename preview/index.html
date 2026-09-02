@@ -490,7 +490,7 @@
     .clients-toggle .ct-icon{transition:transform .3s ease;font-size:1rem}
     .client-rail.expanded ~ .clients-more .ct-icon{transform:rotate(180deg)}
     .client-logo{
-      width:100%;height:80px;
+      width:100%;height:118px;
       display:flex;align-items:center;justify-content:center;
     }
     .client-logo img{
@@ -504,6 +504,7 @@
     .client-logo.wide img{max-width:90%;max-height:48px}
     /* Graue Kundenlogos – optisch ausgewogen (Hoehe je Logo via --lh) */
     .client-mark{display:block;width:auto;height:auto;max-height:var(--lh,44px);max-width:88%;object-fit:contain;opacity:.9;transition:opacity .25s ease}
+    .client-logo img.client-mark{max-height:var(--lh,44px);max-width:88%}
     .client-card:hover .client-mark{opacity:1}
     .client-fallback{
       font-family:var(--font-heading);
