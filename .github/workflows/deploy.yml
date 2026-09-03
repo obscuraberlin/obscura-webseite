@@ -1,0 +1,51 @@
+name: Deploy zu Hostinger (FTP)
+
+# Deployt die statische Website bei jedem Push automatisch per FTP zu Hostinger.
+# Einmalig einzurichten: in GitHub unter Settings -> Secrets and variables -> Actions
+# diese drei Repository-Secrets anlegen (Werte aus Hostinger hPanel -> Dateien -> FTP-Konten):
+#   FTP_SERVER    z. B. ftp.obscura-berlin.de  (oder die IP aus dem FTP-Konto)
+#   FTP_USERNAME  der FTP-Benutzername
+#   FTP_PASSWORD  das FTP-Passwort
+
+on:
+  push:
+    branches: [ "claude/obscura-berlin-relaunch-mwlxk4" ]
+  workflow_dispatch: {}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: FTP Deploy
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          # Zielordner auf dem Server. Bei Hostinger meist /public_html/.
+          # Falls euer FTP-Konto direkt in public_html startet: auf ./ aendern.
+          server-dir: /public_html/
+          # Nur die Live-Website hochladen, keine Dev-/Build-Dateien.
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/.github/**
+            **/node_modules/**
+            **/preview/**
+            **/app/**
+            **/components/**
+            **/lib/**
+            **/scripts/**
+            **/.next/**
+            **/out/**
+            **/*.md
+            **/package.json
+            **/package-lock.json
+            **/next.config.mjs
+            **/postcss.config.mjs
+            **/tailwind.config.ts
+            **/tsconfig.json
+            **/.env*
