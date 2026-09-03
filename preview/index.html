@@ -3219,36 +3219,42 @@ body.lb-open{overflow:hidden}
       const WEB3FORMS_KEY='<ACCESS_KEY>';
       const errorBox=document.getElementById('quizError');
 
-      async function sendQuiz(){
+      function collectQuiz(){
         const sel=g=>[...form.querySelectorAll('[data-group="'+g+'"] .choice.selected')].map(c=>c.textContent.trim());
         const val=n=>{const el=form.querySelector('[name="'+n+'"]');return el?el.value.trim():'';};
-        const services=sel('services').join(', ')||'—';
-        const company=val('company')||val('name')||'Website';
+        return {
+          services:sel('services').join(', ')||'—',
+          goal:sel('goal').join(', ')||'—',
+          budget:val('budget')||'—', start:val('start')||'—', project:val('project')||'—',
+          name:val('name')||'—', company:val('company')||'—',
+          email:val('email')||'—', phone:val('phone')||'—'
+        };
+      }
+      function quizMailto(d){
+        const body=['Leistungen: '+d.services,'Ziel: '+d.goal,'Budget: '+d.budget,'Gewünschter Start: '+d.start,'',
+          'Projektbeschreibung:',''+d.project,'','Name: '+d.name,'Unternehmen: '+d.company,'E-Mail: '+d.email,'Telefon: '+d.phone].join('\n');
+        const href='mailto:info@obscura-berlin.de?subject='+encodeURIComponent('Neue Projektanfrage – '+(d.company!=='—'?d.company:'Website'))+'&body='+encodeURIComponent(body);
+        try{window.location.href=href;}catch(e){}
+      }
+      async function sendQuiz(){
+        const d=collectQuiz();
+        // Kein echter Web3Forms-Key hinterlegt -> direkt per E-Mail (Mailto-Fallback)
+        if(!WEB3FORMS_KEY || WEB3FORMS_KEY==='<ACCESS_KEY>'){ quizMailto(d); return; }
         const payload={
           access_key:WEB3FORMS_KEY,
           from_name:'OBSCURA Website – Projektanfrage',
-          subject:'Neue Projektanfrage – '+company,
-          'Interesse an (Leistungen)':services,
-          'Ziel':sel('goal').join(', ')||'—',
-          'Budget':val('budget')||'—',
-          'Gewünschter Start':val('start')||'—',
-          'Projektbeschreibung':val('project')||'—',
-          'Name':val('name')||'—',
-          'Unternehmen':val('company')||'—',
-          'E-Mail':val('email')||'—',
-          'Telefon':val('phone')||'—',
-          replyto:val('email')||''
+          subject:'Neue Projektanfrage – '+(d.company!=='—'?d.company:'Website'),
+          'Interesse an (Leistungen)':d.services,'Ziel':d.goal,'Budget':d.budget,'Gewünschter Start':d.start,
+          'Projektbeschreibung':d.project,'Name':d.name,'Unternehmen':d.company,'E-Mail':d.email,'Telefon':d.phone,
+          replyto:(d.email!=='—'?d.email:'')
         };
         const res=await fetch('https://api.web3forms.com/submit',{
-          method:'POST',
-          headers:{'Content-Type':'application/json',Accept:'application/json'},
-          body:JSON.stringify(payload)
+          method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(payload)
         });
         if(!res.ok) throw new Error('HTTP '+res.status);
         const data=await res.json();
         if(!data.success) throw new Error(data.message||'send failed');
       }
-
       function showQuizSuccess(){
         quizSteps.forEach(s=>s.classList.remove('active'));
         success.classList.add('show');
@@ -3266,8 +3272,9 @@ body.lb-open{overflow:hidden}
           await sendQuiz();
           showQuizSuccess();
         }catch(err){
-          next.disabled=false; next.innerHTML=label;
-          if(errorBox) errorBox.hidden=false;
+          // API-Fehler -> Anfrage nicht verlieren: per E-Mail öffnen
+          try{ quizMailto(collectQuiz()); showQuizSuccess(); }
+          catch(e){ next.disabled=false; next.innerHTML=label; if(errorBox) errorBox.hidden=false; }
         }
       });
       renderQuiz();
