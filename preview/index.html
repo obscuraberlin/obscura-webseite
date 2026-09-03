@@ -2534,7 +2534,7 @@ body.lb-open{overflow:hidden}
                 <label class="field">Telefon<input name="phone" type="tel" autocomplete="tel" placeholder="+49 …"></label>
               </div>
               <p class="privacy">Mit dem Absenden schickt ihr eure Anfrage direkt an unser Team. Es gelten unsere <button type="button" class="lg-link" data-legal="datenschutz">Datenschutzhinweise</button>.</p>
-              <p class="quiz-error" id="quizError" hidden>Das hat leider nicht geklappt. Bitte versucht es noch einmal oder schreibt uns direkt an <a href="mailto:info@obscura-berlin.de" style="color:var(--lime-deep)">info@obscura-berlin.de</a>.</p>
+              <p class="quiz-error" id="quizError" hidden>Senden hat gerade nicht geklappt – wir öffnen ersatzweise euer E-Mail-Programm. Oder schreibt uns direkt an <a href="mailto:info@obscura-berlin.de" style="color:var(--lime-deep)">info@obscura-berlin.de</a>.</p>
             </div>
 
             <div class="quiz-success" id="quizSuccess">
@@ -3268,9 +3268,10 @@ body.lb-open{overflow:hidden}
           await sendQuiz();
           showQuizSuccess();
         }catch(err){
-          // API-Fehler -> Anfrage nicht verlieren: per E-Mail öffnen
-          try{ quizMailto(collectQuiz()); showQuizSuccess(); }
-          catch(e){ next.disabled=false; next.innerHTML=label; if(errorBox) errorBox.hidden=false; }
+          // Versand fehlgeschlagen -> Hinweis zeigen und E-Mail-Programm als Fallback oeffnen
+          next.disabled=false; next.innerHTML=label;
+          if(errorBox) errorBox.hidden=false;
+          try{ quizMailto(collectQuiz()); }catch(e){}
         }
       });
       renderQuiz();
