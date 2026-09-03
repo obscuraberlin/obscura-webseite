@@ -61,7 +61,7 @@
     }
 
     *{box-sizing:border-box}
-    html{scroll-behavior:smooth;background:var(--paper)}
+    html{scroll-behavior:smooth;background:var(--paper);overflow-x:clip}
     body{
       margin:0;
       font-family:var(--font);
@@ -241,7 +241,7 @@
       gap:28px;
     }
     .mobile-menu.open{transform:none}
-    .mobile-menu nav{display:grid}
+    .mobile-menu,.cookie-bar,.chatbot{max-width:100vw}.mobile-menu nav{display:grid}
     .mobile-menu .menu-link{
       padding:17px 0;border-bottom:1px solid var(--line);
       font-size:1.65rem;font-weight:800;letter-spacing:-.03em;
