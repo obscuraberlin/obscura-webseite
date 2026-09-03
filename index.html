@@ -1124,7 +1124,7 @@
     .tile-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:0;transition:transform .6s cubic-bezier(.2,.75,.2,1)}
     .tile-veil{position:absolute;inset:0;z-index:1;pointer-events:none}
     .media-visual.has-photo:before,.media-visual.has-photo:after{display:none}
-    .reel-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;z-index:0}
+    .tile-loop{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;opacity:0;transition:opacity .45s ease;pointer-events:none}.tile-loop.on{opacity:1}@media(max-width:820px){.media-card .media-play{display:none}}.reel-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;z-index:0}
     .media-visual .tile-veil{background:linear-gradient(180deg,rgba(10,14,9,.10),rgba(10,14,9,.5) 76%,rgba(10,14,9,.74))}
     .media-card:hover .tile-photo,.project-card:hover .tile-photo{transform:scale(1.06)}
     .project-art.has-photo .project-shape,.project-art.has-photo .project-phones,.project-art.has-photo .project-frame{display:none}
@@ -2178,7 +2178,7 @@ body.lb-open{overflow:hidden}
     <section class="hero">
       <img class="hero-bg" id="heroBg" alt="" aria-hidden="true">
       <video class="hero-video" autoplay muted loop playsinline preload="auto" aria-hidden="true" src="/media/banner.mp4"></video>
-      <video class="hero-video-m" autoplay muted loop playsinline preload="auto" aria-hidden="true" src="/media/banner-m.mp4"></video>
+      <video class="hero-video-m" autoplay muted loop playsinline preload="auto" poster="/media/hero-poster.jpg" aria-hidden="true" src="/media/banner-m.mp4"></video>
       <span class="hero-veil" aria-hidden="true"></span>
       <div class="wrap hero-grid">
         <div class="hero-copy">
@@ -2292,31 +2292,31 @@ body.lb-open{overflow:hidden}
 
         <div class="project-grid">
           <article class="project-card project-card--film" data-case="caseModal" tabindex="0" role="button" aria-label="Case ansehen: Rolls-Royce Spectre x Hotel Adlon Kempinski">
-            <video class="pc-video" id="caseFilm" autoplay muted loop playsinline preload="auto" aria-hidden="true" src="/media/assets/3f3973bfefb6e4b1.mp4"></video>
+            <video class="pc-video" id="caseFilm" autoplay muted loop playsinline preload="metadata" aria-hidden="true" src="/media/assets/3f3973bfefb6e4b1.mp4"></video>
             <span class="pc-veil" aria-hidden="true"></span>
             <span class="pc-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>
             <div class="project-art art-auto has-photo"><img class="tile-photo" src="/media/assets/83a07918464dffbc.jpg" alt="" loading="lazy"><span class="project-shape"></span></div>
             <div class="project-copy"><span class="project-tag">Deutschlandpremiere · Rolls-Royce Spectre</span><h3 class="project-title--xl">Rolls-Royce × Hotel Adlon</h3><p>Ein kinoreifer Launch-Film zur Markteinführung – inszeniert in Berlin.</p><span class="project-result">Film &amp; Case ansehen</span></div>
           </article>
           <article class="project-card small project-card--film" data-case="redoModal" tabindex="0" role="button" aria-label="Case ansehen: Weller Energie x Rene Redo">
-              <video class="pc-video" id="redoFilm" data-loop="/media/redo-loop.mp4" autoplay muted loop playsinline preload="auto" aria-hidden="true" data-full="/media/redo.mp4" src="/media/redo-loop.mp4"></video><span class="pc-veil" aria-hidden="true"></span><span class="pc-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>
+              <video class="pc-video" id="redoFilm" data-loop="/media/redo-loop.mp4" autoplay muted loop playsinline preload="metadata" aria-hidden="true" data-full="/media/redo.mp4" src="/media/redo-loop.mp4"></video><span class="pc-veil" aria-hidden="true"></span><span class="pc-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>
               <div class="project-copy"><span class="project-tag">Imagefilm</span><h3>Weller Energie × Rene Redo</h3><p>„WIR" – Imagefilm mit Redo XXL: Marke &amp; Persönlichkeit in Szene gesetzt.</p><span class="project-result">Film &amp; Case ansehen</span></div>
             </article>
 
           <article class="project-card project-card--film project-card--wide" data-case="kensModal" tabindex="0" role="button" aria-label="Case ansehen: Kensington Finest Properties">
-            <video class="pc-video" id="kensFilm" data-loop="/media/kensington-loop.mp4" data-full="/media/kensington.mp4" autoplay muted loop playsinline preload="auto" aria-hidden="true" src="/media/kensington-loop.mp4"></video>
+            <video class="pc-video" id="kensFilm" data-loop="/media/kensington-loop.mp4" data-full="/media/kensington.mp4" autoplay muted loop playsinline preload="metadata" aria-hidden="true" src="/media/kensington-loop.mp4"></video>
             <span class="pc-veil" aria-hidden="true"></span>
             <span class="pc-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>
             <div class="project-copy"><span class="project-tag">Immobilien</span><h3 class="project-title--xl">Kensington Finest Properties</h3><p>Eine 1,9-Mio-€-Villa über Social Media in Szene gesetzt.</p><span class="project-result">Film &amp; Case ansehen</span></div>
           </article>
           <article class="project-card project-card--film project-card--wide" data-case="parfumModal" tabindex="0" role="button" aria-label="Case ansehen: oLiente Produktfilm">
-            <video class="pc-video" id="parfumFilm" data-loop="/media/oliente-loop.mp4" autoplay muted loop playsinline preload="auto" poster="/media/assets/9346b6aabc4cd977.jpg" aria-hidden="true" data-full="/media/oliente.mp4" src="/media/oliente-loop.mp4"></video>
+            <video class="pc-video" id="parfumFilm" data-loop="/media/oliente-loop.mp4" autoplay muted loop playsinline preload="metadata" poster="/media/assets/9346b6aabc4cd977.jpg" aria-hidden="true" data-full="/media/oliente.mp4" src="/media/oliente-loop.mp4"></video>
             <span class="pc-veil" aria-hidden="true"></span>
             <span class="pc-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>
             <div class="project-copy"><span class="project-tag">Produktfilm · Parfum</span><h3 class="project-title--xl">oLiente Parfum</h3><p>Cinematischer Parfüm-Produktfilm in der Schweiz – James-Bond-Atmosphäre.</p><span class="project-result">Film &amp; Case ansehen</span></div>
           </article>
           <article class="project-card project-card--film project-card--band" data-case="eventModal" tabindex="0" role="button" aria-label="Case ansehen: Rolls-Royce Event">
-              <video class="pc-video" id="eventFilm" data-loop="/media/event-loop.mp4" data-full="/media/event.mp4" autoplay muted loop playsinline preload="auto" aria-hidden="true" src="/media/event-loop.mp4"></video>
+              <video class="pc-video" id="eventFilm" data-loop="/media/event-loop.mp4" data-full="/media/event.mp4" autoplay muted loop playsinline preload="metadata" aria-hidden="true" src="/media/event-loop.mp4"></video>
               <span class="pc-veil" aria-hidden="true"></span>
               <span class="pc-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>
               <div class="project-copy"><span class="project-tag">Event-Aftermovie · Berlin</span><h3 class="project-title--xl">Rolls-Royce Event</h3><p>Kunden-Event auf High-Society-Niveau – live dokumentiert.</p><span class="project-result">Film &amp; Case ansehen</span></div>
@@ -2349,35 +2349,35 @@ body.lb-open{overflow:hidden}
 
         <div class="media-row" aria-label="Reels aus unseren Produktionen">
           <article class="media-card" style="order:4" role="button" tabindex="0" data-reel="/media/Reel1_BudgetClient.MP4" aria-label="Reel abspielen: Budget-Client">
-            <div class="media-visual has-photo"><img class="tile-photo" src="/media/assets/4f9fc53a82815b26.jpg" alt="Budget-Client Reel" loading="lazy"><span class="tile-veil"></span><span class="media-stat">250.000 Views · 20 Std</span><span class="media-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></div>
+            <div class="media-visual has-photo"><img class="tile-photo" src="/media/assets/4f9fc53a82815b26.jpg" alt="Budget-Client Reel" loading="lazy"><video class="reel-vid tile-loop" muted loop playsinline preload="none" aria-hidden="true" data-src="/media/tiles/budget-tile.mp4"></video><span class="tile-veil"></span><span class="media-stat">250.000 Views · 20 Std</span><span class="media-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></div>
             <div class="media-copy"><small>Social Reel</small><strong>Budget-Client</strong><span>Viral · 250K in 20 Std</span></div>
           </article>
           <article class="media-card featured-media" style="order:1" role="button" tabindex="0" data-reel="/media/spectre.mp4" aria-label="Reel abspielen: Rolls-Royce Spectre">
-            <div class="media-visual has-photo"><img class="tile-photo" src="/media/assets/1f787b7708e50219.jpg" alt="Rolls-Royce Spectre" loading="lazy"><span class="tile-veil"></span><span class="media-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></div>
+            <div class="media-visual has-photo"><img class="tile-photo" src="/media/assets/1f787b7708e50219.jpg" alt="Rolls-Royce Spectre" loading="lazy"><video class="reel-vid tile-loop" muted loop playsinline preload="none" aria-hidden="true" data-src="/media/tiles/spectre-tile.mp4"></video><span class="tile-veil"></span><span class="media-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></div>
             <div class="media-copy"><small>Automotive</small><strong>Rolls-Royce Spectre</strong><span>Reel · Social</span></div>
           </article>
           <article class="media-card" style="order:2" role="button" tabindex="0" data-reel="/media/sanji%20kensington%20reel.mp4" aria-label="Reel abspielen: Kensington">
-            <div class="media-visual has-photo"><img class="tile-photo" src="/media/assets/f7838962368d225f.jpg" alt="Kensington" loading="lazy"><span class="tile-veil"></span><span class="media-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></div>
+            <div class="media-visual has-photo"><img class="tile-photo" src="/media/assets/f7838962368d225f.jpg" alt="Kensington" loading="lazy"><video class="reel-vid tile-loop" muted loop playsinline preload="none" aria-hidden="true" data-src="/media/tiles/kensington-tile.mp4"></video><span class="tile-veil"></span><span class="media-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></div>
             <div class="media-copy"><small>Immobilien</small><strong>Kensington</strong><span>Real-Estate Reel</span></div>
           </article>
           <article class="media-card" style="order:3" role="button" tabindex="0" data-reel="/media/mission%20karriere%20ad.mp4" aria-label="Reel abspielen: Mission Karriere">
-            <div class="media-visual has-photo"><img class="tile-photo" src="/media/assets/289859ef0c6b2c7e.jpg" alt="Mission Karriere" loading="lazy"><span class="tile-veil"></span><span class="media-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></div>
+            <div class="media-visual has-photo"><img class="tile-photo" src="/media/assets/289859ef0c6b2c7e.jpg" alt="Mission Karriere" loading="lazy"><video class="reel-vid tile-loop" muted loop playsinline preload="none" aria-hidden="true" data-src="/media/tiles/mission-tile.mp4"></video><span class="tile-veil"></span><span class="media-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></div>
             <div class="media-copy"><small>Werbeanzeige</small><strong>Mission Karriere</strong><span>Recruiting-Ad</span></div>
           </article>
           <article class="media-card" style="order:7" role="button" tabindex="0" data-reel="/media/steal%20lusso.mp4" aria-label="Reel abspielen: Gastro">
-            <div class="media-visual has-photo"><img class="tile-photo" src="/media/assets/734849232814c20d.jpg" alt="Gastro" loading="lazy"><span class="tile-veil"></span><span class="media-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></div>
+            <div class="media-visual has-photo"><img class="tile-photo" src="/media/assets/734849232814c20d.jpg" alt="Gastro" loading="lazy"><video class="reel-vid tile-loop" muted loop playsinline preload="none" aria-hidden="true" data-src="/media/tiles/gastro-tile.mp4"></video><span class="tile-veil"></span><span class="media-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></div>
             <div class="media-copy"><small>Gastronomie</small><strong>Gastro</strong><span>Food Reel</span></div>
           </article>
           <article class="media-card" style="order:5" role="button" tabindex="0" data-reel="/media/cufflinks%20produkt%20video.mp4" aria-label="Reel abspielen: Rolls-Royce Accessoires">
-            <div class="media-visual has-photo"><img class="tile-photo" src="/media/assets/d1cc9d4a2c7572b1.jpg" alt="Rolls-Royce Accessoires" loading="lazy"><span class="tile-veil"></span><span class="media-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></div>
+            <div class="media-visual has-photo"><img class="tile-photo" src="/media/assets/d1cc9d4a2c7572b1.jpg" alt="Rolls-Royce Accessoires" loading="lazy"><video class="reel-vid tile-loop" muted loop playsinline preload="none" aria-hidden="true" data-src="/media/tiles/cufflinks-tile.mp4"></video><span class="tile-veil"></span><span class="media-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></div>
             <div class="media-copy"><small>Produktvideo</small><strong>Rolls-Royce Accessoires</strong><span>Product Reel</span></div>
           </article>
           <article class="media-card" style="order:6" role="button" tabindex="0" data-reel="/media/cullinan.mp4" aria-label="Reel abspielen: Rolls-Royce Cullinan">
-            <div class="media-visual has-photo"><img class="tile-photo" src="/media/assets/c38637b08d04b853.jpg" alt="Rolls-Royce Cullinan" loading="lazy"><span class="tile-veil"></span><span class="media-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></div>
+            <div class="media-visual has-photo"><img class="tile-photo" src="/media/assets/c38637b08d04b853.jpg" alt="Rolls-Royce Cullinan" loading="lazy"><video class="reel-vid tile-loop" muted loop playsinline preload="none" aria-hidden="true" data-src="/media/tiles/cullinan-tile.mp4"></video><span class="tile-veil"></span><span class="media-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></div>
             <div class="media-copy"><small>Automotive</small><strong>Rolls-Royce Cullinan</strong><span>Interior Reel</span></div>
           </article>
           <article class="media-card" style="order:8" role="button" tabindex="0" data-reel="/media/spreewald%20therme.mp4" aria-label="Reel abspielen: Spreewald Therme">
-            <div class="media-visual has-photo"><img class="tile-photo" src="/media/assets/206490c87056e5fa.jpg" alt="Spreewald Therme" loading="lazy"><span class="tile-veil"></span><span class="media-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></div>
+            <div class="media-visual has-photo"><img class="tile-photo" src="/media/assets/206490c87056e5fa.jpg" alt="Spreewald Therme" loading="lazy"><video class="reel-vid tile-loop" muted loop playsinline preload="none" aria-hidden="true" data-src="/media/tiles/spreewald-tile.mp4"></video><span class="tile-veil"></span><span class="media-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></div>
             <div class="media-copy"><small>Wellness</small><strong>Spreewald Therme</strong><span>Location Reel</span></div>
           </article>
         </div>
@@ -3676,5 +3676,25 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape"&&!lb.hidden)
   document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&!modal.hidden) close(); });
 })();
 </script>
+<script>(function(){
+  var mob=window.matchMedia('(max-width:820px)');
+  var tiles=[].slice.call(document.querySelectorAll('.tile-loop'));
+  if(!tiles.length) return;
+  function load(v){ if(v.dataset.src && !v.src){ v.src=v.dataset.src; try{v.load();}catch(e){} } }
+  function play(v){ var p=v.play&&v.play(); if(p&&p.catch)p.catch(function(){}); }
+  function activate(){
+    if(!mob.matches) return;
+    if(!('IntersectionObserver' in window)){ tiles.forEach(function(v){load(v);v.addEventListener('canplay',function(){v.classList.add('on');play(v);},{once:true});}); return; }
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        var v=e.target;
+        if(e.isIntersecting){ load(v); play(v); v.addEventListener('playing',function(){v.classList.add('on');},{once:true}); }
+        else { try{v.pause();}catch(x){} }
+      });
+    },{rootMargin:'150px 0px',threshold:0.15});
+    tiles.forEach(function(v){ io.observe(v); });
+  }
+  if(document.readyState!=='loading') activate(); else document.addEventListener('DOMContentLoaded',activate);
+})();</script>
 </body>
 </html>
