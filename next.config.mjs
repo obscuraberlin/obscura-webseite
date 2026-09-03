@@ -6,6 +6,13 @@ const nextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
   },
+  async rewrites() {
+    // Die Startseite wird als fertige, in sich geschlossene Seite aus
+    // public/site.html ausgeliefert (statt der alten Komponenten-Startseite).
+    return {
+      beforeFiles: [{ source: "/", destination: "/site.html" }],
+    };
+  },
   async redirects() {
     // Bestehende URLs des alten Auftritts beim Relaunch abfangen (301),
     // damit Rankings/Backlinks erhalten bleiben. Bei Bedarf um weitere
