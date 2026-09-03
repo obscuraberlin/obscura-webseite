@@ -3216,12 +3216,7 @@ body.lb-open{overflow:hidden}
       }
       prev.addEventListener('click',()=>{if(quizStep>1){quizStep--;renderQuiz();}});
 
-      // ==== Direktversand an info@obscura-berlin.de (Web3Forms, kein Backend nötig) ====
-      // WICHTIG: <ACCESS_KEY> durch euren kostenlosen Web3Forms-Key ersetzen
-      // (https://web3forms.com – Key auf info@obscura-berlin.de ausstellen). Danach
-      // landen alle Anfragen direkt in eurem Postfach. Nichts anderes wird verschickt.
-      const WEB3FORMS_KEY='<ACCESS_KEY>';
-      const errorBox=document.getElementById('quizError');
+            const errorBox=document.getElementById('quizError');
 
       function collectQuiz(){
         const sel=g=>[...form.querySelectorAll('[data-group="'+g+'"] .choice.selected')].map(c=>c.textContent.trim());
@@ -3242,22 +3237,23 @@ body.lb-open{overflow:hidden}
       }
       async function sendQuiz(){
         const d=collectQuiz();
-        // Kein echter Web3Forms-Key hinterlegt -> direkt per E-Mail (Mailto-Fallback)
-        if(!WEB3FORMS_KEY || WEB3FORMS_KEY==='<ACCESS_KEY>'){ quizMailto(d); return; }
         const payload={
-          access_key:WEB3FORMS_KEY,
-          from_name:'OBSCURA Website – Projektanfrage',
-          subject:'Neue Projektanfrage – '+(d.company!=='—'?d.company:'Website'),
-          'Interesse an (Leistungen)':d.services,'Ziel':d.goal,'Budget':d.budget,'Gewünschter Start':d.start,
-          'Projektbeschreibung':d.project,'Name':d.name,'Unternehmen':d.company,'E-Mail':d.email,'Telefon':d.phone,
-          replyto:(d.email!=='—'?d.email:'')
+          'Name':d.name,'E-Mail':d.email,'Telefon':d.phone,'Unternehmen':d.company,
+          'Interesse an (Leistungen)':d.services,'Ziel':d.goal,'Budget':d.budget,
+          'Gewünschter Start':d.start,'Projektbeschreibung':d.project,
+          _subject:'Neue Anfrage über obscura-berlin.de',
+          _template:'table',
+          _captcha:'false',
+          _replyto:(d.email!=='—'?d.email:'')
         };
-        const res=await fetch('https://api.web3forms.com/submit',{
-          method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(payload)
+        const res=await fetch('https://formsubmit.co/ajax/info@obscura-berlin.de',{
+          method:'POST',
+          headers:{'Content-Type':'application/json',Accept:'application/json'},
+          body:JSON.stringify(payload)
         });
         if(!res.ok) throw new Error('HTTP '+res.status);
         const data=await res.json();
-        if(!data.success) throw new Error(data.message||'send failed');
+        if(String(data.success)!=='true') throw new Error(data.message||'send failed');
       }
       function showQuizSuccess(){
         quizSteps.forEach(s=>s.classList.remove('active'));
@@ -3358,12 +3354,10 @@ body.lb-open{overflow:hidden}
           // Lead per E-Mail an OBSCURA (funktioniert ohne Backend)
           const g=n=>{const el=form.querySelector('[name="'+n+'"]');return el?el.value.trim():'';};
           const score=scoreNum.textContent;
-          // Direktversand an info@obscura-berlin.de (Web3Forms – <ACCESS_KEY> ersetzen)
-          const SMC_KEY='<ACCESS_KEY>';
-          fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},
-            body:JSON.stringify({access_key:SMC_KEY,from_name:'OBSCURA Website – Social-Media-Check',
-              subject:'Social-Media-Check – '+(g('company')||g('name')||'Lead'),
-              'Score':score+' / 100','Name':g('name')||'—','Unternehmen':g('company')||'—','E-Mail':g('email')||'—','Telefon':g('phone')||'—',replyto:g('email')||''})
+          // Direktversand an info@obscura-berlin.de (FormSubmit.co – kein Key noetig)
+          fetch('https://formsubmit.co/ajax/info@obscura-berlin.de',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},
+            body:JSON.stringify({_subject:'Social-Media-Check – '+(g('company')||g('name')||'Lead'),_template:'table',_captcha:'false',
+              'Score':score+' / 100','Name':g('name')||'—','Unternehmen':g('company')||'—','E-Mail':g('email')||'—','Telefon':g('phone')||'—',_replyto:g('email')||''})
           }).catch(()=>{});
           gate.innerHTML='<div class="lockrow" style="color:var(--lime-deep)"><span aria-hidden="true">✓</span> Freigeschaltet</div><h3>Danke – deine Auswertung ist freigeschaltet.</h3><p>Oben siehst du deine detaillierte Analyse. Wir melden uns zusätzlich persönlich mit konkreten nächsten Schritten.</p><a class="btn btn-primary" href="#kontakt">Kostenloses Erstgespräch sichern <span class="arrow">→</span></a>';
           breakdown.scrollIntoView({behavior:'smooth',block:'center'});
