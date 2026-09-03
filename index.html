@@ -3252,8 +3252,10 @@ body.lb-open{overflow:hidden}
           body:JSON.stringify(payload)
         });
         if(!res.ok) throw new Error('HTTP '+res.status);
-        const data=await res.json();
-        if(String(data.success)!=='true') throw new Error(data.message||'send failed');
+        // FormSubmit hat die Anfrage angenommen (HTTP 200) -> als Erfolg werten.
+        // Antwortkoerper nur best-effort lesen; kein harter Abbruch, falls das Format abweicht.
+        try{ const data=await res.json(); if(data && data.success!==undefined && String(data.success)!=='true') throw new Error(data.message||'send failed'); }
+        catch(_ignore){ /* JSON egal - 200 zaehlt als Erfolg */ }
       }
       function showQuizSuccess(){
         quizSteps.forEach(s=>s.classList.remove('active'));
