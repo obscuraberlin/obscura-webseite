@@ -20,4 +20,20 @@ RewriteRule ^ https://www.obscura-berlin.de%{REQUEST_URI} [L,R=301]
   ExpiresByType video/mp4 "access plus 1 year"
 </IfModule>
 
+# Sicherheits-Header
+<IfModule mod_headers.c>
+  # HTTPS erzwingen (HSTS) – 1 Jahr, inkl. Subdomains
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+  # Kein MIME-Sniffing
+  Header always set X-Content-Type-Options "nosniff"
+  # Schutz gegen Clickjacking (Einbettung in fremde Frames verbieten)
+  Header always set X-Frame-Options "SAMEORIGIN"
+  # Referrer sparsam senden
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  # Nicht benötigte Browser-Funktionen deaktivieren
+  Header always set Permissions-Policy "geolocation=(), camera=(), microphone=(), payment=(), usb=()"
+  # Cross-Domain-Policies unterbinden
+  Header always set X-Permitted-Cross-Domain-Policies "none"
+</IfModule>
+
 ErrorDocument 404 /index.html
