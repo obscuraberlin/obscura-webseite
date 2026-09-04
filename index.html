@@ -2540,7 +2540,7 @@ body.lb-open{overflow:hidden}
                 <label class="field">Name<input name="name" autocomplete="name" placeholder="Vor- und Nachname"></label>
                 <label class="field">Unternehmen<input name="company" autocomplete="organization" placeholder="Unternehmen"></label>
                 <label class="field">E-Mail<input name="email" type="email" autocomplete="email" placeholder="name@unternehmen.de"></label>
-                <label class="field">Telefon<input name="phone" type="tel" autocomplete="tel" placeholder="+49 …"></label>
+                <label class="field">Telefon<input name="phone" type="tel" autocomplete="tel" placeholder="+49 …"></label><div aria-hidden="true" style="position:absolute!important;left:-9999px!important;top:auto;width:1px;height:1px;overflow:hidden"><label>Bitte dieses Feld leer lassen<input type="text" name="_honey" tabindex="-1" autocomplete="off"></label></div>
               </div>
               <p class="privacy">Mit dem Absenden schickt ihr eure Anfrage direkt an unser Team. Es gelten unsere <button type="button" class="lg-link" data-legal="datenschutz">Datenschutzhinweise</button>.</p>
               <p class="quiz-error" id="quizError" hidden>Senden hat gerade nicht geklappt – wir öffnen ersatzweise euer E-Mail-Programm. Oder schreibt uns direkt an <a href="mailto:info@obscura-berlin.de" style="color:var(--lime-deep)">info@obscura-berlin.de</a>.</p>
@@ -3249,6 +3249,7 @@ body.lb-open{overflow:hidden}
           _subject:'Neue Anfrage über obscura-berlin.de',
           _template:'table',
           _captcha:'false',
+          _honey:(form.querySelector('[name="_honey"]')?form.querySelector('[name="_honey"]').value:''),
           _replyto:(d.email!=='—'?d.email:'')
         };
         const res=await fetch('https://formsubmit.co/ajax/info@obscura-berlin.de',{
@@ -3270,13 +3271,23 @@ body.lb-open{overflow:hidden}
         progressBar.style.width='100%';
       }
 
+      function showQuizError(msg){ if(!errorBox) return; errorBox.innerHTML=msg; errorBox.hidden=false; }
       next.addEventListener('click',async ()=>{
         if(quizStep<4){quizStep++;renderQuiz();return;}
         if(errorBox) errorBox.hidden=true;
+        // Spam-Schutz 1: Honeypot – von Bots ausgefuelltes unsichtbares Feld -> lautlos abbrechen
+        var hp=form.querySelector('[name="_honey"]');
+        if(hp && hp.value){ showQuizSuccess(); return; }
+        // Spam-Schutz 2: gueltige E-Mail verlangen
+        var em=(form.querySelector('[name="email"]')||{}).value||'';
+        if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em.trim())){ showQuizError('Bitte gib eine gültige E-Mail-Adresse an, damit wir dich erreichen können.'); return; }
+        // Spam-Schutz 3: Cooldown gegen schnelles Mehrfach-Senden
+        try{ var lastT=+(localStorage.getItem('obs_last_send')||0); if(Date.now()-lastT<45000){ showQuizError('Danke – wir haben deine Anfrage schon erhalten. Bitte warte einen Moment, bevor du erneut sendest.'); return; } }catch(e){}
         const label=next.innerHTML;
         next.disabled=true; next.innerHTML='Wird gesendet …';
         try{
           await sendQuiz();
+          try{ localStorage.setItem('obs_last_send', String(Date.now())); }catch(e){}
           showQuizSuccess();
         }catch(err){
           // Versand fehlgeschlagen -> Hinweis zeigen und E-Mail-Programm als Fallback oeffnen
