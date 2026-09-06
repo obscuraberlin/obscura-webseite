@@ -3636,7 +3636,8 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape"&&!lb.hidden)
 /* Medien-Download-Schutz: Rechtsklick "Bild speichern" & Drag&Drop auf Bildern/Videos/Grafiken unterbinden */
 (function(){
   var sel="img,video,picture,svg,canvas,.hero,.hero-video,.hero-video-m,.hero-stage,.stage-view,.sv-photo,.project-card,.project-art,.case-card,.case-art,.client-logo,.reason-card,.lb-item";
-  document.addEventListener("contextmenu",function(e){ if(e.target.closest&&e.target.closest(sel)) e.preventDefault(); }, {capture:true});
+  document.addEventListener("contextmenu",function(e){ e.preventDefault(); }, {capture:true});
+  document.addEventListener("keydown",function(e){ var K=(e.key||"").toLowerCase(); if(e.key==="F12"||((e.ctrlKey||e.metaKey)&&(K==="u"||K==="s"))||((e.ctrlKey||e.metaKey)&&e.shiftKey&&(K==="i"||K==="j"||K==="c"))){ e.preventDefault(); e.stopPropagation(); return false; } }, {capture:true});
   document.addEventListener("dragstart",function(e){ var t=e.target; if(t&&(t.tagName==="IMG"||t.tagName==="VIDEO"||t.tagName==="PICTURE"||(t.closest&&t.closest(sel)))) e.preventDefault(); }, {capture:true});
 })();
 /* Alle Videos non-stop in Dauerschleife halten (auch nach Tab-Wechsel/Pause) */
