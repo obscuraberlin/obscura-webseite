@@ -101,11 +101,7 @@
     /* Kräftige, saubere Heading-Schrift (Archivo) für kleinere Überschriften & Marke */
     .brand,.service-panel h3,.project-copy h3,.case-copy strong,.reason-card strong,
     .smc-score strong,.plan h3,.step h3,h3.smc,.about-obscura h3,.team-copy h3,
-    .location-panel h3,.jobs-panel h3{
-      font-family:var(--font-heading);
-      font-weight:800;
-      letter-spacing:-.01em;
-    }
+    .location-panel h3,
     /* Feiner Film-Grain über der ganzen Seite (wertige Textur) */
     body:after{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.05;mix-blend-mode:multiply;
       background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="180" height="180"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23n)"/></svg>')}
@@ -1314,13 +1310,7 @@
     }
     .team-panel,
     .location-panel,
-    .jobs-panel{
-      position:relative;
-      overflow:hidden;
-      border-radius:28px;
-      border:1px solid var(--line);
-      box-shadow:0 28px 68px -52px rgba(17,29,14,.32);
-    }
+    
     .team-panel{
       min-height:520px;
       background:
@@ -1444,45 +1434,11 @@
       font-size:.68rem;
       font-weight:700;
     }
-    .jobs-panel{
-      min-height:252px;
-      padding:26px;
-      background:
-        radial-gradient(circle at 82% 20%,rgba(173,255,47,.2),transparent 24%),
-        linear-gradient(145deg,#f5f8ee,#e7efdd);
-    }
-    .jobs-panel h3{
-      margin:32px 0 9px;
-      max-width:420px;
-      font-size:clamp(1.65rem,2.6vw,2.45rem);
-      line-height:1;
-      letter-spacing:-.035em;
-    }
-    .jobs-panel p{
-      margin:0;
-      max-width:440px;
-      color:var(--muted);
-      font-size:.86rem;
-      line-height:1.5;
-    }
-    .jobs-cta{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      margin-top:20px;
-      color:var(--forest);
-      font-size:.82rem;
-      font-weight:800;
-    }
-    .jobs-cta span{
-      width:28px;
-      height:28px;
-      border-radius:50%;
-      display:grid;
-      place-items:center;
-      background:var(--forest);
-      color:#fff;
-    }
+    
+    
+    
+    
+    
 
     @media(max-width:900px){
       .about-head{grid-template-columns:1fr;gap:18px}
@@ -1498,9 +1454,9 @@
       .team-copy{left:21px;right:21px;bottom:20px}
       .team-copy h3{font-size:2.7rem}
       .team-copy p{font-size:.82rem;max-width:92%}
-      .location-panel,.jobs-panel{min-height:230px;padding:22px;border-radius:23px}
+      .location-panel,
       .location-panel h3{margin-top:28px}
-      .jobs-panel h3{margin-top:28px}
+      
     }
 
     /* PROCESS */
@@ -1845,7 +1801,7 @@
     .closing .check-link:hover{color:var(--lime)}
     .closing .btn-light{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.2)}
     @media(max-width:560px){.closing-actions{width:100%}.closing-actions .btn{width:100%;min-height:54px}}
-    .section.location{padding-top:0}@media(max-width:760px){.section.location{padding-bottom:36px}.section.jobs{padding-top:36px}}
+    .section.location{padding-top:0}@media(max-width:760px){.section.location{padding-bottom:40px}}@media(max-width:760px){.section.location{padding-bottom:36px}.section}
     .loc-card{display:grid;grid-template-columns:1.1fr .9fr;gap:0;background:var(--forest);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow)}
     .loc-media{position:relative;min-height:340px;overflow:hidden}.loc-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}.btn-outline-light{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.28)}.btn-outline-light:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.5)}@media(max-width:760px){.loc-actions{flex-direction:column;align-items:stretch}.loc-actions .btn{width:100%}}
     .loc-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
@@ -2171,6 +2127,7 @@ body.lb-open{overflow:hidden}
       <a class="menu-link" href="#arbeit">Projekte</a>
       <a class="menu-link" href="#team">Über uns</a>
       <a class="menu-link" href="#kontakt">Kontakt</a>
+      <a class="menu-link" href="mailto:info@obscura-berlin.de?subject=Bewerbung%20Videograf%2FFotograf%20bei%20OBSCURA">Jobs</a>
     </nav>
     <a class="btn btn-primary" href="#kontakt">Kostenloses Erstgespräch <span class="arrow">→</span></a>
   </div>
@@ -2461,7 +2418,7 @@ body.lb-open{overflow:hidden}
     .voices{padding:clamp(40px,5vw,80px) 0;background:var(--ink);color:#fff}
     .voices .eyebrow{color:var(--lime)}
     .voices .title-md{color:#fff;font-size:clamp(1.5rem,2.4vw,2.2rem)}.voices .eyebrow{margin-bottom:12px}
-    .voice-card{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(18px,2.5vw,34px);align-items:center;margin-top:20px;max-width:920px}
+    .voice-card{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(20px,3vw,38px);align-items:center;margin-top:24px;max-width:920px}
     .voice-poster{position:relative;aspect-ratio:16/10;max-width:480px;border-radius:22px;overflow:hidden;background:#000;cursor:pointer;border:0;padding:0;display:block;width:100%;box-shadow:0 50px 120px -60px rgba(0,0,0,.9)}
     .voice-poster video{width:100%;height:100%;object-fit:cover;display:block;background:#000;transition:transform .8s cubic-bezier(.2,.75,.2,1)}
     @media(hover:hover){.voice-poster:hover video{transform:scale(1.04)}.voice-poster:hover .voice-play{transform:scale(1.08)}}
@@ -2472,7 +2429,7 @@ body.lb-open{overflow:hidden}
     
     
     
-    .voice-quote{margin:0;font-size:clamp(1.02rem,1.5vw,1.28rem);line-height:1.45;letter-spacing:-.01em;font-weight:600;color:#fff}
+    .voice-quote{margin:0;font-size:clamp(1.05rem,1.5vw,1.3rem);line-height:1.5;letter-spacing:-.01em;font-weight:600;color:#fff}.voice-quote .qm{color:#e0242b;font-family:Georgia,"Times New Roman",serif;font-size:1.25em;line-height:0;vertical-align:-.08em}
     
     .voice-who{margin:12px 0 0;font-size:.82rem;color:rgba(255,255,255,.65)}.voice-link{margin-top:16px;display:inline-flex;align-items:center;gap:8px;background:none;border:0;padding:0;cursor:pointer;color:#fff;font:inherit;font-size:.9rem;font-weight:700;letter-spacing:.01em;text-decoration:underline;text-underline-offset:5px;text-decoration-color:rgba(255,255,255,.3);transition:text-decoration-color .2s ease}.voice-link span{color:#e0242b;transition:transform .2s ease}.voice-link:hover{text-decoration-color:#e0242b}.voice-link:hover span{transform:translateX(3px)}
     .voice-who b{color:#fff;font-weight:700}
@@ -2497,7 +2454,7 @@ body.lb-open{overflow:hidden}
             <span class="voice-play"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>
           </div>
           <div class="voice-text">
-            <p class="voice-quote">Über 35 Videos in einer Qualität, die man sonst nur aus dem Kino kennt.</p>
+            <p class="voice-quote"><span class="qm">„</span>Über 35 Videos in einer Qualität, die man sonst nur aus dem Kino kennt.<span class="qm">“</span></p>
             <p class="voice-who"><b>Isi Tat</b> · Unternehmer, Isi Tat Business Club</p>
             <button class="voice-link" type="button" data-voice-open="isiModal">Trailer <span aria-hidden="true">→</span></button>
           </div>
@@ -2731,26 +2688,14 @@ body.lb-open{overflow:hidden}
     </section>
   
   <style>
-  .jobs-inner{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:26px;border:1px solid rgba(180,242,58,.3);border-radius:var(--radius-lg);padding:clamp(26px,4vw,46px);background:linear-gradient(158deg,#16240f,#0c130a);color:#fff}
-  .jobs-inner .eyebrow{color:var(--lime)}
-  .jobs-txt{max-width:660px}
-  .jobs-txt h2{color:#fff;margin:6px 0 10px}
-  .jobs-txt p{color:rgba(255,255,255,.76);line-height:1.6}
-  @media(min-width:1081px){.jobs .wrap{max-width:none;padding-left:0;padding-right:0}.jobs-inner{border-radius:0}}
+  
+  
+  
+  
+  
+  @media(min-width:1081px){}
   </style>
-  <section class="section jobs" id="jobs" aria-label="Karriere bei OBSCURA">
-    <div class="wrap">
-      <div class="jobs-inner">
-        <div class="jobs-txt">
-          <p class="eyebrow">Karriere bei OBSCURA</p>
-          <h2 class="title-md">Du drehst oder fotografierst? Komm ins Team.</h2>
-          <p>Wir suchen regelmäßig <strong>Videograf:innen &amp; Fotograf:innen</strong> in Berlin – in Festanstellung oder als Freelancer. Wenn du Lust auf echte Projekte mit Marken wie Rolls-Royce, Weller Energie &amp; Co. hast, freuen wir uns auf deine Bewerbung.</p>
-        </div>
-        <a class="btn btn-primary" href="mailto:info@obscura-berlin.de?subject=Bewerbung%20Videograf%2FFotograf%20bei%20OBSCURA">Jetzt bewerben <span class="arrow">&#8594;</span></a>
-      </div>
-    </div>
-  </section>
-</main>
+ </main>
 
   <footer class="footer">
     <div class="wrap">
@@ -2759,7 +2704,7 @@ body.lb-open{overflow:hidden}
           <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true"></span>OBSCURA<sup>®</sup></a>
           <p>Social Media · Video · Ads · Design · Beratung</p>
         </div>
-        <div class="footer-col"><strong>Navigation</strong><a href="#mitgliedschaft">Mitgliedschaft</a><a href="#arbeit">Projekte</a><a href="#team">Über uns</a><a href="#kontakt">Kontakt</a></div>
+        <div class="footer-col"><strong>Navigation</strong><a href="#mitgliedschaft">Mitgliedschaft</a><a href="#arbeit">Projekte</a><a href="#team">Über uns</a><a href="#kontakt">Kontakt</a><a href="mailto:info@obscura-berlin.de?subject=Bewerbung%20Videograf%2FFotograf%20bei%20OBSCURA">Jobs &amp; Bewerbung</a></div>
         <div class="footer-col"><strong>Leistungen</strong><a href="social-media-mitgliedschaft.html">Social-Media-Mitgliedschaft</a><a href="foto-videoproduktion.html">Foto- &amp; Videoproduktion</a><a href="werbeanzeigen-ads.html">Werbeanzeigen (Ads)</a><a href="mitarbeitergewinnung.html">Mitarbeitergewinnung</a><a href="marketing-beratung.html">Marketing-Beratung</a></div>
         <div class="footer-col"><strong>Kontakt</strong><span>OBSCURA DIGITAL MARKETING GMBH</span><a href="https://www.google.com/maps/search/?api=1&amp;query=OBSCURA+DIGITAL+MARKETING+GMBH+Flemingstr.+12+10557+Berlin" target="_blank" rel="noopener">Flemingstr. 12, 10557 Berlin</a><a href="mailto:info@obscura-berlin.de">info@obscura-berlin.de</a><a href="tel:+493028678956">+49&nbsp;30&nbsp;28678956</a>
           <div class="footer-social">
