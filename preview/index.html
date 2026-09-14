@@ -74,7 +74,11 @@
       -moz-osx-font-smoothing:grayscale;
       text-rendering:optimizeLegibility;
     }
-    body.menu-open,body.modal-open{overflow:hidden}body.menu-open .nav-shell{background:var(--ink);border-color:rgba(255,255,255,.1)}
+    body.menu-open,body.modal-open{overflow:hidden}
+    /* Schutzregel: Das Logo in der Kopfleiste bleibt immer sichtbar */
+    .site-header .brand{opacity:1;position:static;visibility:visible}
+    .site-header .brand-mark{opacity:1;filter:none}
+   body.menu-open .nav-shell{background:var(--ink);border-color:rgba(255,255,255,.1)}
     a{color:inherit;text-decoration:none}
     button,input,textarea,select{font:inherit}
     button{color:inherit}
