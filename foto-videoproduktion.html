@@ -35,7 +35,7 @@
   a{color:inherit;text-decoration:none}
   button{font:inherit;color:inherit}
   .wrap{width:min(var(--wrap),100%);margin-inline:auto;padding-inline:var(--gutter)}
-  .eyebrow{font-size:.78rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--lime-deep);margin:0}
+  .eyebrow{display:inline-flex;align-items:center;padding:6px 12px;border-radius:999px;background:var(--ink);color:var(--obscura-green);font-size:.72rem;font-weight:800;letter-spacing:.05em;text-transform:none;line-height:1.1;margin:0}
   h1,h2,h3{margin:0;text-wrap:balance}
   h1{font-size:clamp(2.5rem,5.6vw,4.4rem);line-height:1.04;letter-spacing:-.025em}
   h2{font-size:clamp(2rem,3.8vw,3.1rem);line-height:1.06;letter-spacing:-.022em}
@@ -106,7 +106,7 @@
 
   /* Pricing */
   .pricing{background:var(--forest);color:#fff}
-  .pricing .eyebrow{color:var(--lime)}
+  .pricing .eyebrow{color:var(--obscura-green);background:rgba(255,255,255,.12)}
   .pricing .lead{color:rgba(255,255,255,.7)}.pricing .lead strong{color:#fff}
   .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:stretch}
   .plan{background:var(--forest-2);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius-lg);padding:30px 26px;display:flex;flex-direction:column}
@@ -229,7 +229,7 @@
   </section>
   <section class="pricing" style="background:var(--paper-2);color:var(--ink)">
     <div class="wrap">
-      <div class="sec-head" style="margin-bottom:36px"><p class="eyebrow" style="color:var(--lime-deep)">So läuft's</p><h2>So entsteht euer Content.</h2></div>
+      <div class="sec-head" style="margin-bottom:36px"><p class="eyebrow">So läuft's</p><h2>So entsteht euer Content.</h2></div>
       <div class="steps"><div class="step"><b>01</b><h3>Briefing</h3><p>Wir klären Ziel, Botschaft und Formate – und planen den Dreh.</p></div><div class="step"><b>02</b><h3>Vorproduktion</h3><p>Konzept, Shotlist, Location & Timing stehen, bevor die Kamera läuft.</p></div><div class="step"><b>03</b><h3>Dreh</h3><p>Professionelle Umsetzung im Studio oder bei euch – entspannt und effizient.</p></div><div class="step"><b>04</b><h3>Schnitt & Freigabe</h3><p>Ihr bekommt fertige, plattformgerechte Assets zur Freigabe.</p></div></div>
     </div>
   </section>
@@ -242,7 +242,7 @@
   <section class="cta">
     <div class="wrap">
       <div class="cta-card">
-        <p class="eyebrow" style="color:var(--lime)">Bereit?</p>
+        <p class="eyebrow">Bereit?</p>
         <h2>Lasst uns euren nächsten Content produzieren.</h2>
         <p class="lead">Erzählt uns von eurem Projekt – wir melden uns mit einem konkreten Vorschlag.</p>
         <div class="cta-actions">

@@ -91,13 +91,17 @@
     .wrap{width:min(var(--wrap),100%);margin-inline:auto;padding-inline:var(--gutter)}
     .section{padding:var(--section) 0;scroll-margin-top:96px}
     .eyebrow{
+      display:inline-flex;align-items:center;
       margin:0 0 18px;
-      font-size:.76rem;
-      line-height:1.25;
-      font-weight:700;
-      letter-spacing:.045em;
+      padding:6px 12px;
+      border-radius:999px;
+      background:var(--ink);
+      color:var(--obscura-green);
+      font-size:.72rem;
+      line-height:1.1;
+      font-weight:800;
+      letter-spacing:.05em;
       text-transform:none;
-      color:var(--lime-deep);
     }
     /* Klare, professionelle Display-Schrift (Archivo) für die großen Titel */
     .title-xl,.title-lg,.title-md,.stage-copy h2,.sv-copy h3{
@@ -555,7 +559,7 @@
     }
     .offers-inner{position:relative;z-index:1}
     .offers-intro{max-width:900px;margin-bottom:52px}
-    .offers .eyebrow{color:var(--lime-deep)}
+    .offers .eyebrow{color:var(--obscura-green)}
     .offers .title-lg{color:var(--ink)}
     .offers .lead{color:var(--muted)}
     .service-grid{
@@ -780,7 +784,7 @@
     .membership-card:before{content:"";position:absolute;right:-12%;top:-34%;width:440px;height:440px;border-radius:50%;
       background:radial-gradient(circle,rgba(var(--obscura-green-rgb),.22),transparent 62%);pointer-events:none}
     .membership-card > *{position:relative;z-index:1}
-    .membership-card .eyebrow{color:var(--lime)}
+    .membership-card .eyebrow{color:var(--lime);background:rgba(255,255,255,.12)}
     .membership-card .title-lg{color:#fff}
     .mc-badge{display:inline-flex;align-items:center;gap:7px;background:var(--lime);color:var(--forest);
       font-size:.72rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;padding:6px 13px;border-radius:999px;margin-bottom:18px}
@@ -1395,7 +1399,7 @@
       z-index:3;
       max-width:650px;
     }
-    .team-copy .eyebrow{color:var(--lime);margin-bottom:12px}
+    .team-copy .eyebrow{color:var(--lime);background:rgba(255,255,255,.12);margin-bottom:12px}
     .team-copy h3{
       margin:0;
       max-width:650px;
@@ -1820,7 +1824,7 @@
     /* Abschlussblock */
     .closing{background:var(--forest);color:#fff;text-align:center}
     .closing-inner{max-width:760px;margin-inline:auto;display:flex;flex-direction:column;align-items:center;gap:8px}
-    .closing .eyebrow{color:var(--lime)}
+    .closing .eyebrow{color:var(--lime);background:rgba(255,255,255,.12)}
     .closing .title-lg{color:#fff}
     .closing .lead{color:rgba(255,255,255,.72)}
     .closing .lead strong{color:#fff}
@@ -1836,7 +1840,7 @@
     .loc-collage{position:absolute;inset:0;display:grid;grid-template-columns:repeat(2,1fr);grid-template-rows:1fr 1fr;grid-auto-rows:1fr;gap:4px;min-height:0;overflow:hidden}
     .loc-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 28%;display:block}.loc-collage img{position:static;width:100%;height:100%;min-height:0;min-width:0;object-fit:cover;display:block}
     .loc-info{padding:clamp(28px,4vw,52px);color:#fff;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:14px}
-    .loc-info .eyebrow{color:var(--lime)}
+    .loc-info .eyebrow{color:var(--lime);background:rgba(255,255,255,.12)}
     .loc-info h2{color:#fff}
     .loc-info .lead{color:rgba(255,255,255,.72)}
     .loc-adr{font-style:normal;display:flex;flex-direction:column;gap:4px;margin:4px 0 6px;line-height:1.5}
