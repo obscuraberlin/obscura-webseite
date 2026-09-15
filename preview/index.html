@@ -261,6 +261,10 @@
       background:linear-gradient(180deg,#0b0f0a 0%,#0e130c 58%,#12180f 100%);
     }
     /* Weicher, minimaler Auslauf – sitzt im leeren Bereich UNTER den Inhalten (nie ueber Buttons/Text) */
+    .hero:before{content:"";position:absolute;left:50%;bottom:-4%;z-index:1;pointer-events:none;
+      width:min(1180px,140%);height:clamp(220px,26vw,400px);transform:translateX(-50%);
+      background:radial-gradient(closest-side,rgba(173,255,47,.20),rgba(173,255,47,0) 70%)}
+    @media(max-width:760px){.hero:before{height:clamp(170px,36vw,280px);background:radial-gradient(closest-side,rgba(173,255,47,.26),rgba(173,255,47,0) 70%)}}
     .hero:after{
       content:"";position:absolute;left:0;right:0;bottom:0;z-index:0;pointer-events:none;
       height:clamp(120px,12vw,190px);
@@ -281,13 +285,10 @@
       opacity:.85;pointer-events:none;filter:saturate(1.28) contrast(1.06) brightness(1.02);
       -webkit-mask-image:linear-gradient(90deg,transparent 8%,rgba(0,0,0,.45) 34%,#000 58%);
       mask-image:linear-gradient(90deg,transparent 8%,rgba(0,0,0,.45) 34%,#000 58%)}
-    /* Sehr subtiler Scroll-Zoom (nur wo unterstuetzt, ohne reduced-motion) */
-    @media(prefers-reduced-motion:no-preference){
-      @supports (animation-timeline: scroll()){
-        .hero-video{animation:heroZoom linear both;animation-timeline:scroll(root);animation-range:0 640px}
-        @keyframes heroZoom{to{transform:scale(1.05)}}
-      }
-    }
+    /* Langsame Kamerafahrt im Hintergrundvideo – laeuft in allen Browsern */
+    @keyframes heroDrift{0%{transform:scale(1.02) translate3d(0,0,0)}100%{transform:scale(1.12) translate3d(0,-1.4%,0)}}
+    .hero-video,.hero-video-m{animation:heroDrift 30s ease-in-out infinite alternate;will-change:transform}
+    @media(prefers-reduced-motion:reduce){.hero-video,.hero-video-m{animation:none}}
     .hero-veil{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
       background:linear-gradient(90deg,rgba(6,9,5,.72) 14%,rgba(6,9,5,.36) 46%,rgba(6,9,5,0) 76%),
         linear-gradient(180deg,rgba(6,9,5,.5),transparent 26%,transparent 70%,rgba(6,9,5,.35))}
@@ -2369,7 +2370,7 @@ body.lb-open{overflow:hidden}
 @media(max-width:1100px){.mem-float{display:none}}
 </style>
     <style>
-  .voices{position:relative;overflow:hidden;padding:clamp(52px,6vw,96px) 0;background:var(--ink);color:#fff}.voices::before{content:"";position:absolute;left:50%;top:18%;width:min(780px,120%);aspect-ratio:1;transform:translateX(-50%);background:radial-gradient(closest-side,rgba(224,36,43,.20),rgba(224,36,43,0) 72%);pointer-events:none}.voices .wrap{position:relative;z-index:1}.voices .eyebrow{color:#e0242b;letter-spacing:.16em;text-transform:uppercase;font-size:.7rem;margin:0 0 10px}
+  .voices{position:relative;overflow:hidden;padding:clamp(56px,6.5vw,104px) 0;color:#fff;background:linear-gradient(180deg,#0a0e09 0%,#101a0d 52%,#0a0e09 100%);border-radius:clamp(22px,4vw,44px)}.voices::before{content:"";position:absolute;left:50%;top:10%;width:min(860px,130%);aspect-ratio:1;transform:translateX(-50%);background:radial-gradient(closest-side,rgba(224,36,43,.30),rgba(224,36,43,0) 70%);pointer-events:none}.voices::after{content:"";position:absolute;right:-12%;bottom:-18%;width:min(560px,90%);aspect-ratio:1;pointer-events:none;background:radial-gradient(closest-side,rgba(173,255,47,.13),rgba(173,255,47,0) 70%)}.voices .wrap{position:relative;z-index:1}.voices .eyebrow{color:#e0242b;letter-spacing:.16em;text-transform:uppercase;font-size:.7rem;margin:0 0 10px}
   .voices .eyebrow{color:var(--lime)}
   .voices .title-md{color:#fff;font-size:clamp(1.5rem,2.4vw,2.2rem)}.voices .eyebrow{margin-bottom:12px}
   .voice-card{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(20px,3vw,38px);align-items:center;margin-top:24px;max-width:920px}
