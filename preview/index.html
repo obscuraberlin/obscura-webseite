@@ -3760,3 +3760,14 @@ textarea{min-height:132px;resize:vertical;line-height:1.55}
 .lg-link:hover{color:var(--obscura-green-deep);text-decoration-color:currentColor}
 .lg-link:focus-visible{outline:2px solid var(--obscura-green-deep);outline-offset:2px}
 </style>
+
+<style>
+/* ===== Auswahl-Buttons im Formular: auf dem Handy kompakter ===== */
+@media(max-width:760px){
+  .choice{min-height:52px;padding:12px 40px 12px 15px;border-radius:13px;font-size:.95rem;line-height:1.3}
+  .choice.selected:after{right:11px;width:20px;height:20px}
+  .choice-grid{gap:8px}
+  .quiz-step h3{font-size:clamp(1.55rem,6.4vw,2rem)}
+  .quiz-step>p{margin-bottom:18px}
+}
+</style>
