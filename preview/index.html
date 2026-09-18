@@ -3724,3 +3724,39 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape"&&!lb.hidden)
   }
   if(document.readyState!=='loading') activate(); else document.addEventListener('DOMContentLoaded',activate);
 })();</script>
+<style>
+/* ===== Formularfelder: eigener Look statt Browser-Standard ===== */
+.field{gap:9px;font-size:.72rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#6b7566}
+.field-grid{gap:14px}
+input,textarea,select{
+  border:1px solid rgba(17,29,14,.13);
+  background:#fbfcf9;
+  border-radius:16px;
+  padding:15px 17px;
+  font-size:.98rem;
+  font-weight:600;
+  letter-spacing:normal;
+  text-transform:none;
+  color:var(--ink);
+  transition:border-color .18s ease,box-shadow .18s ease,background .18s ease;
+}
+input::placeholder,textarea::placeholder{color:#9aa395;font-weight:500}
+input:hover,textarea:hover,select:hover{background:#fff;border-color:rgba(17,29,14,.22)}
+input:focus,textarea:focus,select:focus{background:#fff;border-color:var(--obscura-green-deep);box-shadow:0 0 0 4px rgba(var(--obscura-green-rgb),.18)}
+select{
+  -webkit-appearance:none;-moz-appearance:none;appearance:none;
+  padding-right:46px;cursor:pointer;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9' fill='none'%3E%3Cpath d='M1 1l6 6 6-6' stroke='%231f7a2e' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;
+  background-position:right 18px center;
+}
+select:invalid,select option[value=""]{color:#9aa395}
+textarea{min-height:132px;resize:vertical;line-height:1.55}
+/* Der Datenschutz-Link im Formular war ein grauer Browser-Button:
+   die vorhandene Regel galt nur fuer den Footer. */
+.lg-link{background:none;border:0;padding:0;margin:0;color:inherit;font:inherit;cursor:pointer;
+  text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px;
+  text-decoration-color:rgba(var(--obscura-green-rgb),.55);border-radius:3px}
+.lg-link:hover{color:var(--obscura-green-deep);text-decoration-color:currentColor}
+.lg-link:focus-visible{outline:2px solid var(--obscura-green-deep);outline-offset:2px}
+</style>
