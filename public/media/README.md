@@ -33,7 +33,7 @@ Die Platzhalter-Kacheln akzeptieren echte Medien über `src` (Bild) bzw.
 oder benenne sie nach dem Schema unten, dann verdrahte ich sie:
 
 - `hero/reel-1..4.jpg`
-- `team/maher.jpg`, `team/marcel.jpg`
+- `team/person-1.jpg`, `team/person-2.jpg`
 - `projekte/rolls-royce.jpg`, `projekte/riller-schnauck.jpg`,
   `projekte/sjs-carstyling.jpg`, `projekte/kensington.jpg`
 - `reels/reel-1.mp4` (+ `reel-1.jpg`), `filme/imagefilm.mp4` (+ `.jpg`)

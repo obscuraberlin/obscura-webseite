@@ -23,7 +23,7 @@ export default function Datenschutz() {
         <br />
         {site.address.street}, {site.address.zip} {site.address.city}
         <br />
-        Geschäftsführung: Maher Samir Moussa, Marcel Mancic
+        Geschäftsführung: Marcel Mancic
         <br />
         Telefon: <a href={`tel:${site.phoneHref}`}>{site.phone}</a>
         <br />

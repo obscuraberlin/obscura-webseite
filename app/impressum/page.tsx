@@ -24,8 +24,6 @@ export default function Impressum() {
 
       <h2>Vertreten durch die Geschäftsführung</h2>
       <p>
-        Maher Samir Moussa
-        <br />
         Marcel Mancic
       </p>
 
@@ -53,7 +51,7 @@ export default function Impressum() {
 
       <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
       <p>
-        Maher Samir Moussa und Marcel Mancic
+        Marcel Mancic
         <br />
         {site.address.street}, {site.address.zip} {site.address.city}
       </p>

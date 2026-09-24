@@ -33,7 +33,7 @@ export const site = {
   // Vorbelegte WhatsApp-Nachricht
   whatsappText: "Hallo Obscura, ich interessiere mich für eine Zusammenarbeit.",
   // Geschäftsführung / Gründer (verifiziert)
-  management: ["Maher Samir Moussa", "Marcel Mancic"],
+  management: ["Marcel Mancic"],
   social: {
     // Nur verifizierte, offizielle Profile eintragen. Konnten aktuell nicht
     // eindeutig verifiziert werden -> leer lassen (Icons werden ausgeblendet),
@@ -254,7 +254,6 @@ export const stories = [
 
 /** Team – nur verifizierte Personen (Geschäftsführung / Gründer). */
 export const team = [
-  { name: "Maher Samir Moussa", role: "Geschäftsführung", tone: 1 },
   { name: "Marcel Mancic", role: "Geschäftsführung", tone: 4 },
 ];
 
