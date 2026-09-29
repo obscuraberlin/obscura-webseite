@@ -62,6 +62,9 @@ SITEMAP
 # .htaccess: HTTPS+www erzwingen, Kompression, Caching
 cat > "$OUT/.htaccess" <<'HTACCESS'
 RewriteEngine On
+# Wichtig: POST nicht umleiten - Browser werfen beim Umleiten den Inhalt weg,
+# dann kaeme das Anfrageformular leer beim Server an.
+RewriteCond %{REQUEST_METHOD} !=POST
 RewriteCond %{HTTPS} off [OR]
 RewriteCond %{HTTP_HOST} !^www\. [NC]
 RewriteRule ^ https://www.obscura-berlin.de%{REQUEST_URI} [L,R=301]
