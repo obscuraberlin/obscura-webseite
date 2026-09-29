@@ -5,7 +5,7 @@
    Warteschlange, die beim naechsten Besuch automatisch nachgereicht wird.
    Aufruf:  node scripts/formular-test.js [basis-url]            */
 const {chromium}=require('playwright-core');
-const BASIS=process.argv[2]||'http://127.0.0.1:8765';
+const BASIS=process.argv[2]||'http://127.0.0.1:8790';
 const CHROM=process.env.CHROME_PFAD||'/opt/pw-browsers/chromium';
 const JA={status:200,contentType:'application/json',body:'{"success":true,"message":"ok"}'};
 const NEIN={status:200,contentType:'application/json',body:'{"success":false,"message":"nicht freigeschaltet"}'};
@@ -14,11 +14,16 @@ async function seite(b,opt){
   opt=opt||{};
   const c=await b.newContext({viewport:{width:1440,height:900}});
   const p=await c.newPage();
-  const log={web3:null,fs:null,fehler:[],mailsprung:false};
+  const log={eigen:null,web3:null,fs:null,fehler:[],mailsprung:false};
   p.on('pageerror',e=>log.fehler.push(e.message));
   p.on('framenavigated',f=>{ if(f===p.mainFrame() && f.url().startsWith('mailto')) log.mailsprung=true; });
   if(opt.schluessel) await p.addInitScript(k=>{window.OBS_WEB3FORMS_KEY=k;},opt.schluessel);
   if(opt.vorher) await p.addInitScript(opt.vorher);
+  /* Weg 1: eigener Server. 'echt' laesst die Anfrage wirklich an anfrage.php laufen. */
+  await p.route('**/anfrage.php',async r=>{ log.eigen=r.request().postData();
+    if(opt.eigen==='echt') return r.continue();
+    if(opt.eigen==='nein') return r.fulfill(NEIN);
+    return r.abort('failed'); });
   await p.route('**/api.web3forms.com/**',async r=>{ log.web3=r.request().postData();
     if(opt.web3==='ab') return r.abort('failed');
     await r.fulfill(opt.web3==='nein'?NEIN:JA); });
@@ -45,7 +50,7 @@ async function anfrage(b,opt){
     return {danke:!!document.querySelector('.quiz-success.show,#quizSuccess.show'),
             hinweis:e?!e.hidden:false, wege:e?e.querySelectorAll('a').length:0, offen};});
   await c.close();
-  return {...r,...log,gesendet:!!(log.web3||log.fs)};
+  return {...r,...log,gesendet:!!(log.eigen||log.web3||log.fs)};
 }
 
 (async()=>{
@@ -61,12 +66,16 @@ async function anfrage(b,opt){
   alles&=ok(a.offen===0,'nichts bleibt in der Warteschlange liegen');
   alles&=ok(a.fehler.length===0,'keine JavaScript-Fehler');
 
+  const e=await anfrage(b,{eigen:'echt',web3:'ab',fs:'ab'});
+  alles&=ok(/Funktionstest/.test(e.eigen||''),'Weg 1 (eigener Server, anfrage.php) nimmt die Anfrage an');
+  alles&=ok(e.danke && !e.web3 && !e.fs,'eigener Server genuegt - kein Fremddienst noetig');
+
   const w=await anfrage(b,{schluessel:'test-key',fs:'ab'});
-  alles&=ok(/Funktionstest/.test(w.web3||''),'Weg 1 (Web3Forms) wird genutzt, wenn ein Schluessel gesetzt ist');
-  alles&=ok(w.danke && !w.fs,'Weg 1 allein genuegt - FormSubmit wird dann nicht gebraucht');
+  alles&=ok(/Funktionstest/.test(w.web3||''),'Weg 2 (Web3Forms) wird genutzt, wenn ein Schluessel gesetzt ist');
+  alles&=ok(w.danke && !w.fs,'Web3Forms allein genuegt - FormSubmit wird dann nicht gebraucht');
 
   const z=await anfrage(b,{schluessel:'test-key',web3:'nein'});
-  alles&=ok(!!z.fs,'faellt auf Weg 2 (FormSubmit) zurueck, wenn Weg 1 ablehnt');
+  alles&=ok(!!z.fs,'faellt auf Weg 3 (FormSubmit) zurueck, wenn Weg 1 ablehnt');
   alles&=ok(z.danke,'Bestaetigung, wenn der zweite Weg zustellt');
 
   const n=await anfrage(b,{fs:'nein'});

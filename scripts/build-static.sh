@@ -32,6 +32,9 @@ for f in "${REELS[@]}"; do
     -movflags +faststart "$OUT/media/$f" -loglevel error
 done
 
+# Versand ueber den eigenen Server (PHP)
+cp "$ROOT/anfrage.php" "$OUT/anfrage.php"
+
 # OG-Bild + Favicon
 "$FF" -y -i "$ROOT/public/og.png" -q:v 3 "$OUT/og-image.jpg" -loglevel error
 cp "$ROOT/public/icon.png" "$OUT/favicon.png"
