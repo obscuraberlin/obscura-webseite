@@ -8,8 +8,9 @@ const CHROM=process.env.CHROME_PFAD||'/opt/pw-browsers/chromium';
 
 async function anfrage(b,antwort){
   const c=await b.newContext({viewport:{width:1440,height:900}});
-  const p=await c.newPage(); let nutzlast=null,fehler=[];
+  const p=await c.newPage(); let nutzlast=null,fehler=[],mailsprung=false;
   p.on('pageerror',e=>fehler.push(e.message));
+  p.on('framenavigated',f=>{ if(f===p.mainFrame() && f.url().startsWith('mailto')) mailsprung=true; });
   await p.route('**/formsubmit.co/**',async r=>{ nutzlast=r.request().postData(); await antwort(r); });
   await p.goto(BASIS+'/index.html?t='+Date.now(),{waitUntil:'load'});
   await p.evaluate(()=>document.querySelectorAll('[class*=cookie]').forEach(e=>e.remove()));
@@ -25,7 +26,7 @@ async function anfrage(b,antwort){
     return {danke:!!document.querySelector('.quiz-success.show,#quizSuccess.show'),
             hinweis:e?!e.hidden:false, wege:e?e.querySelectorAll('a').length:0};});
   await c.close();
-  return {...r,gesendet:!!nutzlast,nutzlast,fehler};
+  return {...r,gesendet:!!nutzlast,nutzlast,fehler,mailsprung};
 }
 
 (async()=>{
@@ -46,6 +47,7 @@ async function anfrage(b,antwort){
 
   const o=await anfrage(b,r=>r.abort('failed'));
   alles&=ok(!o.danke && o.hinweis,'keine falsche Bestaetigung ohne Verbindung');
+  alles&=ok(!o.mailsprung && !n.mailsprung,'kein automatischer Sprung ins Mailprogramm');
 
   await b.close();
   console.log(alles?'\nERGEBNIS: alles in Ordnung':'\nERGEBNIS: FEHLER GEFUNDEN');
