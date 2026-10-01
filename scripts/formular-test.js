@@ -42,7 +42,12 @@ async function anfrage(b,opt){
   await p.click('#nextStep'); await p.waitForTimeout(200);
   await p.evaluate(()=>document.querySelectorAll('.quiz-step.active .choice')[0].click());
   await p.click('#nextStep'); await p.waitForTimeout(200);
-  await p.click('#nextStep'); await p.waitForTimeout(200);
+  /* Schritt 3: Budget und Start sind Pflicht - ohne sie darf es nicht weitergehen. */
+  await p.click('#nextStep'); await p.waitForTimeout(250);
+  log.budgetPflicht = await p.evaluate(()=>!!document.querySelector('.quiz-step.active [name=budget]'));
+  await p.selectOption('[name=budget]','5.000–10.000 €');
+  await p.selectOption('[name=start]','in 2–4 Wochen');
+  await p.click('#nextStep'); await p.waitForTimeout(250);
   await p.fill('[name=name]','Funktionstest'); await p.fill('[name=email]','test@example.com');
   await p.click('#nextStep'); await p.waitForTimeout(1800);
   const r=await p.evaluate(()=>{const e=document.getElementById('quizError');
@@ -65,6 +70,8 @@ async function anfrage(b,opt){
   alles&=ok(a.danke && !a.hinweis,'Bestaetigung nur nach echter Zusage des Dienstes');
   alles&=ok(a.offen===0,'nichts bleibt in der Warteschlange liegen');
   alles&=ok(a.fehler.length===0,'keine JavaScript-Fehler');
+  alles&=ok(a.budgetPflicht,'ohne Budget und Start geht es nicht weiter');
+  alles&=ok(/5\.000/.test(a.fs||''),'das angegebene Budget steht in der Sendung');
 
   const e=await anfrage(b,{eigen:'echt',web3:'ab',fs:'ab'});
   alles&=ok(/Funktionstest/.test(e.eigen||''),'Weg 1 (eigener Server, anfrage.php) nimmt die Anfrage an');
