@@ -35,29 +35,17 @@ done
 # Versand ueber den eigenen Server (PHP)
 cp "$ROOT/anfrage.php" "$OUT/anfrage.php"
 
+# llms.txt: Kurzprofil fuer KI-Assistenten
+cp "$ROOT/llms.txt" "$OUT/llms.txt"
+
 # OG-Bild + Favicon
 "$FF" -y -i "$ROOT/public/og.png" -q:v 3 "$OUT/og-image.jpg" -loglevel error
 cp "$ROOT/public/icon.png" "$OUT/favicon.png"
 
-# robots.txt
-cat > "$OUT/robots.txt" <<'ROBOTS'
-User-agent: *
-Allow: /
-Sitemap: https://www.obscura-berlin.de/sitemap.xml
-ROBOTS
-
-# sitemap.xml
-cat > "$OUT/sitemap.xml" <<'SITEMAP'
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://www.obscura-berlin.de/</loc><priority>1.0</priority></url>
-  <url><loc>https://www.obscura-berlin.de/social-media-mitgliedschaft.html</loc><priority>0.8</priority></url>
-  <url><loc>https://www.obscura-berlin.de/foto-videoproduktion.html</loc><priority>0.8</priority></url>
-  <url><loc>https://www.obscura-berlin.de/werbeanzeigen-ads.html</loc><priority>0.8</priority></url>
-  <url><loc>https://www.obscura-berlin.de/mitarbeitergewinnung.html</loc><priority>0.8</priority></url>
-  <url><loc>https://www.obscura-berlin.de/marketing-beratung.html</loc><priority>0.8</priority></url>
-</urlset>
-SITEMAP
+# robots.txt + sitemap.xml kommen direkt aus dem Projekt,
+# damit sie nur an einer Stelle gepflegt werden muessen.
+cp "$ROOT/robots.txt" "$OUT/robots.txt"
+cp "$ROOT/sitemap.xml" "$OUT/sitemap.xml"
 
 # .htaccess: HTTPS+www erzwingen, Kompression, Caching
 cat > "$OUT/.htaccess" <<'HTACCESS'
