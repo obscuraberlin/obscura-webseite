@@ -141,7 +141,14 @@ export async function POST(req: NextRequest) {
 
     const r = await fetch(`https://formsubmit.co/ajax/${EMPFAENGER}`, {
       method: "POST",
-      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        /* Der Dienst weist Anfragen ohne Herkunftsangabe ab. */
+        Origin: "https://www.obscura-berlin.de",
+        Referer: "https://www.obscura-berlin.de/",
+        "User-Agent": "Mozilla/5.0 (compatible; OBSCURA-Website/1.0)",
+      },
       body: JSON.stringify({
         ...sauber,
         _subject: betreff,
@@ -155,7 +162,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ success: true, message: "ok" });
     }
     return NextResponse.json(
-      { success: false, message: "Versand abgelehnt" },
+      { success: false, message: `Versand abgelehnt: ${j?.message ?? r.status}` },
       { status: 502 },
     );
   } catch {
