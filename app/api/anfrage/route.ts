@@ -1,4 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
+import { promises as fs } from "node:fs";
+import os from "node:os";
+import path from "node:path";
 
 /* Serverseitige Annahme der Formular-Anfragen.
    Hier liegt der Schutz, der frueher in anfrage.php stand: Die Seite
@@ -18,8 +21,54 @@ const MAX_FELDLAENGE = 4000;
 const LIMIT_STUNDE = 5;
 const LIMIT_TAG = 20;
 
-type Eintrag = { zeiten: number[] };
-const zaehler = new Map<string, Eintrag>();
+/* Der Zaehler liegt auf der Festplatte, nicht im Arbeitsspeicher:
+   Der Server beantwortet Anfragen mit mehreren Prozessen, die sich
+   keinen Speicher teilen. Eine Datei je gehashter IP teilen sie sich. */
+const ORDNER = path.join(os.tmpdir(), "obs-anfragen");
+
+async function zuviel(key: string): Promise<boolean> {
+  const jetzt = Date.now();
+  const datei = path.join(ORDNER, `${key}.txt`);
+  try {
+    await fs.mkdir(ORDNER, { recursive: true, mode: 0o700 });
+  } catch {
+    return false; /* kein Schreibrecht: lieber durchlassen als blockieren */
+  }
+
+  let zeiten: number[] = [];
+  try {
+    const inhalt = await fs.readFile(datei, "utf8");
+    zeiten = inhalt.split(/\s+/).map(Number).filter((t) => Number.isFinite(t) && t > 0);
+  } catch {
+    /* erste Anfrage dieser Herkunft */
+  }
+  zeiten = zeiten.filter((t) => jetzt - t < 86_400_000);
+
+  const stunde = zeiten.filter((t) => jetzt - t < 3_600_000).length;
+  const gesperrt = stunde >= LIMIT_STUNDE || zeiten.length >= LIMIT_TAG;
+  if (!gesperrt) zeiten.push(jetzt);
+
+  try {
+    await fs.writeFile(datei, zeiten.slice(-100).join("\n"), "utf8");
+  } catch {
+    /* nicht schreibbar: Entscheidung gilt trotzdem fuer diese Anfrage */
+  }
+
+  /* Alte Zaehlerdateien gelegentlich aufraeumen */
+  if (Math.random() < 0.02) {
+    try {
+      for (const name of await fs.readdir(ORDNER)) {
+        const p = path.join(ORDNER, name);
+        const stat = await fs.stat(p);
+        if (jetzt - stat.mtimeMs > 172_800_000) await fs.unlink(p);
+      }
+    } catch {
+      /* Aufraeumen ist nicht kritisch */
+    }
+  }
+
+  return gesperrt;
+}
 
 function herkunft(req: NextRequest): string {
   const kopf = req.headers;
@@ -35,26 +84,6 @@ async function schluessel(ip: string): Promise<string> {
   const daten = new TextEncoder().encode(ip);
   const hash = await crypto.subtle.digest("SHA-256", daten);
   return Array.from(new Uint8Array(hash)).map((b) => b.toString(16).padStart(2, "0")).join("");
-}
-
-function zuviel(key: string): boolean {
-  const jetzt = Date.now();
-  const eintrag = zaehler.get(key) ?? { zeiten: [] };
-  eintrag.zeiten = eintrag.zeiten.filter((t) => jetzt - t < 86_400_000);
-
-  const stunde = eintrag.zeiten.filter((t) => jetzt - t < 3_600_000).length;
-  const gesperrt = stunde >= LIMIT_STUNDE || eintrag.zeiten.length >= LIMIT_TAG;
-  if (!gesperrt) eintrag.zeiten.push(jetzt);
-
-  zaehler.set(key, eintrag);
-
-  /* Speicher begrenzen: alte Eintraege gelegentlich verwerfen */
-  if (zaehler.size > 5000) {
-    for (const [k, v] of zaehler) {
-      if (v.zeiten.every((t) => jetzt - t > 86_400_000)) zaehler.delete(k);
-    }
-  }
-  return gesperrt;
 }
 
 function saeubern(wert: unknown): string {
@@ -95,7 +124,7 @@ export async function POST(req: NextRequest) {
   /* Honigtopf: still mit Erfolg antworten, damit der Bot nichts lernt. */
   if (daten._honey) return NextResponse.json({ success: true, message: "ok" });
 
-  if (zuviel(await schluessel(herkunft(req)))) {
+  if (await zuviel(await schluessel(herkunft(req)))) {
     return NextResponse.json(
       {
         success: false,
