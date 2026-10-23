@@ -3979,9 +3979,9 @@ textarea{min-height:132px;resize:vertical;line-height:1.55}
   var ZIEL       = "info@obscura-berlin.de"; /* FormSubmit-Empfaenger */
 
   async function ueberEigen(p){
-    /* Eigener Server (anfrage.php). Braucht keinen Fremddienst und keine Freischaltung.
+    /* Eigener Server (/api/anfrage). Braucht keinen Fremddienst und keine Freischaltung.
        Faellt nur weg, wenn die Seite ohne PHP laeuft - dann antwortet sie mit 404. */
-    var r = await fetch("anfrage.php", {
+    var r = await fetch("/api/anfrage", {
       method:"POST",
       headers:{"Content-Type":"application/json", Accept:"application/json"},
       body:JSON.stringify(p)
