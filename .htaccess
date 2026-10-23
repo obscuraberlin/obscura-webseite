@@ -1,5 +1,51 @@
-# HTTPS + www erzwingen (Canonical)
+# ============================================================
+#  OBSCURA DIGITAL MARKETING GMBH - Serverkonfiguration
+#  Reihenfolge: Sperren -> Weiterleitung -> Header -> Caching
+# ============================================================
+
+Options -Indexes -MultiViews
+ServerSignature Off
+
+# ------------------------------------------------------------
+# 1) Dateien, die niemals ausgeliefert werden duerfen
+# ------------------------------------------------------------
+
+# Punktdateien und -ordner (.git, .env, .htaccess, .DS_Store ...)
+RedirectMatch 404 /\.(?!well-known/)
+
+<FilesMatch "^\.">
+  Require all denied
+</FilesMatch>
+
+# Quell-, Konfigurations- und Sicherungsdateien
+<FilesMatch "\.(env|ini|log|sh|bash|sql|bak|backup|old|orig|save|swp|swo|tmp|dist|lock|yml|yaml|toml|ts|tsx|jsx|mjs|cjs|map|md|psd|ai|prproj|drp|aep)$">
+  Require all denied
+</FilesMatch>
+
+# Archive (Sicherungen, hochgeladene Pakete)
+<FilesMatch "\.(zip|tar|gz|tgz|bz2|7z|rar)$">
+  Require all denied
+</FilesMatch>
+
+# Projektdateien mit Namen, die nicht ins Web gehoeren
+<FilesMatch "^(package\.json|package-lock\.json|composer\.(json|lock)|yarn\.lock|Dockerfile|Makefile|README|LICENSE|DEPLOY)">
+  Require all denied
+</FilesMatch>
+
+# Versionsverwaltung und Werkzeug-Ordner komplett sperren
+RedirectMatch 404 ^/(\.git|\.github|node_modules|scripts|docs|marketing|preview|src|quellen)(/|$)
+
+# Rohmaterial (Kamera-Originale, Schnittdateien) nie ausliefern -
+# es gehoert ins Archiv, nicht ins Web, und kostet sonst Datenvolumen.
+
+# In Medienordnern darf niemals Programmcode ausgefuehrt werden
 RewriteEngine On
+RewriteRule ^(media|public|uploads|assets|img|bilder)/.*\.(php|phtml|php[3-8]|phar|cgi|pl|py|asp|aspx|jsp)$ - [F,L,NC]
+
+# ------------------------------------------------------------
+# 2) HTTPS und www erzwingen
+# ------------------------------------------------------------
+
 # Wichtig: POST nicht umleiten - Browser werfen beim Umleiten den Inhalt weg,
 # dann kaeme das Anfrageformular leer beim Server an.
 RewriteCond %{REQUEST_METHOD} !=POST
@@ -7,53 +53,99 @@ RewriteCond %{HTTPS} off [OR]
 RewriteCond %{HTTP_HOST} !^www\. [NC]
 RewriteRule ^ https://www.obscura-berlin.de%{REQUEST_URI} [L,R=301]
 
-# Kompression
-<IfModule mod_deflate.c>
-  AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json image/svg+xml text/plain application/xml
+# Unsinnige Anfragen frueh abweisen (Scanner nach fremden Systemen)
+RewriteCond %{REQUEST_URI} (wp-admin|wp-login|wp-content|wp-includes|xmlrpc\.php|phpmyadmin|\.aws|\.ssh|/vendor/|/\.env) [NC]
+RewriteRule ^ - [F,L]
+
+# ------------------------------------------------------------
+# 3) Sicherheits-Header
+# ------------------------------------------------------------
+<IfModule mod_headers.c>
+  # HTTPS fuer zwei Jahre erzwingen, inklusive Unterdomains
+  Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains; preload" env=HTTPS
+
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Cross-Origin-Opener-Policy "same-origin"
+  Header always set Cross-Origin-Resource-Policy "same-site"
+  Header always set Permissions-Policy "geolocation=(), microphone=(), camera=(), payment=(), usb=(), magnetometer=(), gyroscope=(), interest-cohort=()"
+
+  # Inhaltsrichtlinie (CSP)
+  # Hinweis: Die Seite verwendet eingebettete Skripte und Stile, deshalb ist
+  # 'unsafe-inline' noetig. Alles Uebrige ist auf die eigene Herkunft begrenzt;
+  # Einbettung in fremde Seiten, Plugins und fremde Formularziele sind gesperrt.
+  Header always set Content-Security-Policy "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' https://api.web3forms.com https://formsubmit.co; frame-src 'none'; worker-src 'self' blob:; manifest-src 'self'; upgrade-insecure-requests"
+
+  # Server-Kennung reduzieren
+  Header unset X-Powered-By
+  Header always unset X-Powered-By
 </IfModule>
 
-# Caching
+# PHP-Version nicht verraten
+<IfModule mod_php.c>
+  php_flag expose_php off
+</IfModule>
+
+# ------------------------------------------------------------
+# 4) Kompression
+# ------------------------------------------------------------
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml text/javascript \
+    application/javascript application/x-javascript application/json application/xml \
+    application/rss+xml image/svg+xml application/manifest+json
+</IfModule>
+
+<IfModule mod_brotli.c>
+  AddOutputFilterByType BROTLI_COMPRESS text/html text/css text/plain text/xml \
+    application/javascript application/json image/svg+xml
+</IfModule>
+
+# ------------------------------------------------------------
+# 5) Caching - entlastet den Server bei vielen Zugriffen
+# ------------------------------------------------------------
 <IfModule mod_expires.c>
   ExpiresActive On
-  ExpiresByType text/html "access plus 0 seconds"
-  ExpiresByType text/css "access plus 1 year"
-  ExpiresByType application/javascript "access plus 1 year"
-  ExpiresByType image/jpeg "access plus 1 year"
-  ExpiresByType image/png "access plus 1 year"
-  ExpiresByType image/webp "access plus 1 year"
-  ExpiresByType image/svg+xml "access plus 1 year"
-  ExpiresByType image/gif "access plus 1 year"
-  ExpiresByType image/x-icon "access plus 1 year"
-  ExpiresByType video/mp4 "access plus 1 year"
-  ExpiresByType font/woff2 "access plus 1 year"
-  ExpiresByType application/font-woff2 "access plus 1 year"
+  ExpiresDefault                          "access plus 1 week"
+  ExpiresByType text/html                 "access plus 0 seconds"
+  ExpiresByType text/css                  "access plus 1 year"
+  ExpiresByType application/javascript    "access plus 1 year"
+  ExpiresByType image/jpeg                "access plus 1 year"
+  ExpiresByType image/png                 "access plus 1 year"
+  ExpiresByType image/webp                "access plus 1 year"
+  ExpiresByType image/avif                "access plus 1 year"
+  ExpiresByType image/svg+xml             "access plus 1 year"
+  ExpiresByType video/mp4                 "access plus 1 year"
+  ExpiresByType font/woff2                "access plus 1 year"
+  ExpiresByType text/plain                "access plus 1 day"
+  ExpiresByType application/xml           "access plus 1 day"
 </IfModule>
 
-# Lange, unveraenderliche Cache-Zeiten fuer statische Assets (immutable)
 <IfModule mod_headers.c>
-  <FilesMatch "\.(css|js|jpg|jpeg|png|webp|gif|svg|ico|mp4|woff2)$">
+  # Medien und Schriften aendern sich nicht mehr: dauerhaft zwischenspeichern
+  <FilesMatch "\.(jpg|jpeg|png|webp|avif|gif|svg|ico|mp4|webm|woff2|woff|ttf)$">
     Header set Cache-Control "public, max-age=31536000, immutable"
   </FilesMatch>
-  # HTML nie hart cachen (immer aktueller Inhalt)
+
+  # HTML immer frisch pruefen, damit Aenderungen sofort sichtbar sind
   <FilesMatch "\.html$">
-    Header set Cache-Control "no-cache"
+    Header set Cache-Control "public, max-age=0, must-revalidate"
+  </FilesMatch>
+
+  # Das Formular darf nie zwischengespeichert werden
+  <FilesMatch "\.php$">
+    Header set Cache-Control "no-store, no-cache, must-revalidate"
   </FilesMatch>
 </IfModule>
 
-# Sicherheits-Header
+# Teil-Downloads fuer Videos erlauben (schnellerer Start, weniger Last)
 <IfModule mod_headers.c>
-  # HTTPS erzwingen (HSTS) – 1 Jahr, inkl. Subdomains
-  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
-  # Kein MIME-Sniffing
-  Header always set X-Content-Type-Options "nosniff"
-  # Schutz gegen Clickjacking (Einbettung in fremde Frames verbieten)
-  Header always set X-Frame-Options "SAMEORIGIN"
-  # Referrer sparsam senden
-  Header always set Referrer-Policy "strict-origin-when-cross-origin"
-  # Nicht benötigte Browser-Funktionen deaktivieren
-  Header always set Permissions-Policy "geolocation=(), camera=(), microphone=(), payment=(), usb=()"
-  # Cross-Domain-Policies unterbinden
-  Header always set X-Permitted-Cross-Domain-Policies "none"
+  <FilesMatch "\.(mp4|webm)$">
+    Header set Accept-Ranges bytes
+  </FilesMatch>
 </IfModule>
 
+# ------------------------------------------------------------
+# 6) Fehlerseiten
+# ------------------------------------------------------------
 ErrorDocument 404 /index.html
