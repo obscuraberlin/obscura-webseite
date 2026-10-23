@@ -47,31 +47,8 @@ cp "$ROOT/public/icon.png" "$OUT/favicon.png"
 cp "$ROOT/robots.txt" "$OUT/robots.txt"
 cp "$ROOT/sitemap.xml" "$OUT/sitemap.xml"
 
-# .htaccess: HTTPS+www erzwingen, Kompression, Caching
-cat > "$OUT/.htaccess" <<'HTACCESS'
-RewriteEngine On
-# Wichtig: POST nicht umleiten - Browser werfen beim Umleiten den Inhalt weg,
-# dann kaeme das Anfrageformular leer beim Server an.
-RewriteCond %{REQUEST_METHOD} !=POST
-RewriteCond %{HTTPS} off [OR]
-RewriteCond %{HTTP_HOST} !^www\. [NC]
-RewriteRule ^ https://www.obscura-berlin.de%{REQUEST_URI} [L,R=301]
-
-<IfModule mod_deflate.c>
-  AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json image/svg+xml text/plain application/xml
-</IfModule>
-
-<IfModule mod_expires.c>
-  ExpiresActive On
-  ExpiresByType text/html "access plus 0 seconds"
-  ExpiresByType text/css "access plus 1 month"
-  ExpiresByType application/javascript "access plus 1 month"
-  ExpiresByType image/jpeg "access plus 1 year"
-  ExpiresByType image/png "access plus 1 year"
-  ExpiresByType video/mp4 "access plus 1 year"
-</IfModule>
-
-ErrorDocument 404 /index.html
-HTACCESS
+# .htaccess kommt direkt aus dem Projekt, damit sie nur an einer
+# Stelle gepflegt wird (Sicherheits-Header, Sperren, Caching).
+cp "$ROOT/.htaccess" "$OUT/.htaccess"
 
 echo "Fertig: $OUT"
