@@ -32,3 +32,4 @@ preview-live.html
 
 # Build-Ausgabe der Next-Anwendung
 /.next/
+.anfragen-zaehler/

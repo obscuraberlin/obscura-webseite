@@ -24,16 +24,32 @@ const LIMIT_TAG = 20;
 /* Der Zaehler liegt auf der Festplatte, nicht im Arbeitsspeicher:
    Der Server beantwortet Anfragen mit mehreren Prozessen, die sich
    keinen Speicher teilen. Eine Datei je gehashter IP teilen sie sich. */
-const ORDNER = path.join(os.tmpdir(), "obs-anfragen");
+const ORDNER_KANDIDATEN = [
+  path.join(process.cwd(), ".anfragen-zaehler"),
+  path.join(os.tmpdir(), "obs-anfragen"),
+];
+let ORDNER: string | null = null;
+
+async function ordner(): Promise<string | null> {
+  if (ORDNER) return ORDNER;
+  for (const k of ORDNER_KANDIDATEN) {
+    try {
+      await fs.mkdir(k, { recursive: true, mode: 0o700 });
+      await fs.writeFile(path.join(k, ".probe"), "1", "utf8");
+      ORDNER = k;
+      return k;
+    } catch {
+      /* naechsten Ort versuchen */
+    }
+  }
+  return null;
+}
 
 async function zuviel(key: string): Promise<boolean> {
   const jetzt = Date.now();
-  const datei = path.join(ORDNER, `${key}.txt`);
-  try {
-    await fs.mkdir(ORDNER, { recursive: true, mode: 0o700 });
-  } catch {
-    return false; /* kein Schreibrecht: lieber durchlassen als blockieren */
-  }
+  const ort = await ordner();
+  if (!ort) return false; /* nirgends schreibbar: lieber durchlassen als blockieren */
+  const datei = path.join(ort, `${key}.txt`);
 
   let zeiten: number[] = [];
   try {
@@ -57,8 +73,8 @@ async function zuviel(key: string): Promise<boolean> {
   /* Alte Zaehlerdateien gelegentlich aufraeumen */
   if (Math.random() < 0.02) {
     try {
-      for (const name of await fs.readdir(ORDNER)) {
-        const p = path.join(ORDNER, name);
+      for (const name of await fs.readdir(ort)) {
+        const p = path.join(ort, name);
         const stat = await fs.stat(p);
         if (jetzt - stat.mtimeMs > 172_800_000) await fs.unlink(p);
       }
@@ -71,11 +87,17 @@ async function zuviel(key: string): Promise<boolean> {
 }
 
 function herkunft(req: NextRequest): string {
-  const kopf = req.headers;
-  const direkt = kopf.get("cf-connecting-ip") || kopf.get("x-real-ip");
-  if (direkt) return direkt.trim();
-  const kette = kopf.get("x-forwarded-for");
-  if (kette) return kette.split(",")[0].trim();
+  /* Nur der letzte Eintrag in x-forwarded-for stammt vom eigenen Server.
+     Alles davor kann der Aufrufer frei setzen und waere eine Umgehung
+     der Bremse. cf-connecting-ip und x-real-ip werden bewusst nicht
+     ausgewertet: Vor dieser Seite steht kein Dienst, der sie setzt. */
+  const kette = req.headers.get("x-forwarded-for");
+  if (kette) {
+    const teile = kette.split(",").map((t) => t.trim()).filter(Boolean);
+    const letzter = teile[teile.length - 1];
+    if (letzter && !/^(127\.|::1$|10\.|192\.168\.)/.test(letzter)) return letzter;
+    if (teile.length > 1) return teile[teile.length - 2];
+  }
   return "unbekannt";
 }
 
